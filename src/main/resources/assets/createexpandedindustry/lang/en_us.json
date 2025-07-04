@@ -1,0 +1,13 @@
+{
+  "itemGroup.createexpandedindustry": "Example Mod Tab",
+  "block.createexpandedindustry.example_block": "Example Block",
+  "item.createexpandedindustry.example_item": "Example Item",
+
+  "createexpandedindustry.configuration.title": "Create: Expanded Industry Configs",
+  "createexpandedindustry.configuration.section.createexpandedindustry.common.toml": "Create: Expanded Industry Configs",
+  "createexpandedindustry.configuration.section.createexpandedindustry.common.toml.title": "Create: Expanded Industry Configs",
+  "createexpandedindustry.configuration.items": "Item List",
+  "createexpandedindustry.configuration.logDirtBlock": "Log Dirt Block",
+  "createexpandedindustry.configuration.magicNumberIntroduction": "Magic Number Text",
+  "createexpandedindustry.configuration.magicNumber": "Magic Number"
+}
