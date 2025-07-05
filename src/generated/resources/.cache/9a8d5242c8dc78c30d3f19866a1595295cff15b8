@@ -1,0 +1,7 @@
+// 1.21.1	2025-07-06T00:12:38.6170748	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+fb00fdbe37da8132105bdc8360908b5b0ee3dfe9 assets/createexpandedindustry/blockstates/erythrite.json
+d515274df70afe48d07ec185174e02e00a6c8fe4 assets/createexpandedindustry/lang/en_ud.json
+852f21f80fa543122eb05b8cb973fe01897f968b assets/createexpandedindustry/lang/en_us.json
+2e7dd662595cca97eac4bf9574d39890a5af8fda assets/createexpandedindustry/models/block/erythrite.json
+993eec8166276b810eb68d8f5aa7eaf0b56d7462 assets/createexpandedindustry/models/item/erythrite.json
+ab109c2f6f2b0e6bc06334844212582636041448 data/createexpandedindustry/loot_table/blocks/erythrite.json
