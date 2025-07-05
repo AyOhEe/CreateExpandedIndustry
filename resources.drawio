@@ -1,0 +1,272 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" version="27.1.6">
+  <diagram name="Page-1" id="CuXIWQetirl2CwStPJUN">
+    <mxGraphModel dx="2505" dy="924" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="2WA8ek9E2u0xcXaK1qwi-1" target="2WA8ek9E2u0xcXaK1qwi-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-24" value="Reinforced drill" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="2WA8ek9E2u0xcXaK1qwi-5">
+          <mxGeometry x="-0.3424" y="1" relative="1" as="geometry">
+            <mxPoint x="22" y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-1" value="Hardened Ochrum" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-550" y="30" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="2WA8ek9E2u0xcXaK1qwi-2" target="2WA8ek9E2u0xcXaK1qwi-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-25" value="Reinforced drill" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="2WA8ek9E2u0xcXaK1qwi-8">
+          <mxGeometry x="-0.0363" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-2" value="Hardened Veridium" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-550" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="2WA8ek9E2u0xcXaK1qwi-3" target="2WA8ek9E2u0xcXaK1qwi-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-26" value="Reinforced drill" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="2WA8ek9E2u0xcXaK1qwi-9">
+          <mxGeometry x="-0.059" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-3" value="Hardened Asurine" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-550" y="210" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="2WA8ek9E2u0xcXaK1qwi-4" target="2WA8ek9E2u0xcXaK1qwi-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-4" value="Ochrum&lt;div&gt;Crushed gold&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-283" y="30" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="2WA8ek9E2u0xcXaK1qwi-6" target="2WA8ek9E2u0xcXaK1qwi-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-6" value="Veridium&lt;div&gt;Crushed copper&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-283" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="2WA8ek9E2u0xcXaK1qwi-7" target="2WA8ek9E2u0xcXaK1qwi-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-7" value="Asurine&lt;div&gt;Crushed zinc&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-283" y="210" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-10" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Hardened stones&lt;/h1&gt;&lt;div&gt;Hardened stones must be mined with a multiblock reinforced drill. These blocks can be mined from more than once, up to a generated maximum (patches get richer the further from 0,0 that they have generated)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;They cannot be mined by hand, but can be exploded by TNT to drop nothing (easy clearing, if they happen to be in the way)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Hardened stones generate in &quot;patches&quot;, with many hardened stone blocks (all of the same type) generating in a flattened hemisphere, with the flat side facing upwards.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Reinforced drills area multiblock structure built from a drill, train casing, a vertical gearbox, two encased shafts on either end of the gearbox, and girders. Reinforced drills mine from all hardened stone blocks in a 5x5 area around the drill head. Reinforced drills can be emptied using a funnel from either side &lt;i&gt;without&lt;/i&gt;&amp;nbsp;a shaft. When the multiblock forms, the drill head will grow and the supports will change to better show the drill.&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-790" y="20" width="230" height="460" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-11" value="Easier supply of large quantities of gold" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-83" y="30" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-13" value="Supply of large quantities of copper" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-83" y="120" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-14" value="Supply of large quantities of zinc" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-83" y="210" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="2WA8ek9E2u0xcXaK1qwi-15" target="2WA8ek9E2u0xcXaK1qwi-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-27" value="Reinforced drill" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="2WA8ek9E2u0xcXaK1qwi-21">
+          <mxGeometry x="-0.0363" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-15" value="Hardened Crimsite" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-550" y="300" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="2WA8ek9E2u0xcXaK1qwi-16" target="2WA8ek9E2u0xcXaK1qwi-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-16" value="Crimsite&lt;br&gt;&lt;div&gt;Crushed iron&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-283" y="300" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-17" value="Easier supply of large quantities of iron" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-83" y="300" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-22" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Oil field&lt;/h1&gt;&lt;div&gt;The oil field biome is a dark, oil-filled area. The terrain could be made of Hardened oil (behaves like soul sand). Oil gushers spawn with the central block surrounded by liquid oil and a tower of source blocks above it. A multi-block pumpjack can be assembled on the gusher, and will output oil when powered with RF. The rate will be randomly generated, increasing the further out from 0,0 the gusher is. The rate will deplete as oil is extracted, never dropping below a configurable minimum.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Oil is processed in a fractionation column, composed of an at-least 2x2x5 liquid tank with at least 1 lit blaze burner underneath.&lt;/div&gt;&lt;div&gt;Increasing the number of blaze burners will increase the rate of processing.&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Pipes on each layer will output a different fluid:&lt;/div&gt;&lt;div&gt;&lt;ol&gt;&lt;li&gt;LPG&lt;/li&gt;&lt;li&gt;Naphtha&lt;/li&gt;&lt;li&gt;Kerosene&lt;/li&gt;&lt;li&gt;Raw lubricating oil&lt;/li&gt;&lt;li&gt;Hot bitumen&lt;/li&gt;&lt;/ol&gt;&lt;div&gt;If the tank is taller than 5 blocks, then the fractions are given extra blocks of height one by one.&lt;/div&gt;&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-790" y="500" width="230" height="590" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-23" value="Oil&lt;div&gt;(liquid)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-550" y="545" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-28" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="2WA8ek9E2u0xcXaK1qwi-23">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-410" y="600" as="sourcePoint" />
+            <mxPoint x="-320" y="575" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="2WA8ek9E2u0xcXaK1qwi-29" target="2WA8ek9E2u0xcXaK1qwi-35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-29" value="Liquid petroleum gas" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-320" y="545" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="2WA8ek9E2u0xcXaK1qwi-30" target="2WA8ek9E2u0xcXaK1qwi-43">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-45" value="Mixer" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="2WA8ek9E2u0xcXaK1qwi-44">
+          <mxGeometry x="-0.1818" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-30" value="Raw lubricating oil&lt;div&gt;(liquid)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-320" y="930" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="2WA8ek9E2u0xcXaK1qwi-31" target="2WA8ek9E2u0xcXaK1qwi-46">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-48" value="Mixer" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="2WA8ek9E2u0xcXaK1qwi-47">
+          <mxGeometry x="-0.0606" y="-2" relative="1" as="geometry">
+            <mxPoint x="-22" y="-2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-31" value="Hot bitumen&lt;div&gt;(liquid)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-320" y="1020" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="2WA8ek9E2u0xcXaK1qwi-32" target="2WA8ek9E2u0xcXaK1qwi-53">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-57" value="Heated&amp;nbsp;&lt;div&gt;mixing&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="2WA8ek9E2u0xcXaK1qwi-54">
+          <mxGeometry x="-0.6364" y="1" relative="1" as="geometry">
+            <mxPoint x="10" y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-74" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="2WA8ek9E2u0xcXaK1qwi-32" target="2WA8ek9E2u0xcXaK1qwi-73">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-260" y="840" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-32" value="Naphtha&lt;div&gt;(liquid)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-320" y="660" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-33" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-380" y="1280" as="sourcePoint" />
+            <mxPoint x="-380" y="575" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-35" value="Barbeque&lt;div&gt;(used to fuel)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-90" y="545" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-37" value="Solid fuel" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-83" y="1250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-43" value="Lubricant&lt;div&gt;(liquid)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-90" y="930" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-46" value="Asphalt" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-90" y="1020" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="2WA8ek9E2u0xcXaK1qwi-49" target="2WA8ek9E2u0xcXaK1qwi-46">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-150" y="1050" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-49" value="Water&lt;div&gt;(liquid)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-210" y="1130" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-52" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Asphalt&lt;/h1&gt;&lt;div&gt;Asphalt grants speed 1 to anyone standing on it.&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="67" y="1030" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="2WA8ek9E2u0xcXaK1qwi-53" target="2WA8ek9E2u0xcXaK1qwi-62">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-64" value="Heated&lt;div&gt;mixing&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="2WA8ek9E2u0xcXaK1qwi-63">
+          <mxGeometry x="-0.2917" y="-1" relative="1" as="geometry">
+            <mxPoint x="9" y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-53" value="Ethylene&lt;div&gt;(liquid)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-90" y="660" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-56" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="2WA8ek9E2u0xcXaK1qwi-55" target="2WA8ek9E2u0xcXaK1qwi-53">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-55" value="Water&lt;div&gt;(liquid)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-203" y="730" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-58" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Lubricant&lt;/h1&gt;&lt;div&gt;Lubricant is directly used in some crafting recipes, but can also be applied to some blocks to lower their SU consumption.&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="67" y="910" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-59" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Barbeque&lt;/h1&gt;&lt;div&gt;Mechanical arms can cook now.&lt;/div&gt;&lt;div&gt;Food cooked at a barbeque provides 1.5x hunger and saturation. New food recipes?&lt;/div&gt;&lt;div&gt;Compat with farmer&#39;s delight?&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="60" y="500" width="180" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-62" value="Plastic" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="660" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-66" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="2WA8ek9E2u0xcXaK1qwi-65" target="2WA8ek9E2u0xcXaK1qwi-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-65" value="Kerosene&lt;div&gt;(liquid)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-320" y="1250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-67" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Solid fuel&lt;/h1&gt;&lt;div&gt;Furnace fuel made from kerosene. Usable in trains to give an acceleration bonus (vanilla create behaviour for furnace fuels)&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1230" width="180" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-68" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="2WA8ek9E2u0xcXaK1qwi-32">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-380" y="690" as="sourcePoint" />
+            <mxPoint x="-480" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-69" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-380" y="960" as="sourcePoint" />
+            <mxPoint x="-320" y="960" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-70" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-380" y="1049.6599999999999" as="sourcePoint" />
+            <mxPoint x="-320" y="1049.6599999999999" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-71" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-380" y="1279.66" as="sourcePoint" />
+            <mxPoint x="-320" y="1279.66" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-73" value="DnD rubber" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-90" y="810" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-75" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;TODO&lt;/h1&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;Spaced deployer&lt;/li&gt;&lt;li&gt;Recipe sink&lt;/li&gt;&lt;li&gt;Recipe intermediates (more mechanisms)&lt;/li&gt;&lt;li&gt;Multiblock radar&lt;/li&gt;&lt;li&gt;Multiblock resource depth-probe&lt;/li&gt;&lt;li&gt;Cobalt&lt;/li&gt;&lt;li&gt;Maglev rails&lt;/li&gt;&lt;li&gt;Cobalt-tipped drills&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="324" y="90" width="326" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-76" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="2WA8ek9E2u0xcXaK1qwi-78" target="2WA8ek9E2u0xcXaK1qwi-80">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-77" value="Reinforced drill" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="2WA8ek9E2u0xcXaK1qwi-76">
+          <mxGeometry x="-0.0363" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-78" value="Hardened Erythrite&lt;br&gt;(Uncommon)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-550" y="390" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-79" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="2WA8ek9E2u0xcXaK1qwi-80" target="2WA8ek9E2u0xcXaK1qwi-81">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-82" value="Seething" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="2WA8ek9E2u0xcXaK1qwi-79">
+          <mxGeometry x="-0.1875" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-80" value="Erythrite&lt;br&gt;&lt;div&gt;Crushed cobalt&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-283" y="390" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2WA8ek9E2u0xcXaK1qwi-81" value="Supply of decent quantities of cobalt. Recipes produce less than other metals." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-83" y="390" width="150" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

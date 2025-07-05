@@ -1,7 +1,5 @@
 {
-  "itemGroup.createexpandedindustry": "Example Mod Tab",
-  "block.createexpandedindustry.example_block": "Example Block",
-  "item.createexpandedindustry.example_item": "Example Item",
+  "itemGroup.createexpandedindustry": "Create: Expanded Industry",
 
   "createexpandedindustry.configuration.title": "Create: Expanded Industry Configs",
   "createexpandedindustry.configuration.section.createexpandedindustry.common.toml": "Create: Expanded Industry Configs",
