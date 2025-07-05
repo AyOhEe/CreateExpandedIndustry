@@ -4,8 +4,6 @@
   "createexpandedindustry.configuration.title": "Create: Expanded Industry Configs",
   "createexpandedindustry.configuration.section.createexpandedindustry.common.toml": "Create: Expanded Industry Configs",
   "createexpandedindustry.configuration.section.createexpandedindustry.common.toml.title": "Create: Expanded Industry Configs",
-  "createexpandedindustry.configuration.items": "Item List",
-  "createexpandedindustry.configuration.logDirtBlock": "Log Dirt Block",
-  "createexpandedindustry.configuration.magicNumberIntroduction": "Magic Number Text",
-  "createexpandedindustry.configuration.magicNumber": "Magic Number"
+
+  "block.createexpandedindustry.erythrite": "Erythrite"
 }
