@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cobalt_ingot": {
+    "has_cobalt_block": {
       "conditions": {
         "items": [
           {
-            "items": "createexpandedindustry:cobalt_ingot"
+            "items": "createexpandedindustry:cobalt_block"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:cobalt_nuggets_from_ingot"
+        "recipe": "minecraft:cobalt_ingots_from_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_cobalt_ingot"
+      "has_cobalt_block"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:cobalt_nuggets_from_ingot"
+      "minecraft:cobalt_ingots_from_block"
     ]
   }
 }

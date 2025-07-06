@@ -19,7 +19,7 @@ public class EIItems {
     public static final ItemEntry<Item> CRUSHED_RAW_COBALT = REGISTRATE.item("crushed_raw_cobalt", Item::new)
             .tag(AllItemTags.CRUSHED_RAW_MATERIALS.tag)
             .recipe((c, p) -> {
-                Ingredient crushed_cobalt = Ingredient.of(EIItems.CRUSHED_RAW_COBALT);
+                Ingredient crushed_cobalt = Ingredient.of(c.get());
                 SimpleCookingRecipeBuilder.blasting(crushed_cobalt, RecipeCategory.MISC, EIItems.COBALT_INGOT, 0.1f, 100)
                         .unlockedBy("has_crushed_cobalt", RegistrateRecipeProvider.has(EIItems.CRUSHED_RAW_COBALT))
                         .save(p, "cobalt_ingot_from_crushed");
@@ -31,8 +31,12 @@ public class EIItems {
             .recipe((c, p) -> {
                 ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, EIItems.COBALT_NUGGET, 9)
                         .requires(c.get(), 1)
-                        .unlockedBy("has_cobalt_ingot", RegistrateRecipeProvider.has(EIItems.COBALT_INGOT))
-                        .save(p, "cobalt_ingot_from_nuggets");
+                        .unlockedBy("has_cobalt_ingot", RegistrateRecipeProvider.has(c.get()))
+                        .save(p, "cobalt_nuggets_from_ingot");
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, EIBlocks.COBALT_BLOCK, 1)
+                        .requires(c.get(), 9)
+                        .unlockedBy("has_cobalt_ingot", RegistrateRecipeProvider.has(c.get()))
+                        .save(p, "cobalt_block_from_ingots");
             })
             .register();
 
@@ -41,8 +45,8 @@ public class EIItems {
             .recipe((c, p) -> {
                 ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, EIItems.COBALT_INGOT, 1)
                         .requires(c.get(), 9)
-                        .unlockedBy("has_cobalt_nugget", RegistrateRecipeProvider.has(EIItems.COBALT_NUGGET))
-                        .save(p, "cobalt_nuggets_from_ingot");
+                        .unlockedBy("has_cobalt_nugget", RegistrateRecipeProvider.has(c.get()))
+                        .save(p, "cobalt_ingot_from_nuggets");
             })
             .register();
 

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "createexpandedindustry:block/cobalt_block"
+    }
+  }
+}

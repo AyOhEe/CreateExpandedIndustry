@@ -3,11 +3,11 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "createexpandedindustry:cobalt_ingot"
+      "item": "createexpandedindustry:cobalt_block"
     }
   ],
   "result": {
     "count": 9,
-    "id": "createexpandedindustry:cobalt_nugget"
+    "id": "createexpandedindustry:cobalt_ingot"
   }
 }

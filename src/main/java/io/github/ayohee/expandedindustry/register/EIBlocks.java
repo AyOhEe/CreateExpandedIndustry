@@ -4,10 +4,13 @@ import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateItemModelProvider;
+import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import io.github.ayohee.expandedindustry.CreateExpandedIndustry;
 
+import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -20,6 +23,7 @@ public class EIBlocks {
     static {
         REGISTRATE.setCreativeTab(EICreativeTabs.MAIN_TAB);
     }
+
 
     public static final BlockEntry<Block> ERYTHRITE_BLOCK = REGISTRATE.block("erythrite", Block::new)
             .initialProperties(SharedProperties::stone)
@@ -54,6 +58,19 @@ public class EIBlocks {
     public static final BlockEntry<Block> HARDENED_CRIMSITE_BLOCK = REGISTRATE.block("hardened_crimsite", Block::new)
             .initialProperties(SharedProperties::stone)
             .item()
+            .transform(getItemModel())
+            .register();
+
+
+    public static final BlockEntry<Block> COBALT_BLOCK = REGISTRATE.block("cobalt_block", Block::new)
+            .initialProperties(SharedProperties::netheriteMetal)
+            .item()
+            .recipe((c, p) -> {
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, EIItems.COBALT_INGOT, 9)
+                        .requires(c.get(), 1)
+                        .unlockedBy("has_cobalt_block", RegistrateRecipeProvider.has(c.get()))
+                        .save(p, "cobalt_ingots_from_block");
+            })
             .transform(getItemModel())
             .register();
 

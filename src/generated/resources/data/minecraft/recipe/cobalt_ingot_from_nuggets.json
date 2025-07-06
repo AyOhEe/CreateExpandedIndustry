@@ -3,11 +3,35 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "createexpandedindustry:cobalt_ingot"
+      "item": "createexpandedindustry:cobalt_nugget"
+    },
+    {
+      "item": "createexpandedindustry:cobalt_nugget"
+    },
+    {
+      "item": "createexpandedindustry:cobalt_nugget"
+    },
+    {
+      "item": "createexpandedindustry:cobalt_nugget"
+    },
+    {
+      "item": "createexpandedindustry:cobalt_nugget"
+    },
+    {
+      "item": "createexpandedindustry:cobalt_nugget"
+    },
+    {
+      "item": "createexpandedindustry:cobalt_nugget"
+    },
+    {
+      "item": "createexpandedindustry:cobalt_nugget"
+    },
+    {
+      "item": "createexpandedindustry:cobalt_nugget"
     }
   ],
   "result": {
-    "count": 9,
-    "id": "createexpandedindustry:cobalt_nugget"
+    "count": 1,
+    "id": "createexpandedindustry:cobalt_ingot"
   }
 }
