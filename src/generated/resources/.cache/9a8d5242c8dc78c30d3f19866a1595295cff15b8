@@ -1,4 +1,4 @@
-// 1.21.1	2025-07-06T20:38:38.615151	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+// 1.21.1	2025-07-06T20:49:29.8112274	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
 fb00fdbe37da8132105bdc8360908b5b0ee3dfe9 assets/createexpandedindustry/blockstates/erythrite.json
 86c1806e2980907395e4f0e7a51f235cca2b7bed assets/createexpandedindustry/blockstates/hardened_asurine.json
 1ee6383e1a7a6a1c6c104ea56b0f09986ac83889 assets/createexpandedindustry/blockstates/hardened_crimsite.json
@@ -23,8 +23,8 @@ e12bb927a6eb802bb82a5216aa7bef7cb8653035 assets/createexpandedindustry/models/it
 b9e705ad94489c3e6b964473a94a1a307c50e13d assets/createexpandedindustry/models/item/hardened_erythrite.json
 f92aee725445ee26aaf95ed1cfd187d3ea9a29f1 assets/createexpandedindustry/models/item/hardened_ochrum.json
 68e1bc965d7085ca27e5803484f17ef774f9f6ce assets/createexpandedindustry/models/item/hardened_veridium.json
-8fb02772a5c73a81c6c7746b2bcce0415e733930 data/createexpandedindustry/advancement/recipes/misc/cobalt_ingot.json
-6d3d553e4c23b228d6c0f4e4c1fc3c426c50428a data/createexpandedindustry/advancement/recipes/misc/cobalt_nugget.json
+72377c98ab0162491ac754714328e5e66ac1b782 data/createexpandedindustry/advancement/recipes/misc/cobalt_ingot.json
+4dcf7ec6e53b7e3a563664f726ee793de899c899 data/createexpandedindustry/advancement/recipes/misc/cobalt_nugget.json
 ab109c2f6f2b0e6bc06334844212582636041448 data/createexpandedindustry/loot_table/blocks/erythrite.json
 f5027061c345a4a38220549e947b41f91ce8e23f data/createexpandedindustry/loot_table/blocks/hardened_asurine.json
 eb170dc31d65e12f5ff46c3c29dade33034e6c2f data/createexpandedindustry/loot_table/blocks/hardened_crimsite.json

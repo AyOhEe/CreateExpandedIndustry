@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cobalt_nugget": {
+    "has_cobalt_ingot": {
       "conditions": {
         "items": [
           {
-            "items": "createexpandedindustry:cobalt_nugget"
+            "items": "createexpandedindustry:cobalt_ingot"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_cobalt_nugget"
+      "has_cobalt_ingot"
     ]
   ],
   "rewards": {

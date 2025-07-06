@@ -24,7 +24,7 @@ public class EIItems {
             .recipe((c, p) -> {
                 ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, EIItems.COBALT_NUGGET, 9)
                         .requires(c.get(), 1)
-                        .unlockedBy("has_cobalt_nugget", RegistrateRecipeProvider.has(EIItems.COBALT_NUGGET))
+                        .unlockedBy("has_cobalt_ingot", RegistrateRecipeProvider.has(EIItems.COBALT_INGOT))
                         .save(p);
             })
             .register();
@@ -34,7 +34,7 @@ public class EIItems {
             .recipe((c, p) -> {
                 ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, EIItems.COBALT_INGOT, 1)
                         .requires(c.get(), 9)
-                        .unlockedBy("has_cobalt_ingot", RegistrateRecipeProvider.has(EIItems.COBALT_INGOT))
+                        .unlockedBy("has_cobalt_nugget", RegistrateRecipeProvider.has(EIItems.COBALT_NUGGET))
                         .save(p);
             })
             .register();
