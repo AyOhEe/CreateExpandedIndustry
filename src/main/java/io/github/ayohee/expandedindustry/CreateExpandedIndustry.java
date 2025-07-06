@@ -4,10 +4,7 @@ import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipModifier;
-import io.github.ayohee.expandedindustry.register.EIConfig;
-import io.github.ayohee.expandedindustry.register.EIBlocks;
-import io.github.ayohee.expandedindustry.register.EICreativeTabs;
-import io.github.ayohee.expandedindustry.register.EIRegistries;
+import io.github.ayohee.expandedindustry.register.*;
 import net.createmod.catnip.lang.FontHelper;
 import org.slf4j.Logger;
 
@@ -40,6 +37,7 @@ public class CreateExpandedIndustry {
         NeoForge.EVENT_BUS.register(this);
 
         EIBlocks.register();
+        EIItems.register();
         EIConfig.register(modContainer);
         EICreativeTabs.register();
         EIRegistries.register(modEventBus);

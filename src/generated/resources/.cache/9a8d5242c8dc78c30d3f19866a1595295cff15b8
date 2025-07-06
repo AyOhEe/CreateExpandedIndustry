@@ -1,18 +1,21 @@
-// 1.21.1	2025-07-06T15:57:43.8867492	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+// 1.21.1	2025-07-06T17:00:56.0369783	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
 fb00fdbe37da8132105bdc8360908b5b0ee3dfe9 assets/createexpandedindustry/blockstates/erythrite.json
 86c1806e2980907395e4f0e7a51f235cca2b7bed assets/createexpandedindustry/blockstates/hardened_asurine.json
 1ee6383e1a7a6a1c6c104ea56b0f09986ac83889 assets/createexpandedindustry/blockstates/hardened_crimsite.json
 55eed174b5ab11368d353ac33a9bc992c60388d3 assets/createexpandedindustry/blockstates/hardened_erythrite.json
 9016d39cb4f3bb8090626b850a0a9ab55d53fecd assets/createexpandedindustry/blockstates/hardened_ochrum.json
 9fc767c80ca7be8c9009b26b2d6ca9491c178586 assets/createexpandedindustry/blockstates/hardened_veridium.json
-1c4a769f296d488ab5769ca638c7c5b56b5f30a6 assets/createexpandedindustry/lang/en_ud.json
-eec30b96ca70880260cdf314b5bc05c298c18924 assets/createexpandedindustry/lang/en_us.json
+16b66e08a2c7cd2af5cd734e4433cc3f1d1a700e assets/createexpandedindustry/lang/en_ud.json
+11fb903ce9008d4e7039caf373daa0c783a99e12 assets/createexpandedindustry/lang/en_us.json
 2e7dd662595cca97eac4bf9574d39890a5af8fda assets/createexpandedindustry/models/block/erythrite.json
 3164f771ba72c13f3aae0355731d6a8438faed5a assets/createexpandedindustry/models/block/hardened_asurine.json
 b1e91f4b21dca73557a51a4727d840e71debc62a assets/createexpandedindustry/models/block/hardened_crimsite.json
 4455de7518dd24a45e4067aca6c7d0afb5fa1587 assets/createexpandedindustry/models/block/hardened_erythrite.json
 cc0b403ec2f0db23b256945d36b7afc57631ddbd assets/createexpandedindustry/models/block/hardened_ochrum.json
 d4d850907068a5c348d60500fef01cc588f46ca5 assets/createexpandedindustry/models/block/hardened_veridium.json
+0e98abe7f3dc055af417810a462b572dc1344686 assets/createexpandedindustry/models/item/cobalt_ingot.json
+e34fcb324bde6095490a3bda3cba8d609f218dce assets/createexpandedindustry/models/item/cobalt_sheet.json
+f0bab6cd97253549976a5d5de253cd3301a0c949 assets/createexpandedindustry/models/item/crushed_raw_cobalt.json
 993eec8166276b810eb68d8f5aa7eaf0b56d7462 assets/createexpandedindustry/models/item/erythrite.json
 6b3ce84839fa7aab4225ff719e0fb7e0bc283aac assets/createexpandedindustry/models/item/hardened_asurine.json
 e12bb927a6eb802bb82a5216aa7bef7cb8653035 assets/createexpandedindustry/models/item/hardened_crimsite.json
@@ -25,3 +28,7 @@ eb170dc31d65e12f5ff46c3c29dade33034e6c2f data/createexpandedindustry/loot_table/
 790decb5c0bf03d9dc63e636d3663ecec68d824b data/createexpandedindustry/loot_table/blocks/hardened_erythrite.json
 df102ebe760c20eb618aff67f63ce76ebbdc3d41 data/createexpandedindustry/loot_table/blocks/hardened_ochrum.json
 ce41b38a5f7209f170cc73d87d89200721d39f54 data/createexpandedindustry/loot_table/blocks/hardened_veridium.json
+537142d9938fe713f24073f943ed1385bd57280e data/create/tags/item/crushed_raw_materials.json
+9fe5e40afa02974006b724dc12490b3ccca115b3 data/c/tags/item/ingots/cobalt.json
+127ce942d645df602718ce96ae21f1bb288a3721 data/c/tags/item/plates.json
+127ce942d645df602718ce96ae21f1bb288a3721 data/c/tags/item/plates/cobalt.json

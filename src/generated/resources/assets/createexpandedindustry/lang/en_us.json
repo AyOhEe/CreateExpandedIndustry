@@ -4,5 +4,8 @@
   "block.createexpandedindustry.hardened_crimsite": "Hardened Crimsite",
   "block.createexpandedindustry.hardened_erythrite": "Hardened Erythrite",
   "block.createexpandedindustry.hardened_ochrum": "Hardened Ochrum",
-  "block.createexpandedindustry.hardened_veridium": "Hardened Veridium"
+  "block.createexpandedindustry.hardened_veridium": "Hardened Veridium",
+  "item.createexpandedindustry.cobalt_ingot": "Cobalt Ingot",
+  "item.createexpandedindustry.cobalt_sheet": "Cobalt Sheet",
+  "item.createexpandedindustry.crushed_raw_cobalt": "Crushed Raw Cobalt"
 }

@@ -10,5 +10,9 @@
   "block.createexpandedindustry.hardened_crimsite": "Hardened Crimsite",
   "block.createexpandedindustry.hardened_veridium": "Hardened Veridium",
   "block.createexpandedindustry.hardened_asurine": "Hardened Asurine",
-  "block.createexpandedindustry.hardened_erythrite": "Hardened Erythrite"
+  "block.createexpandedindustry.hardened_erythrite": "Hardened Erythrite",
+
+  "item.createexpandedindustry.crushed_raw_cobalt": "Crushed Raw Cobalt",
+  "item.createexpandedindustry.cobalt_ingot": "Cobalt Ingot",
+  "item.createexpandedindustry.cobalt_sheet": "Cobalt Sheet"
 }

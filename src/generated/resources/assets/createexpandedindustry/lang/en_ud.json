@@ -4,5 +4,8 @@
   "block.createexpandedindustry.hardened_crimsite": "ǝʇısɯıɹƆ pǝuǝpɹɐH",
   "block.createexpandedindustry.hardened_erythrite": "ǝʇıɹɥʇʎɹƎ pǝuǝpɹɐH",
   "block.createexpandedindustry.hardened_ochrum": "ɯnɹɥɔO pǝuǝpɹɐH",
-  "block.createexpandedindustry.hardened_veridium": "ɯnıpıɹǝΛ pǝuǝpɹɐH"
+  "block.createexpandedindustry.hardened_veridium": "ɯnıpıɹǝΛ pǝuǝpɹɐH",
+  "item.createexpandedindustry.cobalt_ingot": "ʇobuI ʇןɐqoƆ",
+  "item.createexpandedindustry.cobalt_sheet": "ʇǝǝɥS ʇןɐqoƆ",
+  "item.createexpandedindustry.crushed_raw_cobalt": "ʇןɐqoƆ ʍɐᴚ pǝɥsnɹƆ"
 }
