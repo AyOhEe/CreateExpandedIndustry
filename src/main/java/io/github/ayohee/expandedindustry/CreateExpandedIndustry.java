@@ -6,6 +6,7 @@ import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipModifier;
 import io.github.ayohee.expandedindustry.register.*;
 import net.createmod.catnip.lang.FontHelper;
+import net.neoforged.bus.api.EventPriority;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -33,6 +34,8 @@ public class CreateExpandedIndustry {
 
     public CreateExpandedIndustry(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(EventPriority.HIGHEST, EIDatagen::gatherDataHighPriority);
+        modEventBus.addListener(EventPriority.LOWEST, EIDatagen::gatherData);
 
         NeoForge.EVENT_BUS.register(this);
 

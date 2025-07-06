@@ -18,11 +18,11 @@ public class EIItems {
             .register();
 
     public static final ItemEntry<Item> COBALT_INGOT = REGISTRATE.item("cobalt_ingot", Item::new)
-            .tag(commonItemTag("ingots/cobalt"))
+            .tag(EITags.COBALT_INGOT)
             .register();
 
     public static final ItemEntry<Item> COBALT_SHEET = REGISTRATE.item("cobalt_sheet", Item::new)
-            .tag(AllItemTags.PLATES.tag, commonItemTag("plates/cobalt"))
+            .tag(AllItemTags.PLATES.tag, EITags.COBALT_SHEET)
             .register();
 
 
