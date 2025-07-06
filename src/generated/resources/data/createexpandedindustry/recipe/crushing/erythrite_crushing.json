@@ -1,0 +1,18 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "createexpandedindustry:erythrite"
+    }
+  ],
+  "results": [
+    {
+      "chance": 0.1,
+      "id": "createexpandedindustry:crushed_raw_cobalt"
+    },
+    {
+      "chance": 0.1,
+      "id": "createexpandedindustry:cobalt_nugget"
+    }
+  ]
+}

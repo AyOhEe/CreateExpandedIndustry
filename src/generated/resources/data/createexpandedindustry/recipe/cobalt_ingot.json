@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "createexpandedindustry:cobalt_nugget"
+    },
+    {
+      "item": "createexpandedindustry:cobalt_nugget"
+    },
+    {
+      "item": "createexpandedindustry:cobalt_nugget"
+    },
+    {
+      "item": "createexpandedindustry:cobalt_nugget"
+    },
+    {
+      "item": "createexpandedindustry:cobalt_nugget"
+    },
+    {
+      "item": "createexpandedindustry:cobalt_nugget"
+    },
+    {
+      "item": "createexpandedindustry:cobalt_nugget"
+    },
+    {
+      "item": "createexpandedindustry:cobalt_nugget"
+    },
+    {
+      "item": "createexpandedindustry:cobalt_nugget"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "createexpandedindustry:cobalt_ingot"
+  }
+}
