@@ -5,6 +5,7 @@ import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
 
@@ -17,6 +18,12 @@ public class EIItems {
 
     public static final ItemEntry<Item> CRUSHED_RAW_COBALT = REGISTRATE.item("crushed_raw_cobalt", Item::new)
             .tag(AllItemTags.CRUSHED_RAW_MATERIALS.tag)
+            .recipe((c, p) -> {
+                Ingredient crushed_cobalt = Ingredient.of(EIItems.CRUSHED_RAW_COBALT);
+                SimpleCookingRecipeBuilder.blasting(crushed_cobalt, RecipeCategory.MISC, EIItems.COBALT_INGOT, 0.1f, 100)
+                        .unlockedBy("has_crushed_cobalt", RegistrateRecipeProvider.has(EIItems.CRUSHED_RAW_COBALT))
+                        .save(p, "cobalt_ingot_from_crushed");
+            })
             .register();
 
     public static final ItemEntry<Item> COBALT_INGOT = REGISTRATE.item("cobalt_ingot", Item::new)
@@ -25,7 +32,7 @@ public class EIItems {
                 ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, EIItems.COBALT_NUGGET, 9)
                         .requires(c.get(), 1)
                         .unlockedBy("has_cobalt_ingot", RegistrateRecipeProvider.has(EIItems.COBALT_INGOT))
-                        .save(p);
+                        .save(p, "cobalt_ingot_from_nuggets");
             })
             .register();
 
@@ -35,7 +42,7 @@ public class EIItems {
                 ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, EIItems.COBALT_INGOT, 1)
                         .requires(c.get(), 9)
                         .unlockedBy("has_cobalt_nugget", RegistrateRecipeProvider.has(EIItems.COBALT_NUGGET))
-                        .save(p);
+                        .save(p, "cobalt_nuggets_from_ingot");
             })
             .register();
 
