@@ -1,5 +1,6 @@
 package io.github.ayohee.expandedindustry.register;
 
+import com.simibubi.create.foundation.data.BlockStateGen;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.providers.DataGenContext;
@@ -22,6 +23,7 @@ public class EIBlocks {
 
     public static final BlockEntry<ErythriteBlock> ERYTHRITE_BLOCK = REGISTRATE.block("erythrite", ErythriteBlock::new)
             .initialProperties(SharedProperties::stone)
+            .blockstate((c, p) -> BlockStateGen.cubeAll(c, p, "block/"))
             .item()
             .transform(getItemModel())
             .register();
