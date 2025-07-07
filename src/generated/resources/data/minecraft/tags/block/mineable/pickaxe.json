@@ -1,6 +1,7 @@
 {
   "values": [
     "createexpandedindustry:erythrite",
-    "createexpandedindustry:cobalt_block"
+    "createexpandedindustry:cobalt_block",
+    "createexpandedindustry:pressurised_fluid_tank"
   ]
 }

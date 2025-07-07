@@ -1,12 +1,15 @@
 package io.github.ayohee.expandedindustry;
 
+import com.simibubi.create.content.fluids.tank.FluidTankBlockEntity;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipModifier;
+import io.github.ayohee.expandedindustry.content.pressurised_blocks.PressurisedFluidTankBlockEntity;
 import io.github.ayohee.expandedindustry.register.*;
 import net.createmod.catnip.lang.FontHelper;
 import net.neoforged.bus.api.EventPriority;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -34,12 +37,14 @@ public class CreateExpandedIndustry {
 
     public CreateExpandedIndustry(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::registerCapabilities);
         modEventBus.addListener(EventPriority.HIGHEST, EIDatagen::gatherDataHighPriority);
         modEventBus.addListener(EventPriority.LOWEST, EIDatagen::gatherData);
 
         NeoForge.EVENT_BUS.register(this);
 
         EIBlocks.register();
+        EIBlockEntityTypes.register();
         EIItems.register();
         EIConfig.register(modContainer);
         EICreativeTabs.register();
@@ -57,5 +62,10 @@ public class CreateExpandedIndustry {
     public void onServerStarting(ServerStartingEvent event) {
         // Do something when the server starts
         LOGGER.info("HELLO from server starting");
+    }
+
+
+    public void registerCapabilities(RegisterCapabilitiesEvent event) {
+        PressurisedFluidTankBlockEntity.registerCapabilities(event);
     }
 }

@@ -1,5 +1,8 @@
 package io.github.ayohee.expandedindustry.register;
 
+import com.simibubi.create.AllDisplaySources;
+import com.simibubi.create.AllMountedStorageTypes;
+import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.providers.DataGenContext;
@@ -9,19 +12,24 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import io.github.ayohee.expandedindustry.CreateExpandedIndustry;
 
+import io.github.ayohee.expandedindustry.content.pressurised_blocks.*;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
-import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 
+import static com.simibubi.create.api.behaviour.display.DisplaySource.displaySource;
+import static com.simibubi.create.api.behaviour.movement.MovementBehaviour.movementBehaviour;
+import static com.simibubi.create.api.contraption.storage.fluid.MountedFluidStorageType.mountedFluidStorage;
 import static io.github.ayohee.expandedindustry.CreateExpandedIndustry.REGISTRATE;
 
 public class EIBlocks {
@@ -93,6 +101,33 @@ public class EIBlocks {
             .transform(getItemModel())
             .register();
 
+    public static final BlockEntry<PressurisedFluidTankBlock> PRESSURISED_FLUID_TANK = REGISTRATE.block("pressurised_fluid_tank", PressurisedFluidTankBlock::new)
+            .initialProperties(SharedProperties::copperMetal)
+            .properties(p -> p.noOcclusion()
+                    .isRedstoneConductor((p1, p2, p3) -> true))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .blockstate(new PressurisedFluidTankGenerator()::generate)
+            .onRegister(CreateRegistrate.blockModel(() -> PressurisedFluidTankModel::standard))
+            .transform(displaySource(AllDisplaySources.BOILER))
+            .transform(mountedFluidStorage(AllMountedStorageTypes.FLUID_TANK))
+            .onRegister(movementBehaviour(new PressurisedFluidTankMovementBehavior()))
+            .addLayer(() -> RenderType::cutoutMipped)
+            .recipe((c, p) -> {
+                ShapedRecipeBuilder.shaped(RecipeCategory.MISC, EIBlocks.PRESSURISED_FLUID_TANK, 1)
+                        .pattern("P")
+                        .pattern("B")
+                        .pattern("P")
+                        .define('P', EIItems.COBALT_SHEET)
+                        .define('B', Items.BARREL)
+                        .unlockedBy("has_cobalt_block", RegistrateRecipeProvider.has(c.get()))
+                        .save(p, "pressurised_fluid_tank_vertical");
+            })
+            .item(PressurisedFluidTankItem::new)
+            .model((c, p) -> {
+                p.withExistingParent(c.getName(), p.modLoc(c.getName() + "_block_single_window"));
+            })
+            .build()
+            .register();
 
     public static <I extends BlockItem, P> NonNullFunction<ItemBuilder<I, P>, P> getItemModel() {
         return b -> b.model(EIBlocks::locateItemModel).build();
