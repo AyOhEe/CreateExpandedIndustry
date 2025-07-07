@@ -1,4 +1,4 @@
-// 1.21.1	2025-07-06T21:18:35.4601406	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+// 1.21.1	2025-07-07T01:27:04.9047208	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
 7be6b1e90e9c69056bd2b00fffd59cb8171149e4 assets/createexpandedindustry/blockstates/cobalt_block.json
 fb00fdbe37da8132105bdc8360908b5b0ee3dfe9 assets/createexpandedindustry/blockstates/erythrite.json
 86c1806e2980907395e4f0e7a51f235cca2b7bed assets/createexpandedindustry/blockstates/hardened_asurine.json
@@ -28,11 +28,6 @@ f92aee725445ee26aaf95ed1cfd187d3ea9a29f1 assets/createexpandedindustry/models/it
 68e1bc965d7085ca27e5803484f17ef774f9f6ce assets/createexpandedindustry/models/item/hardened_veridium.json
 f3d85ed9125deedfbecbe54996c087f76f975ebf data/createexpandedindustry/loot_table/blocks/cobalt_block.json
 ab109c2f6f2b0e6bc06334844212582636041448 data/createexpandedindustry/loot_table/blocks/erythrite.json
-f5027061c345a4a38220549e947b41f91ce8e23f data/createexpandedindustry/loot_table/blocks/hardened_asurine.json
-eb170dc31d65e12f5ff46c3c29dade33034e6c2f data/createexpandedindustry/loot_table/blocks/hardened_crimsite.json
-790decb5c0bf03d9dc63e636d3663ecec68d824b data/createexpandedindustry/loot_table/blocks/hardened_erythrite.json
-df102ebe760c20eb618aff67f63ce76ebbdc3d41 data/createexpandedindustry/loot_table/blocks/hardened_ochrum.json
-ce41b38a5f7209f170cc73d87d89200721d39f54 data/createexpandedindustry/loot_table/blocks/hardened_veridium.json
 537142d9938fe713f24073f943ed1385bd57280e data/create/tags/item/crushed_raw_materials.json
 9fe5e40afa02974006b724dc12490b3ccca115b3 data/c/tags/item/ingots/cobalt.json
 480481497bd9ed3e121a303bb836d9473ef1c5cd data/c/tags/item/nuggets/cobalt.json
@@ -48,3 +43,6 @@ db33e5e02260499a967b2a0057763dd3b2b17b11 data/minecraft/advancement/recipes/misc
 10009071de3db580f312dd5a090ef082f794e3ba data/minecraft/recipe/cobalt_ingot_from_crushed.json
 e2bcf2b28b0893e997562285f1b6a368f03c4a6e data/minecraft/recipe/cobalt_ingot_from_nuggets.json
 9cd9bcf2438f0763e4b05eb13e46946cba8fb3b1 data/minecraft/recipe/cobalt_nuggets_from_ingot.json
+5ade02ef8b75a8af539f2958ed3f1ed90974e811 data/minecraft/tags/block/mineable/pickaxe.json
+36dccfed58b8059540b33ddf346159e3c6b8025d data/minecraft/tags/block/needs_iron_tool.json
+242fe0b2e323eed159875885348c0185e39a4ad3 data/minecraft/tags/block/needs_stone_tool.json

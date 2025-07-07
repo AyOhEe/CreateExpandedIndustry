@@ -12,9 +12,14 @@ import io.github.ayohee.expandedindustry.CreateExpandedIndustry;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 
 import static io.github.ayohee.expandedindustry.CreateExpandedIndustry.REGISTRATE;
@@ -27,43 +32,57 @@ public class EIBlocks {
 
     public static final BlockEntry<Block> ERYTHRITE_BLOCK = REGISTRATE.block("erythrite", Block::new)
             .initialProperties(SharedProperties::stone)
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_STONE_TOOL)
             .item()
             .transform(getItemModel())
             .register();
 
     public static final BlockEntry<Block> HARDENED_ERYTHRITE_BLOCK = REGISTRATE.block("hardened_erythrite", Block::new)
-            .initialProperties(SharedProperties::stone)
+            .initialProperties(() -> Blocks.BEDROCK)
+            .properties(EIBlocks::hardened_stones)
             .item()
             .transform(getItemModel())
             .register();
 
     public static final BlockEntry<Block> HARDENED_OCHRUM_BLOCK = REGISTRATE.block("hardened_ochrum", Block::new)
-            .initialProperties(SharedProperties::stone)
+            .initialProperties(() -> Blocks.BEDROCK)
+            .properties(EIBlocks::hardened_stones)
             .item()
             .transform(getItemModel())
             .register();
 
     public static final BlockEntry<Block> HARDENED_VERIDIUM_BLOCK = REGISTRATE.block("hardened_veridium", Block::new)
-            .initialProperties(SharedProperties::stone)
+            .initialProperties(() -> Blocks.BEDROCK)
+            .properties(EIBlocks::hardened_stones)
             .item()
             .transform(getItemModel())
             .register();
 
     public static final BlockEntry<Block> HARDENED_ASURINE_BLOCK = REGISTRATE.block("hardened_asurine", Block::new)
-            .initialProperties(SharedProperties::stone)
+            .initialProperties(() -> Blocks.BEDROCK)
+            .properties(EIBlocks::hardened_stones)
             .item()
             .transform(getItemModel())
             .register();
 
     public static final BlockEntry<Block> HARDENED_CRIMSITE_BLOCK = REGISTRATE.block("hardened_crimsite", Block::new)
-            .initialProperties(SharedProperties::stone)
+            .initialProperties(() -> Blocks.BEDROCK)
+            .properties(EIBlocks::hardened_stones)
             .item()
             .transform(getItemModel())
             .register();
 
+    private static BlockBehaviour.Properties hardened_stones(BlockBehaviour.Properties properties) {
+        return properties.explosionResistance(0).noLootTable();
+    }
+
 
     public static final BlockEntry<Block> COBALT_BLOCK = REGISTRATE.block("cobalt_block", Block::new)
             .initialProperties(SharedProperties::netheriteMetal)
+            .properties((c) -> {
+                return c.destroyTime(20);
+            })
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_IRON_TOOL)
             .item()
             .recipe((c, p) -> {
                 ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, EIItems.COBALT_INGOT, 9)
