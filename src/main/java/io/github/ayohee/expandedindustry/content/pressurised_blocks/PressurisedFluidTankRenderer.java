@@ -29,8 +29,6 @@ public class PressurisedFluidTankRenderer extends SafeBlockEntityRenderer<Pressu
         if (!be.isController())
             return;
         if (!be.window) {
-            if (be.boiler.isActive())
-                renderAsBoiler(be, partialTicks, ms, buffer, light, overlay);
             return;
         }
 
@@ -75,44 +73,6 @@ public class PressurisedFluidTankRenderer extends SafeBlockEntityRenderer<Pressu
         ms.translate(0, clampedLevel - totalHeight, 0);
         NeoForgeCatnipServices.FLUID_RENDERER.renderFluidBox(fluidStack, xMin, yMin, zMin, xMax, yMax, zMax, buffer,
                 ms, light, false, true);
-        ms.popPose();
-    }
-
-    protected void renderAsBoiler(PressurisedFluidTankBlockEntity be, float partialTicks, PoseStack ms, MultiBufferSource buffer,
-                                  int light, int overlay) {
-        BlockState blockState = be.getBlockState();
-        VertexConsumer vb = buffer.getBuffer(RenderType.cutout());
-        ms.pushPose();
-        var msr = TransformStack.of(ms);
-        msr.translate(be.width / 2f, 0.5, be.width / 2f);
-
-        float dialPivotY = 6f / 16;
-        float dialPivotZ = 8f / 16;
-        float progress = be.boiler.gauge.getValue(partialTicks);
-
-        for (Direction d : Iterate.horizontalDirections) {
-            if (be.boiler.occludedDirections[d.get2DDataValue()])
-                continue;
-            ms.pushPose();
-            float yRot = -d.toYRot() - 90;
-            CachedBuffers.partial(AllPartialModels.BOILER_GAUGE, blockState)
-                    .rotateYDegrees(yRot)
-                    .uncenter()
-                    .translate(be.width / 2f - 6 / 16f, 0, 0)
-                    .light(light)
-                    .renderInto(ms, vb);
-            CachedBuffers.partial(AllPartialModels.BOILER_GAUGE_DIAL, blockState)
-                    .rotateYDegrees(yRot)
-                    .uncenter()
-                    .translate(be.width / 2f - 6 / 16f, 0, 0)
-                    .translate(0, dialPivotY, dialPivotZ)
-                    .rotateXDegrees(-145 * progress + 90)
-                    .translate(0, -dialPivotY, -dialPivotZ)
-                    .light(light)
-                    .renderInto(ms, vb);
-            ms.popPose();
-        }
-
         ms.popPose();
     }
 

@@ -71,7 +71,6 @@ public class PressurisedFluidTankBlock extends Block implements IWrenchable, IBE
                 .setValue(SHAPE, Shape.WINDOW));
     }
 
-    //TODO replace this in FluidTankBlock with a mixin
     public static boolean isTank(BlockState state) {
         return state.getBlock() instanceof PressurisedFluidTankBlock;
     }
@@ -125,8 +124,6 @@ public class PressurisedFluidTankBlock extends Block implements IWrenchable, IBE
     @Override
     public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState,
                                   LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
-        if (pDirection == Direction.DOWN && pNeighborState.getBlock() != this)
-            withBlockEntityDo(pLevel, pCurrentPos, PressurisedFluidTankBlockEntity::updateBoilerTemperature);
         return pState;
     }
 
@@ -323,19 +320,5 @@ public class PressurisedFluidTankBlock extends Block implements IWrenchable, IBE
         return getBlockEntityOptional(worldIn, pos).map(PressurisedFluidTankBlockEntity::getControllerBE)
                 .map(be -> ComparatorUtil.fractionToRedstoneLevel(be.getFillState()))
                 .orElse(0);
-    }
-
-    //TODO replace in FluidTankBlock with mixin
-    public static void updateBoilerState(BlockState pState, Level pLevel, BlockPos tankPos) {
-        BlockState tankState = pLevel.getBlockState(tankPos);
-        if (!(tankState.getBlock() instanceof PressurisedFluidTankBlock tank))
-            return;
-        PressurisedFluidTankBlockEntity tankBE = tank.getBlockEntity(pLevel, tankPos);
-        if (tankBE == null)
-            return;
-        PressurisedFluidTankBlockEntity controllerBE = tankBE.getControllerBE();
-        if (controllerBE == null)
-            return;
-        controllerBE.updateBoilerState();
     }
 }
