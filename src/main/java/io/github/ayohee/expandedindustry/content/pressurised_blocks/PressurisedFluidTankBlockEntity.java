@@ -7,6 +7,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
+import static io.github.ayohee.expandedindustry.register.EIConfig.PRESSURISED_TANK_CAPACITY_MULTIPLIER;
 import static java.lang.Math.abs;
 
 import java.util.List;
@@ -61,8 +62,6 @@ public class PressurisedFluidTankBlockEntity extends SmartBlockEntity implements
     protected int width;
     protected int height;
 
-    public BoilerData boiler;
-
     private static final int SYNC_RATE = 8;
     protected int syncCooldown;
     protected boolean queuedSync;
@@ -79,7 +78,6 @@ public class PressurisedFluidTankBlockEntity extends SmartBlockEntity implements
         window = true;
         height = 1;
         width = 1;
-        boiler = new BoilerData();
         refreshCapability();
     }
 
@@ -132,19 +130,11 @@ public class PressurisedFluidTankBlockEntity extends SmartBlockEntity implements
             updateConnectivity();
         if (fluidLevel != null)
             fluidLevel.tickChaser();
-        if (isController()){
-            //TODO fix with mixin
-            //boiler.tick(this);
-        }
     }
 
     @Override
     public void lazyTick() {
         super.lazyTick();
-        // TODO fix with mixin
-        if (isController()) {
-            //boiler.updateOcclusion(this);
-        }
     }
 
     @Override
@@ -250,7 +240,6 @@ public class PressurisedFluidTankBlockEntity extends SmartBlockEntity implements
         controller = null;
         width = 1;
         height = 1;
-        boiler.clear();
         onFluidStackChanged(tankInventory.getFluid());
 
         BlockState state = getBlockState();
@@ -270,18 +259,7 @@ public class PressurisedFluidTankBlockEntity extends SmartBlockEntity implements
         PressurisedFluidTankBlockEntity be = getControllerBE();
         if (be == null)
             return;
-        if (be.boiler.isActive())
-            return;
         be.setWindows(!be.window);
-    }
-
-    public void updateBoilerTemperature() {
-        PressurisedFluidTankBlockEntity be = getControllerBE();
-        if (be == null)
-            return;
-        if (!be.boiler.isActive())
-            return;
-        be.boiler.needsHeatLevelUpdate = true;
     }
 
     public void sendDataImmediately() {
@@ -335,33 +313,6 @@ public class PressurisedFluidTankBlockEntity extends SmartBlockEntity implements
         }
     }
 
-    public void updateBoilerState() {
-        if (!isController())
-            return;
-
-        boolean wasBoiler = boiler.isActive();
-        //TODO fix with mixin
-        boolean changed = false;//.evaluate(this);
-
-        if (wasBoiler != boiler.isActive()) {
-            if (boiler.isActive())
-                setWindows(false);
-
-            for (int yOffset = 0; yOffset < height; yOffset++)
-                for (int xOffset = 0; xOffset < width; xOffset++)
-                    for (int zOffset = 0; zOffset < width; zOffset++)
-                        if (level.getBlockEntity(
-                                worldPosition.offset(xOffset, yOffset, zOffset)) instanceof PressurisedFluidTankBlockEntity fbe)
-                            fbe.refreshCapability();
-        }
-
-        if (changed) {
-            notifyUpdate();
-            //TODO fix with mixin
-            //boiler.checkPipeOrganAdvancement(this);
-        }
-    }
-
     @Override
     public void setController(BlockPos controller) {
         if (level.isClientSide && !isVirtual())
@@ -380,8 +331,7 @@ public class PressurisedFluidTankBlockEntity extends SmartBlockEntity implements
     }
 
     private IFluidHandler handlerForCapability() {
-        return isController() ? (boiler.isActive() ? boiler.createHandler() : tankInventory)
-                : ((getControllerBE() != null) ? getControllerBE().handlerForCapability() : new FluidTank(0));
+        return isController() ? tankInventory : ((getControllerBE() != null) ? getControllerBE().handlerForCapability() : new FluidTank(0));
     }
 
     @Override
@@ -410,8 +360,6 @@ public class PressurisedFluidTankBlockEntity extends SmartBlockEntity implements
         PressurisedFluidTankBlockEntity controllerBE = getControllerBE();
         if (controllerBE == null)
             return false;
-        if (controllerBE.boiler.addToGoggleTooltip(tooltip, isPlayerSneaking, controllerBE.getTotalTankSize()))
-            return true;
         return containedFluidTooltip(tooltip, isPlayerSneaking,
                 level.getCapability(Capabilities.FluidHandler.BLOCK, controllerBE.getBlockPos(), null));
     }
@@ -446,8 +394,6 @@ public class PressurisedFluidTankBlockEntity extends SmartBlockEntity implements
             if (tankInventory.getSpace() < 0)
                 tankInventory.drain(-tankInventory.getSpace(), FluidAction.EXECUTE);
         }
-
-        boiler.read(compound.getCompound("Boiler"), width * width * height);
 
         if (compound.contains("ForceFluidLevel") || fluidLevel == null)
             fluidLevel = LerpedFloat.linear()
@@ -490,7 +436,6 @@ public class PressurisedFluidTankBlockEntity extends SmartBlockEntity implements
     public void write(CompoundTag compound, HolderLookup.Provider registries, boolean clientPacket) {
         if (updateConnectivity)
             compound.putBoolean("Uninitialized", true);
-        compound.put("Boiler", boiler.write());
         if (lastKnownPos != null)
             compound.put("LastKnownPos", NbtUtils.writeBlockPos(lastKnownPos));
         if (!isController())
@@ -540,7 +485,7 @@ public class PressurisedFluidTankBlockEntity extends SmartBlockEntity implements
     }
 
     public static int getCapacityMultiplier() {
-        return AllConfigs.server().fluids.fluidTankCapacity.get() * 1000 * 15 / 10;
+        return (int)(AllConfigs.server().fluids.fluidTankCapacity.get() * 1000 * PRESSURISED_TANK_CAPACITY_MULTIPLIER.get());
     }
 
     public static int getMaxHeight() {
@@ -571,7 +516,6 @@ public class PressurisedFluidTankBlockEntity extends SmartBlockEntity implements
         if (isController())
             setWindows(window);
         onFluidStackChanged(tankInventory.getFluid());
-        updateBoilerState();
         setChanged();
     }
 

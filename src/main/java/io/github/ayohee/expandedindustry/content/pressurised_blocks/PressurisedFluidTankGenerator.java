@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 
+//TODO this is an AWFUL way of doing this. So much code duplication....
 public class PressurisedFluidTankGenerator extends SpecialBlockStateGen {
 
     private String prefix;

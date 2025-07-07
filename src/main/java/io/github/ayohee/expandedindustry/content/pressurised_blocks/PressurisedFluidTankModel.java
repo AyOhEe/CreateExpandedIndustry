@@ -25,6 +25,7 @@ import java.util.List;
 
 import static io.github.ayohee.expandedindustry.CreateExpandedIndustry.MODID;
 
+//TODO this is an AWFUL way of doing this. So much code duplication....
 public class PressurisedFluidTankModel extends CTModel {
 
     protected static final ModelProperty<CullData> CULL_PROPERTY = new ModelProperty<>();

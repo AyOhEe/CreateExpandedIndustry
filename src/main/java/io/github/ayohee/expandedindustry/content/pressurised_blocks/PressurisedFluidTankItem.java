@@ -21,6 +21,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.fluids.FluidStack;
 
+//TODO this is an AWFUL way of doing this. So much code duplication....
 public class PressurisedFluidTankItem extends BlockItem {
 
     public PressurisedFluidTankItem(Block p_i48527_1_, Properties p_i48527_2_) {

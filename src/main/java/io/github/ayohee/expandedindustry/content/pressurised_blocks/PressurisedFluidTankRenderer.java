@@ -18,6 +18,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 
+//TODO this is an AWFUL way of doing this. So much code duplication....
 public class PressurisedFluidTankRenderer extends SafeBlockEntityRenderer<PressurisedFluidTankBlockEntity> {
 
     public PressurisedFluidTankRenderer(BlockEntityRendererProvider.Context context) {}

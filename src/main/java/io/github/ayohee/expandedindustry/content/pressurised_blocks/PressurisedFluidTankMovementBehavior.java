@@ -5,6 +5,7 @@ import com.simibubi.create.content.contraptions.behaviour.MovementContext;
 
 import net.minecraft.world.level.block.entity.BlockEntity;
 
+//TODO this is an AWFUL way of doing this. So much code duplication....
 // The fluid level needs to be ticked to animate smoothly
 public class PressurisedFluidTankMovementBehavior implements MovementBehaviour {
     @Override
