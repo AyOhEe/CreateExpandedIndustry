@@ -31,7 +31,7 @@ public class EIRecipeProvider extends RecipeProvider {
         gen.addProvider(true, new DataProvider() {
             @Override
             public @NotNull String getName() {
-                return "DnDesires's Processing Recipes";
+                return "Create: Expanded Industry's Processing Recipes";
             }
             @Override
             public @NotNull CompletableFuture<?> run(@NotNull CachedOutput dc) {
