@@ -11,7 +11,7 @@ import java.util.concurrent.CompletableFuture;
 import static io.github.ayohee.expandedindustry.CreateExpandedIndustry.MODID;
 
 public class EICrushingRecipeGen extends CrushingRecipeGen {
-    public GeneratedRecipe ERYTHRITE = create(
+    public final GeneratedRecipe ERYTHRITE = create(
             "erythrite_crushing",
             b -> b.require(EIBlocks.ERYTHRITE_BLOCK)
                     .output(0.1f, EIItems.CRUSHED_RAW_COBALT)

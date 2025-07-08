@@ -1,0 +1,16 @@
+{
+  "type": "create:item_application",
+  "ingredients": [
+    {
+      "tag": "c:stripped_woods"
+    },
+    {
+      "item": "createexpandedindustry:cobalt_ingot"
+    }
+  ],
+  "results": [
+    {
+      "id": "createexpandedindustry:cobalt_casing"
+    }
+  ]
+}

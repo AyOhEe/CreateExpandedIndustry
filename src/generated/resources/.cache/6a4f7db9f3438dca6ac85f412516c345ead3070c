@@ -1,4 +1,6 @@
-// 1.21.1	2025-07-08T17:41:49.4539599	Create: Expanded Industry's Processing Recipes
+// 1.21.1	2025-07-08T20:05:30.9496125	Create: Expanded Industry's Processing Recipes
 3700818c336ff14eb33b3e6dcd49affd1cdc466d data/createexpandedindustry/recipe/crushing/erythrite_crushing.json
+b2448a7504bc946c638b3e6c9570f434de756d23 data/createexpandedindustry/recipe/item_application/cobalt_casing_from_log.json
+11d53a38712f431ffe8b3b53e32e1da0f253d8f6 data/createexpandedindustry/recipe/item_application/cobalt_casing_from_wood.json
 b20efdc258ce25b3871603655efbdd8a8e0767d7 data/createexpandedindustry/recipe/pressing/cobalt_pressing.json
 1e3ca81ea149fa95c6294f17f9c84c89cb7acce2 data/createexpandedindustry/recipe/sandpaper_polishing/magnetised_cobalt_sanding.json

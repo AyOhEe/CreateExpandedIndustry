@@ -12,7 +12,7 @@ import net.minecraft.data.PackOutput;
 import java.util.concurrent.CompletableFuture;
 
 public class EISandingRecipeGen extends StandardProcessingRecipeGen<SandPaperPolishingRecipe> {
-    public GeneratedRecipe MAGNETISED_COBALT = create(
+    public final GeneratedRecipe MAGNETISED_COBALT = create(
             "magnetised_cobalt_sanding",
             b -> b.require(EIItems.UNPOLISHED_MAGNETISED_COBALT).output(EIItems.MAGNETISED_COBALT)
     );

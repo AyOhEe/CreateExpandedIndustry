@@ -1,5 +1,6 @@
-// 1.21.1	2025-07-08T17:29:21.8063509	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+// 1.21.1	2025-07-08T19:48:14.9056689	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
 7be6b1e90e9c69056bd2b00fffd59cb8171149e4 assets/createexpandedindustry/blockstates/cobalt_block.json
+ec4d3cf2a77e2abe16d52351f68cd31c4fb0b8eb assets/createexpandedindustry/blockstates/cobalt_casing.json
 fb00fdbe37da8132105bdc8360908b5b0ee3dfe9 assets/createexpandedindustry/blockstates/erythrite.json
 86c1806e2980907395e4f0e7a51f235cca2b7bed assets/createexpandedindustry/blockstates/hardened_asurine.json
 1ee6383e1a7a6a1c6c104ea56b0f09986ac83889 assets/createexpandedindustry/blockstates/hardened_crimsite.json
@@ -7,9 +8,10 @@ fb00fdbe37da8132105bdc8360908b5b0ee3dfe9 assets/createexpandedindustry/blockstat
 9016d39cb4f3bb8090626b850a0a9ab55d53fecd assets/createexpandedindustry/blockstates/hardened_ochrum.json
 9fc767c80ca7be8c9009b26b2d6ca9491c178586 assets/createexpandedindustry/blockstates/hardened_veridium.json
 012acb7f86cebceef4a52a1a148799db09014ae8 assets/createexpandedindustry/blockstates/pressurised_fluid_tank.json
-99dbc2b1094891246ece16e61421c4b73f075916 assets/createexpandedindustry/lang/en_ud.json
-36d76241992d388649869e93fa055f41da92beb8 assets/createexpandedindustry/lang/en_us.json
+83102e2252389653531cf5f6aedc9f6fb72af687 assets/createexpandedindustry/lang/en_ud.json
+ef29f1f705c92242f167c5d583d68c85a1cbe7c2 assets/createexpandedindustry/lang/en_us.json
 2ec757b22fd63719df3839669377dfe286e76182 assets/createexpandedindustry/models/block/cobalt_block.json
+88b838ab42f0560223b74dcf3493ff01631b99b4 assets/createexpandedindustry/models/block/cobalt_casing.json
 2e7dd662595cca97eac4bf9574d39890a5af8fda assets/createexpandedindustry/models/block/erythrite.json
 3164f771ba72c13f3aae0355731d6a8438faed5a assets/createexpandedindustry/models/block/hardened_asurine.json
 b1e91f4b21dca73557a51a4727d840e71debc62a assets/createexpandedindustry/models/block/hardened_crimsite.json
@@ -17,6 +19,7 @@ b1e91f4b21dca73557a51a4727d840e71debc62a assets/createexpandedindustry/models/bl
 cc0b403ec2f0db23b256945d36b7afc57631ddbd assets/createexpandedindustry/models/block/hardened_ochrum.json
 d4d850907068a5c348d60500fef01cc588f46ca5 assets/createexpandedindustry/models/block/hardened_veridium.json
 44eccdcacc70774e031f3776b83f096250674b06 assets/createexpandedindustry/models/item/cobalt_block.json
+b5cf8e5bdce6e4435d7f89ffc7321333401dd409 assets/createexpandedindustry/models/item/cobalt_casing.json
 0e98abe7f3dc055af417810a462b572dc1344686 assets/createexpandedindustry/models/item/cobalt_ingot.json
 e88fe7a45ca6fd7190ef3b57e656f437251a557a assets/createexpandedindustry/models/item/cobalt_nugget.json
 e34fcb324bde6095490a3bda3cba8d609f218dce assets/createexpandedindustry/models/item/cobalt_sheet.json
@@ -31,8 +34,11 @@ cfc34f1e46e9b53a56ca884a16df038c40cff608 assets/createexpandedindustry/models/it
 6af63213d5c8daedc58d0365b86c5265a99cf394 assets/createexpandedindustry/models/item/pressurised_fluid_tank.json
 76eaeab9de584b93f764a26a91c5b528c7daf8f8 assets/createexpandedindustry/models/item/unpolished_magnetised_cobalt.json
 f3d85ed9125deedfbecbe54996c087f76f975ebf data/createexpandedindustry/loot_table/blocks/cobalt_block.json
+049064231065a74726af9f551bdf8ecac32986a2 data/createexpandedindustry/loot_table/blocks/cobalt_casing.json
 ab109c2f6f2b0e6bc06334844212582636041448 data/createexpandedindustry/loot_table/blocks/erythrite.json
 5ac0f795aecda14175bd378ee6e0671b298e3aea data/createexpandedindustry/loot_table/blocks/pressurised_fluid_tank.json
+a7b6113f0409329409c34bd15486eb85d5f7234f data/create/tags/block/casing.json
+a7b6113f0409329409c34bd15486eb85d5f7234f data/create/tags/item/casing.json
 537142d9938fe713f24073f943ed1385bd57280e data/create/tags/item/crushed_raw_materials.json
 9fe5e40afa02974006b724dc12490b3ccca115b3 data/c/tags/item/ingots/cobalt.json
 480481497bd9ed3e121a303bb836d9473ef1c5cd data/c/tags/item/nuggets/cobalt.json
@@ -52,6 +58,7 @@ e2bcf2b28b0893e997562285f1b6a368f03c4a6e data/minecraft/recipe/cobalt_ingot_from
 9cd9bcf2438f0763e4b05eb13e46946cba8fb3b1 data/minecraft/recipe/cobalt_nuggets_from_ingot.json
 41b44231f57490f35af7b217ce2fa5306c4a0795 data/minecraft/recipe/pressurised_fluid_tank_vertical.json
 f910f33d42ac978ed6d3474bb8295ceb9b77f6fb data/minecraft/recipe/unpolished_magnetised_cobalt_shapeless.json
-d73ea84d53d59628ae2cb27be5bfa96f0c1f89d8 data/minecraft/tags/block/mineable/pickaxe.json
+a7b6113f0409329409c34bd15486eb85d5f7234f data/minecraft/tags/block/mineable/axe.json
+0e70df71f22c975dc57db7758091d13d35346ab7 data/minecraft/tags/block/mineable/pickaxe.json
 36dccfed58b8059540b33ddf346159e3c6b8025d data/minecraft/tags/block/needs_iron_tool.json
 242fe0b2e323eed159875885348c0185e39a4ad3 data/minecraft/tags/block/needs_stone_tool.json

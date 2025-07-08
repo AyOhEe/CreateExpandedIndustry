@@ -1,7 +1,5 @@
 package io.github.ayohee.expandedindustry.content.pressurised_blocks;
 
-import com.simibubi.create.AllSpriteShifts;
-import com.simibubi.create.Create;
 import com.simibubi.create.api.connectivity.ConnectivityHandler;
 import com.simibubi.create.content.fluids.tank.FluidTankCTBehaviour;
 import com.simibubi.create.foundation.block.connected.*;
@@ -11,7 +9,6 @@ import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.state.BlockState;
@@ -23,17 +20,13 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static io.github.ayohee.expandedindustry.CreateExpandedIndustry.MODID;
+import static io.github.ayohee.expandedindustry.register.EIBlocks.EISpriteShifts.*;
 
 //TODO this is an AWFUL way of doing this. So much code duplication....
 public class PressurisedFluidTankModel extends CTModel {
 
     protected static final ModelProperty<CullData> CULL_PROPERTY = new ModelProperty<>();
 
-    private static final CTSpriteShiftEntry
-            FLUID_TANK = getCT(AllCTTypes.RECTANGLE, "pressurised_fluid_tank"),
-            FLUID_TANK_TOP = getCT(AllCTTypes.RECTANGLE, "pressurised_fluid_tank_top"),
-            FLUID_TANK_INNER = getCT(AllCTTypes.RECTANGLE, "pressurised_fluid_tank_inner");
 
     public static PressurisedFluidTankModel standard(BakedModel originalModel) {
         return new PressurisedFluidTankModel(originalModel, FLUID_TANK, FLUID_TANK_TOP, FLUID_TANK_INNER);
@@ -91,15 +84,5 @@ public class PressurisedFluidTankModel extends CTModel {
                 return false;
             return culledFaces[face.get2DDataValue()];
         }
-    }
-
-
-    private static CTSpriteShiftEntry getCT(CTType type, String blockTextureName) {
-        return getCT(type, blockTextureName, blockTextureName);
-    }
-
-    private static CTSpriteShiftEntry getCT(CTType type, String blockTextureName, String connectedTextureName) {
-        return CTSpriteShifter.getCT(type, ResourceLocation.fromNamespaceAndPath(MODID, "block/" + blockTextureName),
-                ResourceLocation.fromNamespaceAndPath(MODID, "block/" + connectedTextureName + "_connected"));
     }
 }

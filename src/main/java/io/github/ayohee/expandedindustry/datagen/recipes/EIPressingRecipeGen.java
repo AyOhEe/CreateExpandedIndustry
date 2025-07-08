@@ -10,7 +10,7 @@ import net.minecraft.data.PackOutput;
 import java.util.concurrent.CompletableFuture;
 
 public class EIPressingRecipeGen extends PressingRecipeGen {
-    public GeneratedRecipe COBALT = create(
+    public final GeneratedRecipe COBALT = create(
             "cobalt_pressing",
             b -> b.require(EITags.COBALT_INGOT).output(EIItems.COBALT_SHEET)
     );

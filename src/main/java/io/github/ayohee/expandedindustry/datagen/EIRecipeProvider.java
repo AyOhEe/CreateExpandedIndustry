@@ -2,6 +2,7 @@ package io.github.ayohee.expandedindustry.datagen;
 
 import com.simibubi.create.api.data.recipe.ProcessingRecipeGen;
 import io.github.ayohee.expandedindustry.datagen.recipes.EICrushingRecipeGen;
+import io.github.ayohee.expandedindustry.datagen.recipes.EIItemApplicationRecipeGen;
 import io.github.ayohee.expandedindustry.datagen.recipes.EIPressingRecipeGen;
 import io.github.ayohee.expandedindustry.datagen.recipes.EISandingRecipeGen;
 import net.minecraft.core.HolderLookup;
@@ -27,6 +28,7 @@ public class EIRecipeProvider extends RecipeProvider {
         GENERATORS.add(new EIPressingRecipeGen(output, registries));
         GENERATORS.add(new EICrushingRecipeGen(output, registries));
         GENERATORS.add(new EISandingRecipeGen(output, registries));
+        GENERATORS.add(new EIItemApplicationRecipeGen(output, registries));
 
         gen.addProvider(true, new DataProvider() {
             @Override

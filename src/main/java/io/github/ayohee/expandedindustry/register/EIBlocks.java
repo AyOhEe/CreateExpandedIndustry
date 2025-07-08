@@ -2,6 +2,12 @@ package io.github.ayohee.expandedindustry.register;
 
 import com.simibubi.create.AllDisplaySources;
 import com.simibubi.create.AllMountedStorageTypes;
+import com.simibubi.create.content.decoration.encasing.CasingBlock;
+import com.simibubi.create.foundation.block.connected.AllCTTypes;
+import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
+import com.simibubi.create.foundation.block.connected.CTSpriteShifter;
+import com.simibubi.create.foundation.block.connected.CTType;
+import com.simibubi.create.foundation.data.BuilderTransformers;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.builders.ItemBuilder;
@@ -25,11 +31,13 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 
 import static com.simibubi.create.api.behaviour.display.DisplaySource.displaySource;
 import static com.simibubi.create.api.behaviour.movement.MovementBehaviour.movementBehaviour;
 import static com.simibubi.create.api.contraption.storage.fluid.MountedFluidStorageType.mountedFluidStorage;
+import static io.github.ayohee.expandedindustry.CreateExpandedIndustry.MODID;
 import static io.github.ayohee.expandedindustry.CreateExpandedIndustry.REGISTRATE;
 
 public class EIBlocks {
@@ -129,6 +137,13 @@ public class EIBlocks {
             .build()
             .register();
 
+    public static final BlockEntry<CasingBlock> COBALT_CASING = REGISTRATE.block("cobalt_casing", CasingBlock::new)
+            .properties(p -> p.mapColor(MapColor.PODZOL))
+            .transform(BuilderTransformers.casing(() -> EISpriteShifts.COBALT_CASING))
+            .register();
+
+
+
     public static <I extends BlockItem, P> NonNullFunction<ItemBuilder<I, P>, P> getItemModel() {
         return b -> b.model(EIBlocks::locateItemModel).build();
     }
@@ -142,6 +157,25 @@ public class EIBlocks {
                 blockName,
                 ResourceLocation.fromNamespaceAndPath(CreateExpandedIndustry.MODID, "item/" + blockName)
         );
+    }
+
+    public static class EISpriteShifts {
+        public static final CTSpriteShiftEntry COBALT_CASING = getCT(AllCTTypes.OMNIDIRECTIONAL, "cobalt_casing");
+
+        public static final CTSpriteShiftEntry
+                FLUID_TANK = getCT(AllCTTypes.RECTANGLE, "pressurised_fluid_tank"),
+                FLUID_TANK_TOP = getCT(AllCTTypes.RECTANGLE, "pressurised_fluid_tank_top"),
+                FLUID_TANK_INNER = getCT(AllCTTypes.RECTANGLE, "pressurised_fluid_tank_inner");
+
+
+        public static CTSpriteShiftEntry getCT(CTType type, String blockTextureName) {
+            return getCT(type, blockTextureName, blockTextureName);
+        }
+
+        public static CTSpriteShiftEntry getCT(CTType type, String blockTextureName, String connectedTextureName) {
+            return CTSpriteShifter.getCT(type, ResourceLocation.fromNamespaceAndPath(MODID, "block/" + blockTextureName),
+                    ResourceLocation.fromNamespaceAndPath(MODID, "block/" + connectedTextureName + "_connected"));
+        }
     }
 
 
