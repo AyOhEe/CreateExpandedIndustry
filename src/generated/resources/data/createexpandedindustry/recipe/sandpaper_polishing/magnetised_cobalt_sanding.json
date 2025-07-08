@@ -1,0 +1,13 @@
+{
+  "type": "create:sandpaper_polishing",
+  "ingredients": [
+    {
+      "item": "createexpandedindustry:unpolished_magnetised_cobalt"
+    }
+  ],
+  "results": [
+    {
+      "id": "createexpandedindustry:magnetised_cobalt"
+    }
+  ]
+}
