@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:jigsaw",
+  "biomes": "#c:is_overworld",
+  "step": "underground_structures",
+  "terrain_adaptation": "bury",
+  "spawn_overrides": {},
+  "start_pool": "createexpandedindustry:hardened_erythrite_patch",
+  "size": 1,
+  "start_jigsaw_name": "createexpandedindustry:hardened_erythrite_patch",
+  "start_height": {
+    "type": "uniform",
+    "min_inclusive": {
+      "above_bottom": 10
+    },
+    "max_inclusive": {
+      "above_bottom": 90
+    }
+  },
+  "max_distance_from_center": 32,
+  "use_expansion_hack": false
+}
