@@ -2,7 +2,7 @@
   "type": "create:item_application",
   "ingredients": [
     {
-      "tag": "c:stripped_woods"
+      "item": "minecraft:tuff_bricks"
     },
     {
       "item": "createexpandedindustry:cobalt_ingot"

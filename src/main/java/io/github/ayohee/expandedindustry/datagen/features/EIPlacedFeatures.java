@@ -45,11 +45,11 @@ public class EIPlacedFeatures {
         Holder<ConfiguredFeature<?, ?>> hardenedAsurinePatch = featureLookup.getOrThrow(EIConfiguredFeatures.HARDENED_ASURINE_PATCH);
         Holder<ConfiguredFeature<?, ?>> hardenedVeridiumPatch = featureLookup.getOrThrow(EIConfiguredFeatures.HARDENED_VERIDIUM_PATCH);
 
-        PlacementUtils.register(ctx, HARDENED_ERYTHRITE_PATCH, hardenedErythritePatch, patchPlacementModifiers(32, -30, 30));
-        PlacementUtils.register(ctx, HARDENED_OCHRUM_PATCH,    hardenedOchrumPatch,    patchPlacementModifiers(32, -30, 30));
-        PlacementUtils.register(ctx, HARDENED_CRIMSITE_PATCH,  hardenedCrimsitePatch,  patchPlacementModifiers(32, -30, 30));
-        PlacementUtils.register(ctx, HARDENED_ASURINE_PATCH,   hardenedAsurinePatch,   patchPlacementModifiers(32, -30, 30));
-        PlacementUtils.register(ctx, HARDENED_VERIDIUM_PATCH,  hardenedVeridiumPatch,  patchPlacementModifiers(32, -30, 30));
+        PlacementUtils.register(ctx, HARDENED_ERYTHRITE_PATCH, hardenedErythritePatch, patchPlacementModifiers(256, -30, 30));
+        PlacementUtils.register(ctx, HARDENED_OCHRUM_PATCH,    hardenedOchrumPatch,    patchPlacementModifiers(256, -30, 30));
+        PlacementUtils.register(ctx, HARDENED_CRIMSITE_PATCH,  hardenedCrimsitePatch,  patchPlacementModifiers(256, -30, 30));
+        PlacementUtils.register(ctx, HARDENED_ASURINE_PATCH,   hardenedAsurinePatch,   patchPlacementModifiers(256, -30, 30));
+        PlacementUtils.register(ctx, HARDENED_VERIDIUM_PATCH,  hardenedVeridiumPatch,  patchPlacementModifiers(256, -30, 30));
     }
 
     public static List<PlacementModifier> patchPlacementModifiers(int rarity, int minHeight, int maxHeight) {

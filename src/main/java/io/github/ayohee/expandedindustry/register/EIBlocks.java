@@ -30,6 +30,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
@@ -56,6 +57,7 @@ public class EIBlocks {
     public static final BlockEntry<Block> HARDENED_ERYTHRITE_BLOCK = REGISTRATE.block("hardened_erythrite", Block::new)
             .initialProperties(() -> Blocks.BEDROCK)
             .properties(EIBlocks::hardened_stones)
+            .properties(c -> c.mapColor(MapColor.COLOR_MAGENTA))
             .item()
             .transform(getItemModel())
             .register();
@@ -63,6 +65,7 @@ public class EIBlocks {
     public static final BlockEntry<Block> HARDENED_OCHRUM_BLOCK = REGISTRATE.block("hardened_ochrum", Block::new)
             .initialProperties(() -> Blocks.BEDROCK)
             .properties(EIBlocks::hardened_stones)
+            .properties(c -> c.mapColor(MapColor.GOLD))
             .item()
             .transform(getItemModel())
             .register();
@@ -70,6 +73,7 @@ public class EIBlocks {
     public static final BlockEntry<Block> HARDENED_VERIDIUM_BLOCK = REGISTRATE.block("hardened_veridium", Block::new)
             .initialProperties(() -> Blocks.BEDROCK)
             .properties(EIBlocks::hardened_stones)
+            .properties(c -> c.mapColor(MapColor.COLOR_GREEN))
             .item()
             .transform(getItemModel())
             .register();
@@ -77,6 +81,7 @@ public class EIBlocks {
     public static final BlockEntry<Block> HARDENED_ASURINE_BLOCK = REGISTRATE.block("hardened_asurine", Block::new)
             .initialProperties(() -> Blocks.BEDROCK)
             .properties(EIBlocks::hardened_stones)
+            .properties(c -> c.mapColor(MapColor.COLOR_BLUE))
             .item()
             .transform(getItemModel())
             .register();
@@ -84,6 +89,7 @@ public class EIBlocks {
     public static final BlockEntry<Block> HARDENED_CRIMSITE_BLOCK = REGISTRATE.block("hardened_crimsite", Block::new)
             .initialProperties(() -> Blocks.BEDROCK)
             .properties(EIBlocks::hardened_stones)
+            .properties(c -> c.mapColor(MapColor.COLOR_RED))
             .item()
             .transform(getItemModel())
             .register();
@@ -98,6 +104,7 @@ public class EIBlocks {
             .properties((c) -> {
                 return c.destroyTime(20);
             })
+            .properties(c -> c.mapColor(MapColor.COLOR_BLUE))
             .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_IRON_TOOL)
             .item()
             .recipe((c, p) -> {
@@ -112,7 +119,8 @@ public class EIBlocks {
     public static final BlockEntry<PressurisedFluidTankBlock> PRESSURISED_FLUID_TANK = REGISTRATE.block("pressurised_fluid_tank", PressurisedFluidTankBlock::new)
             .initialProperties(SharedProperties::copperMetal)
             .properties(p -> p.noOcclusion()
-                    .isRedstoneConductor((p1, p2, p3) -> true))
+                    .isRedstoneConductor((p1, p2, p3) -> true)
+                    .mapColor(MapColor.COLOR_BLUE))
             .tag(BlockTags.MINEABLE_WITH_PICKAXE)
             .blockstate(new PressurisedFluidTankGenerator()::generate)
             .onRegister(CreateRegistrate.blockModel(() -> PressurisedFluidTankModel::standard))
@@ -138,8 +146,8 @@ public class EIBlocks {
             .register();
 
     public static final BlockEntry<CasingBlock> COBALT_CASING = REGISTRATE.block("cobalt_casing", CasingBlock::new)
-            .properties(p -> p.mapColor(MapColor.PODZOL))
             .transform(BuilderTransformers.casing(() -> EISpriteShifts.COBALT_CASING))
+            .properties(p -> p.mapColor(MapColor.COLOR_LIGHT_BLUE).sound(SoundType.TUFF_BRICKS))
             .register();
 
 
