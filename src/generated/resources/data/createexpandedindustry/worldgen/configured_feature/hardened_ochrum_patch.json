@@ -1,0 +1,11 @@
+{
+  "type": "createexpandedindustry:hardened_stone_patch",
+  "config": {
+    "hardened_variant": {
+      "Name": "createexpandedindustry:hardened_ochrum"
+    },
+    "normal_variant": {
+      "Name": "create:ochrum"
+    }
+  }
+}

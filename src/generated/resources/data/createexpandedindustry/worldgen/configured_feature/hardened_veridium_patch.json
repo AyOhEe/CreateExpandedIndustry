@@ -1,0 +1,11 @@
+{
+  "type": "createexpandedindustry:hardened_stone_patch",
+  "config": {
+    "hardened_variant": {
+      "Name": "createexpandedindustry:hardened_veridium"
+    },
+    "normal_variant": {
+      "Name": "create:veridium"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#minecraft:is_overworld",
+  "features": "createexpandedindustry:hardened_crimsite_patch",
+  "step": "underground_decoration"
+}
