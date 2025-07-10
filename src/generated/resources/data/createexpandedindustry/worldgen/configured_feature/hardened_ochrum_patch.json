@@ -1,6 +1,7 @@
 {
   "type": "createexpandedindustry:hardened_stone_patch",
   "config": {
+    "type": "OCHRUM",
     "hardened_variant": {
       "Name": "createexpandedindustry:hardened_ochrum"
     },

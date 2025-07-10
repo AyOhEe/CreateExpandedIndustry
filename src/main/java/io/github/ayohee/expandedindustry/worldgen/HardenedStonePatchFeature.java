@@ -11,6 +11,21 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 
 public class HardenedStonePatchFeature extends Feature<HardenedStonePatchConfiguration> {
+    public enum Types {
+        // Value must exactly match identifier!
+        ERYTHRITE("ERYTHRITE"),
+        OCHRUM("OCHRUM"),
+        CRIMSITE("CRIMSITE"),
+        ASURINE("ASURINE"),
+        VERIDIUM("VERIDIUM");
+
+        public final String serialised_value;
+
+        Types(String v) {
+            serialised_value = v;
+        }
+    }
+
     public HardenedStonePatchFeature() {
         super(HardenedStonePatchConfiguration.CODEC);
     }
@@ -42,6 +57,9 @@ public class HardenedStonePatchFeature extends Feature<HardenedStonePatchConfigu
 
         bulkSectionAccess.close();
 
+
+        //only return true if the structure placed
+        HardenedStonePatchSavedData.addPatch(origin, config.type);
         return true;
     }
 }

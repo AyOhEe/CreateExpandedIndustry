@@ -52,6 +52,7 @@ public class EIPlacedFeatures {
         PlacementUtils.register(ctx, HARDENED_VERIDIUM_PATCH,  hardenedVeridiumPatch,  patchPlacementModifiers(256, -30, 30));
     }
 
+    //TODO enforce spacing. Maybe refuse to generate if there's another one too close?
     public static List<PlacementModifier> patchPlacementModifiers(int rarity, int minHeight, int maxHeight) {
         return List.of(
                 RarityFilter.onAverageOnceEvery(rarity),
