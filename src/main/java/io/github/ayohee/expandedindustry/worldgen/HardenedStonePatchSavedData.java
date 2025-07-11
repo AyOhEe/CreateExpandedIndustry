@@ -8,6 +8,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.saveddata.SavedData;
 import net.neoforged.neoforge.event.level.LevelEvent;
 
@@ -51,6 +52,25 @@ public class HardenedStonePatchSavedData extends SavedData {
 
         CreateExpandedIndustry.LOGGER.debug("Registered new patch. Count: " + overworldInstance.patchLocations.size());
         CreateExpandedIndustry.LOGGER.debug("                   Location: " + origin.toString());
+    }
+
+    public static Pair<BlockPos, HardenedStonePatchFeature.Types> findNearestPatch(BlockPos origin) {
+        if (overworldInstance.patchLocations.isEmpty()) {
+            return null;
+        }
+        Pair<BlockPos, HardenedStonePatchFeature.Types> closest = overworldInstance.patchLocations.getFirst();
+        double closestDist = closest.getFirst().distSqr(origin);
+
+        for (int i = 1; i < overworldInstance.patchLocations.size(); i++) {
+            Pair<BlockPos, HardenedStonePatchFeature.Types> currentPair = overworldInstance.patchLocations.get(i);
+            double currentDist = origin.distSqr(currentPair.getFirst());
+            if (currentDist < closestDist) {
+                closest = currentPair;
+                closestDist = currentDist;
+            }
+        }
+
+        return closest;
     }
 
 

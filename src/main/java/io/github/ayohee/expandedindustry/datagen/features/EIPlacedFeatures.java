@@ -45,11 +45,12 @@ public class EIPlacedFeatures {
         Holder<ConfiguredFeature<?, ?>> hardenedAsurinePatch = featureLookup.getOrThrow(EIConfiguredFeatures.HARDENED_ASURINE_PATCH);
         Holder<ConfiguredFeature<?, ?>> hardenedVeridiumPatch = featureLookup.getOrThrow(EIConfiguredFeatures.HARDENED_VERIDIUM_PATCH);
 
-        PlacementUtils.register(ctx, HARDENED_ERYTHRITE_PATCH, hardenedErythritePatch, patchPlacementModifiers(256, -30, 30));
-        PlacementUtils.register(ctx, HARDENED_OCHRUM_PATCH,    hardenedOchrumPatch,    patchPlacementModifiers(256, -30, 30));
-        PlacementUtils.register(ctx, HARDENED_CRIMSITE_PATCH,  hardenedCrimsitePatch,  patchPlacementModifiers(256, -30, 30));
-        PlacementUtils.register(ctx, HARDENED_ASURINE_PATCH,   hardenedAsurinePatch,   patchPlacementModifiers(256, -30, 30));
-        PlacementUtils.register(ctx, HARDENED_VERIDIUM_PATCH,  hardenedVeridiumPatch,  patchPlacementModifiers(256, -30, 30));
+        int PATCH_RARITY = 128*128*5;
+        PlacementUtils.register(ctx, HARDENED_ERYTHRITE_PATCH, hardenedErythritePatch, patchPlacementModifiers(PATCH_RARITY, -30, 30));
+        PlacementUtils.register(ctx, HARDENED_OCHRUM_PATCH,    hardenedOchrumPatch,    patchPlacementModifiers(PATCH_RARITY, -30, 30));
+        PlacementUtils.register(ctx, HARDENED_CRIMSITE_PATCH,  hardenedCrimsitePatch,  patchPlacementModifiers(PATCH_RARITY, -30, 30));
+        PlacementUtils.register(ctx, HARDENED_ASURINE_PATCH,   hardenedAsurinePatch,   patchPlacementModifiers(PATCH_RARITY, -30, 30));
+        PlacementUtils.register(ctx, HARDENED_VERIDIUM_PATCH,  hardenedVeridiumPatch,  patchPlacementModifiers(PATCH_RARITY, -30, 30));
     }
 
     //TODO enforce spacing. Maybe refuse to generate if there's another one too close?
