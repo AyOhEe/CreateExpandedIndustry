@@ -1,7 +1,6 @@
 package io.github.ayohee.expandedindustry;
 
 import io.github.ayohee.expandedindustry.datagen.EIRecipeProvider;
-import io.github.ayohee.expandedindustry.datagen.features.EIGeneratedEntriesProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -25,11 +24,6 @@ public class EIDatagen {
         DataGenerator generator = event.getGenerator();
         PackOutput output = generator.getPackOutput();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
-
-
-        EIGeneratedEntriesProvider generatedEntriesProvider = new EIGeneratedEntriesProvider(output, lookupProvider);
-        lookupProvider = generatedEntriesProvider.getRegistryProvider();
-        generator.addProvider(event.includeServer(), generatedEntriesProvider);
 
         System.out.println("Gathering data for Create: Expanded Industry");
         System.out.println(event.includeServer());

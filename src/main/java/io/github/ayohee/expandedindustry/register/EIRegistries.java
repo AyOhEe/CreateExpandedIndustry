@@ -11,11 +11,9 @@ import static io.github.ayohee.expandedindustry.CreateExpandedIndustry.MODID;
 import static net.minecraft.core.registries.Registries.*;
 
 public class EIRegistries {
-    public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(FEATURE, MODID);
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(CREATIVE_MODE_TAB, MODID);
 
     public static void register(IEventBus modEventBus) {
-        FEATURES.register(modEventBus);
         CREATIVE_MODE_TABS.register(modEventBus);
     }
 }

@@ -5,12 +5,8 @@ import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipModifier;
 import io.github.ayohee.expandedindustry.content.pressurised_blocks.PressurisedFluidTankBlockEntity;
-import io.github.ayohee.expandedindustry.datagen.features.EIFeatures;
 import io.github.ayohee.expandedindustry.register.*;
-import io.github.ayohee.expandedindustry.worldgen.HardenedStonePatchSavedData;
 import net.createmod.catnip.lang.FontHelper;
-import net.minecraft.client.telemetry.events.WorldLoadEvent;
-import net.minecraft.server.MinecraftServer;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import org.slf4j.Logger;
@@ -45,15 +41,11 @@ public class CreateExpandedIndustry {
         modEventBus.addListener(EventPriority.LOWEST, EIDatagen::gatherData);
 
 
-        NeoForge.EVENT_BUS.addListener(HardenedStonePatchSavedData::onLoadWorld);
-
-
         NeoForge.EVENT_BUS.register(this);
 
 
         EIBlocks.register();
         EIBlockEntityTypes.register();
-        EIFeatures.register();
         EIItems.register();
         EIConfig.register(modContainer);
         EICreativeTabs.register();
