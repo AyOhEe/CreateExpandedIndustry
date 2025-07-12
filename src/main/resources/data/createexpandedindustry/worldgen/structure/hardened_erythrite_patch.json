@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:jigsaw",
+  "type": "createexpandedindustry:hardened_stone_patches",
   "biomes": "#c:is_overworld",
   "step": "underground_structures",
   "terrain_adaptation": "bury",
@@ -17,5 +17,7 @@
     }
   },
   "max_distance_from_center": 32,
+  "min_origin_distance": 0,
+  "max_origin_distance": 1000,
   "use_expansion_hack": false
 }
