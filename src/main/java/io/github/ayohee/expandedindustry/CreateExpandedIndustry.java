@@ -46,6 +46,7 @@ public class CreateExpandedIndustry {
 
         EIBlocks.register();
         EIBlockEntityTypes.register();
+        EIStructures.register();
         EIItems.register();
         EIConfig.register(modContainer);
         EICreativeTabs.register();

@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "createexpandedindustry:hardened_erythrite_patch",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 1224466880,
+    "spacing": 32,
+    "separation": 8
+  }
+}
