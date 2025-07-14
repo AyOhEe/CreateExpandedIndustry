@@ -1,0 +1,26 @@
+{
+  "structures": [
+    {
+      "structure": "createexpandedindustry:hardened_ochrum_patch_small",
+      "weight": 10
+    },
+    {
+      "structure": "createexpandedindustry:hardened_ochrum_patch_medium",
+      "weight": 6
+    },
+    {
+      "structure": "createexpandedindustry:hardened_ochrum_patch_large",
+      "weight": 4
+    },
+    {
+      "structure": "createexpandedindustry:hardened_ochrum_patch_gargantuan",
+      "weight": 2
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 1224466884,
+    "spacing": 48,
+    "separation": 8
+  }
+}

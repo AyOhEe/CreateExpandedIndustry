@@ -1,0 +1,15 @@
+{
+  "name": "createexpandedindustry:hardened_ochrum_patch_gargantuan",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "createexpandedindustry:hardened_erythrite_patch_gargantuan",
+        "processors": "createexpandedindustry:erythrite_to_ochrum"
+      }
+    }
+  ]
+}
