@@ -18,6 +18,7 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import io.github.ayohee.expandedindustry.CreateExpandedIndustry;
 
+import io.github.ayohee.expandedindustry.content.blocks.HardenedStoneBlock;
 import io.github.ayohee.expandedindustry.content.pressurised_blocks.*;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -54,7 +55,8 @@ public class EIBlocks {
             .transform(getItemModel())
             .register();
 
-    public static final BlockEntry<Block> HARDENED_ERYTHRITE_BLOCK = REGISTRATE.block("hardened_erythrite", Block::new)
+    public static final BlockEntry<HardenedStoneBlock> HARDENED_ERYTHRITE_BLOCK = REGISTRATE
+            .block("hardened_erythrite", (p) -> new HardenedStoneBlock(p, EIBlockEntityTypes.HARDENED_ERYTHRITE))
             .initialProperties(() -> Blocks.BEDROCK)
             .properties(EIBlocks::hardened_stones)
             .properties(c -> c.mapColor(MapColor.COLOR_MAGENTA))
@@ -62,7 +64,8 @@ public class EIBlocks {
             .transform(getItemModel())
             .register();
 
-    public static final BlockEntry<Block> HARDENED_OCHRUM_BLOCK = REGISTRATE.block("hardened_ochrum", Block::new)
+    public static final BlockEntry<HardenedStoneBlock> HARDENED_OCHRUM_BLOCK = REGISTRATE
+            .block("hardened_ochrum", (p) -> new HardenedStoneBlock(p, EIBlockEntityTypes.HARDENED_OCHRUM))
             .initialProperties(() -> Blocks.BEDROCK)
             .properties(EIBlocks::hardened_stones)
             .properties(c -> c.mapColor(MapColor.GOLD))
@@ -70,7 +73,8 @@ public class EIBlocks {
             .transform(getItemModel())
             .register();
 
-    public static final BlockEntry<Block> HARDENED_VERIDIUM_BLOCK = REGISTRATE.block("hardened_veridium", Block::new)
+    public static final BlockEntry<HardenedStoneBlock> HARDENED_VERIDIUM_BLOCK = REGISTRATE
+            .block("hardened_veridium", (p) -> new HardenedStoneBlock(p, EIBlockEntityTypes.HARDENED_VERIDIUM))
             .initialProperties(() -> Blocks.BEDROCK)
             .properties(EIBlocks::hardened_stones)
             .properties(c -> c.mapColor(MapColor.COLOR_GREEN))
@@ -78,7 +82,8 @@ public class EIBlocks {
             .transform(getItemModel())
             .register();
 
-    public static final BlockEntry<Block> HARDENED_ASURINE_BLOCK = REGISTRATE.block("hardened_asurine", Block::new)
+    public static final BlockEntry<HardenedStoneBlock> HARDENED_ASURINE_BLOCK = REGISTRATE
+            .block("hardened_asurine", (p) -> new HardenedStoneBlock(p, EIBlockEntityTypes.HARDENED_ASURINE))
             .initialProperties(() -> Blocks.BEDROCK)
             .properties(EIBlocks::hardened_stones)
             .properties(c -> c.mapColor(MapColor.COLOR_BLUE))
@@ -86,7 +91,8 @@ public class EIBlocks {
             .transform(getItemModel())
             .register();
 
-    public static final BlockEntry<Block> HARDENED_CRIMSITE_BLOCK = REGISTRATE.block("hardened_crimsite", Block::new)
+    public static final BlockEntry<HardenedStoneBlock> HARDENED_CRIMSITE_BLOCK = REGISTRATE
+            .block("hardened_crimsite", (p) -> new HardenedStoneBlock(p, EIBlockEntityTypes.HARDENED_CRIMSITE))
             .initialProperties(() -> Blocks.BEDROCK)
             .properties(EIBlocks::hardened_stones)
             .properties(c -> c.mapColor(MapColor.COLOR_RED))

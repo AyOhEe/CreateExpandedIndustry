@@ -44,8 +44,8 @@ public class CreateExpandedIndustry {
         NeoForge.EVENT_BUS.register(this);
 
 
-        EIBlocks.register();
         EIBlockEntityTypes.register();
+        EIBlocks.register();
         EIStructures.register();
         EIItems.register();
         EIConfig.register(modContainer);
