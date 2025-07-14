@@ -34,7 +34,7 @@ public class HardenedStonePatchStructures extends Structure {
                     DimensionPadding.CODEC.optionalFieldOf("dimension_padding", JigsawStructure.DEFAULT_DIMENSION_PADDING).forGetter(structure -> structure.dimensionPadding),
                     LiquidSettings.CODEC.optionalFieldOf("liquid_settings", JigsawStructure.DEFAULT_LIQUID_SETTINGS).forGetter(structure -> structure.liquidSettings),
                     Codec.INT.fieldOf("min_origin_distance").forGetter(structure -> structure.minOriginDistance),
-                    Codec.INT.fieldOf("min_origin_distance").forGetter(structure -> structure.maxOriginDistance)
+                    Codec.INT.fieldOf("max_origin_distance").forGetter(structure -> structure.maxOriginDistance)
             ).apply(instance, HardenedStonePatchStructures::new));
 
     private final Holder<StructureTemplatePool> startPool;
@@ -76,10 +76,10 @@ public class HardenedStonePatchStructures extends Structure {
         int x = chunkpos.getMiddleBlockX();
         int z = chunkpos.getMiddleBlockZ();
         double originDistanceSqr = (x*x) + (z*z);
-        if (originDistanceSqr < minOriginDistance*minOriginDistance){
+        if (minOriginDistance != -1 && originDistanceSqr < minOriginDistance*minOriginDistance){
             return false;
         }
-        if (originDistanceSqr > maxOriginDistance*maxOriginDistance){
+        if (maxOriginDistance != -1 && originDistanceSqr > maxOriginDistance*maxOriginDistance){
             return false;
         }
 

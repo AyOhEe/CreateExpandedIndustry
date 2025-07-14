@@ -1,5 +1,5 @@
 {
-  "name": "createexpandedindustry:hardened_erythrite_patch",
+  "name": "createexpandedindustry:hardened_erythrite_patch_large",
   "fallback": "minecraft:empty",
   "elements": [
     {
@@ -7,7 +7,7 @@
       "element": {
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
-        "location": "createexpandedindustry:hardened_erythrite_patch",
+        "location": "createexpandedindustry:hardened_erythrite_patch_large",
         "processors": []
       }
     }
