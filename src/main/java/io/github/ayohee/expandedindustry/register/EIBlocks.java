@@ -1,5 +1,6 @@
 package io.github.ayohee.expandedindustry.register;
 
+import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllDisplaySources;
 import com.simibubi.create.AllMountedStorageTypes;
 import com.simibubi.create.content.decoration.encasing.CasingBlock;
@@ -20,6 +21,7 @@ import io.github.ayohee.expandedindustry.CreateExpandedIndustry;
 
 import io.github.ayohee.expandedindustry.content.blocks.HardenedStoneBlock;
 import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.*;
+import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.DrillBeamBlock;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
@@ -154,6 +156,18 @@ public class EIBlocks {
     public static final BlockEntry<CasingBlock> COBALT_CASING = REGISTRATE.block("cobalt_casing", CasingBlock::new)
             .transform(BuilderTransformers.casing(() -> EISpriteShifts.COBALT_CASING))
             .properties(p -> p.mapColor(MapColor.COLOR_LIGHT_BLUE).sound(SoundType.TUFF_BRICKS))
+            .register();
+
+
+
+    public static final BlockEntry<DrillBeamBlock> DRILL_BEAM = REGISTRATE
+            .block("drill_beam", DrillBeamBlock::new)
+            .properties(p -> p.mapColor(MapColor.COLOR_GRAY)
+                    .noOcclusion()
+                    .sound(SoundType.NETHERITE_BLOCK))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_IRON_TOOL)
+            .item()
+            .transform(getItemModel())
             .register();
 
 

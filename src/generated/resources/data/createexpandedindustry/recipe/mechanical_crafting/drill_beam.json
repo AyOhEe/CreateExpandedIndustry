@@ -1,0 +1,30 @@
+{
+  "type": "create:mechanical_crafting",
+  "accept_mirrored": true,
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:iron_block"
+    },
+    "C": {
+      "item": "create:railway_casing"
+    },
+    "G": {
+      "item": "create:metal_girder"
+    },
+    "P": {
+      "item": "create:iron_sheet"
+    }
+  },
+  "pattern": [
+    "PBBBP",
+    " GCG ",
+    " GCG ",
+    " GCG ",
+    "PBBBP"
+  ],
+  "result": {
+    "count": 1,
+    "id": "createexpandedindustry:drill_beam"
+  }
+}

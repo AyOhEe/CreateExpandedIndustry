@@ -1,10 +1,7 @@
 package io.github.ayohee.expandedindustry.datagen;
 
 import com.simibubi.create.api.data.recipe.ProcessingRecipeGen;
-import io.github.ayohee.expandedindustry.datagen.recipes.EICrushingRecipeGen;
-import io.github.ayohee.expandedindustry.datagen.recipes.EIItemApplicationRecipeGen;
-import io.github.ayohee.expandedindustry.datagen.recipes.EIPressingRecipeGen;
-import io.github.ayohee.expandedindustry.datagen.recipes.EISandingRecipeGen;
+import io.github.ayohee.expandedindustry.datagen.recipes.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;

@@ -3,6 +3,7 @@
     "createexpandedindustry:erythrite",
     "createexpandedindustry:cobalt_block",
     "createexpandedindustry:pressurised_fluid_tank",
-    "createexpandedindustry:cobalt_casing"
+    "createexpandedindustry:cobalt_casing",
+    "createexpandedindustry:drill_beam"
   ]
 }
