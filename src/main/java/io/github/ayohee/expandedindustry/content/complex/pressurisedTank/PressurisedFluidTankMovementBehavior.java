@@ -1,4 +1,4 @@
-package io.github.ayohee.expandedindustry.content.pressurised_blocks;
+package io.github.ayohee.expandedindustry.content.complex.pressurisedTank;
 
 import com.simibubi.create.api.behaviour.movement.MovementBehaviour;
 import com.simibubi.create.content.contraptions.behaviour.MovementContext;

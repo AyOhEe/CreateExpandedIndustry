@@ -4,7 +4,7 @@ import com.simibubi.create.content.decoration.palettes.AllPaletteStoneTypes;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import io.github.ayohee.expandedindustry.content.blockentities.HardenedStoneBlockEntity;
 import io.github.ayohee.expandedindustry.content.blockentities.HardenedStoneBlockEntity.RichnessProfile;
-import io.github.ayohee.expandedindustry.content.pressurised_blocks.PressurisedFluidTankBlockEntity;
+import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.PressurisedFluidTankBlockEntity;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.function.Supplier;

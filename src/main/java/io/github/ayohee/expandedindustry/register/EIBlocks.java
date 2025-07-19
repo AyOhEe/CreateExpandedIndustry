@@ -19,7 +19,7 @@ import com.tterrag.registrate.util.nullness.NonNullFunction;
 import io.github.ayohee.expandedindustry.CreateExpandedIndustry;
 
 import io.github.ayohee.expandedindustry.content.blocks.HardenedStoneBlock;
-import io.github.ayohee.expandedindustry.content.pressurised_blocks.*;
+import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.*;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;

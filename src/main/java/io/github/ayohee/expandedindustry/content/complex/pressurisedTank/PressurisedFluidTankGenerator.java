@@ -1,4 +1,4 @@
-package io.github.ayohee.expandedindustry.content.pressurised_blocks;
+package io.github.ayohee.expandedindustry.content.complex.pressurisedTank;
 
 import com.simibubi.create.content.fluids.tank.FluidTankBlock.Shape;
 import com.simibubi.create.foundation.data.AssetLookup;

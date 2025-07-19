@@ -1,6 +1,5 @@
-package io.github.ayohee.expandedindustry.content.pressurised_blocks;
+package io.github.ayohee.expandedindustry.content.complex.pressurisedTank;
 
-import com.simibubi.create.content.fluids.tank.BoilerData;
 import io.github.ayohee.expandedindustry.register.EIBlockEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntity;

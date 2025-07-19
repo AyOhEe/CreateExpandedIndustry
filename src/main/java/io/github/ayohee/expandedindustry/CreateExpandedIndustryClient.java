@@ -1,6 +1,6 @@
 package io.github.ayohee.expandedindustry;
 
-import io.github.ayohee.expandedindustry.content.pressurised_blocks.PressurisedFluidTankRenderer;
+import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.PressurisedFluidTankRenderer;
 import io.github.ayohee.expandedindustry.register.EIBlockEntityTypes;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
