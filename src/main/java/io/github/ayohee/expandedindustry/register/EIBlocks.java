@@ -20,6 +20,7 @@ import com.tterrag.registrate.util.nullness.NonNullFunction;
 import io.github.ayohee.expandedindustry.CreateExpandedIndustry;
 
 import io.github.ayohee.expandedindustry.content.blocks.HardenedStoneBlock;
+import io.github.ayohee.expandedindustry.content.blocks.WrenchableBlock;
 import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.*;
 import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.DrillBeamBlock;
 import net.minecraft.client.renderer.RenderType;
@@ -164,6 +165,24 @@ public class EIBlocks {
             .block("drill_beam", DrillBeamBlock::new)
             .properties(p -> p.mapColor(MapColor.COLOR_GRAY)
                     .noOcclusion()
+                    .sound(SoundType.NETHERITE_BLOCK))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_IRON_TOOL)
+            .item()
+            .transform(getItemModel())
+            .register();
+
+    public static final BlockEntry<WrenchableBlock> DRILL_MOTOR = REGISTRATE
+            .block("drill_motor", WrenchableBlock::new)
+            .properties(p -> p.mapColor(MapColor.COLOR_GRAY)
+                    .sound(SoundType.METAL))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_IRON_TOOL)
+            .item()
+            .transform(getItemModel())
+            .register();
+
+    public static final BlockEntry<WrenchableBlock> DRILL_BIT = REGISTRATE
+            .block("drill_bit", WrenchableBlock::new)
+            .properties(p -> p.mapColor(MapColor.COLOR_GRAY)
                     .sound(SoundType.NETHERITE_BLOCK))
             .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_IRON_TOOL)
             .item()

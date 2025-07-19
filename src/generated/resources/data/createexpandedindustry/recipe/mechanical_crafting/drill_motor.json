@@ -1,0 +1,32 @@
+{
+  "type": "create:mechanical_crafting",
+  "accept_mirrored": true,
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "create:iron_sheet"
+    },
+    "C": {
+      "item": "create:railway_casing"
+    },
+    "G": {
+      "item": "create:gearbox"
+    },
+    "M": {
+      "item": "create:mechanical_bearing"
+    },
+    "P": {
+      "item": "create:mechanical_press"
+    }
+  },
+  "pattern": [
+    "CGC",
+    "CPC",
+    "CMC",
+    "BBB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "createexpandedindustry:drill_motor"
+  }
+}
