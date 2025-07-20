@@ -24,6 +24,7 @@ import io.github.ayohee.expandedindustry.content.blocks.WrenchableBlock;
 import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.*;
 import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.DrillBeamBlock;
 import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.DrillBitBlock;
+import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.DrillMotorBlock;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
@@ -172,8 +173,8 @@ public class EIBlocks {
             .transform(getItemModel())
             .register();
 
-    public static final BlockEntry<WrenchableBlock> DRILL_MOTOR = REGISTRATE
-            .block("drill_motor", WrenchableBlock::new)
+    public static final BlockEntry<DrillMotorBlock> DRILL_MOTOR = REGISTRATE
+            .block("drill_motor", DrillMotorBlock::new)
             .properties(p -> p.mapColor(MapColor.COLOR_GRAY)
                     .sound(SoundType.METAL))
             .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_IRON_TOOL)
