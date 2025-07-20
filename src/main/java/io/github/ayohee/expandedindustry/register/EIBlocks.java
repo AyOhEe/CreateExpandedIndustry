@@ -23,6 +23,7 @@ import io.github.ayohee.expandedindustry.content.blocks.HardenedStoneBlock;
 import io.github.ayohee.expandedindustry.content.blocks.WrenchableBlock;
 import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.*;
 import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.DrillBeamBlock;
+import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.DrillBitBlock;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
@@ -180,9 +181,10 @@ public class EIBlocks {
             .transform(getItemModel())
             .register();
 
-    public static final BlockEntry<WrenchableBlock> DRILL_BIT = REGISTRATE
-            .block("drill_bit", WrenchableBlock::new)
+    public static final BlockEntry<DrillBitBlock> DRILL_BIT = REGISTRATE
+            .block("drill_bit", DrillBitBlock::new)
             .properties(p -> p.mapColor(MapColor.COLOR_GRAY)
+                    .noOcclusion()
                     .sound(SoundType.NETHERITE_BLOCK))
             .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_IRON_TOOL)
             .item()
