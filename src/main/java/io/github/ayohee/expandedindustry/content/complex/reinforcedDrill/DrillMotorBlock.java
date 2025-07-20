@@ -81,6 +81,8 @@ public class DrillMotorBlock extends WrenchableBlock {
             return InteractionResult.SUCCESS;
         }
 
+        level.setBlock(pos.above(), EIBlocks.ERYTHRITE_BLOCK.getDefaultState(), Block.UPDATE_ALL);
+
         return InteractionResult.SUCCESS;
     }
 
@@ -91,11 +93,13 @@ public class DrillMotorBlock extends WrenchableBlock {
         BlockState south = level.getBlockState(pos.south());
 
         boolean NSAreShafts = (north == NS_BRASS_ENCASED_SHAFT.get()) && (south == NS_BRASS_ENCASED_SHAFT.get());
-        boolean NSArePipes = (north == NS_COPPER_ENCASED_PIPE.get()) && (south == NS_COPPER_ENCASED_PIPE.get());
+        boolean NIsPipe = (north == NS_COPPER_ENCASED_PIPE.get()) && (south == AllBlocks.BRASS_CASING.getDefaultState());
+        boolean SIsPipe = (north == AllBlocks.BRASS_CASING.getDefaultState()) && (south == NS_COPPER_ENCASED_PIPE.get());
         boolean EWAreShafts = (east == EW_BRASS_ENCASED_SHAFT.get()) && (west == EW_BRASS_ENCASED_SHAFT.get());
-        boolean EWArePipes = (east == EW_COPPER_ENCASED_PIPE.get()) && (west == EW_COPPER_ENCASED_PIPE.get());
+        boolean EIsPipe = (east == EW_COPPER_ENCASED_PIPE.get()) && (west == AllBlocks.BRASS_CASING.getDefaultState());
+        boolean WIsPipe = (east == AllBlocks.BRASS_CASING.getDefaultState()) && (west == EW_COPPER_ENCASED_PIPE.get());
 
-        return (NSAreShafts && EWArePipes) || (NSArePipes && EWAreShafts);
+        return (NSAreShafts && (EIsPipe || WIsPipe)) || ((NIsPipe || SIsPipe) && EWAreShafts);
     }
 
     private boolean assertReplaceable(Level level, BlockPos pos) {
