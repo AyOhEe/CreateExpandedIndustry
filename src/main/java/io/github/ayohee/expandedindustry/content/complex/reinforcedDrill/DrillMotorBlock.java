@@ -41,6 +41,9 @@ public class DrillMotorBlock extends WrenchableBlock {
             .setValue(BlockStateProperties.WEST, true)
             .setValue(BlockStateProperties.EAST, true);
 
+    public static final Supplier<BlockState> REINFORCED_DRILL_PARENT = () -> EIBlocks.REINFORCED_DRILL_MULTIBLOCK.getDefaultState()
+            .setValue(ReinforcedDrillMultiblock.MULTIBLOCK_CHILD, false);
+
     public DrillMotorBlock(Properties properties) {
         super(properties);
     }
@@ -81,9 +84,52 @@ public class DrillMotorBlock extends WrenchableBlock {
             return InteractionResult.SUCCESS;
         }
 
-        level.setBlock(pos.above(), EIBlocks.ERYTHRITE_BLOCK.getDefaultState(), Block.UPDATE_ALL);
+        Direction fluidPipeDir = locateFluidPipe(level, pos);
+        BlockState childBS = EIBlocks.REINFORCED_DRILL_MULTIBLOCK.getDefaultState()
+                .setValue(BlockStateProperties.HORIZONTAL_FACING, fluidPipeDir);
+
+
+        BlockPos cornerPos = pos.below().north().west();
+        int xCorner = cornerPos.getX();
+        int yCorner = cornerPos.getY();
+        int zCorner = cornerPos.getZ();
+        for (int x = xCorner; x <= xCorner + 2; ++x) {
+            for (int y = yCorner; y <= yCorner + 1; ++y) {
+                for (int z = zCorner; z <= zCorner + 2; ++z) {
+                    level.setBlock(
+                            new BlockPos(x, y, z),
+                            childBS,
+                            UPDATE_ALL
+                    );
+                }
+            }
+        }
+
+        BlockState parentBS = REINFORCED_DRILL_PARENT.get().setValue(BlockStateProperties.HORIZONTAL_FACING, fluidPipeDir);
+        level.setBlock(pos.below(), parentBS, UPDATE_ALL);
 
         return InteractionResult.SUCCESS;
+    }
+
+    private Direction locateFluidPipe(Level level, BlockPos pos) {
+        BlockState west = level.getBlockState(pos.west());
+        BlockState east = level.getBlockState(pos.east());
+        BlockState north = level.getBlockState(pos.north());
+        BlockState south = level.getBlockState(pos.south());
+
+        if (west == EW_COPPER_ENCASED_PIPE.get()) {
+            return Direction.WEST;
+        }
+        else if (east == EW_COPPER_ENCASED_PIPE.get()) {
+            return Direction.EAST;
+        }
+        else if (north == NS_COPPER_ENCASED_PIPE.get()) {
+            return Direction.NORTH;
+        }
+        else if (south == NS_COPPER_ENCASED_PIPE.get()) {
+            return Direction.SOUTH;
+        }
+        return null;
     }
 
     private boolean assertPipeAndShaftChecks(Level level, BlockPos pos) {

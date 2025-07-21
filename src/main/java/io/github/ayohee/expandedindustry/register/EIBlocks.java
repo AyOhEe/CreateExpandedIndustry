@@ -25,6 +25,7 @@ import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.*;
 import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.DrillBeamBlock;
 import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.DrillBitBlock;
 import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.DrillMotorBlock;
+import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.ReinforcedDrillMultiblock;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
@@ -48,6 +49,23 @@ import static io.github.ayohee.expandedindustry.CreateExpandedIndustry.MODID;
 import static io.github.ayohee.expandedindustry.CreateExpandedIndustry.REGISTRATE;
 
 public class EIBlocks {
+    /*-----THESE BLOCKS WILL NOT BE SEEN IN THE CREATIVE TAB-----*/
+    static {
+        REGISTRATE.setCreativeTab(null);
+    }
+
+    public static final BlockEntry<ReinforcedDrillMultiblock> REINFORCED_DRILL_MULTIBLOCK = REGISTRATE
+            .block("reinforced_drill_multiblock", ReinforcedDrillMultiblock::new)
+            .initialProperties(() -> Blocks.GLASS)
+            .properties(c -> c
+                    .mapColor(MapColor.COLOR_ORANGE)
+                    .sound(SoundType.METAL))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_IRON_TOOL)
+            .register();
+
+
+
+    /*-----THESE BLOCKS WILL BE SEEN IN THE CREATIVE TAB-----*/
     static {
         REGISTRATE.setCreativeTab(EICreativeTabs.MAIN_TAB);
     }
