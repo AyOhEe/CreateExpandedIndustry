@@ -106,7 +106,7 @@ public class DrillMotorBlock extends WrenchableBlock {
         }
 
         BlockState parentBS = REINFORCED_DRILL_PARENT.get().setValue(BlockStateProperties.HORIZONTAL_FACING, fluidPipeDir);
-        level.setBlock(pos.below(), parentBS, UPDATE_ALL);
+        level.setBlock(pos, parentBS, UPDATE_ALL);
 
         return InteractionResult.SUCCESS;
     }
