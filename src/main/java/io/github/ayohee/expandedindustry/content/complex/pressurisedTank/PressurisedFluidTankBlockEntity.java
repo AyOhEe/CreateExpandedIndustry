@@ -1,12 +1,12 @@
 package io.github.ayohee.expandedindustry.content.complex.pressurisedTank;
 
 import io.github.ayohee.expandedindustry.register.EIBlockEntityTypes;
+import io.github.ayohee.expandedindustry.register.EIConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
-import static io.github.ayohee.expandedindustry.register.EIConfig.PRESSURISED_TANK_CAPACITY_MULTIPLIER;
 import static java.lang.Math.abs;
 
 import java.util.List;
@@ -484,7 +484,7 @@ public class PressurisedFluidTankBlockEntity extends SmartBlockEntity implements
     }
 
     public static int getCapacityMultiplier() {
-        return (int)(AllConfigs.server().fluids.fluidTankCapacity.get() * 1000 * PRESSURISED_TANK_CAPACITY_MULTIPLIER.get());
+        return (int)(AllConfigs.server().fluids.fluidTankCapacity.get() * 1000 * EIConfig.server().PRESSURISED_TANK_CAPACITY_MULTIPLIER.get());
     }
 
     public static int getMaxHeight() {

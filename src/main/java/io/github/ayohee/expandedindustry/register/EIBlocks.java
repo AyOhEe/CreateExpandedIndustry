@@ -1,6 +1,5 @@
 package io.github.ayohee.expandedindustry.register;
 
-import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllDisplaySources;
 import com.simibubi.create.AllMountedStorageTypes;
 import com.simibubi.create.content.decoration.encasing.CasingBlock;
@@ -20,12 +19,8 @@ import com.tterrag.registrate.util.nullness.NonNullFunction;
 import io.github.ayohee.expandedindustry.CreateExpandedIndustry;
 
 import io.github.ayohee.expandedindustry.content.blocks.HardenedStoneBlock;
-import io.github.ayohee.expandedindustry.content.blocks.WrenchableBlock;
 import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.*;
-import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.DrillBeamBlock;
-import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.DrillBitBlock;
-import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.DrillMotorBlock;
-import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.ReinforcedDrillMultiblock;
+import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.*;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
@@ -63,6 +58,13 @@ public class EIBlocks {
             .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_IRON_TOOL)
             .register();
 
+
+    public static final BlockEntry<ReinforcedDrillKineticBlock> REINFORCED_DRILL_KINETIC_BLOCK = REGISTRATE
+            .block("reinforced_drill_kinetic_io", ReinforcedDrillKineticBlock::new)
+            .initialProperties(SharedProperties::wooden)
+            .transform(EIStress.setImpact(4.0))
+            .simpleItem()
+            .register();
 
 
     /*-----THESE BLOCKS WILL BE SEEN IN THE CREATIVE TAB-----*/

@@ -1,4 +1,4 @@
-// 1.21.1	2025-07-21T00:10:21.254398	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+// 1.21.1	2025-07-21T22:12:10.1427861	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
 7be6b1e90e9c69056bd2b00fffd59cb8171149e4 assets/createexpandedindustry/blockstates/cobalt_block.json
 ec4d3cf2a77e2abe16d52351f68cd31c4fb0b8eb assets/createexpandedindustry/blockstates/cobalt_casing.json
 314f7a1a88b244c0bf4c1538fbcd6bbe15d1f8b5 assets/createexpandedindustry/blockstates/drill_beam.json
@@ -11,9 +11,10 @@ fb00fdbe37da8132105bdc8360908b5b0ee3dfe9 assets/createexpandedindustry/blockstat
 9016d39cb4f3bb8090626b850a0a9ab55d53fecd assets/createexpandedindustry/blockstates/hardened_ochrum.json
 9fc767c80ca7be8c9009b26b2d6ca9491c178586 assets/createexpandedindustry/blockstates/hardened_veridium.json
 012acb7f86cebceef4a52a1a148799db09014ae8 assets/createexpandedindustry/blockstates/pressurised_fluid_tank.json
+87b2e5fa45b573ce9bd8fe439bb975ee592746ae assets/createexpandedindustry/blockstates/reinforced_drill_kinetic_io.json
 62eae62d6b585866d8fc1b74c811181e98531aed assets/createexpandedindustry/blockstates/reinforced_drill_multiblock.json
-d00d7d0df7db2dc14da977042e244cdfdc025675 assets/createexpandedindustry/lang/en_ud.json
-554901053beafa2c7ddabfdd109dd4452b454f37 assets/createexpandedindustry/lang/en_us.json
+209527d2b61cb38968b451e4c1fee6d201e3340d assets/createexpandedindustry/lang/en_ud.json
+cd4d535ac976ce280427d00990dd18c51ed8f8c5 assets/createexpandedindustry/lang/en_us.json
 2ec757b22fd63719df3839669377dfe286e76182 assets/createexpandedindustry/models/block/cobalt_block.json
 88b838ab42f0560223b74dcf3493ff01631b99b4 assets/createexpandedindustry/models/block/cobalt_casing.json
 39481377be66332e44eef8bd0b733f289905abd0 assets/createexpandedindustry/models/block/drill_beam.json
@@ -25,6 +26,7 @@ b1e91f4b21dca73557a51a4727d840e71debc62a assets/createexpandedindustry/models/bl
 4455de7518dd24a45e4067aca6c7d0afb5fa1587 assets/createexpandedindustry/models/block/hardened_erythrite.json
 cc0b403ec2f0db23b256945d36b7afc57631ddbd assets/createexpandedindustry/models/block/hardened_ochrum.json
 d4d850907068a5c348d60500fef01cc588f46ca5 assets/createexpandedindustry/models/block/hardened_veridium.json
+8130587e34f1e2f26a69a7af7b1faf60101bb461 assets/createexpandedindustry/models/block/reinforced_drill_kinetic_io.json
 0e66c6fe9c751b153202ec205f7f1c1c085f744c assets/createexpandedindustry/models/block/reinforced_drill_multiblock.json
 44eccdcacc70774e031f3776b83f096250674b06 assets/createexpandedindustry/models/item/cobalt_block.json
 b5cf8e5bdce6e4435d7f89ffc7321333401dd409 assets/createexpandedindustry/models/item/cobalt_casing.json
@@ -43,6 +45,7 @@ f92aee725445ee26aaf95ed1cfd187d3ea9a29f1 assets/createexpandedindustry/models/it
 68e1bc965d7085ca27e5803484f17ef774f9f6ce assets/createexpandedindustry/models/item/hardened_veridium.json
 cfc34f1e46e9b53a56ca884a16df038c40cff608 assets/createexpandedindustry/models/item/magnetised_cobalt.json
 6af63213d5c8daedc58d0365b86c5265a99cf394 assets/createexpandedindustry/models/item/pressurised_fluid_tank.json
+ee1321700e0759eb08b2aa88eabaae0861f8c101 assets/createexpandedindustry/models/item/reinforced_drill_kinetic_io.json
 76eaeab9de584b93f764a26a91c5b528c7daf8f8 assets/createexpandedindustry/models/item/unpolished_magnetised_cobalt.json
 f3d85ed9125deedfbecbe54996c087f76f975ebf data/createexpandedindustry/loot_table/blocks/cobalt_block.json
 049064231065a74726af9f551bdf8ecac32986a2 data/createexpandedindustry/loot_table/blocks/cobalt_casing.json
@@ -51,6 +54,7 @@ fb3092954eab3f499c06cae9b08a92225b803211 data/createexpandedindustry/loot_table/
 ae5ae05051befb5439ef9a95827d627f3318922c data/createexpandedindustry/loot_table/blocks/drill_motor.json
 ab109c2f6f2b0e6bc06334844212582636041448 data/createexpandedindustry/loot_table/blocks/erythrite.json
 5ac0f795aecda14175bd378ee6e0671b298e3aea data/createexpandedindustry/loot_table/blocks/pressurised_fluid_tank.json
+171697741aba184b8f7cac143b7b37ffe0b659be data/createexpandedindustry/loot_table/blocks/reinforced_drill_kinetic_io.json
 34d2499cb984a9dd5940260543b4afa53a218d3d data/createexpandedindustry/loot_table/blocks/reinforced_drill_multiblock.json
 a7b6113f0409329409c34bd15486eb85d5f7234f data/create/tags/block/casing.json
 a7b6113f0409329409c34bd15486eb85d5f7234f data/create/tags/item/casing.json

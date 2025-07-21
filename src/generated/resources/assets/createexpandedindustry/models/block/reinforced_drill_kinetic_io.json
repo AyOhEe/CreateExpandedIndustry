@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "createexpandedindustry:block/reinforced_drill_kinetic_io"
+  }
+}
