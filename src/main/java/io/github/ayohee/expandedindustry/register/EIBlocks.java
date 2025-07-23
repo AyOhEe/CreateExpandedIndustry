@@ -62,6 +62,7 @@ public class EIBlocks {
     public static final BlockEntry<ReinforcedDrillKineticBlock> REINFORCED_DRILL_KINETIC_BLOCK = REGISTRATE
             .block("reinforced_drill_kinetic_io", ReinforcedDrillKineticBlock::new)
             .initialProperties(SharedProperties::wooden)
+            .properties(p -> p.noOcclusion())
             .transform(EIStress.setImpact(4.0))
             .simpleItem()
             .register();

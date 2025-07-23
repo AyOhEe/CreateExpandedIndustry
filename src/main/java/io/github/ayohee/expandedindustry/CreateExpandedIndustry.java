@@ -41,8 +41,10 @@ public class CreateExpandedIndustry {
         modEventBus.addListener(EventPriority.LOWEST, EIDatagen::gatherData);
 
 
-        NeoForge.EVENT_BUS.register(this);
+        REGISTRATE.registerEventListeners(modEventBus);
 
+
+        NeoForge.EVENT_BUS.register(this);
 
         EIBlockEntityTypes.register();
         EIBlocks.register();
@@ -53,7 +55,6 @@ public class CreateExpandedIndustry {
         EIRegistries.register(modEventBus);
 
 
-        REGISTRATE.registerEventListeners(modEventBus);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {

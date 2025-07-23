@@ -99,9 +99,9 @@ public class EIBlockEntityTypes {
 
     public static final BlockEntityEntry<ReinforcedDrillKineticBlockEntity> REINFORCED_DRILL_KINETIC_BLOCK = REGISTRATE
             .blockEntity("reinforced_drill_kinetic_io", ReinforcedDrillKineticBlockEntity::new)
-            .visual(() -> OrientedRotatingVisual.of(AllPartialModels.SHAFT_HALF), false)
+            .visual(() -> RDKBEVisual::new, false)
             .validBlocks(EIBlocks.REINFORCED_DRILL_KINETIC_BLOCK)
-            .renderer(() -> RDKBERenderer::new)
+            //.renderer(() -> RDKBERenderer::new) FIXME this should work
             .register();
 
 

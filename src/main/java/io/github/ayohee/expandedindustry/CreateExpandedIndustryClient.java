@@ -1,6 +1,7 @@
 package io.github.ayohee.expandedindustry;
 
 import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.PressurisedFluidTankRenderer;
+import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.RDKBERenderer;
 import io.github.ayohee.expandedindustry.register.EIBlockEntityTypes;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
@@ -34,5 +35,6 @@ public class CreateExpandedIndustryClient {
 
         //FIXME this shouldn't be done this way. No clue why it wasn't working through registrate.
         BlockEntityRenderers.register(EIBlockEntityTypes.PRESSURISED_FLUID_TANK.get(), PressurisedFluidTankRenderer::new);
+        BlockEntityRenderers.register(EIBlockEntityTypes.REINFORCED_DRILL_KINETIC_BLOCK.get(), RDKBERenderer::new);
     }
 }
