@@ -1,13 +1,9 @@
 package io.github.ayohee.expandedindustry.content.complex.reinforcedDrill;
 
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
-import io.github.ayohee.expandedindustry.multiblock.AbstractMultiblockComponent;
 import io.github.ayohee.expandedindustry.multiblock.MultiblockController;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -23,27 +19,6 @@ public class ReinforcedDrillMultiblock extends MultiblockController implements I
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         pBuilder.add(BlockStateProperties.HORIZONTAL_FACING);
-    }
-
-
-    @Override
-    public InteractionResult onWrenched(BlockState state, UseOnContext context) {
-        return rotateSelfAndChildren(state, context);
-    }
-
-    private InteractionResult rotateSelfAndChildren(BlockState state, UseOnContext context) {
-        Level level = context.getLevel();
-        BlockPos pos = context.getClickedPos();
-        Direction faceDirection = context.getClickedFace();
-
-        level.setBlock(pos, getRotatedBlockState(state, faceDirection), UPDATE_ALL);
-        for (BlockPos cPos : getChildPositions(pos)) {
-            level.setBlock(cPos, getRotatedBlockState(level.getBlockState(cPos), faceDirection), UPDATE_ALL);
-        }
-
-        IWrenchable.playRotateSound(level, pos);
-
-        return InteractionResult.SUCCESS;
     }
 
     private BlockPos[] getChildPositions(BlockPos pos) {

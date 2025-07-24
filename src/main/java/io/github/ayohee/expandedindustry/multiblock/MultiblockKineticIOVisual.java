@@ -31,7 +31,7 @@ public class MultiblockKineticIOVisual extends KineticBlockEntityVisual<Multiblo
     }
 
     private Direction getDir() {
-        return blockState.getValue(BlockStateProperties.HORIZONTAL_FACING);
+        return blockState.getValue(BlockStateProperties.FACING);
     }
 
     @Override

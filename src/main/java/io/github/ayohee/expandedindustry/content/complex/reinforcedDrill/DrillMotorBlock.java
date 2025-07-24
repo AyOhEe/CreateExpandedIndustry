@@ -17,7 +17,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
-import java.util.function.Supplier;
+import static io.github.ayohee.expandedindustry.multiblock.MultiblockKineticIOBlock.*;
 
 
 public class DrillMotorBlock extends WrenchableBlock {
@@ -41,15 +41,6 @@ public class DrillMotorBlock extends WrenchableBlock {
             .setValue(BlockStateProperties.EAST, true));
 
     public static final ConstSupplier<BlockState> REINFORCED_DRILL_PARENT = new ConstSupplier<>(EIBlocks.REINFORCED_DRILL_MULTIBLOCK::getDefaultState);
-
-    public static final ConstSupplier<BlockState> KIO_NORTH = new ConstSupplier<>(() -> EIBlocks.MULTIBLOCK_KINETIC_IO.getDefaultState()
-            .setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH));
-    public static final ConstSupplier<BlockState> KIO_EAST = new ConstSupplier<>(() -> EIBlocks.MULTIBLOCK_KINETIC_IO.getDefaultState()
-            .setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST));
-    public static final ConstSupplier<BlockState> KIO_SOUTH = new ConstSupplier<>(() -> EIBlocks.MULTIBLOCK_KINETIC_IO.getDefaultState()
-            .setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH));
-    public static final ConstSupplier<BlockState> KIO_WEST = new ConstSupplier<>(() -> EIBlocks.MULTIBLOCK_KINETIC_IO.getDefaultState()
-            .setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST));
 
 
     public DrillMotorBlock(Properties properties) {
