@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "createexpandedindustry:reinforced_drill_kinetic_io"
+          "name": "minecraft:air"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "createexpandedindustry:blocks/reinforced_drill_kinetic_io"
+  "random_sequence": "createexpandedindustry:blocks/multiblock_kinetic_io"
 }

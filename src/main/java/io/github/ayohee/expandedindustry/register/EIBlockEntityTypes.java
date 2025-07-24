@@ -1,19 +1,12 @@
 package io.github.ayohee.expandedindustry.register;
 
-import com.simibubi.create.AllBlocks;
-import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.decoration.palettes.AllPaletteStoneTypes;
-import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
-import com.simibubi.create.content.kinetics.base.OrientedRotatingVisual;
-import com.simibubi.create.content.kinetics.base.SingleAxisRotatingVisual;
-import com.simibubi.create.content.kinetics.turntable.TurntableBlockEntity;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import io.github.ayohee.expandedindustry.content.blockentities.HardenedStoneBlockEntity;
 import io.github.ayohee.expandedindustry.content.blockentities.HardenedStoneBlockEntity.RichnessProfile;
 import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.PressurisedFluidTankBlockEntity;
-import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.RDKBERenderer;
-import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.RDKBEVisual;
-import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.ReinforcedDrillKineticBlockEntity;
+import io.github.ayohee.expandedindustry.multiblock.MultiblockKineticIOBE;
+import io.github.ayohee.expandedindustry.multiblock.MultiblockKineticIOVisual;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.function.Supplier;
@@ -97,10 +90,10 @@ public class EIBlockEntityTypes {
 
 
 
-    public static final BlockEntityEntry<ReinforcedDrillKineticBlockEntity> REINFORCED_DRILL_KINETIC_BLOCK = REGISTRATE
-            .blockEntity("reinforced_drill_kinetic_io", ReinforcedDrillKineticBlockEntity::new)
-            .visual(() -> RDKBEVisual::new, false)
-            .validBlocks(EIBlocks.REINFORCED_DRILL_KINETIC_BLOCK)
+    public static final BlockEntityEntry<MultiblockKineticIOBE> MULTIBLOCK_KINETIC_IO = REGISTRATE
+            .blockEntity("multiblock_kinetic_io", MultiblockKineticIOBE::new)
+            .visual(() -> MultiblockKineticIOVisual::new, false)
+            .validBlocks(EIBlocks.MULTIBLOCK_KINETIC_IO)
             //.renderer(() -> RDKBERenderer::new) FIXME this should work
             .register();
 

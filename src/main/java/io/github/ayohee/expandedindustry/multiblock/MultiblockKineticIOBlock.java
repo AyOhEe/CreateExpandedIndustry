@@ -1,4 +1,4 @@
-package io.github.ayohee.expandedindustry.content.complex.reinforcedDrill;
+package io.github.ayohee.expandedindustry.multiblock;
 
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.content.kinetics.base.KineticBlock;
@@ -13,8 +13,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
-public class ReinforcedDrillKineticBlock extends KineticBlock implements IBE<ReinforcedDrillKineticBlockEntity>, IWrenchable {
-    public ReinforcedDrillKineticBlock(Properties properties) {
+public class MultiblockKineticIOBlock extends KineticMultiblockComponent implements IBE<MultiblockKineticIOBE>, IWrenchable {
+    public MultiblockKineticIOBlock(Properties properties) {
         super(properties);
         registerDefaultState(defaultBlockState()
                 .setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH));
@@ -37,12 +37,12 @@ public class ReinforcedDrillKineticBlock extends KineticBlock implements IBE<Rei
     }
 
     @Override
-    public Class<ReinforcedDrillKineticBlockEntity> getBlockEntityClass() {
-        return ReinforcedDrillKineticBlockEntity.class;
+    public Class<MultiblockKineticIOBE> getBlockEntityClass() {
+        return MultiblockKineticIOBE.class;
     }
 
     @Override
-    public BlockEntityType<? extends ReinforcedDrillKineticBlockEntity> getBlockEntityType() {
-        return EIBlockEntityTypes.REINFORCED_DRILL_KINETIC_BLOCK.get();
+    public BlockEntityType<? extends MultiblockKineticIOBE> getBlockEntityType() {
+        return EIBlockEntityTypes.MULTIBLOCK_KINETIC_IO.get();
     }
 }

@@ -21,6 +21,8 @@ import io.github.ayohee.expandedindustry.CreateExpandedIndustry;
 import io.github.ayohee.expandedindustry.content.blocks.HardenedStoneBlock;
 import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.*;
 import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.*;
+import io.github.ayohee.expandedindustry.multiblock.MultiblockGhostBlock;
+import io.github.ayohee.expandedindustry.multiblock.MultiblockKineticIOBlock;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
@@ -59,12 +61,17 @@ public class EIBlocks {
             .register();
 
 
-    public static final BlockEntry<ReinforcedDrillKineticBlock> REINFORCED_DRILL_KINETIC_BLOCK = REGISTRATE
-            .block("reinforced_drill_kinetic_io", ReinforcedDrillKineticBlock::new)
-            .initialProperties(SharedProperties::wooden)
-            .properties(p -> p.noOcclusion())
+    public static final BlockEntry<MultiblockGhostBlock> MULTIBLOCK_GHOST = REGISTRATE
+            .block("multiblock_ghost", MultiblockGhostBlock::new)
+            .initialProperties(() -> Blocks.GLASS)
+            .properties(p -> p.sound(SoundType.METAL))
+            .register();
+
+    public static final BlockEntry<MultiblockKineticIOBlock> MULTIBLOCK_KINETIC_IO = REGISTRATE
+            .block("multiblock_kinetic_io", MultiblockKineticIOBlock::new)
+            .initialProperties(() -> Blocks.GLASS)
+            .properties(p -> p.sound(SoundType.METAL))
             .transform(EIStress.setImpact(4.0))
-            .simpleItem()
             .register();
 
 

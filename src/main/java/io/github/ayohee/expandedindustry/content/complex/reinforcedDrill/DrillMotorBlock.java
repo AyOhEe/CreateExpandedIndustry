@@ -4,6 +4,7 @@ import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
 import io.github.ayohee.expandedindustry.content.blocks.WrenchableBlock;
 import io.github.ayohee.expandedindustry.register.EIBlocks;
+import io.github.ayohee.expandedindustry.util.ConstSupplier;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -20,29 +21,36 @@ import java.util.function.Supplier;
 
 
 public class DrillMotorBlock extends WrenchableBlock {
-    //FIXME these need to be deferred, hence the supplier. I'd rather only evaluate them once, but when we *know* it's safe to do so.
-    //      perhaps it can be stored once evaluated and then *that* is passed off. Possible drop-in replacement for supplier as "ConstSupplier"?
-    public static final Supplier<BlockState> NS_BRASS_ENCASED_SHAFT = () -> AllBlocks.BRASS_ENCASED_SHAFT.getDefaultState()
-            .setValue(RotatedPillarKineticBlock.AXIS, Direction.Axis.Z);
-    public static final Supplier<BlockState> EW_BRASS_ENCASED_SHAFT = () -> AllBlocks.BRASS_ENCASED_SHAFT.getDefaultState()
-            .setValue(RotatedPillarKineticBlock.AXIS, Direction.Axis.X);
-    public static final Supplier<BlockState> NS_COPPER_ENCASED_PIPE = () -> AllBlocks.ENCASED_FLUID_PIPE.getDefaultState()
+    public static final ConstSupplier<BlockState> NS_BRASS_ENCASED_SHAFT = new ConstSupplier<>(() -> AllBlocks.BRASS_ENCASED_SHAFT.getDefaultState()
+            .setValue(RotatedPillarKineticBlock.AXIS, Direction.Axis.Z));
+    public static final ConstSupplier<BlockState> EW_BRASS_ENCASED_SHAFT = new ConstSupplier<>(() -> AllBlocks.BRASS_ENCASED_SHAFT.getDefaultState()
+            .setValue(RotatedPillarKineticBlock.AXIS, Direction.Axis.X));
+    public static final ConstSupplier<BlockState> NS_COPPER_ENCASED_PIPE = new ConstSupplier<>(() -> AllBlocks.ENCASED_FLUID_PIPE.getDefaultState()
             .setValue(BlockStateProperties.NORTH, true)
             .setValue(BlockStateProperties.SOUTH, true)
             .setValue(BlockStateProperties.UP, false)
             .setValue(BlockStateProperties.DOWN, false)
             .setValue(BlockStateProperties.WEST, false)
-            .setValue(BlockStateProperties.EAST, false);
-    public static final Supplier<BlockState> EW_COPPER_ENCASED_PIPE = () -> AllBlocks.ENCASED_FLUID_PIPE.getDefaultState()
+            .setValue(BlockStateProperties.EAST, false));
+    public static final ConstSupplier<BlockState> EW_COPPER_ENCASED_PIPE = new ConstSupplier<>(() -> AllBlocks.ENCASED_FLUID_PIPE.getDefaultState()
             .setValue(BlockStateProperties.NORTH, false)
             .setValue(BlockStateProperties.SOUTH, false)
             .setValue(BlockStateProperties.UP, false)
             .setValue(BlockStateProperties.DOWN, false)
             .setValue(BlockStateProperties.WEST, true)
-            .setValue(BlockStateProperties.EAST, true);
+            .setValue(BlockStateProperties.EAST, true));
 
-    public static final Supplier<BlockState> REINFORCED_DRILL_PARENT = () -> EIBlocks.REINFORCED_DRILL_MULTIBLOCK.getDefaultState()
-            .setValue(ReinforcedDrillMultiblock.MULTIBLOCK_CHILD, false);
+    public static final ConstSupplier<BlockState> REINFORCED_DRILL_PARENT = new ConstSupplier<>(EIBlocks.REINFORCED_DRILL_MULTIBLOCK::getDefaultState);
+
+    public static final ConstSupplier<BlockState> KIO_NORTH = new ConstSupplier<>(() -> EIBlocks.MULTIBLOCK_KINETIC_IO.getDefaultState()
+            .setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH));
+    public static final ConstSupplier<BlockState> KIO_EAST = new ConstSupplier<>(() -> EIBlocks.MULTIBLOCK_KINETIC_IO.getDefaultState()
+            .setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST));
+    public static final ConstSupplier<BlockState> KIO_SOUTH = new ConstSupplier<>(() -> EIBlocks.MULTIBLOCK_KINETIC_IO.getDefaultState()
+            .setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH));
+    public static final ConstSupplier<BlockState> KIO_WEST = new ConstSupplier<>(() -> EIBlocks.MULTIBLOCK_KINETIC_IO.getDefaultState()
+            .setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST));
+
 
     public DrillMotorBlock(Properties properties) {
         super(properties);
@@ -85,8 +93,7 @@ public class DrillMotorBlock extends WrenchableBlock {
         }
 
         Direction fluidPipeDir = locateFluidPipe(level, pos);
-        BlockState childBS = EIBlocks.REINFORCED_DRILL_MULTIBLOCK.getDefaultState()
-                .setValue(BlockStateProperties.HORIZONTAL_FACING, fluidPipeDir);
+        BlockState childBS = EIBlocks.MULTIBLOCK_GHOST.getDefaultState();
 
 
         BlockPos cornerPos = pos.below().north().west();
@@ -108,7 +115,22 @@ public class DrillMotorBlock extends WrenchableBlock {
         BlockState parentBS = REINFORCED_DRILL_PARENT.get().setValue(BlockStateProperties.HORIZONTAL_FACING, fluidPipeDir);
         level.setBlock(pos, parentBS, UPDATE_ALL);
 
+        placeShaftPorts(pos, level, fluidPipeDir);
+
         return InteractionResult.SUCCESS;
+    }
+
+    private void placeShaftPorts(BlockPos pos, Level level, Direction fluidPipeDir) {
+        switch (fluidPipeDir) {
+            case NORTH, SOUTH -> {
+                level.setBlock(pos.west(), KIO_WEST.get(), UPDATE_ALL);
+                level.setBlock(pos.east(), KIO_EAST.get(), UPDATE_ALL);
+            }
+            case WEST, EAST  -> {
+                level.setBlock(pos.north(), KIO_NORTH.get(), UPDATE_ALL);
+                level.setBlock(pos.south(), KIO_SOUTH.get(), UPDATE_ALL);
+            }
+        }
     }
 
     private Direction locateFluidPipe(Level level, BlockPos pos) {

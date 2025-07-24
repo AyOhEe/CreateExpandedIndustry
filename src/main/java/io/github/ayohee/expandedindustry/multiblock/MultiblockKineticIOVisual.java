@@ -1,4 +1,4 @@
-package io.github.ayohee.expandedindustry.content.complex.reinforcedDrill;
+package io.github.ayohee.expandedindustry.multiblock;
 
 import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityVisual;
@@ -13,10 +13,10 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 
-public class RDKBEVisual extends KineticBlockEntityVisual<ReinforcedDrillKineticBlockEntity> {
+public class MultiblockKineticIOVisual extends KineticBlockEntityVisual<MultiblockKineticIOBE> {
     private RotatingInstance shaft;
 
-    public RDKBEVisual(VisualizationContext context, ReinforcedDrillKineticBlockEntity blockEntity, float partialTick) {
+    public MultiblockKineticIOVisual(VisualizationContext context, MultiblockKineticIOBE blockEntity, float partialTick) {
         super(context, blockEntity, partialTick);
 
         float speed = blockEntity.getSpeed();

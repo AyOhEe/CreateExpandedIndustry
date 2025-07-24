@@ -1,23 +1,20 @@
 {
   "variants": {
-    "multiblock_child=false,facing=north": {
-      "model": "createexpandedindustry:block/reinforced_drill/drill_visible",
+    "facing=north": {
+      "model": "createexpandedindustry:block/reinforced_drill/drill",
       "y": 0
     },
-    "multiblock_child=false,facing=east": {
-      "model": "createexpandedindustry:block/reinforced_drill/drill_visible",
+    "facing=east": {
+      "model": "createexpandedindustry:block/reinforced_drill/drill",
       "y": 90
     },
-    "multiblock_child=false,facing=south": {
-      "model": "createexpandedindustry:block/reinforced_drill/drill_visible",
+    "facing=south": {
+      "model": "createexpandedindustry:block/reinforced_drill/drill",
       "y": 180
     },
-    "multiblock_child=false,facing=west": {
-      "model": "createexpandedindustry:block/reinforced_drill/drill_visible",
+    "facing=west": {
+      "model": "createexpandedindustry:block/reinforced_drill/drill",
       "y": 270
-    },
-    "multiblock_child=true": {
-      "model": "createexpandedindustry:block/reinforced_drill/drill_invisible"
     }
   }
 }

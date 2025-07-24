@@ -1,4 +1,4 @@
-package io.github.ayohee.expandedindustry.content.complex.reinforcedDrill;
+package io.github.ayohee.expandedindustry.multiblock;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.simibubi.create.AllPartialModels;
@@ -9,21 +9,20 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
-public class RDKBERenderer extends KineticBlockEntityRenderer<ReinforcedDrillKineticBlockEntity> {
+public class MultiblockKineticIORenderer extends KineticBlockEntityRenderer<MultiblockKineticIOBE> {
 
-    public RDKBERenderer(BlockEntityRendererProvider.Context dispatcher) {
+    public MultiblockKineticIORenderer(BlockEntityRendererProvider.Context dispatcher) {
         super(dispatcher);
     }
 
     @Override
-    protected SuperByteBuffer getRotatedModel(ReinforcedDrillKineticBlockEntity te, BlockState state) {
+    protected SuperByteBuffer getRotatedModel(MultiblockKineticIOBE te, BlockState state) {
         return CachedBuffers.partialFacing(AllPartialModels.SHAFT_HALF, state);
     }
 
     @Override
-    protected void renderSafe(ReinforcedDrillKineticBlockEntity be, float partialTicks, PoseStack ms, MultiBufferSource buffer,
+    protected void renderSafe(MultiblockKineticIOBE be, float partialTicks, PoseStack ms, MultiBufferSource buffer,
                               int light, int overlay) {
         BlockState state = getRenderedBlockState(be);
         RenderType type = getRenderType(be, state);
