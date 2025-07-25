@@ -4,6 +4,8 @@ import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import io.github.ayohee.expandedindustry.multiblock.MultiblockController;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -19,6 +21,11 @@ public class ReinforcedDrillMultiblock extends MultiblockController implements I
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         pBuilder.add(BlockStateProperties.HORIZONTAL_FACING);
+    }
+
+    @Override
+    public InteractionResult onWrenched(BlockState state, UseOnContext context) {
+        return InteractionResult.PASS;
     }
 
     private BlockPos[] getChildPositions(BlockPos pos) {

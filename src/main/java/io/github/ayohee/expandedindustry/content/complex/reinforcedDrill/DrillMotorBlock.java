@@ -3,6 +3,8 @@ package io.github.ayohee.expandedindustry.content.complex.reinforcedDrill;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
 import io.github.ayohee.expandedindustry.content.blocks.WrenchableBlock;
+import io.github.ayohee.expandedindustry.multiblock.MultiblockKineticIOBE;
+import io.github.ayohee.expandedindustry.register.EIBlockEntityTypes;
 import io.github.ayohee.expandedindustry.register.EIBlocks;
 import io.github.ayohee.expandedindustry.util.ConstSupplier;
 import net.minecraft.core.BlockPos;
@@ -16,6 +18,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+
+import java.util.Optional;
 
 import static io.github.ayohee.expandedindustry.multiblock.MultiblockKineticIOBlock.*;
 
@@ -116,10 +120,28 @@ public class DrillMotorBlock extends WrenchableBlock {
             case NORTH, SOUTH -> {
                 level.setBlock(pos.west(), KIO_WEST.get(), UPDATE_ALL);
                 level.setBlock(pos.east(), KIO_EAST.get(), UPDATE_ALL);
+
+                Optional<MultiblockKineticIOBE> west = level.getBlockEntity(pos.west(), EIBlockEntityTypes.MULTIBLOCK_KINETIC_IO.get());
+                Optional<MultiblockKineticIOBE> east = level.getBlockEntity(pos.east(), EIBlockEntityTypes.MULTIBLOCK_KINETIC_IO.get());
+                if (west.isEmpty() || east.isEmpty()) {
+                    throw new Error();
+                }
+
+                west.get().poolWith(east.get());
+                east.get().poolWith(west.get());
             }
             case WEST, EAST  -> {
                 level.setBlock(pos.north(), KIO_NORTH.get(), UPDATE_ALL);
                 level.setBlock(pos.south(), KIO_SOUTH.get(), UPDATE_ALL);
+
+                Optional<MultiblockKineticIOBE> north = level.getBlockEntity(pos.north(), EIBlockEntityTypes.MULTIBLOCK_KINETIC_IO.get());
+                Optional<MultiblockKineticIOBE> south = level.getBlockEntity(pos.south(), EIBlockEntityTypes.MULTIBLOCK_KINETIC_IO.get());
+                if (north.isEmpty() || south.isEmpty()) {
+                    throw new Error();
+                }
+
+                north.get().poolWith(south.get());
+                south.get().poolWith(north.get());
             }
         }
     }
