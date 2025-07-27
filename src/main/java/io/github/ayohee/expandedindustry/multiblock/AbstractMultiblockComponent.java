@@ -1,11 +1,13 @@
 package io.github.ayohee.expandedindustry.multiblock;
 
+import com.simibubi.create.foundation.block.IBE;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
-public abstract class AbstractMultiblockComponent extends Block implements IMultiblockComponent{
+public abstract class AbstractMultiblockComponent <T extends BlockEntity & IMultiblockComponentBE> extends Block implements IBE<T> {
     public AbstractMultiblockComponent(Properties properties) {
         super(properties);
     }

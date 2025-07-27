@@ -3,6 +3,7 @@ package io.github.ayohee.expandedindustry.multiblock;
 import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import io.github.ayohee.expandedindustry.register.EIBlockEntityTypes;
+import io.github.ayohee.expandedindustry.util.NBTHelperEI;
 import net.createmod.catnip.nbt.NBTHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -16,7 +17,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-public class MultiblockKineticIOBE extends KineticBlockEntity {
+public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultiblockComponentBE {
     protected List<BlockPos> pool = new LinkedList<>();
 
     public MultiblockKineticIOBE(BlockEntityType<?> typeIn, BlockPos pos, BlockState state) {
@@ -69,19 +70,9 @@ public class MultiblockKineticIOBE extends KineticBlockEntity {
 
     @Override
     protected void write(CompoundTag compound, HolderLookup.Provider registries, boolean clientPacket) {
-        compound.put("linked_pool", NBTHelper.writeCompoundList(pool, MultiblockKineticIOBE::posAsCompound));
+        compound.put("linked_pool", NBTHelper.writeCompoundList(pool, NBTHelperEI::posAsCompound));
 
         super.write(compound, registries, clientPacket);
-    }
-
-    //FIXME are we sure this isn't already implemented somewhere else?
-    private static CompoundTag posAsCompound(BlockPos blockPos) {
-        CompoundTag tag = new CompoundTag();
-        tag.putInt("x", blockPos.getX());
-        tag.putInt("y", blockPos.getY());
-        tag.putInt("z", blockPos.getZ());
-
-        return tag;
     }
 
     @Override

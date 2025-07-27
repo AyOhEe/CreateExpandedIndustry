@@ -1,17 +1,20 @@
 package io.github.ayohee.expandedindustry.content.complex.reinforcedDrill;
 
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
+import com.simibubi.create.foundation.block.IBE;
 import io.github.ayohee.expandedindustry.multiblock.MultiblockController;
+import io.github.ayohee.expandedindustry.register.EIBlockEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
-public class ReinforcedDrillMultiblock extends MultiblockController implements IWrenchable {
+public class ReinforcedDrillMultiblock extends MultiblockController<ReinforcedDrillMultiblockBE> implements IWrenchable {
     public ReinforcedDrillMultiblock(Properties properties) {
         super(properties);
         registerDefaultState(defaultBlockState()
@@ -49,5 +52,15 @@ public class ReinforcedDrillMultiblock extends MultiblockController implements I
         }
 
         return positions;
+    }
+
+    @Override
+    public Class<ReinforcedDrillMultiblockBE> getBlockEntityClass() {
+        return ReinforcedDrillMultiblockBE.class;
+    }
+
+    @Override
+    public BlockEntityType<? extends ReinforcedDrillMultiblockBE> getBlockEntityType() {
+        return EIBlockEntityTypes.REINFORCED_DRILL_MULTIBLOCK.get();
     }
 }

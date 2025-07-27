@@ -1,11 +1,13 @@
 package io.github.ayohee.expandedindustry.multiblock;
 
+import io.github.ayohee.expandedindustry.register.EIBlockEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class MultiblockGhostBlock extends AbstractMultiblockComponent {
+public class MultiblockGhostBlock extends AbstractMultiblockComponent<MultiblockGhostBE> {
     public MultiblockGhostBlock(Properties properties) {
         super(properties);
     }
@@ -23,5 +25,15 @@ public class MultiblockGhostBlock extends AbstractMultiblockComponent {
     @Override
     public boolean propagatesSkylightDown(BlockState state, BlockGetter world, BlockPos pos) {
         return true;
+    }
+
+    @Override
+    public Class<MultiblockGhostBE> getBlockEntityClass() {
+        return MultiblockGhostBE.class;
+    }
+
+    @Override
+    public BlockEntityType<? extends MultiblockGhostBE> getBlockEntityType() {
+        return EIBlockEntityTypes.MULTIBLOCK_GHOST.get();
     }
 }

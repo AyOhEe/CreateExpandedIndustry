@@ -1,11 +1,13 @@
 package io.github.ayohee.expandedindustry.multiblock;
 
 import com.simibubi.create.content.kinetics.base.KineticBlock;
+import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
+import com.simibubi.create.foundation.block.IBE;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.state.BlockState;
 
-public abstract class KineticMultiblockComponent extends KineticBlock implements IMultiblockComponent {
+public abstract class KineticMultiblockComponent <T extends KineticBlockEntity & IMultiblockComponentBE> extends KineticBlock implements IBE<T> {
     public KineticMultiblockComponent(Properties properties) {
         super(properties);
     }

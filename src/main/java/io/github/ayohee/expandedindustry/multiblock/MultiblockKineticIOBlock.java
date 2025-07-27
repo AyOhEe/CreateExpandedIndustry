@@ -15,7 +15,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
-public class MultiblockKineticIOBlock extends KineticMultiblockComponent implements IBE<MultiblockKineticIOBE> {
+public class MultiblockKineticIOBlock extends KineticMultiblockComponent<MultiblockKineticIOBE> {
     public static final ConstSupplier<BlockState> KIO_NORTH = new ConstSupplier<>(() -> EIBlocks.MULTIBLOCK_KINETIC_IO.getDefaultState()
             .setValue(BlockStateProperties.FACING, Direction.NORTH));
     public static final ConstSupplier<BlockState> KIO_EAST = new ConstSupplier<>(() -> EIBlocks.MULTIBLOCK_KINETIC_IO.getDefaultState()

@@ -5,6 +5,9 @@ import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import io.github.ayohee.expandedindustry.content.blockentities.HardenedStoneBlockEntity;
 import io.github.ayohee.expandedindustry.content.blockentities.HardenedStoneBlockEntity.RichnessProfile;
 import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.PressurisedFluidTankBlockEntity;
+import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.ReinforcedDrillMultiblockBE;
+import io.github.ayohee.expandedindustry.multiblock.MultiblockGhostBE;
+import io.github.ayohee.expandedindustry.multiblock.MultiblockGhostBlock;
 import io.github.ayohee.expandedindustry.multiblock.MultiblockKineticIOBE;
 import io.github.ayohee.expandedindustry.multiblock.MultiblockKineticIOVisual;
 import net.minecraft.world.item.ItemStack;
@@ -90,6 +93,11 @@ public class EIBlockEntityTypes {
 
 
 
+    public static final BlockEntityEntry<MultiblockGhostBE> MULTIBLOCK_GHOST = REGISTRATE
+            .blockEntity("multiblock_ghost", MultiblockGhostBE::new)
+            .validBlocks(EIBlocks.MULTIBLOCK_GHOST)
+            .register();
+
     public static final BlockEntityEntry<MultiblockKineticIOBE> MULTIBLOCK_KINETIC_IO = REGISTRATE
             .blockEntity("multiblock_kinetic_io", MultiblockKineticIOBE::new)
             .visual(() -> MultiblockKineticIOVisual::new, false)
@@ -97,6 +105,10 @@ public class EIBlockEntityTypes {
             //.renderer(() -> RDKBERenderer::new) FIXME this should work
             .register();
 
+    public static final BlockEntityEntry<ReinforcedDrillMultiblockBE> REINFORCED_DRILL_MULTIBLOCK = REGISTRATE
+            .blockEntity("reinforced_drill_multiblock", ReinforcedDrillMultiblockBE::new)
+            .validBlocks(EIBlocks.REINFORCED_DRILL_MULTIBLOCK)
+            .register();
 
     public static void register() { }
 }
