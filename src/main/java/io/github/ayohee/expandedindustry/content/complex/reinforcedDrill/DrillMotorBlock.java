@@ -3,6 +3,8 @@ package io.github.ayohee.expandedindustry.content.complex.reinforcedDrill;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
 import io.github.ayohee.expandedindustry.content.blocks.WrenchableBlock;
+import io.github.ayohee.expandedindustry.multiblock.IMultiblockComponentBE;
+import io.github.ayohee.expandedindustry.multiblock.MultiblockControllerBE;
 import io.github.ayohee.expandedindustry.multiblock.MultiblockKineticIOBE;
 import io.github.ayohee.expandedindustry.register.EIBlockEntityTypes;
 import io.github.ayohee.expandedindustry.register.EIBlocks;
@@ -16,6 +18,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
@@ -91,6 +94,13 @@ public class DrillMotorBlock extends WrenchableBlock {
         BlockState childBS = EIBlocks.MULTIBLOCK_GHOST.getDefaultState();
 
 
+        BlockState parentBS = REINFORCED_DRILL_PARENT.get().setValue(BlockStateProperties.HORIZONTAL_FACING, fluidPipeDir);
+        level.setBlock(pos, parentBS, UPDATE_ALL);
+        Optional<ReinforcedDrillMultiblockBE> controller = level.getBlockEntity(pos, EIBlockEntityTypes.REINFORCED_DRILL_MULTIBLOCK.get());
+        if (controller.isEmpty()) {
+            return InteractionResult.FAIL;
+        }
+
         BlockPos cornerPos = pos.below().north().west();
         int xCorner = cornerPos.getX();
         int yCorner = cornerPos.getY();
@@ -98,24 +108,30 @@ public class DrillMotorBlock extends WrenchableBlock {
         for (int x = xCorner; x <= xCorner + 2; ++x) {
             for (int y = yCorner; y <= yCorner + 1; ++y) {
                 for (int z = zCorner; z <= zCorner + 2; ++z) {
+                    BlockPos currentPos = new BlockPos(x, y, z);
+                    if (currentPos.equals(pos))
+                        continue;
+
                     level.setBlock(
-                            new BlockPos(x, y, z),
+                            currentPos,
                             childBS,
                             UPDATE_ALL
                     );
+                    BlockEntity currentBE = level.getBlockEntity(currentPos);
+                    if (!(currentBE instanceof IMultiblockComponentBE))
+                        continue;
+
+                    controller.get().addComponent((IMultiblockComponentBE) currentBE);
                 }
             }
         }
 
-        BlockState parentBS = REINFORCED_DRILL_PARENT.get().setValue(BlockStateProperties.HORIZONTAL_FACING, fluidPipeDir);
-        level.setBlock(pos, parentBS, UPDATE_ALL);
-
-        placeShaftPorts(pos, level, fluidPipeDir);
+        placeShaftPorts(pos, level, controller.get(), fluidPipeDir);
 
         return InteractionResult.SUCCESS;
     }
 
-    private void placeShaftPorts(BlockPos pos, Level level, Direction fluidPipeDir) {
+    private void placeShaftPorts(BlockPos pos, Level level, ReinforcedDrillMultiblockBE controller, Direction fluidPipeDir) {
         switch (fluidPipeDir) {
             case NORTH, SOUTH -> {
                 level.setBlock(pos.west(), KIO_WEST.get(), UPDATE_ALL);
@@ -129,6 +145,9 @@ public class DrillMotorBlock extends WrenchableBlock {
 
                 west.get().poolWith(east.get());
                 east.get().poolWith(west.get());
+
+                controller.addComponent(west.get());
+                controller.addComponent(east.get());
             }
             case WEST, EAST  -> {
                 level.setBlock(pos.north(), KIO_NORTH.get(), UPDATE_ALL);
@@ -142,6 +161,9 @@ public class DrillMotorBlock extends WrenchableBlock {
 
                 north.get().poolWith(south.get());
                 south.get().poolWith(north.get());
+
+                controller.addComponent(north.get());
+                controller.addComponent(south.get());
             }
         }
     }

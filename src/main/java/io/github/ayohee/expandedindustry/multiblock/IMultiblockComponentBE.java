@@ -1,5 +1,9 @@
 package io.github.ayohee.expandedindustry.multiblock;
 
-public interface IMultiblockComponentBE {
+import net.minecraft.world.level.block.entity.BlockEntity;
 
+public interface IMultiblockComponentBE {
+    BlockEntity getInstance();
+
+    void setControllerReference(MultiblockControllerBE mbc);
 }

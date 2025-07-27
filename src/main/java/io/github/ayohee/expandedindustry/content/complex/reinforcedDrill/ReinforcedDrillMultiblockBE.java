@@ -36,6 +36,8 @@ public class ReinforcedDrillMultiblockBE extends MultiblockControllerBE {
                         .style(ChatFormatting.DARK_GRAY))
                 .forGoggles(tooltip, 1);
 
+        super.addToGoggleTooltip(tooltip, isPlayerSneaking);
+
         return true;
     }
 }

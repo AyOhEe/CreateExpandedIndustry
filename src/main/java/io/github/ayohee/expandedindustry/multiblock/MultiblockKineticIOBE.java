@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultiblockComponentBE {
+    MultiblockControllerBE controller = null;
     protected List<BlockPos> pool = new LinkedList<>();
 
     public MultiblockKineticIOBE(BlockEntityType<?> typeIn, BlockPos pos, BlockState state) {
@@ -80,5 +81,15 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
         pool = NBTHelper.readCompoundList(compound.getList("linked_pool", Tag.TAG_COMPOUND), BlockEntity::getPosFromTag);
 
         super.read(compound, registries, clientPacket);
+    }
+
+    @Override
+    public BlockEntity getInstance() {
+        return this;
+    }
+
+    @Override
+    public void setControllerReference(MultiblockControllerBE mbc) {
+        controller = mbc;
     }
 }

@@ -1,7 +1,6 @@
 {
 	"format_version": "1.9.0",
 	"credit": "Made with Blockbench",
-	"parent": "block",
 	"textures": {
 		"0": "createexpandedindustry:block/drill_bit",
 		"particle": "createexpandedindustry:block/drill_bit"
