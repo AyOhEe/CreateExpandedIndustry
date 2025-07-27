@@ -1,6 +1,7 @@
 package io.github.ayohee.expandedindustry.multiblock;
 
 import com.simibubi.create.api.equipment.goggles.IHaveGoggleInformation;
+import com.simibubi.create.api.equipment.goggles.IHaveHoveringInformation;
 import io.github.ayohee.expandedindustry.util.NBTHelperEI;
 import net.createmod.catnip.nbt.NBTHelper;
 import net.minecraft.core.BlockPos;
@@ -15,10 +16,11 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 
 import java.util.*;
 
-public class MultiblockControllerBE extends BlockEntity implements IHaveGoggleInformation {
+public class MultiblockControllerBE extends BlockEntity implements IHaveGoggleInformation, IHaveHoveringInformation {
     List<BlockPos> _componentPositions = null;
     boolean initialised = false;
 
@@ -38,10 +40,12 @@ public class MultiblockControllerBE extends BlockEntity implements IHaveGoggleIn
         }
     }
 
+
     public void addComponent(IMultiblockComponentBE be) {
         components.put(be.getInstance().getBlockPos(), be);
-        be.setControllerReference(this);
+        be.setController(this);
     }
+
 
     protected void findComponents() {
         if (_componentPositions == null) {
@@ -75,13 +79,6 @@ public class MultiblockControllerBE extends BlockEntity implements IHaveGoggleIn
         _componentPositions = NBTHelper.readCompoundList(tag.getList("child_components", Tag.TAG_COMPOUND), BlockEntity::getPosFromTag);
     }
 
-    @Override
-    public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
-        findComponents();
-        tooltip.add(Component.literal("    Component count: " + components.size()));
-
-        return true;
-    }
 
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
@@ -93,5 +90,26 @@ public class MultiblockControllerBE extends BlockEntity implements IHaveGoggleIn
     @Override
     public Packet<ClientGamePacketListener> getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+
+
+    @Override
+    public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
+        findComponents();
+
+        return true;
+    }
+
+    @Override
+    public boolean addToTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
+        findComponents();
+
+        return true;
+    }
+
+    @Override
+    public boolean containedFluidTooltip(List<Component> tooltip, boolean isPlayerSneaking, IFluidHandler handler) {
+        return IHaveGoggleInformation.super.containedFluidTooltip(tooltip, isPlayerSneaking, handler);
     }
 }

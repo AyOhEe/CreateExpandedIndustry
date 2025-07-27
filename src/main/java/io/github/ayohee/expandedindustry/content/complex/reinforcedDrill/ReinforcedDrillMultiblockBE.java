@@ -19,6 +19,8 @@ public class ReinforcedDrillMultiblockBE extends MultiblockControllerBE {
 
     @Override
     public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
+        super.addToGoggleTooltip(tooltip, isPlayerSneaking);
+
         CreateLang.translate("gui.goggles.kinetic_stats")
                 .forGoggles(tooltip);
 
@@ -36,7 +38,6 @@ public class ReinforcedDrillMultiblockBE extends MultiblockControllerBE {
                         .style(ChatFormatting.DARK_GRAY))
                 .forGoggles(tooltip, 1);
 
-        super.addToGoggleTooltip(tooltip, isPlayerSneaking);
 
         return true;
     }

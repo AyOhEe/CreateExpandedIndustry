@@ -18,7 +18,12 @@ public class MultiblockGhostBE extends BlockEntity implements IMultiblockCompone
     }
 
     @Override
-    public void setControllerReference(MultiblockControllerBE mbc) {
+    public void setController(MultiblockControllerBE mbc) {
         controller = mbc;
+    }
+
+    @Override
+    public MultiblockControllerBE getController() {
+        return controller;
     }
 }

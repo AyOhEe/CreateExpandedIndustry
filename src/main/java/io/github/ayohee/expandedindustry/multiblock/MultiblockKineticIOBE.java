@@ -9,9 +9,11 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -88,8 +90,31 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
         return this;
     }
 
+
     @Override
-    public void setControllerReference(MultiblockControllerBE mbc) {
+    public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
+        return IMultiblockComponentBE.super.addToGoggleTooltip(tooltip, isPlayerSneaking);
+    }
+
+    @Override
+    public boolean addToTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
+        return IMultiblockComponentBE.super.addToTooltip(tooltip, isPlayerSneaking);
+    }
+
+    @Override
+    public boolean containedFluidTooltip(List<Component> tooltip, boolean isPlayerSneaking,
+                                         IFluidHandler handler) {
+        return IMultiblockComponentBE.super.containedFluidTooltip(tooltip, isPlayerSneaking, handler);
+    }
+
+
+    @Override
+    public void setController(MultiblockControllerBE mbc) {
         controller = mbc;
+    }
+
+    @Override
+    public MultiblockControllerBE getController() {
+        return controller;
     }
 }
