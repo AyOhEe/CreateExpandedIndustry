@@ -2,6 +2,7 @@ package io.github.ayohee.expandedindustry.multiblock;
 
 import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
+import com.simibubi.create.infrastructure.config.AllConfigs;
 import io.github.ayohee.expandedindustry.register.EIBlockEntityTypes;
 import io.github.ayohee.expandedindustry.util.NBTHelperEI;
 import net.createmod.catnip.nbt.NBTHelper;
@@ -151,10 +152,25 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
         return IMultiblockComponentBE.super.containedFluidTooltip(tooltip, isPlayerSneaking, handler);
     }
 
+    @Override
+    public int multiblockTooltipPriority(boolean isPlayerSneaking) {
+        boolean notFastEnough = !isSpeedRequirementFulfilled() && getSpeed() != 0;
+        boolean overstressTooltip = overStressed && AllConfigs.client().enableOverstressedTooltip.get();
+        boolean isConsumingStress = (lastStressApplied == 0) && (stressImpact == 0);
+
+        return ((notFastEnough || overstressTooltip) && isConsumingStress) ? 0 : -1;
+    }
+
+    @Override
+    public List<Component> multiblockTooltip(boolean isPlayerSneaking) {
+        List<Component> tooltip = new LinkedList<>();
+        super.addToTooltip(tooltip, isPlayerSneaking);
+        return tooltip;
+    }
 
     @Override
     public int multiblockGoggleTooltipPriority(boolean isPlayerSneaking) {
-        return stressImpact == 0 ? -1 : 1;
+        return stressImpact == 0 ? -1 : 10;
     }
 
     @Override
