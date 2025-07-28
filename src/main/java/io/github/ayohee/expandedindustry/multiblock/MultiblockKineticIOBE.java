@@ -3,7 +3,6 @@ package io.github.ayohee.expandedindustry.multiblock;
 import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import io.github.ayohee.expandedindustry.register.EIBlockEntityTypes;
-import io.github.ayohee.expandedindustry.util.ITickingBlockEntity;
 import io.github.ayohee.expandedindustry.util.NBTHelperEI;
 import net.createmod.catnip.nbt.NBTHelper;
 import net.minecraft.core.BlockPos;
@@ -11,9 +10,6 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -29,6 +25,8 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
     protected List<BlockPos> pool = new LinkedList<>();
     BlockPos controllerPos = null;
     boolean initialised = false;
+
+    float stressImpact = 0;
 
     public MultiblockKineticIOBE(BlockEntityType<?> typeIn, BlockPos pos, BlockState state) {
         super(typeIn, pos, state);
@@ -92,9 +90,31 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
 
 
     @Override
+    public float calculateStressApplied() {
+        lastStressApplied = stressImpact;
+        return stressImpact;
+    }
+
+    public void setStress(float stress) {
+        stressImpact = stress;
+        if(lastStressApplied != stress && hasNetwork()) {
+            getOrCreateNetwork().updateStressFor(this, calculateStressApplied());
+            networkDirty = true;
+            notifyUpdate();
+        }
+    }
+
+    public float getRotationSpeed() {
+        if(overStressed || lastStressApplied != stressImpact)return 0;
+        return Math.abs(speed);
+    }
+
+
+    @Override
     protected void write(CompoundTag compound, HolderLookup.Provider registries, boolean clientPacket) {
         compound.put("controller_pos", NBTHelperEI.posAsCompound(controllerPos));
         compound.put("linked_pool", NBTHelper.writeCompoundList(pool, NBTHelperEI::posAsCompound));
+        compound.putFloat("configured_stress_impact", stressImpact);
 
         super.write(compound, registries, clientPacket);
     }
@@ -105,6 +125,8 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
         controllerPos = getPosFromTag(compound.getCompound("controller_pos"));
 
         super.read(compound, registries, clientPacket);
+
+        setStress(compound.getFloat("configured_stress_impact"));
     }
 
     @Override
@@ -127,6 +149,19 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
     public boolean containedFluidTooltip(List<Component> tooltip, boolean isPlayerSneaking,
                                          IFluidHandler handler) {
         return IMultiblockComponentBE.super.containedFluidTooltip(tooltip, isPlayerSneaking, handler);
+    }
+
+
+    @Override
+    public int multiblockGoggleTooltipPriority(boolean isPlayerSneaking) {
+        return stressImpact == 0 ? -1 : 1;
+    }
+
+    @Override
+    public List<Component> multiblockGoggleTooltip(boolean isPlayerSneaking) {
+        List<Component> tooltip = new LinkedList<>();
+        super.addToGoggleTooltip(tooltip, isPlayerSneaking);
+        return tooltip;
     }
 
 

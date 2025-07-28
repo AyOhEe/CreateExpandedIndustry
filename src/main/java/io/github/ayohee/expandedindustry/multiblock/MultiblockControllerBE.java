@@ -121,6 +121,11 @@ public class MultiblockControllerBE extends BlockEntity implements ITickingBlock
 
         for (Pair<Integer, List<Component>> tooltipPair : componentTooltips) {
             tooltip.addAll(tooltipPair.getSecond());
+            tooltip.addLast(Component.literal(""));
+        }
+        // The last line will always be empty, so remove it
+        if (!tooltip.isEmpty()) {
+            tooltip.removeLast();
         }
 
         return !tooltip.isEmpty();

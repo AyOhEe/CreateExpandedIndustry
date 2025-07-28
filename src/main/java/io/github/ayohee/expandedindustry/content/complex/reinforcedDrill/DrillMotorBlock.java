@@ -145,6 +145,8 @@ public class DrillMotorBlock extends WrenchableBlock {
 
                 west.get().poolWith(east.get());
                 east.get().poolWith(west.get());
+                west.get().setStress(256);
+                east.get().setStress(0);
 
                 controller.addComponent(west.get());
                 controller.addComponent(east.get());
@@ -161,6 +163,8 @@ public class DrillMotorBlock extends WrenchableBlock {
 
                 north.get().poolWith(south.get());
                 south.get().poolWith(north.get());
+                north.get().setStress(256);
+                south.get().setStress(0);
 
                 controller.addComponent(north.get());
                 controller.addComponent(south.get());

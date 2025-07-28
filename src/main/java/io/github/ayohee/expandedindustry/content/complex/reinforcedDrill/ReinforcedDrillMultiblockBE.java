@@ -16,29 +16,4 @@ public class ReinforcedDrillMultiblockBE extends MultiblockControllerBE {
     public ReinforcedDrillMultiblockBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
     }
-
-    @Override
-    public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
-        super.addToGoggleTooltip(tooltip, isPlayerSneaking);
-
-        CreateLang.translate("gui.goggles.kinetic_stats")
-                .forGoggles(tooltip);
-
-        CreateLang.translate("tooltip.stressImpact")
-            .style(GRAY)
-            .forGoggles(tooltip);
-
-        float stressTotal = 4 * 16;
-
-        CreateLang.number(stressTotal)
-                .translate("generic.unit.stress")
-                .style(ChatFormatting.AQUA)
-                .space()
-                .add(CreateLang.translate("gui.goggles.at_current_speed")
-                        .style(ChatFormatting.DARK_GRAY))
-                .forGoggles(tooltip, 1);
-
-
-        return true;
-    }
 }
