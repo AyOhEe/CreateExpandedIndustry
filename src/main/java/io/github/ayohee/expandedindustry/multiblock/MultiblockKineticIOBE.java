@@ -2,15 +2,20 @@ package io.github.ayohee.expandedindustry.multiblock;
 
 import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
+import com.simibubi.create.foundation.item.TooltipHelper;
+import com.simibubi.create.foundation.utility.CreateLang;
 import com.simibubi.create.infrastructure.config.AllConfigs;
 import io.github.ayohee.expandedindustry.register.EIBlockEntityTypes;
 import io.github.ayohee.expandedindustry.util.NBTHelperEI;
+import net.createmod.catnip.lang.FontHelper;
 import net.createmod.catnip.nbt.NBTHelper;
+import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -21,6 +26,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+import static net.minecraft.ChatFormatting.GOLD;
+
 public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultiblockComponentBE {
     MultiblockControllerBE controller = null;
     protected List<BlockPos> pool = new LinkedList<>();
@@ -28,6 +35,7 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
     boolean initialised = false;
 
     float stressImpact = 0;
+    float minimumRotationSpeed = 0;
 
     public MultiblockKineticIOBE(BlockEntityType<?> typeIn, BlockPos pos, BlockState state) {
         super(typeIn, pos, state);
@@ -96,7 +104,7 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
         return stressImpact;
     }
 
-    public void setStress(float stress) {
+    public void setConfiguredStressImpact(float stress) {
         stressImpact = stress;
         if(lastStressApplied != stress && hasNetwork()) {
             getOrCreateNetwork().updateStressFor(this, calculateStressApplied());
@@ -105,10 +113,30 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
         }
     }
 
+    public float getConfiguredStressImpact() {
+        return stressImpact;
+    }
+
+    public void setMinimumRotationSpeed(float mrs) {
+        this.minimumRotationSpeed = mrs;
+    }
+
+    public float getMinimumRotationSpeed() {
+        return minimumRotationSpeed;
+    }
+
     public float getRotationSpeed() {
-        if(overStressed || lastStressApplied != stressImpact)return 0;
+        if (overStressed || lastStressApplied != stressImpact) {
+            return 0;
+        }
         return Math.abs(speed);
     }
+
+    @Override
+    public boolean isSpeedRequirementFulfilled() {
+        return Math.abs(getSpeed()) >= minimumRotationSpeed;
+    }
+
 
 
     @Override
@@ -116,6 +144,7 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
         compound.put("controller_pos", NBTHelperEI.posAsCompound(controllerPos));
         compound.put("linked_pool", NBTHelper.writeCompoundList(pool, NBTHelperEI::posAsCompound));
         compound.putFloat("configured_stress_impact", stressImpact);
+        compound.putFloat("minimum_rotation_speed", minimumRotationSpeed);
 
         super.write(compound, registries, clientPacket);
     }
@@ -124,10 +153,11 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
     protected void read(CompoundTag compound, HolderLookup.Provider registries, boolean clientPacket) {
         pool = NBTHelper.readCompoundList(compound.getList("linked_pool", Tag.TAG_COMPOUND), BlockEntity::getPosFromTag);
         controllerPos = getPosFromTag(compound.getCompound("controller_pos"));
+        minimumRotationSpeed = compound.getFloat("minimum_rotation_speed");
 
         super.read(compound, registries, clientPacket);
 
-        setStress(compound.getFloat("configured_stress_impact"));
+        setConfiguredStressImpact(compound.getFloat("configured_stress_impact"));
     }
 
     @Override
@@ -156,7 +186,7 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
     public int multiblockTooltipPriority(boolean isPlayerSneaking) {
         boolean notFastEnough = !isSpeedRequirementFulfilled() && getSpeed() != 0;
         boolean overstressTooltip = overStressed && AllConfigs.client().enableOverstressedTooltip.get();
-        boolean isConsumingStress = (lastStressApplied == 0) && (stressImpact == 0);
+        boolean isConsumingStress = (lastStressApplied != 0) && (stressImpact != 0);
 
         return ((notFastEnough || overstressTooltip) && isConsumingStress) ? 0 : -1;
     }
@@ -164,7 +194,38 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
     @Override
     public List<Component> multiblockTooltip(boolean isPlayerSneaking) {
         List<Component> tooltip = new LinkedList<>();
-        super.addToTooltip(tooltip, isPlayerSneaking);
+
+        boolean notFastEnough = !isSpeedRequirementFulfilled() && getSpeed() != 0;
+        boolean overstressTooltip = overStressed && AllConfigs.client().enableOverstressedTooltip.get();
+
+        if (overstressTooltip) {
+            CreateLang.translate("gui.stressometer.overstressed")
+                    .style(GOLD)
+                    .forGoggles(tooltip);
+            Component hint = CreateLang.translateDirect("gui.contraptions.network_overstressed");
+            List<Component> cutString = TooltipHelper.cutTextComponent(hint, FontHelper.Palette.GRAY_AND_WHITE);
+            for (Component component : cutString)
+                CreateLang.builder()
+                        .add(component
+                                .copy())
+                        .forGoggles(tooltip);
+        }
+
+        if (notFastEnough) {
+            CreateLang.translate("tooltip.speedRequirement")
+                    .style(GOLD)
+                    .forGoggles(tooltip);
+            MutableComponent hint =
+                    CreateLang.translateDirect("gui.contraptions.not_fast_enough", I18n.get(controller.getBlockState().getBlock()
+                            .getDescriptionId()));
+            List<Component> cutString = TooltipHelper.cutTextComponent(hint, FontHelper.Palette.GRAY_AND_WHITE);
+            for (Component component : cutString)
+                CreateLang.builder()
+                        .add(component
+                                .copy())
+                        .forGoggles(tooltip);
+        }
+
         return tooltip;
     }
 
