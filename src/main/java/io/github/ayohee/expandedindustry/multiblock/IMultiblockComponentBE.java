@@ -2,16 +2,18 @@ package io.github.ayohee.expandedindustry.multiblock;
 
 import com.simibubi.create.api.equipment.goggles.IHaveGoggleInformation;
 import com.simibubi.create.api.equipment.goggles.IHaveHoveringInformation;
+import io.github.ayohee.expandedindustry.util.ITickingBlockEntity;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 
 import java.util.List;
 
-public interface IMultiblockComponentBE extends IHaveHoveringInformation, IHaveGoggleInformation {
+public interface IMultiblockComponentBE extends IHaveHoveringInformation, IHaveGoggleInformation, ITickingBlockEntity {
     BlockEntity getInstance();
 
     void setController(MultiblockControllerBE mbc);
+    void findController();
     MultiblockControllerBE getController();
 
     // Returns how high up in the tooltip this entry should be. The order of entries with equal priority is undefined.
@@ -31,6 +33,7 @@ public interface IMultiblockComponentBE extends IHaveHoveringInformation, IHaveG
 
     @Override
     default boolean addToTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
+        findController();
         if (getController() == null) {
             return false;
         }
@@ -39,6 +42,7 @@ public interface IMultiblockComponentBE extends IHaveHoveringInformation, IHaveG
 
     @Override
     default boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
+        findController();
         if (getController() == null) {
             return false;
         }
@@ -48,6 +52,7 @@ public interface IMultiblockComponentBE extends IHaveHoveringInformation, IHaveG
     @Override
     default boolean containedFluidTooltip(List<Component> tooltip, boolean isPlayerSneaking,
                                           IFluidHandler handler) {
+        findController();
         if (getController() == null) {
             return false;
         }

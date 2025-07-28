@@ -1,6 +1,7 @@
 package io.github.ayohee.expandedindustry.multiblock;
 
 import com.simibubi.create.foundation.block.IBE;
+import io.github.ayohee.expandedindustry.util.TickingBlockEntityTicker;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -15,6 +16,6 @@ public abstract class MultiblockController <T extends MultiblockControllerBE> ex
 
     @Override
     public <S extends BlockEntity> BlockEntityTicker<S> getTicker(Level level, BlockState blockState, BlockEntityType<S> blockEntityType) {
-        return new MultiblockControllerBETicker<>();
+        return new TickingBlockEntityTicker<>();
     }
 }

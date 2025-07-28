@@ -3,6 +3,7 @@ package io.github.ayohee.expandedindustry.multiblock;
 import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import io.github.ayohee.expandedindustry.register.EIBlockEntityTypes;
+import io.github.ayohee.expandedindustry.util.ITickingBlockEntity;
 import io.github.ayohee.expandedindustry.util.NBTHelperEI;
 import net.createmod.catnip.nbt.NBTHelper;
 import net.minecraft.core.BlockPos;
@@ -10,6 +11,10 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -22,10 +27,24 @@ import java.util.Optional;
 public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultiblockComponentBE {
     MultiblockControllerBE controller = null;
     protected List<BlockPos> pool = new LinkedList<>();
+    BlockPos controllerPos = null;
+    boolean initialised = false;
 
     public MultiblockKineticIOBE(BlockEntityType<?> typeIn, BlockPos pos, BlockState state) {
         super(typeIn, pos, state);
     }
+
+    @Override
+    public void tick() {
+        super.tick();
+        if (!initialised) {
+            if (!level.isClientSide) {
+                level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_ALL);
+            }
+            initialised = true;
+        }
+    }
+
 
     public void poolWith(MultiblockKineticIOBE be) {
         pool.add(be.getBlockPos());
@@ -71,8 +90,10 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
         return 0;
     }
 
+
     @Override
     protected void write(CompoundTag compound, HolderLookup.Provider registries, boolean clientPacket) {
+        compound.put("controller_pos", NBTHelperEI.posAsCompound(controllerPos));
         compound.put("linked_pool", NBTHelper.writeCompoundList(pool, NBTHelperEI::posAsCompound));
 
         super.write(compound, registries, clientPacket);
@@ -81,6 +102,7 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
     @Override
     protected void read(CompoundTag compound, HolderLookup.Provider registries, boolean clientPacket) {
         pool = NBTHelper.readCompoundList(compound.getList("linked_pool", Tag.TAG_COMPOUND), BlockEntity::getPosFromTag);
+        controllerPos = getPosFromTag(compound.getCompound("controller_pos"));
 
         super.read(compound, registries, clientPacket);
     }
@@ -111,6 +133,15 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
     @Override
     public void setController(MultiblockControllerBE mbc) {
         controller = mbc;
+        controllerPos = mbc.getBlockPos();
+    }
+
+    @Override
+    public void findController() {
+        if (controllerPos == null) {
+            return;
+        }
+        controller = (MultiblockControllerBE) level.getBlockEntity(controllerPos);
     }
 
     @Override

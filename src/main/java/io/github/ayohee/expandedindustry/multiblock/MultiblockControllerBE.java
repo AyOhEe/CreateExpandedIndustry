@@ -2,7 +2,9 @@ package io.github.ayohee.expandedindustry.multiblock;
 
 import com.simibubi.create.api.equipment.goggles.IHaveGoggleInformation;
 import com.simibubi.create.api.equipment.goggles.IHaveHoveringInformation;
+import io.github.ayohee.expandedindustry.util.ITickingBlockEntity;
 import io.github.ayohee.expandedindustry.util.NBTHelperEI;
+import net.createmod.catnip.data.Pair;
 import net.createmod.catnip.nbt.NBTHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -20,7 +22,7 @@ import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 
 import java.util.*;
 
-public class MultiblockControllerBE extends BlockEntity implements IHaveGoggleInformation, IHaveHoveringInformation {
+public class MultiblockControllerBE extends BlockEntity implements ITickingBlockEntity, IHaveGoggleInformation, IHaveHoveringInformation {
     List<BlockPos> _componentPositions = null;
     boolean initialised = false;
 
@@ -94,18 +96,62 @@ public class MultiblockControllerBE extends BlockEntity implements IHaveGoggleIn
 
 
 
+    //FIXME bleh. Code duplication.
+
     @Override
     public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
         findComponents();
+        List<Pair<Integer, List<Component>>> componentTooltips = new LinkedList<>();
+        for (IMultiblockComponentBE be : components.values()) {
+            if (be.multiblockGoggleTooltipPriority(isPlayerSneaking) != -1) {
+                componentTooltips.add(Pair.of(
+                        be.multiblockGoggleTooltipPriority(isPlayerSneaking),
+                        be.multiblockGoggleTooltip(isPlayerSneaking)
+                ));
+            }
+        }
 
-        return true;
+        // The compiler gets confused unless I explicitly type this.
+        Comparator<Pair<Integer, ?>> comparator = Comparator.comparingInt(Pair::getFirst);
+        componentTooltips.sort(comparator.reversed()); // Descending order
+
+        if (componentTooltips.isEmpty()) {
+            return false;
+        }
+
+        for (Pair<Integer, List<Component>> tooltipPair : componentTooltips) {
+            tooltip.addAll(tooltipPair.getSecond());
+        }
+
+        return !tooltip.isEmpty();
     }
 
     @Override
     public boolean addToTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
         findComponents();
+        List<Pair<Integer, List<Component>>> componentTooltips = new LinkedList<>();
+        for (IMultiblockComponentBE be : components.values()) {
+            if (be.multiblockTooltipPriority(isPlayerSneaking) != -1) {
+                componentTooltips.add(Pair.of(
+                        be.multiblockTooltipPriority(isPlayerSneaking),
+                        be.multiblockTooltip(isPlayerSneaking)
+                ));
+            }
+        }
 
-        return true;
+        // The compiler gets confused unless I explicitly type this.
+        Comparator<Pair<Integer, ?>> comparator = Comparator.comparingInt(Pair::getFirst);
+        componentTooltips.sort(comparator.reversed()); // Descending order
+
+        if (componentTooltips.isEmpty()) {
+            return false;
+        }
+
+        for (Pair<Integer, List<Component>> tooltipPair : componentTooltips) {
+            tooltip.addAll(tooltipPair.getSecond());
+        }
+
+        return !tooltip.isEmpty();
     }
 
     @Override
