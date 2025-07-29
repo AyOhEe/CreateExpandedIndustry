@@ -73,8 +73,8 @@ public class HardenedStoneBlockEntity extends BlockEntity implements IHaveGoggle
         int localMaxRichness = (int)(avgRichness * (1 + profile.spread));
         int rangeSize = localMaxRichness - localMinRichness;
 
-        // Deterministic W.R.T. seed
-        return localMinRichness + Math.abs((int)((x * y * z * seed) % rangeSize));
+        // Deterministic W.R.T. seed. Add 1 to ensure the max is achievable (e.g. 11 % 11 == 0, whereas 11 % (11 + 1) == 11)
+        return localMinRichness + Math.abs((int)((x + y + z + seed) % (rangeSize + 1)));
     }
 
 
