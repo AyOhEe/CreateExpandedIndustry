@@ -53,6 +53,9 @@ public class MultiblockControllerBE extends BlockEntity implements ITickingBlock
         if (_componentPositions == null) {
             return;
         }
+        if (components.isEmpty()) {
+            return;
+        }
 
         components = new HashMap<>();
         for (BlockPos pos : _componentPositions) {
@@ -78,7 +81,7 @@ public class MultiblockControllerBE extends BlockEntity implements ITickingBlock
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
 
-        _componentPositions = NBTHelper.readCompoundList(tag.getList("child_components", Tag.TAG_COMPOUND), BlockEntity::getPosFromTag);
+        _componentPositions = NBTHelper.readCompoundList(tag.getList("child_components", Tag.TAG_COMPOUND), NBTHelperEI::safeCompoundToPos);
     }
 
 

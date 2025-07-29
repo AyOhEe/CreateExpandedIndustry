@@ -151,8 +151,8 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
 
     @Override
     protected void read(CompoundTag compound, HolderLookup.Provider registries, boolean clientPacket) {
-        pool = NBTHelper.readCompoundList(compound.getList("linked_pool", Tag.TAG_COMPOUND), BlockEntity::getPosFromTag);
-        controllerPos = getPosFromTag(compound.getCompound("controller_pos"));
+        pool = NBTHelper.readCompoundList(compound.getList("linked_pool", Tag.TAG_COMPOUND), NBTHelperEI::safeCompoundToPos);
+        controllerPos = NBTHelperEI.safeCompoundToPos(compound.getCompound("controller_pos"));
         minimumRotationSpeed = compound.getFloat("minimum_rotation_speed");
 
         super.read(compound, registries, clientPacket);

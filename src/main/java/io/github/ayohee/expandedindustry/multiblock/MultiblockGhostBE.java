@@ -48,7 +48,7 @@ public class MultiblockGhostBE extends BlockEntity implements IMultiblockCompone
 
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        controllerPos = getPosFromTag(tag.getCompound("controller_pos"));
+        controllerPos = NBTHelperEI.safeCompoundToPos(tag.getCompound("controller_pos"));
 
         super.loadAdditional(tag, registries);
     }
