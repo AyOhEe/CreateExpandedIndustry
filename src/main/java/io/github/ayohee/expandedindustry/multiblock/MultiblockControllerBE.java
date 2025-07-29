@@ -53,7 +53,7 @@ public class MultiblockControllerBE extends BlockEntity implements ITickingBlock
         if (_componentPositions == null) {
             return;
         }
-        if (components.isEmpty()) {
+        if (!components.isEmpty()) {
             return;
         }
 
