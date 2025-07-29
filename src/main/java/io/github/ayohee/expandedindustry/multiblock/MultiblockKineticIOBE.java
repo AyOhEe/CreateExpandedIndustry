@@ -21,6 +21,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -139,6 +140,15 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
 
 
 
+    // Equivalent to setRemoved. SmartBlockEntity makes it final, so we have to use the SBE-provided method
+    @Override
+    public void remove() {
+        onDestroy();
+        super.remove();
+    }
+
+
+
     @Override
     protected void write(CompoundTag compound, HolderLookup.Provider registries, boolean clientPacket) {
         compound.put("controller_pos", NBTHelperEI.posAsCompound(controllerPos));
@@ -161,7 +171,7 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
     }
 
     @Override
-    public BlockEntity getInstance() {
+    public @NotNull BlockEntity getInstance() {
         return this;
     }
 

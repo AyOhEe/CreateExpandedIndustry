@@ -54,25 +54,35 @@ public class EIBlocks {
     public static final BlockEntry<ReinforcedDrillMultiblock> REINFORCED_DRILL_MULTIBLOCK = REGISTRATE
             .block("reinforced_drill_multiblock", ReinforcedDrillMultiblock::new)
             .initialProperties(() -> Blocks.GLASS)
+            .properties(EIBlocks::multiblock_component)
             .properties(c -> c
                     .mapColor(MapColor.COLOR_ORANGE)
                     .sound(SoundType.METAL))
-            .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_IRON_TOOL)
             .register();
 
 
     public static final BlockEntry<MultiblockGhostBlock> MULTIBLOCK_GHOST = REGISTRATE
             .block("multiblock_ghost", MultiblockGhostBlock::new)
             .initialProperties(() -> Blocks.GLASS)
-            .properties(p -> p.sound(SoundType.METAL))
+            .properties(EIBlocks::multiblock_component)
+            .properties(c -> c
+                    .mapColor(MapColor.COLOR_ORANGE)
+                    .sound(SoundType.METAL))
             .register();
 
     public static final BlockEntry<MultiblockKineticIOBlock> MULTIBLOCK_KINETIC_IO = REGISTRATE
             .block("multiblock_kinetic_io", MultiblockKineticIOBlock::new)
             .initialProperties(() -> Blocks.GLASS)
-            .properties(p -> p.sound(SoundType.METAL))
-            .transform(EIStress.setImpact(4.0))
+            .properties(EIBlocks::multiblock_component)
+            .properties(c -> c
+                    .mapColor(MapColor.COLOR_ORANGE)
+                    .sound(SoundType.METAL))
             .register();
+
+    private static BlockBehaviour.Properties multiblock_component(BlockBehaviour.Properties properties) {
+        // Can't be mined by hand, but will break from an explosion. Drops nothing.
+        return properties.strength(-1, 0).noLootTable();
+    }
 
 
     /*-----THESE BLOCKS WILL BE SEEN IN THE CREATIVE TAB-----*/

@@ -2,6 +2,7 @@ package io.github.ayohee.expandedindustry.multiblock;
 
 import com.simibubi.create.api.equipment.goggles.IHaveGoggleInformation;
 import com.simibubi.create.api.equipment.goggles.IHaveHoveringInformation;
+import io.github.ayohee.expandedindustry.CreateExpandedIndustry;
 import io.github.ayohee.expandedindustry.util.ITickingBlockEntity;
 import io.github.ayohee.expandedindustry.util.NBTHelperEI;
 import net.createmod.catnip.data.Pair;
@@ -99,8 +100,19 @@ public class MultiblockControllerBE extends BlockEntity implements ITickingBlock
 
 
 
-    //FIXME bleh. Code duplication.
+    @Override
+    public void setRemoved() {
+        onDestroy();
+        super.setRemoved();
+    }
 
+    public void onDestroy() {
+        CreateExpandedIndustry.LOGGER.debug("Called onDestroy on a MultiblockControllerBE at: " + getBlockPos());
+    }
+
+
+
+    //FIXME bleh. Code duplication.
     @Override
     public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
         findComponents();

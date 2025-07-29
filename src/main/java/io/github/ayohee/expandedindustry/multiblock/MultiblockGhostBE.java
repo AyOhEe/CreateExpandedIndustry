@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 
 public class MultiblockGhostBE extends BlockEntity implements IMultiblockComponentBE {
     MultiblockControllerBE controller = null;
@@ -54,6 +55,15 @@ public class MultiblockGhostBE extends BlockEntity implements IMultiblockCompone
     }
 
 
+
+    @Override
+    public void setRemoved() {
+        onDestroy();
+        super.setRemoved();
+    }
+
+
+
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
         CompoundTag tag = new CompoundTag();
@@ -68,7 +78,7 @@ public class MultiblockGhostBE extends BlockEntity implements IMultiblockCompone
 
 
     @Override
-    public BlockEntity getInstance() {
+    public @NotNull BlockEntity getInstance() {
         return this;
     }
 

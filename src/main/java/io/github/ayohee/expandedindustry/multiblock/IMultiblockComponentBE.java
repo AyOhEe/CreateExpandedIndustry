@@ -7,10 +7,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
 public interface IMultiblockComponentBE extends IHaveHoveringInformation, IHaveGoggleInformation, ITickingBlockEntity {
-    BlockEntity getInstance();
+    @Nonnull BlockEntity getInstance();
 
     void setController(MultiblockControllerBE mbc);
     void findController();
@@ -57,5 +58,17 @@ public interface IMultiblockComponentBE extends IHaveHoveringInformation, IHaveG
             return false;
         }
         return getController().containedFluidTooltip(tooltip, isPlayerSneaking, handler);
+    }
+
+    default void onDestroy() {
+        findController();
+        if (getController() == null) {
+            return;
+        }
+        if (!getInstance().hasLevel() || getInstance().getLevel().isClientSide) {
+            return;
+        }
+
+        getController().onDestroy();
     }
 }

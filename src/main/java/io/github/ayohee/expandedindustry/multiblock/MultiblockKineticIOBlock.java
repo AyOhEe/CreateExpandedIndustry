@@ -1,8 +1,5 @@
 package io.github.ayohee.expandedindustry.multiblock;
 
-import com.simibubi.create.content.equipment.wrench.IWrenchable;
-import com.simibubi.create.content.kinetics.base.KineticBlock;
-import com.simibubi.create.foundation.block.IBE;
 import io.github.ayohee.expandedindustry.register.EIBlockEntityTypes;
 import io.github.ayohee.expandedindustry.register.EIBlocks;
 import io.github.ayohee.expandedindustry.util.ConstSupplier;
@@ -15,7 +12,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
-public class MultiblockKineticIOBlock extends KineticMultiblockComponent<MultiblockKineticIOBE> {
+public class MultiblockKineticIOBlock extends AbstractKineticMultiblockComponent<MultiblockKineticIOBE> {
     public static final ConstSupplier<BlockState> KIO_NORTH = new ConstSupplier<>(() -> EIBlocks.MULTIBLOCK_KINETIC_IO.getDefaultState()
             .setValue(BlockStateProperties.FACING, Direction.NORTH));
     public static final ConstSupplier<BlockState> KIO_EAST = new ConstSupplier<>(() -> EIBlocks.MULTIBLOCK_KINETIC_IO.getDefaultState()

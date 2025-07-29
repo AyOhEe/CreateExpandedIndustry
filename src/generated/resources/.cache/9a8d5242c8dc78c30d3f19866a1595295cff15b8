@@ -1,4 +1,4 @@
-// 1.21.1	2025-07-24T03:04:35.5918845	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+// 1.21.1	2025-07-29T19:32:14.9733145	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
 7be6b1e90e9c69056bd2b00fffd59cb8171149e4 assets/createexpandedindustry/blockstates/cobalt_block.json
 ec4d3cf2a77e2abe16d52351f68cd31c4fb0b8eb assets/createexpandedindustry/blockstates/cobalt_casing.json
 314f7a1a88b244c0bf4c1538fbcd6bbe15d1f8b5 assets/createexpandedindustry/blockstates/drill_beam.json
@@ -54,10 +54,7 @@ f3d85ed9125deedfbecbe54996c087f76f975ebf data/createexpandedindustry/loot_table/
 fb3092954eab3f499c06cae9b08a92225b803211 data/createexpandedindustry/loot_table/blocks/drill_bit.json
 ae5ae05051befb5439ef9a95827d627f3318922c data/createexpandedindustry/loot_table/blocks/drill_motor.json
 ab109c2f6f2b0e6bc06334844212582636041448 data/createexpandedindustry/loot_table/blocks/erythrite.json
-11d88531fe3f99e9f6445903a50a1f4eaf4a3806 data/createexpandedindustry/loot_table/blocks/multiblock_ghost.json
-e12aa60f22069c97a129b482f14d368dfe9c2e94 data/createexpandedindustry/loot_table/blocks/multiblock_kinetic_io.json
 5ac0f795aecda14175bd378ee6e0671b298e3aea data/createexpandedindustry/loot_table/blocks/pressurised_fluid_tank.json
-34d2499cb984a9dd5940260543b4afa53a218d3d data/createexpandedindustry/loot_table/blocks/reinforced_drill_multiblock.json
 a7b6113f0409329409c34bd15486eb85d5f7234f data/create/tags/block/casing.json
 a7b6113f0409329409c34bd15486eb85d5f7234f data/create/tags/item/casing.json
 537142d9938fe713f24073f943ed1385bd57280e data/create/tags/item/crushed_raw_materials.json
@@ -80,6 +77,6 @@ e2bcf2b28b0893e997562285f1b6a368f03c4a6e data/minecraft/recipe/cobalt_ingot_from
 41b44231f57490f35af7b217ce2fa5306c4a0795 data/minecraft/recipe/pressurised_fluid_tank_vertical.json
 f910f33d42ac978ed6d3474bb8295ceb9b77f6fb data/minecraft/recipe/unpolished_magnetised_cobalt_shapeless.json
 a7b6113f0409329409c34bd15486eb85d5f7234f data/minecraft/tags/block/mineable/axe.json
-db9a99a28dbd79496145a0d6ae4b22d9c3473348 data/minecraft/tags/block/mineable/pickaxe.json
-0de45ecb9568fb7ab7e08dfe173f33bfbafaab4a data/minecraft/tags/block/needs_iron_tool.json
+a04ff492484868c2f1e4107eabe7ad4f5b4a8e4c data/minecraft/tags/block/mineable/pickaxe.json
+d120d0afb1add08cf99e588b15a01c07ecf5577c data/minecraft/tags/block/needs_iron_tool.json
 242fe0b2e323eed159875885348c0185e39a4ad3 data/minecraft/tags/block/needs_stone_tool.json
