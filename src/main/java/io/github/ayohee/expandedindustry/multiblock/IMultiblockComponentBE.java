@@ -65,9 +65,6 @@ public interface IMultiblockComponentBE extends IHaveHoveringInformation, IHaveG
         if (getController() == null) {
             return;
         }
-        if (!getInstance().hasLevel() || getInstance().getLevel().isClientSide) {
-            return;
-        }
 
         getController().onDestroy();
     }

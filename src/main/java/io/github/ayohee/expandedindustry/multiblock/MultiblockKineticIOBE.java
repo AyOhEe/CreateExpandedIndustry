@@ -140,7 +140,7 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
 
 
 
-    // Equivalent to setRemoved. SmartBlockEntity makes it final, so we have to use the SBE-provided method
+    // A "remove"-like method is ideal, as, in SmartBlockEntity, it already checks whether the chunk is unloaded
     @Override
     public void remove() {
         onDestroy();
@@ -260,7 +260,7 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
 
     @Override
     public void findController() {
-        if (controllerPos == null) {
+        if (controller != null || !hasLevel() || controllerPos == null) {
             return;
         }
         controller = (MultiblockControllerBE) level.getBlockEntity(controllerPos);

@@ -18,6 +18,8 @@ public class MultiblockGhostBE extends BlockEntity implements IMultiblockCompone
     BlockPos controllerPos = null;
     boolean initialised = false;
 
+    boolean chunkUnloaded = false;
+
     public MultiblockGhostBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
     }
@@ -34,7 +36,7 @@ public class MultiblockGhostBE extends BlockEntity implements IMultiblockCompone
     }
 
     public void findController() {
-        if (controllerPos == null) {
+        if (controller != null || !hasLevel() || controllerPos == null) {
             return;
         }
         controller = (MultiblockControllerBE) level.getBlockEntity(controllerPos);
@@ -55,13 +57,24 @@ public class MultiblockGhostBE extends BlockEntity implements IMultiblockCompone
     }
 
 
+    @Override
+    public void onChunkUnloaded() {
+        super.onChunkUnloaded();
+        chunkUnloaded = true;
+    }
 
     @Override
     public void setRemoved() {
-        onDestroy();
         super.setRemoved();
+        if (!chunkUnloaded)
+            remove();
     }
 
+    // A "remove"-like method is ideal, as, in SmartBlockEntity, it already checks whether the chunk is unloaded
+    public void remove() {
+        onDestroy();
+        //super.remove();
+    }
 
 
     @Override

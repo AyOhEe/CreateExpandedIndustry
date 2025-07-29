@@ -29,6 +29,8 @@ public class MultiblockControllerBE extends BlockEntity implements ITickingBlock
 
     Map<BlockPos, IMultiblockComponentBE> components = new HashMap<>();
 
+    boolean chunkUnloaded = false;
+
 
     public MultiblockControllerBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -51,6 +53,9 @@ public class MultiblockControllerBE extends BlockEntity implements ITickingBlock
 
 
     protected void findComponents() {
+        if (!hasLevel()) {
+            return;
+        }
         if (_componentPositions == null) {
             return;
         }
@@ -101,12 +106,24 @@ public class MultiblockControllerBE extends BlockEntity implements ITickingBlock
 
 
     @Override
-    public void setRemoved() {
-        onDestroy();
-        super.setRemoved();
+    public void onChunkUnloaded() {
+        super.onChunkUnloaded();
+        chunkUnloaded = true;
     }
 
+    @Override
+    public void setRemoved() {
+        super.setRemoved();
+        if (!chunkUnloaded)
+            onDestroy();
+    }
+
+    // A "remove"-like method is ideal, as, in SmartBlockEntity, it already checks whether the chunk is unloaded
     public void onDestroy() {
+        if (!initialised || !hasLevel() || getLevel().isClientSide) {
+            return;
+        }
+
         CreateExpandedIndustry.LOGGER.debug("Called onDestroy on a MultiblockControllerBE at: " + getBlockPos());
     }
 
