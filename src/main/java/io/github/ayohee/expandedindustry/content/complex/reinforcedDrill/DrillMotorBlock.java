@@ -4,7 +4,6 @@ import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
 import io.github.ayohee.expandedindustry.content.blocks.WrenchableBlock;
 import io.github.ayohee.expandedindustry.multiblock.IMultiblockComponentBE;
-import io.github.ayohee.expandedindustry.multiblock.MultiblockControllerBE;
 import io.github.ayohee.expandedindustry.multiblock.MultiblockKineticIOBE;
 import io.github.ayohee.expandedindustry.register.EIBlockEntityTypes;
 import io.github.ayohee.expandedindustry.register.EIBlocks;

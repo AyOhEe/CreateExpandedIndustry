@@ -2,7 +2,6 @@ package io.github.ayohee.expandedindustry.multiblock;
 
 import com.simibubi.create.api.equipment.goggles.IHaveGoggleInformation;
 import com.simibubi.create.api.equipment.goggles.IHaveHoveringInformation;
-import io.github.ayohee.expandedindustry.CreateExpandedIndustry;
 import io.github.ayohee.expandedindustry.util.ITickingBlockEntity;
 import io.github.ayohee.expandedindustry.util.NBTHelperEI;
 import net.createmod.catnip.data.Pair;
@@ -15,6 +14,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -22,8 +22,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 
 import java.util.*;
+import java.util.function.BiConsumer;
 
-public class MultiblockControllerBE extends BlockEntity implements ITickingBlockEntity, IHaveGoggleInformation, IHaveHoveringInformation {
+public abstract class AbstractMultiblockControllerBE extends BlockEntity implements ITickingBlockEntity, IHaveGoggleInformation, IHaveHoveringInformation {
     List<BlockPos> _componentPositions = null;
     boolean initialised = false;
 
@@ -32,7 +33,7 @@ public class MultiblockControllerBE extends BlockEntity implements ITickingBlock
     boolean chunkUnloaded = false;
 
 
-    public MultiblockControllerBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
+    public AbstractMultiblockControllerBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
     }
 
@@ -124,9 +125,11 @@ public class MultiblockControllerBE extends BlockEntity implements ITickingBlock
             return;
         }
 
-        CreateExpandedIndustry.LOGGER.debug("Called onDestroy on a MultiblockControllerBE at: " + getBlockPos());
+        deconstructFunction().accept(level, getBlockPos());
     }
 
+
+    public abstract BiConsumer<LevelAccessor, BlockPos> deconstructFunction();
 
 
     //FIXME bleh. Code duplication.

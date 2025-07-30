@@ -13,9 +13,9 @@ import java.util.List;
 public interface IMultiblockComponentBE extends IHaveHoveringInformation, IHaveGoggleInformation, ITickingBlockEntity {
     @Nonnull BlockEntity getInstance();
 
-    void setController(MultiblockControllerBE mbc);
+    void setController(AbstractMultiblockControllerBE mbc);
     void findController();
-    MultiblockControllerBE getController();
+    AbstractMultiblockControllerBE getController();
 
     // Returns how high up in the tooltip this entry should be. The order of entries with equal priority is undefined.
     default int multiblockGoggleTooltipPriority(boolean isPlayerSneaking) { return -1; }

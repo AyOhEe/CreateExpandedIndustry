@@ -9,8 +9,8 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
-public abstract class MultiblockController <T extends MultiblockControllerBE> extends Block implements IBE<T> {
-    public MultiblockController(Properties properties) {
+public abstract class AbstractMultiblockController<T extends AbstractMultiblockControllerBE> extends Block implements IBE<T> {
+    public AbstractMultiblockController(Properties properties) {
         super(properties);
     }
 

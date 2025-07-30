@@ -30,7 +30,7 @@ import java.util.Optional;
 import static net.minecraft.ChatFormatting.GOLD;
 
 public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultiblockComponentBE {
-    MultiblockControllerBE controller = null;
+    AbstractMultiblockControllerBE controller = null;
     protected List<BlockPos> pool = new LinkedList<>();
     BlockPos controllerPos = null;
     boolean initialised = false;
@@ -253,7 +253,7 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
 
 
     @Override
-    public void setController(MultiblockControllerBE mbc) {
+    public void setController(AbstractMultiblockControllerBE mbc) {
         controller = mbc;
         controllerPos = mbc.getBlockPos();
     }
@@ -263,11 +263,11 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
         if (controller != null || !hasLevel() || controllerPos == null) {
             return;
         }
-        controller = (MultiblockControllerBE) level.getBlockEntity(controllerPos);
+        controller = (AbstractMultiblockControllerBE) level.getBlockEntity(controllerPos);
     }
 
     @Override
-    public MultiblockControllerBE getController() {
+    public AbstractMultiblockControllerBE getController() {
         return controller;
     }
 }

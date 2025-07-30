@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
 public class MultiblockGhostBE extends BlockEntity implements IMultiblockComponentBE {
-    MultiblockControllerBE controller = null;
+    AbstractMultiblockControllerBE controller = null;
     BlockPos controllerPos = null;
     boolean initialised = false;
 
@@ -39,7 +39,7 @@ public class MultiblockGhostBE extends BlockEntity implements IMultiblockCompone
         if (controller != null || !hasLevel() || controllerPos == null) {
             return;
         }
-        controller = (MultiblockControllerBE) level.getBlockEntity(controllerPos);
+        controller = (AbstractMultiblockControllerBE) level.getBlockEntity(controllerPos);
     }
 
     @Override
@@ -96,13 +96,13 @@ public class MultiblockGhostBE extends BlockEntity implements IMultiblockCompone
     }
 
     @Override
-    public void setController(MultiblockControllerBE mbc) {
+    public void setController(AbstractMultiblockControllerBE mbc) {
         controller = mbc;
         controllerPos = mbc.getBlockPos();
     }
 
     @Override
-    public MultiblockControllerBE getController() {
+    public AbstractMultiblockControllerBE getController() {
         return controller;
     }
 }
