@@ -9,6 +9,7 @@ import io.github.ayohee.expandedindustry.multiblock.MultiblockKineticIOBE;
 import io.github.ayohee.expandedindustry.register.EIBlockEntityTypes;
 import io.github.ayohee.expandedindustry.register.EIBlocks;
 import io.github.ayohee.expandedindustry.util.ConstSupplier;
+import net.createmod.catnip.data.Pair;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionResult;
@@ -22,10 +23,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
-import java.util.Optional;
+import java.util.List;
+import java.util.function.Predicate;
 
 import static io.github.ayohee.expandedindustry.multiblock.MultiblockKineticIOBlock.*;
-import static io.github.ayohee.expandedindustry.multiblock.MultiblockKineticIOBlock.KIO_SOUTH;
 
 public class ReinforcedDrillMultiblock extends AbstractMultiblockController<ReinforcedDrillMultiblockBE> implements IWrenchable {
     public static final ConstSupplier<BlockState> NS_BRASS_ENCASED_SHAFT = new ConstSupplier<>(() -> AllBlocks.BRASS_ENCASED_SHAFT.getDefaultState()
@@ -76,7 +77,6 @@ public class ReinforcedDrillMultiblock extends AbstractMultiblockController<Rein
     public BlockEntityType<? extends ReinforcedDrillMultiblockBE> getBlockEntityType() {
         return EIBlockEntityTypes.REINFORCED_DRILL_MULTIBLOCK.get();
     }
-
 
     public static boolean canPlace(LevelAccessor level, BlockPos corePos) {
         return (assertBlock(level, corePos.below().east().north(), EIBlocks.DRILL_BEAM.get())
@@ -129,46 +129,22 @@ public class ReinforcedDrillMultiblock extends AbstractMultiblockController<Rein
             }
         }
 
-        placeShaftPorts(corePos, level, controller, fluidPipeDir);
-    }
-
-    private static void placeShaftPorts(BlockPos pos, LevelAccessor level, ReinforcedDrillMultiblockBE controller, Direction fluidPipeDir) {
         switch (fluidPipeDir) {
             case NORTH, SOUTH -> {
-                level.setBlock(pos.west(), KIO_WEST.get(), UPDATE_ALL);
-                level.setBlock(pos.east(), KIO_EAST.get(), UPDATE_ALL);
-
-                Optional<MultiblockKineticIOBE> west = level.getBlockEntity(pos.west(), EIBlockEntityTypes.MULTIBLOCK_KINETIC_IO.get());
-                Optional<MultiblockKineticIOBE> east = level.getBlockEntity(pos.east(), EIBlockEntityTypes.MULTIBLOCK_KINETIC_IO.get());
-                if (west.isEmpty() || east.isEmpty()) {
-                    throw new Error();
-                }
-
-                west.get().poolWith(east.get());
-                east.get().poolWith(west.get());
-                west.get().setConfiguredStressImpact(256);
-                west.get().setMinimumRotationSpeed(64);
-
-                controller.addComponent(west.get());
-                controller.addComponent(east.get());
+                placeShaftPorts(
+                        List.of(Pair.of(corePos.west(), KIO_WEST.get()),
+                                Pair.of(corePos.east(), KIO_EAST.get())),
+                        level,
+                        controller
+                );
             }
             case WEST, EAST  -> {
-                level.setBlock(pos.north(), KIO_NORTH.get(), UPDATE_ALL);
-                level.setBlock(pos.south(), KIO_SOUTH.get(), UPDATE_ALL);
-
-                Optional<MultiblockKineticIOBE> north = level.getBlockEntity(pos.north(), EIBlockEntityTypes.MULTIBLOCK_KINETIC_IO.get());
-                Optional<MultiblockKineticIOBE> south = level.getBlockEntity(pos.south(), EIBlockEntityTypes.MULTIBLOCK_KINETIC_IO.get());
-                if (north.isEmpty() || south.isEmpty()) {
-                    throw new Error();
-                }
-
-                north.get().poolWith(south.get());
-                south.get().poolWith(north.get());
-                north.get().setConfiguredStressImpact(256);
-                north.get().setMinimumRotationSpeed(64);
-
-                controller.addComponent(north.get());
-                controller.addComponent(south.get());
+                placeShaftPorts(
+                        List.of(Pair.of(corePos.north(), KIO_NORTH.get()),
+                                Pair.of(corePos.south(), KIO_SOUTH.get())),
+                        level,
+                        controller
+                );
             }
         }
     }
@@ -210,14 +186,7 @@ public class ReinforcedDrillMultiblock extends AbstractMultiblockController<Rein
         return (NSAreShafts && (EIsPipe || WIsPipe)) || ((NIsPipe || SIsPipe) && EWAreShafts);
     }
 
-    private static boolean assertReplaceable(LevelAccessor level, BlockPos pos) {
-        BlockState state = level.getBlockState(pos);
-        return state.canBeReplaced();
-    }
 
-    private static boolean assertBlock(LevelAccessor level, BlockPos pos, Block block) {
-        return level.getBlockState(pos).getBlock() == block;
-    }
 
     //FIXME temporary and bad and awful and stinky
     public static void deconstructMBS(LevelAccessor level, BlockPos corePos) {
