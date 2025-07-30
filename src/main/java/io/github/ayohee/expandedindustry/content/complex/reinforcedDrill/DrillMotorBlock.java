@@ -27,28 +27,6 @@ import static io.github.ayohee.expandedindustry.multiblock.MultiblockKineticIOBl
 
 
 public class DrillMotorBlock extends WrenchableBlock {
-    public static final ConstSupplier<BlockState> NS_BRASS_ENCASED_SHAFT = new ConstSupplier<>(() -> AllBlocks.BRASS_ENCASED_SHAFT.getDefaultState()
-            .setValue(RotatedPillarKineticBlock.AXIS, Direction.Axis.Z));
-    public static final ConstSupplier<BlockState> EW_BRASS_ENCASED_SHAFT = new ConstSupplier<>(() -> AllBlocks.BRASS_ENCASED_SHAFT.getDefaultState()
-            .setValue(RotatedPillarKineticBlock.AXIS, Direction.Axis.X));
-    public static final ConstSupplier<BlockState> NS_COPPER_ENCASED_PIPE = new ConstSupplier<>(() -> AllBlocks.ENCASED_FLUID_PIPE.getDefaultState()
-            .setValue(BlockStateProperties.NORTH, true)
-            .setValue(BlockStateProperties.SOUTH, true)
-            .setValue(BlockStateProperties.UP, false)
-            .setValue(BlockStateProperties.DOWN, false)
-            .setValue(BlockStateProperties.WEST, false)
-            .setValue(BlockStateProperties.EAST, false));
-    public static final ConstSupplier<BlockState> EW_COPPER_ENCASED_PIPE = new ConstSupplier<>(() -> AllBlocks.ENCASED_FLUID_PIPE.getDefaultState()
-            .setValue(BlockStateProperties.NORTH, false)
-            .setValue(BlockStateProperties.SOUTH, false)
-            .setValue(BlockStateProperties.UP, false)
-            .setValue(BlockStateProperties.DOWN, false)
-            .setValue(BlockStateProperties.WEST, true)
-            .setValue(BlockStateProperties.EAST, true));
-
-    public static final ConstSupplier<BlockState> REINFORCED_DRILL_PARENT = new ConstSupplier<>(EIBlocks.REINFORCED_DRILL_MULTIBLOCK::getDefaultState);
-
-
     public DrillMotorBlock(Properties properties) {
         super(properties);
     }
@@ -64,20 +42,7 @@ public class DrillMotorBlock extends WrenchableBlock {
         // Ensure that all blocks are present, and in the correct blockstate
         Level level = context.getLevel();
         BlockPos pos = context.getClickedPos();
-        if (!(assertBlock(level, pos.below().east().north(), EIBlocks.DRILL_BEAM.get())
-           && assertBlock(level, pos.below().east().south(), EIBlocks.DRILL_BEAM.get())
-           && assertBlock(level, pos.below().west().north(), EIBlocks.DRILL_BEAM.get())
-           && assertBlock(level, pos.below().west().south(), EIBlocks.DRILL_BEAM.get())
-           && assertReplaceable(level, pos.below().east())
-           && assertReplaceable(level, pos.below().west())
-           && assertReplaceable(level, pos.below().north())
-           && assertReplaceable(level, pos.below().south())
-           && assertBlock(level, pos.below(), EIBlocks.DRILL_BIT.get())
-           && assertBlock(level, pos.east().north(), AllBlocks.RAILWAY_CASING.get())
-           && assertBlock(level, pos.east().south(), AllBlocks.RAILWAY_CASING.get())
-           && assertBlock(level, pos.west().north(), AllBlocks.RAILWAY_CASING.get())
-           && assertBlock(level, pos.west().south(), AllBlocks.RAILWAY_CASING.get())
-           && assertPipeAndShaftChecks(level, pos))) {
+        if (!ReinforcedDrillMultiblock.canPlace(level, pos)) {
             player.displayClientMessage(Component.literal("Incorrect assembly!"), true);
             return InteractionResult.FAIL;
         }
@@ -89,131 +54,7 @@ public class DrillMotorBlock extends WrenchableBlock {
             return InteractionResult.SUCCESS;
         }
 
-        Direction fluidPipeDir = locateFluidPipe(level, pos);
-        BlockState childBS = EIBlocks.MULTIBLOCK_GHOST.getDefaultState();
-
-
-        BlockState parentBS = REINFORCED_DRILL_PARENT.get().setValue(BlockStateProperties.HORIZONTAL_FACING, fluidPipeDir);
-        level.setBlock(pos, parentBS, UPDATE_ALL);
-        Optional<ReinforcedDrillMultiblockBE> controller = level.getBlockEntity(pos, EIBlockEntityTypes.REINFORCED_DRILL_MULTIBLOCK.get());
-        if (controller.isEmpty()) {
-            return InteractionResult.FAIL;
-        }
-
-        BlockPos cornerPos = pos.below().north().west();
-        int xCorner = cornerPos.getX();
-        int yCorner = cornerPos.getY();
-        int zCorner = cornerPos.getZ();
-        for (int x = xCorner; x <= xCorner + 2; ++x) {
-            for (int y = yCorner; y <= yCorner + 1; ++y) {
-                for (int z = zCorner; z <= zCorner + 2; ++z) {
-                    BlockPos currentPos = new BlockPos(x, y, z);
-                    if (currentPos.equals(pos))
-                        continue;
-
-                    level.setBlock(
-                            currentPos,
-                            childBS,
-                            UPDATE_ALL
-                    );
-                    BlockEntity currentBE = level.getBlockEntity(currentPos);
-                    if (!(currentBE instanceof IMultiblockComponentBE))
-                        continue;
-
-                    controller.get().addComponent((IMultiblockComponentBE) currentBE);
-                }
-            }
-        }
-
-        placeShaftPorts(pos, level, controller.get(), fluidPipeDir);
-
+        ReinforcedDrillMultiblock.placeMBS(level, pos);
         return InteractionResult.SUCCESS;
-    }
-
-    private void placeShaftPorts(BlockPos pos, Level level, ReinforcedDrillMultiblockBE controller, Direction fluidPipeDir) {
-        switch (fluidPipeDir) {
-            case NORTH, SOUTH -> {
-                level.setBlock(pos.west(), KIO_WEST.get(), UPDATE_ALL);
-                level.setBlock(pos.east(), KIO_EAST.get(), UPDATE_ALL);
-
-                Optional<MultiblockKineticIOBE> west = level.getBlockEntity(pos.west(), EIBlockEntityTypes.MULTIBLOCK_KINETIC_IO.get());
-                Optional<MultiblockKineticIOBE> east = level.getBlockEntity(pos.east(), EIBlockEntityTypes.MULTIBLOCK_KINETIC_IO.get());
-                if (west.isEmpty() || east.isEmpty()) {
-                    throw new Error();
-                }
-
-                west.get().poolWith(east.get());
-                east.get().poolWith(west.get());
-                west.get().setConfiguredStressImpact(256);
-                west.get().setMinimumRotationSpeed(64);
-
-                controller.addComponent(west.get());
-                controller.addComponent(east.get());
-            }
-            case WEST, EAST  -> {
-                level.setBlock(pos.north(), KIO_NORTH.get(), UPDATE_ALL);
-                level.setBlock(pos.south(), KIO_SOUTH.get(), UPDATE_ALL);
-
-                Optional<MultiblockKineticIOBE> north = level.getBlockEntity(pos.north(), EIBlockEntityTypes.MULTIBLOCK_KINETIC_IO.get());
-                Optional<MultiblockKineticIOBE> south = level.getBlockEntity(pos.south(), EIBlockEntityTypes.MULTIBLOCK_KINETIC_IO.get());
-                if (north.isEmpty() || south.isEmpty()) {
-                    throw new Error();
-                }
-
-                north.get().poolWith(south.get());
-                south.get().poolWith(north.get());
-                north.get().setConfiguredStressImpact(256);
-                north.get().setMinimumRotationSpeed(64);
-
-                controller.addComponent(north.get());
-                controller.addComponent(south.get());
-            }
-        }
-    }
-
-    private Direction locateFluidPipe(Level level, BlockPos pos) {
-        BlockState west = level.getBlockState(pos.west());
-        BlockState east = level.getBlockState(pos.east());
-        BlockState north = level.getBlockState(pos.north());
-        BlockState south = level.getBlockState(pos.south());
-
-        if (west == EW_COPPER_ENCASED_PIPE.get()) {
-            return Direction.WEST;
-        }
-        else if (east == EW_COPPER_ENCASED_PIPE.get()) {
-            return Direction.EAST;
-        }
-        else if (north == NS_COPPER_ENCASED_PIPE.get()) {
-            return Direction.NORTH;
-        }
-        else if (south == NS_COPPER_ENCASED_PIPE.get()) {
-            return Direction.SOUTH;
-        }
-        return null;
-    }
-
-    private boolean assertPipeAndShaftChecks(Level level, BlockPos pos) {
-        BlockState west = level.getBlockState(pos.west());
-        BlockState east = level.getBlockState(pos.east());
-        BlockState north = level.getBlockState(pos.north());
-        BlockState south = level.getBlockState(pos.south());
-
-        boolean NSAreShafts = (north == NS_BRASS_ENCASED_SHAFT.get()) && (south == NS_BRASS_ENCASED_SHAFT.get());
-        boolean NIsPipe = (north == NS_COPPER_ENCASED_PIPE.get()) && (south == AllBlocks.BRASS_CASING.getDefaultState());
-        boolean SIsPipe = (north == AllBlocks.BRASS_CASING.getDefaultState()) && (south == NS_COPPER_ENCASED_PIPE.get());
-        boolean EWAreShafts = (east == EW_BRASS_ENCASED_SHAFT.get()) && (west == EW_BRASS_ENCASED_SHAFT.get());
-        boolean EIsPipe = (east == EW_COPPER_ENCASED_PIPE.get()) && (west == AllBlocks.BRASS_CASING.getDefaultState());
-        boolean WIsPipe = (east == AllBlocks.BRASS_CASING.getDefaultState()) && (west == EW_COPPER_ENCASED_PIPE.get());
-
-        return (NSAreShafts && (EIsPipe || WIsPipe)) || ((NIsPipe || SIsPipe) && EWAreShafts);
-    }
-
-    private boolean assertReplaceable(Level level, BlockPos pos) {
-        BlockState state = level.getBlockState(pos);
-        return state.canBeReplaced();
-    }
-
-    private boolean assertBlock(Level level, BlockPos pos, Block block) {
-        return level.getBlockState(pos).getBlock() == block;
     }
 }
