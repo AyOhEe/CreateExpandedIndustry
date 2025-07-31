@@ -27,7 +27,7 @@ public class DrillMotorBlock extends WrenchableBlock {
         // Ensure that all blocks are present, and in the correct blockstate
         Level level = context.getLevel();
         BlockPos pos = context.getClickedPos();
-        if (!ReinforcedDrillMultiblock.canPlace(level, pos)) {
+        if (ReinforcedDrillMultiblock.PLACEMENT_SET.findFirstPlacement(level, pos) == null) {
             player.displayClientMessage(Component.literal("Incorrect assembly!"), true);
             return InteractionResult.FAIL;
         }

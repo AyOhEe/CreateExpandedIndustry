@@ -16,7 +16,6 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.function.Predicate;
 
 public abstract class AbstractMultiblockController<T extends AbstractMultiblockControllerBE> extends Block implements IBE<T> {
     public AbstractMultiblockController(Properties properties) {

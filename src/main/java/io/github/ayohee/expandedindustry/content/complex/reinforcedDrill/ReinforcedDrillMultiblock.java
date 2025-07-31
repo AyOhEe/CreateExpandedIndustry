@@ -5,13 +5,15 @@ import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
 import io.github.ayohee.expandedindustry.multiblock.AbstractMultiblockController;
 import io.github.ayohee.expandedindustry.multiblock.IMultiblockComponentBE;
-import io.github.ayohee.expandedindustry.multiblock.MultiblockKineticIOBE;
+import io.github.ayohee.expandedindustry.multiblock.placement.HorizontalPlacementSet;
+import io.github.ayohee.expandedindustry.multiblock.placement.PlacementTest;
 import io.github.ayohee.expandedindustry.register.EIBlockEntityTypes;
 import io.github.ayohee.expandedindustry.register.EIBlocks;
 import io.github.ayohee.expandedindustry.util.ConstSupplier;
 import net.createmod.catnip.data.Pair;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Vec3i;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.LevelAccessor;
@@ -24,9 +26,11 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.Map;
 
 import static io.github.ayohee.expandedindustry.multiblock.MultiblockKineticIOBlock.*;
+import static io.github.ayohee.expandedindustry.multiblock.placement.PlacementTest.blockMatches;
+import static io.github.ayohee.expandedindustry.multiblock.placement.PlacementTest.blockStateMatches;
 
 public class ReinforcedDrillMultiblock extends AbstractMultiblockController<ReinforcedDrillMultiblockBE> implements IWrenchable {
     public static final ConstSupplier<BlockState> NS_BRASS_ENCASED_SHAFT = new ConstSupplier<>(() -> AllBlocks.BRASS_ENCASED_SHAFT.getDefaultState()
@@ -78,25 +82,44 @@ public class ReinforcedDrillMultiblock extends AbstractMultiblockController<Rein
         return EIBlockEntityTypes.REINFORCED_DRILL_MULTIBLOCK.get();
     }
 
-    public static boolean canPlace(LevelAccessor level, BlockPos corePos) {
-        return (assertBlock(level, corePos.below().east().north(), EIBlocks.DRILL_BEAM.get())
-                && assertBlock(level, corePos.below().east().south(), EIBlocks.DRILL_BEAM.get())
-                && assertBlock(level, corePos.below().west().north(), EIBlocks.DRILL_BEAM.get())
-                && assertBlock(level, corePos.below().west().south(), EIBlocks.DRILL_BEAM.get())
-                && assertReplaceable(level, corePos.below().east())
-                && assertReplaceable(level, corePos.below().west())
-                && assertReplaceable(level, corePos.below().north())
-                && assertReplaceable(level, corePos.below().south())
-                && assertBlock(level, corePos.below(), EIBlocks.DRILL_BIT.get())
-                && assertBlock(level, corePos.east().north(), AllBlocks.RAILWAY_CASING.get())
-                && assertBlock(level, corePos.east().south(), AllBlocks.RAILWAY_CASING.get())
-                && assertBlock(level, corePos.west().north(), AllBlocks.RAILWAY_CASING.get())
-                && assertBlock(level, corePos.west().south(), AllBlocks.RAILWAY_CASING.get())
-                && assertPipeAndShaftChecks(level, corePos));
-    }
+
+    public static final HorizontalPlacementSet PLACEMENT_SET =
+        new HorizontalPlacementSet(
+            new PlacementTest()
+                .addLayer(List.of(
+                        "B B",
+                        " D ",
+                        "B B"))
+                .addLayer(List.of(
+                        "TPT",
+                        "SMS",
+                        "TCT"))
+                .define('B', blockMatches(EIBlocks.DRILL_BEAM::get))
+                .define('D', blockMatches(EIBlocks.DRILL_BIT::get))
+                .define('M', blockMatches(EIBlocks.DRILL_MOTOR::get))
+                .define('T', blockMatches(AllBlocks.RAILWAY_CASING::get))
+                .define('C', blockMatches(AllBlocks.BRASS_CASING::get))
+                .define('P', blockStateMatches(NS_COPPER_ENCASED_PIPE))
+                .define('S', blockStateMatches(EW_BRASS_ENCASED_SHAFT))
+                .setOrigin(new Vec3i(1, 1, 1))
+            ).reDefine('P',
+                Map.of(
+                    Direction.NORTH, blockStateMatches(NS_COPPER_ENCASED_PIPE),
+                    Direction.EAST, blockStateMatches(EW_COPPER_ENCASED_PIPE),
+                    Direction.SOUTH, blockStateMatches(NS_COPPER_ENCASED_PIPE),
+                    Direction.WEST, blockStateMatches(EW_COPPER_ENCASED_PIPE)
+                )
+            ).reDefine('S',
+                Map.of(
+                    Direction.NORTH, blockStateMatches(NS_BRASS_ENCASED_SHAFT),
+                    Direction.EAST, blockStateMatches(EW_BRASS_ENCASED_SHAFT),
+                    Direction.SOUTH, blockStateMatches(NS_BRASS_ENCASED_SHAFT),
+                    Direction.WEST, blockStateMatches(EW_BRASS_ENCASED_SHAFT)
+            )
+    );
 
     public static void placeMBS(LevelAccessor level, BlockPos corePos) {
-        Direction fluidPipeDir = locateFluidPipe(level, corePos);
+        Direction fluidPipeDir = PLACEMENT_SET.findFirstPlacement(level, corePos);
         BlockState childBS = EIBlocks.MULTIBLOCK_GHOST.getDefaultState();
 
 
@@ -148,44 +171,6 @@ public class ReinforcedDrillMultiblock extends AbstractMultiblockController<Rein
             }
         }
     }
-
-    private static Direction locateFluidPipe(LevelAccessor level, BlockPos pos) {
-        BlockState west = level.getBlockState(pos.west());
-        BlockState east = level.getBlockState(pos.east());
-        BlockState north = level.getBlockState(pos.north());
-        BlockState south = level.getBlockState(pos.south());
-
-        if (west == EW_COPPER_ENCASED_PIPE.get()) {
-            return Direction.WEST;
-        }
-        else if (east == EW_COPPER_ENCASED_PIPE.get()) {
-            return Direction.EAST;
-        }
-        else if (north == NS_COPPER_ENCASED_PIPE.get()) {
-            return Direction.NORTH;
-        }
-        else if (south == NS_COPPER_ENCASED_PIPE.get()) {
-            return Direction.SOUTH;
-        }
-        return null;
-    }
-
-    private static boolean assertPipeAndShaftChecks(LevelAccessor level, BlockPos pos) {
-        BlockState west = level.getBlockState(pos.west());
-        BlockState east = level.getBlockState(pos.east());
-        BlockState north = level.getBlockState(pos.north());
-        BlockState south = level.getBlockState(pos.south());
-
-        boolean NSAreShafts = (north == NS_BRASS_ENCASED_SHAFT.get()) && (south == NS_BRASS_ENCASED_SHAFT.get());
-        boolean NIsPipe = (north == NS_COPPER_ENCASED_PIPE.get()) && (south == AllBlocks.BRASS_CASING.getDefaultState());
-        boolean SIsPipe = (north == AllBlocks.BRASS_CASING.getDefaultState()) && (south == NS_COPPER_ENCASED_PIPE.get());
-        boolean EWAreShafts = (east == EW_BRASS_ENCASED_SHAFT.get()) && (west == EW_BRASS_ENCASED_SHAFT.get());
-        boolean EIsPipe = (east == EW_COPPER_ENCASED_PIPE.get()) && (west == AllBlocks.BRASS_CASING.getDefaultState());
-        boolean WIsPipe = (east == AllBlocks.BRASS_CASING.getDefaultState()) && (west == EW_COPPER_ENCASED_PIPE.get());
-
-        return (NSAreShafts && (EIsPipe || WIsPipe)) || ((NIsPipe || SIsPipe) && EWAreShafts);
-    }
-
 
 
     //FIXME temporary and bad and awful and stinky
