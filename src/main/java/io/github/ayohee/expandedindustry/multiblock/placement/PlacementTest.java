@@ -6,6 +6,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -77,8 +78,39 @@ public class PlacementTest {
     }
 
     public boolean canPlace(LevelAccessor level, BlockPos corePos) {
-        //TODO actual logic
+        for (int layerY = 0; layerY < layers.size(); layerY++) {
+            for (int layerX = 0; layerX < width; layerX++) {
+                for (int layerZ = 0; layerZ < length; layerZ++) {
+                    BlockPos pos = corePos.subtract(origin).offset(layerX, layerY, layerZ);
+                    char key = layers.get(layerY).get(layerZ).charAt(layerX);
+                    Predicate<BlockState> test = mapping.get(key);
+
+                    if (!test.test(level.getBlockState(pos))) {
+                        return false;
+                    }
+                }
+            }
+        }
+
         return true;
+    }
+
+    public PlacementTest copy() {
+        PlacementTest test = new PlacementTest();
+
+        test.mapping = new HashMap<>(mapping);
+
+        test.layers = new ArrayList<>(layers);
+        int i = 0;
+        for (List<String> layer : layers)  {
+            test.layers.set(i++, new ArrayList<>(layer));
+        }
+
+        test.origin = origin;
+        test.length = length;
+        test.width = width;
+
+        return test;
     }
 
     public static Predicate<BlockState> blockMatches(Supplier<Block> b) {

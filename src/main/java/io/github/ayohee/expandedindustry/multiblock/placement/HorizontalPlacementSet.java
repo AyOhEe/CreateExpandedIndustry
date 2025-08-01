@@ -1,6 +1,5 @@
 package io.github.ayohee.expandedindustry.multiblock.placement;
 
-import net.createmod.catnip.data.Pair;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.LevelAccessor;
@@ -17,10 +16,10 @@ public class HorizontalPlacementSet {
 
     public HorizontalPlacementSet(PlacementTest test, List<Direction> acceptableDirections) {
         // TODO rotate
-        tests.put(Direction.NORTH, test);
-        tests.put(Direction.EAST, test);
-        tests.put(Direction.SOUTH, test);
-        tests.put(Direction.WEST, test);
+        tests.put(Direction.NORTH, test.copy());
+        tests.put(Direction.EAST, test.copy());
+        tests.put(Direction.SOUTH, test.copy());
+        tests.put(Direction.WEST, test.copy());
     }
 
     public HorizontalPlacementSet(PlacementTest test) {
@@ -28,9 +27,7 @@ public class HorizontalPlacementSet {
     }
 
     public HorizontalPlacementSet reDefine(char key, Map<Direction, Predicate<BlockState>> statePairs) {
-        for (Map.Entry<Direction, PlacementTest> testPair : tests.entrySet()) {
-            testPair.getValue().define(key, statePairs.get(testPair.getKey()));
-        }
+        tests.replaceAll((k, v) -> v.define(key, statePairs.get(k)));
 
         return this;
     }

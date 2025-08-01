@@ -111,10 +111,10 @@ public class ReinforcedDrillMultiblock extends AbstractMultiblockController<Rein
                 )
             ).reDefine('S',
                 Map.of(
-                    Direction.NORTH, blockStateMatches(NS_BRASS_ENCASED_SHAFT),
-                    Direction.EAST, blockStateMatches(EW_BRASS_ENCASED_SHAFT),
-                    Direction.SOUTH, blockStateMatches(NS_BRASS_ENCASED_SHAFT),
-                    Direction.WEST, blockStateMatches(EW_BRASS_ENCASED_SHAFT)
+                    Direction.NORTH, blockStateMatches(EW_BRASS_ENCASED_SHAFT),
+                    Direction.EAST, blockStateMatches(NS_BRASS_ENCASED_SHAFT),
+                    Direction.SOUTH, blockStateMatches(EW_BRASS_ENCASED_SHAFT),
+                    Direction.WEST, blockStateMatches(NS_BRASS_ENCASED_SHAFT)
             )
     );
 

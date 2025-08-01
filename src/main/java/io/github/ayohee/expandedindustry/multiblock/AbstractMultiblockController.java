@@ -48,13 +48,4 @@ public abstract class AbstractMultiblockController<T extends AbstractMultiblockC
             blockEntities.get(i + 1).poolWith(blockEntities.get(i));
         }
     }
-
-    public static boolean assertReplaceable(LevelAccessor level, BlockPos pos) {
-        BlockState state = level.getBlockState(pos);
-        return state.canBeReplaced();
-    }
-
-    public static boolean assertBlock(LevelAccessor level, BlockPos pos, Block block) {
-        return level.getBlockState(pos).getBlock() == block;
-    }
 }
