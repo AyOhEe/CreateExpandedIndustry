@@ -158,7 +158,9 @@ public class ReinforcedDrillMultiblock extends AbstractMultiblockController<Rein
                         List.of(Pair.of(corePos.west(), KIO_WEST.get()),
                                 Pair.of(corePos.east(), KIO_EAST.get())),
                         level,
-                        controller
+                        controller,
+                        256,
+                        64
                 );
             }
             case WEST, EAST  -> {
@@ -166,7 +168,9 @@ public class ReinforcedDrillMultiblock extends AbstractMultiblockController<Rein
                         List.of(Pair.of(corePos.north(), KIO_NORTH.get()),
                                 Pair.of(corePos.south(), KIO_SOUTH.get())),
                         level,
-                        controller
+                        controller,
+                        256,
+                        64
                 );
             }
         }

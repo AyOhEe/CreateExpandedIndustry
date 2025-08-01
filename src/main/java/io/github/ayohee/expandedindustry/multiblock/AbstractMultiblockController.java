@@ -29,7 +29,11 @@ public abstract class AbstractMultiblockController<T extends AbstractMultiblockC
 
 
     // Helper methods for constructing multiblock structures
-    public static void placeShaftPorts(List<Pair<BlockPos, BlockState>> states, LevelAccessor level, ReinforcedDrillMultiblockBE controller) {
+    public static void placeShaftPorts(List<Pair<BlockPos, BlockState>> states,
+                                       LevelAccessor level,
+                                       ReinforcedDrillMultiblockBE controller,
+                                       int consumedStress,
+                                       int minRPM) {
         List<MultiblockKineticIOBE> blockEntities = new LinkedList<>();
         for (Pair<BlockPos, BlockState> statePair : states) {
             BlockPos pos = statePair.getFirst();
@@ -41,6 +45,9 @@ public abstract class AbstractMultiblockController<T extends AbstractMultiblockC
             controller.addComponent(be);
             blockEntities.add(be);
         }
+
+        blockEntities.getFirst().setConfiguredStressImpact(consumedStress);
+        blockEntities.getFirst().setMinimumRotationSpeed(minRPM);
 
         // We're working on i and i + 1, so ignore the last element such that it isn't suddenly out of range
         for (int i = 0; i < blockEntities.size() - 1; i++) {
