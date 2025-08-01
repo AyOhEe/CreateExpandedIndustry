@@ -15,11 +15,15 @@ public class HorizontalPlacementSet {
     Map<Direction, PlacementTest> tests = new HashMap<>();
 
     public HorizontalPlacementSet(PlacementTest test, List<Direction> acceptableDirections) {
-        // TODO rotate
-        tests.put(Direction.NORTH, test.copy());
-        tests.put(Direction.EAST, test.copy());
-        tests.put(Direction.SOUTH, test.copy());
-        tests.put(Direction.WEST, test.copy());
+        PlacementTest north = test.copy();
+        PlacementTest east = north.clockwiseRotatedCopy();
+        PlacementTest south = east.clockwiseRotatedCopy();
+        PlacementTest west = south.clockwiseRotatedCopy();
+
+        tests.put(Direction.NORTH, north);
+        tests.put(Direction.EAST,  east);
+        tests.put(Direction.SOUTH, south);
+        tests.put(Direction.WEST,  west);
     }
 
     public HorizontalPlacementSet(PlacementTest test) {

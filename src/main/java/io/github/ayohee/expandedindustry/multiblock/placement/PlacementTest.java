@@ -113,6 +113,48 @@ public class PlacementTest {
         return test;
     }
 
+    public PlacementTest clockwiseRotatedCopy() {
+        PlacementTest test = new PlacementTest();
+
+        test.mapping = new HashMap<>(mapping);
+
+        test.layers = new ArrayList<>(layers);
+        int i = 0;
+        for (List<String> layer : layers)  {
+            test.layers.set(i++, rotateLayerClockwise(layer));
+        }
+
+        test.origin = rotateOriginClockwise(origin, length);
+        test.length = width;
+        test.width = length;
+
+        return test;
+    }
+
+    private static Vec3i rotateOriginClockwise(Vec3i origin, int oldLength) {
+        // A clockwise rotation is really just a transposition and a mirroring. Need to make sure
+        // that the new X coordinate is in range, as Z=0 could an X exactly equal to (and thus outside) the length
+        return new Vec3i(oldLength - origin.getZ() - 1, origin.getY(), origin.getX());
+    }
+
+    private static List<String> rotateLayerClockwise(List<String> layer) {
+        LinkedList<String> rotatedLayer = new LinkedList<>();
+
+        int length = layer.size();
+        int width = layer.getFirst().length();
+        for (int i = 0; i < width; i++) {
+            StringBuilder sb = new StringBuilder();
+
+            for (int j = 0; j < length; j++) {
+                sb.append(layer.get(length - j - 1).charAt(i));
+            }
+
+            rotatedLayer.add(sb.toString());
+        }
+
+        return rotatedLayer;
+    }
+
     public static Predicate<BlockState> blockMatches(Supplier<Block> b) {
         return (bs) -> bs.getBlock() == b.get();
     }
