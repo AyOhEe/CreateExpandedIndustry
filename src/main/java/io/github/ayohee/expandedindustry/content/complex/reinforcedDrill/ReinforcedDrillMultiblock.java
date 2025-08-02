@@ -29,6 +29,7 @@ import java.util.List;
 import java.util.Map;
 
 import static io.github.ayohee.expandedindustry.multiblock.MultiblockGhostBlock.MULTIBLOCK_GHOST;
+import static io.github.ayohee.expandedindustry.multiblock.MultiblockInventoryBlock.MULTIBLOCK_INVENTORY;
 import static io.github.ayohee.expandedindustry.multiblock.MultiblockKineticIOBlock.*;
 import static io.github.ayohee.expandedindustry.multiblock.placement.PlacementTest.blockMatches;
 import static io.github.ayohee.expandedindustry.multiblock.placement.PlacementTest.blockStateMatches;
@@ -136,11 +137,12 @@ public class ReinforcedDrillMultiblock extends AbstractMultiblockController<Rein
                 .addLayer(List.of(
                     "GGG",
                     "LCR",
-                    "GGG"))
+                    "GIG"))
                 .define('G', MULTIBLOCK_GHOST)
                 .define('L', KIO_EAST)
                 .define('R', KIO_WEST)
                 .define('C', DRILL_CONTROLLER_NORTH)
+                .define('I', MULTIBLOCK_INVENTORY)
                 .setOrigin(new Vec3i(1, 1, 1))
                 .kineticStats(256, 64)
             ).reDefine('L',

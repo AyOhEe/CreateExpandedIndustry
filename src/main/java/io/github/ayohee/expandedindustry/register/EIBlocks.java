@@ -22,6 +22,7 @@ import io.github.ayohee.expandedindustry.content.blocks.HardenedStoneBlock;
 import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.*;
 import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.*;
 import io.github.ayohee.expandedindustry.multiblock.MultiblockGhostBlock;
+import io.github.ayohee.expandedindustry.multiblock.MultiblockInventoryBlock;
 import io.github.ayohee.expandedindustry.multiblock.MultiblockKineticIOBlock;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -68,6 +69,15 @@ public class EIBlocks {
             .properties(c -> c
                     .mapColor(MapColor.COLOR_ORANGE)
                     .sound(SoundType.METAL))
+            .register();
+
+    public static final BlockEntry<MultiblockInventoryBlock> MULTIBLOCK_INVENTORY = REGISTRATE
+            .block("multiblock_inventory", MultiblockInventoryBlock::new)
+            .initialProperties(() -> Blocks.GLASS)
+            .properties(EIBlocks::multiblock_component)
+            .properties(c -> c
+                .mapColor(MapColor.COLOR_ORANGE)
+                .sound(SoundType.METAL))
             .register();
 
     public static final BlockEntry<MultiblockKineticIOBlock> MULTIBLOCK_KINETIC_IO = REGISTRATE

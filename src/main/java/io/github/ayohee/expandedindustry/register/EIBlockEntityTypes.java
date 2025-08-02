@@ -6,10 +6,7 @@ import io.github.ayohee.expandedindustry.content.blockentities.HardenedStoneBloc
 import io.github.ayohee.expandedindustry.content.blockentities.HardenedStoneBlockEntity.RichnessProfile;
 import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.PressurisedFluidTankBlockEntity;
 import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.ReinforcedDrillMultiblockBE;
-import io.github.ayohee.expandedindustry.multiblock.MultiblockGhostBE;
-import io.github.ayohee.expandedindustry.multiblock.MultiblockGhostBlock;
-import io.github.ayohee.expandedindustry.multiblock.MultiblockKineticIOBE;
-import io.github.ayohee.expandedindustry.multiblock.MultiblockKineticIOVisual;
+import io.github.ayohee.expandedindustry.multiblock.*;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.function.Supplier;
@@ -103,6 +100,11 @@ public class EIBlockEntityTypes {
             .visual(() -> MultiblockKineticIOVisual::new, false)
             .validBlocks(EIBlocks.MULTIBLOCK_KINETIC_IO)
             //.renderer(() -> RDKBERenderer::new) FIXME this should work
+            .register();
+
+    public static final BlockEntityEntry<MultiblockInventoryBE> MULTIBLOCK_INVENTORY = REGISTRATE
+            .blockEntity("multiblock_inventory", MultiblockInventoryBE::new)
+            .validBlocks(EIBlocks.MULTIBLOCK_INVENTORY)
             .register();
 
     public static final BlockEntityEntry<ReinforcedDrillMultiblockBE> REINFORCED_DRILL_MULTIBLOCK = REGISTRATE

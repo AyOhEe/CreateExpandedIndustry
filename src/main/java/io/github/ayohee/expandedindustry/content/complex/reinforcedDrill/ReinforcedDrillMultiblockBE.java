@@ -17,4 +17,11 @@ public class ReinforcedDrillMultiblockBE extends AbstractMultiblockControllerBE 
     public BiConsumer<LevelAccessor, BlockPos> deconstructFunction() {
         return ReinforcedDrillMultiblock::deconstructMBS;
     }
+
+    @Override
+    public void tick() {
+        super.tick();
+
+        //TODO MINING SHIT HERE
+    }
 }

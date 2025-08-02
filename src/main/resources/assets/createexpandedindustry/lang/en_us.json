@@ -20,6 +20,7 @@
   "block.createexpandedindustry.reinforced_drill_multiblock": "Reinforced Drill",
   "block.createexpandedindustry.multiblock_kinetic_io": "Shaft port",
   "block.createexpandedindustry.multiblock_ghost": "Multiblock",
+  "block.createexpandedindustry.multiblock_inventory": "Multiblock Inventory",
 
   "item.createexpandedindustry.crushed_raw_cobalt": "Crushed Raw Cobalt",
   "item.createexpandedindustry.cobalt_ingot": "Cobalt Ingot",
