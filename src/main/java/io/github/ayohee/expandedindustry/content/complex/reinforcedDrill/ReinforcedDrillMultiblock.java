@@ -5,7 +5,9 @@ import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
 import io.github.ayohee.expandedindustry.multiblock.AbstractMultiblockController;
 import io.github.ayohee.expandedindustry.multiblock.IMultiblockComponentBE;
+import io.github.ayohee.expandedindustry.multiblock.placement.HorizontalMultiblockBuilder;
 import io.github.ayohee.expandedindustry.multiblock.placement.HorizontalPlacementSet;
+import io.github.ayohee.expandedindustry.multiblock.placement.MultiblockBuilder;
 import io.github.ayohee.expandedindustry.multiblock.placement.PlacementTest;
 import io.github.ayohee.expandedindustry.register.EIBlockEntityTypes;
 import io.github.ayohee.expandedindustry.register.EIBlocks;
@@ -28,6 +30,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import java.util.List;
 import java.util.Map;
 
+import static io.github.ayohee.expandedindustry.multiblock.MultiblockGhostBlock.MULTIBLOCK_GHOST;
 import static io.github.ayohee.expandedindustry.multiblock.MultiblockKineticIOBlock.*;
 import static io.github.ayohee.expandedindustry.multiblock.placement.PlacementTest.blockMatches;
 import static io.github.ayohee.expandedindustry.multiblock.placement.PlacementTest.blockStateMatches;
@@ -52,7 +55,14 @@ public class ReinforcedDrillMultiblock extends AbstractMultiblockController<Rein
             .setValue(BlockStateProperties.WEST, true)
             .setValue(BlockStateProperties.EAST, true));
 
-    public static final ConstSupplier<BlockState> REINFORCED_DRILL_PARENT = new ConstSupplier<>(EIBlocks.REINFORCED_DRILL_MULTIBLOCK::getDefaultState);
+    public static final ConstSupplier<BlockState> DRILL_CONTROLLER_NORTH = new ConstSupplier<>(() -> EIBlocks.REINFORCED_DRILL_MULTIBLOCK
+        .getDefaultState().setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH));
+    public static final ConstSupplier<BlockState> DRILL_CONTROLLER_EAST = new ConstSupplier<>(() -> EIBlocks.REINFORCED_DRILL_MULTIBLOCK
+        .getDefaultState().setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST));
+    public static final ConstSupplier<BlockState> DRILL_CONTROLLER_SOUTH = new ConstSupplier<>(() -> EIBlocks.REINFORCED_DRILL_MULTIBLOCK
+        .getDefaultState().setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH));
+    public static final ConstSupplier<BlockState> DRILL_CONTROLLER_WEST = new ConstSupplier<>(() -> EIBlocks.REINFORCED_DRILL_MULTIBLOCK
+        .getDefaultState().setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST));
 
 
 
@@ -87,13 +97,13 @@ public class ReinforcedDrillMultiblock extends AbstractMultiblockController<Rein
         new HorizontalPlacementSet(
             new PlacementTest()
                 .addLayer(List.of(
-                        "B B",
-                        " D ",
-                        "B B"))
+                    "B B",
+                    " D ",
+                    "B B"))
                 .addLayer(List.of(
-                        "TPT",
-                        "SMS",
-                        "TCT"))
+                    "TPT",
+                    "SMS",
+                    "TCT"))
                 .define('B', blockMatches(EIBlocks.DRILL_BEAM::get))
                 .define('D', blockMatches(EIBlocks.DRILL_BIT::get))
                 .define('M', blockMatches(EIBlocks.DRILL_MOTOR::get))
@@ -115,65 +125,51 @@ public class ReinforcedDrillMultiblock extends AbstractMultiblockController<Rein
                     Direction.EAST, blockStateMatches(NS_BRASS_ENCASED_SHAFT),
                     Direction.SOUTH, blockStateMatches(EW_BRASS_ENCASED_SHAFT),
                     Direction.WEST, blockStateMatches(NS_BRASS_ENCASED_SHAFT)
-            )
-    );
+                )
+        );
+
+    public static final HorizontalMultiblockBuilder MULTIBLOCK_BUILDER =
+        new HorizontalMultiblockBuilder(
+            new MultiblockBuilder()
+                .addLayer(List.of(
+                    "GGG",
+                    "GGG",
+                    "GGG"))
+                .addLayer(List.of(
+                    "GGG",
+                    "LCR",
+                    "GGG"))
+                .define('G', MULTIBLOCK_GHOST)
+                .define('L', KIO_EAST)
+                .define('R', KIO_WEST)
+                .define('C', DRILL_CONTROLLER_NORTH)
+                .setOrigin(new Vec3i(1, 1, 1))
+                .kineticStats(256, 64)
+            ).reDefine('L',
+                Map.of(
+                    Direction.NORTH, KIO_WEST,
+                    Direction.EAST, KIO_NORTH,
+                    Direction.SOUTH, KIO_EAST,
+                    Direction.WEST, KIO_SOUTH
+                )
+            ).reDefine('R',
+                Map.of(
+                    Direction.NORTH, KIO_EAST,
+                    Direction.EAST, KIO_SOUTH,
+                    Direction.SOUTH, KIO_WEST,
+                    Direction.WEST, KIO_NORTH
+                )
+            ).reDefine('C',
+                Map.of(
+                    Direction.NORTH, DRILL_CONTROLLER_NORTH,
+                    Direction.EAST, DRILL_CONTROLLER_EAST,
+                    Direction.SOUTH, DRILL_CONTROLLER_SOUTH,
+                    Direction.WEST, DRILL_CONTROLLER_WEST
+                )
+            );
 
     public static void placeMBS(LevelAccessor level, BlockPos corePos) {
-        Direction fluidPipeDir = PLACEMENT_SET.findFirstPlacement(level, corePos);
-        BlockState childBS = EIBlocks.MULTIBLOCK_GHOST.getDefaultState();
-
-
-        BlockState parentBS = REINFORCED_DRILL_PARENT.get().setValue(BlockStateProperties.HORIZONTAL_FACING, fluidPipeDir);
-        level.setBlock(corePos, parentBS, UPDATE_ALL);
-        ReinforcedDrillMultiblockBE controller = level.getBlockEntity(corePos, EIBlockEntityTypes.REINFORCED_DRILL_MULTIBLOCK.get()).orElseThrow();
-
-        BlockPos cornerPos = corePos.below().north().west();
-        int xCorner = cornerPos.getX();
-        int yCorner = cornerPos.getY();
-        int zCorner = cornerPos.getZ();
-        for (int x = xCorner; x <= xCorner + 2; ++x) {
-            for (int y = yCorner; y <= yCorner + 1; ++y) {
-                for (int z = zCorner; z <= zCorner + 2; ++z) {
-                    BlockPos currentPos = new BlockPos(x, y, z);
-                    if (currentPos.equals(corePos))
-                        continue;
-
-                    level.setBlock(
-                            currentPos,
-                            childBS,
-                            UPDATE_ALL
-                    );
-                    BlockEntity currentBE = level.getBlockEntity(currentPos);
-                    if (!(currentBE instanceof IMultiblockComponentBE))
-                        continue;
-
-                    controller.addComponent((IMultiblockComponentBE) currentBE);
-                }
-            }
-        }
-
-        switch (fluidPipeDir) {
-            case NORTH, SOUTH -> {
-                placeShaftPorts(
-                        List.of(Pair.of(corePos.west(), KIO_WEST.get()),
-                                Pair.of(corePos.east(), KIO_EAST.get())),
-                        level,
-                        controller,
-                        256,
-                        64
-                );
-            }
-            case WEST, EAST  -> {
-                placeShaftPorts(
-                        List.of(Pair.of(corePos.north(), KIO_NORTH.get()),
-                                Pair.of(corePos.south(), KIO_SOUTH.get())),
-                        level,
-                        controller,
-                        256,
-                        64
-                );
-            }
-        }
+        MULTIBLOCK_BUILDER.place(level, corePos, PLACEMENT_SET.findFirstPlacement(level, corePos));
     }
 
 

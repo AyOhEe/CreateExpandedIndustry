@@ -1,6 +1,8 @@
 package io.github.ayohee.expandedindustry.multiblock;
 
 import io.github.ayohee.expandedindustry.register.EIBlockEntityTypes;
+import io.github.ayohee.expandedindustry.register.EIBlocks;
+import io.github.ayohee.expandedindustry.util.ConstSupplier;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.RenderShape;
@@ -8,6 +10,9 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class MultiblockGhostBlock extends AbstractMultiblockComponent<MultiblockGhostBE> {
+    public static final ConstSupplier<BlockState> MULTIBLOCK_GHOST = new ConstSupplier<>(EIBlocks.MULTIBLOCK_GHOST::getDefaultState);
+
+
     public MultiblockGhostBlock(Properties properties) {
         super(properties);
     }
