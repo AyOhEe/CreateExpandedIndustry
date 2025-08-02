@@ -2,16 +2,20 @@ package io.github.ayohee.expandedindustry.register;
 
 import com.simibubi.create.AllTags.AllItemTags;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
-import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import net.minecraft.data.recipes.RecipeBuilder;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.BannerPatternItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.crafting.Ingredient;
 
+import static io.github.ayohee.expandedindustry.CreateExpandedIndustry.MODID;
 import static io.github.ayohee.expandedindustry.CreateExpandedIndustry.REGISTRATE;
 
 public class EIItems {
@@ -71,6 +75,12 @@ public class EIItems {
     public static final ItemEntry<Item> MAGNETISED_COBALT = REGISTRATE.item("magnetised_cobalt", Item::new)
             .register();
 
+    public static final ItemEntry<BannerPatternItem> LOSS_PATTERN = REGISTRATE.item(
+                "loss_pattern",
+                (p) -> new BannerPatternItem(TagKey.create(Registries.BANNER_PATTERN, ResourceLocation.fromNamespaceAndPath(MODID, "pattern_item/loss_pattern")), p)
+            )
+            .properties((p) -> p.stacksTo(1).rarity(Rarity.UNCOMMON))
+            .register();
 
     public static void register() { }
 }

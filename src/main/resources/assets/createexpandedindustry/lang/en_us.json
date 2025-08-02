@@ -26,5 +26,25 @@
   "item.createexpandedindustry.cobalt_nugget": "Cobalt Nugget",
   "item.createexpandedindustry.cobalt_sheet": "Cobalt Sheet",
   "item.createexpandedindustry.unpolished_magnetised_cobalt": "Unpolished Magnetised Cobalt",
-  "item.createexpandedindustry.magnetised_cobalt": "Magnetised Cobalt"
+  "item.createexpandedindustry.magnetised_cobalt": "Magnetised Cobalt",
+
+  "item.createexpandedindustry.loss_pattern": "Banner Pattern",
+  "item.createexpandedindustry.loss_pattern.desc": "Loss",
+
+  "block.minecraft.banner.loss.white": "White Loss",
+  "block.minecraft.banner.loss.orange": "Orange Loss",
+  "block.minecraft.banner.loss.magenta": "Magenta Loss",
+  "block.minecraft.banner.loss.light_blue": "Light Blue Loss",
+  "block.minecraft.banner.loss.yellow": "Yellow Loss",
+  "block.minecraft.banner.loss.lime": "Lime Loss",
+  "block.minecraft.banner.loss.pink": "Pink Loss",
+  "block.minecraft.banner.loss.gray": "Gray Loss",
+  "block.minecraft.banner.loss.light_gray": "Light Gray Loss",
+  "block.minecraft.banner.loss.cyan": "Cyan Loss",
+  "block.minecraft.banner.loss.purple": "Purple Loss",
+  "block.minecraft.banner.loss.blue": "Blue Loss",
+  "block.minecraft.banner.loss.brown": "Brown Loss",
+  "block.minecraft.banner.loss.green": "Green Loss",
+  "block.minecraft.banner.loss.red": "Red Loss",
+  "block.minecraft.banner.loss.black": "Black Loss"
 }
