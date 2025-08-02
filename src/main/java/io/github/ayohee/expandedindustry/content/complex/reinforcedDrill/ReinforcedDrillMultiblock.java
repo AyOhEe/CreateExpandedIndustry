@@ -4,11 +4,9 @@ import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
 import io.github.ayohee.expandedindustry.multiblock.AbstractMultiblockController;
+import io.github.ayohee.expandedindustry.multiblock.AbstractMultiblockControllerBE;
 import io.github.ayohee.expandedindustry.multiblock.IMultiblockComponentBE;
-import io.github.ayohee.expandedindustry.multiblock.placement.HorizontalMultiblockBuilder;
-import io.github.ayohee.expandedindustry.multiblock.placement.HorizontalPlacementSet;
-import io.github.ayohee.expandedindustry.multiblock.placement.MultiblockBuilder;
-import io.github.ayohee.expandedindustry.multiblock.placement.PlacementTest;
+import io.github.ayohee.expandedindustry.multiblock.placement.*;
 import io.github.ayohee.expandedindustry.register.EIBlockEntityTypes;
 import io.github.ayohee.expandedindustry.register.EIBlocks;
 import io.github.ayohee.expandedindustry.util.ConstSupplier;
@@ -168,19 +166,47 @@ public class ReinforcedDrillMultiblock extends AbstractMultiblockController<Rein
                 )
             );
 
+    public static HorizontalGeneralBuilder<GeneralBuilder> MULTIBLOCK_DECONSTRUCTOR =
+        new HorizontalGeneralBuilder<>(
+            new GeneralBuilder()
+                .addLayer(List.of(
+                    "B B",
+                    " D ",
+                    "B B"))
+                .addLayer(List.of(
+                    "TPT",
+                    "SMS",
+                    "TCT"))
+                .define('B', EIBlocks.DRILL_BEAM::getDefaultState)
+                .define('D', EIBlocks.DRILL_BIT::getDefaultState)
+                .define('M', EIBlocks.DRILL_MOTOR::getDefaultState)
+                .define('T', AllBlocks.RAILWAY_CASING::getDefaultState)
+                .define('C', AllBlocks.BRASS_CASING::getDefaultState)
+                .define('P', NS_COPPER_ENCASED_PIPE)
+                .define('S', EW_BRASS_ENCASED_SHAFT)
+                .setOrigin(new Vec3i(1, 1, 1))
+            ).reDefine('P',
+                Map.of(
+                    Direction.NORTH, NS_COPPER_ENCASED_PIPE,
+                    Direction.EAST, EW_COPPER_ENCASED_PIPE,
+                    Direction.SOUTH, NS_COPPER_ENCASED_PIPE,
+                    Direction.WEST, EW_COPPER_ENCASED_PIPE
+                )
+            ).reDefine('S',
+                Map.of(
+                    Direction.NORTH, EW_BRASS_ENCASED_SHAFT,
+                    Direction.EAST, NS_BRASS_ENCASED_SHAFT,
+                    Direction.SOUTH, EW_BRASS_ENCASED_SHAFT,
+                    Direction.WEST, NS_BRASS_ENCASED_SHAFT
+                )
+            );
+
     public static void placeMBS(LevelAccessor level, BlockPos corePos) {
         MULTIBLOCK_BUILDER.place(level, corePos, PLACEMENT_SET.findFirstPlacement(level, corePos));
     }
 
-
-    //FIXME temporary and bad and awful and stinky
     public static void deconstructMBS(LevelAccessor level, BlockPos corePos) {
-        for (int x = corePos.getX() - 1; x <= corePos.getX() + 1; x++) {
-            for (int y = corePos.getY() - 1; y <= corePos.getY(); y++) {
-                for (int z = corePos.getZ() - 1; z <= corePos.getZ() + 1; z++) {
-                    level.setBlock(new BlockPos(x, y, z), Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL);
-                }
-            }
-        }
+        AbstractMultiblockControllerBE be = (AbstractMultiblockControllerBE) level.getBlockEntity(corePos);
+        MULTIBLOCK_DECONSTRUCTOR.place(level, corePos, be.getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING));
     }
 }

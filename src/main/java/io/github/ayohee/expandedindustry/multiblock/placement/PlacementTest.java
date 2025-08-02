@@ -131,13 +131,13 @@ public class PlacementTest {
         return test;
     }
 
-    private static Vec3i rotateOriginClockwise(Vec3i origin, int oldLength) {
+    public static Vec3i rotateOriginClockwise(Vec3i origin, int oldLength) {
         // A clockwise rotation is really just a transposition and a mirroring. Need to make sure
         // that the new X coordinate is in range, as Z=0 could an X exactly equal to (and thus outside) the length
         return new Vec3i(oldLength - origin.getZ() - 1, origin.getY(), origin.getX());
     }
 
-    private static List<String> rotateLayerClockwise(List<String> layer) {
+    public static List<String> rotateLayerClockwise(List<String> layer) {
         LinkedList<String> rotatedLayer = new LinkedList<>();
 
         int length = layer.size();

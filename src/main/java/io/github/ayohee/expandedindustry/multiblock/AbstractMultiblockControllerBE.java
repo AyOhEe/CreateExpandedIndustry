@@ -31,6 +31,7 @@ public abstract class AbstractMultiblockControllerBE extends BlockEntity impleme
     Map<BlockPos, IMultiblockComponentBE> components = new HashMap<>();
 
     boolean chunkUnloaded = false;
+    boolean startedDestroy = false;
 
 
     public AbstractMultiblockControllerBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
@@ -121,9 +122,10 @@ public abstract class AbstractMultiblockControllerBE extends BlockEntity impleme
 
     // A "remove"-like method is ideal, as, in SmartBlockEntity, it already checks whether the chunk is unloaded
     public void onDestroy() {
-        if (!initialised || !hasLevel() || getLevel().isClientSide) {
+        if (!initialised || !hasLevel() || getLevel().isClientSide || startedDestroy) {
             return;
         }
+        startedDestroy = true;
 
         deconstructFunction().accept(level, getBlockPos());
     }

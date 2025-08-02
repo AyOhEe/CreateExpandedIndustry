@@ -5,6 +5,8 @@ import io.github.ayohee.expandedindustry.register.EIBlocks;
 import io.github.ayohee.expandedindustry.util.ConstSupplier;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
