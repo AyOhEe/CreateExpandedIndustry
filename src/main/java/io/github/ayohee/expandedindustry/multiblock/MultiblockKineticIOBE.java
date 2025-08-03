@@ -48,6 +48,7 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
         if (!initialised) {
             if (!level.isClientSide) {
                 level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_ALL);
+                findController();
             }
             initialised = true;
         }
@@ -119,6 +120,7 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
     }
 
     public void setMinimumRotationSpeed(float mrs) {
+        setChanged();
         this.minimumRotationSpeed = mrs;
     }
 
@@ -131,6 +133,11 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
             return 0;
         }
         return Math.abs(speed);
+    }
+
+    public boolean isPowered() {
+        float speed = getRotationSpeed();
+        return stressImpact == 0 || speed >= Math.max(0, minimumRotationSpeed);
     }
 
     @Override
@@ -270,4 +277,5 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
     public AbstractMultiblockControllerBE getController() {
         return controller;
     }
+
 }

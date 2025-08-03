@@ -5,6 +5,7 @@ import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipModifier;
 import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.PressurisedFluidTankBlockEntity;
+import io.github.ayohee.expandedindustry.multiblock.MultiblockInventoryBE;
 import io.github.ayohee.expandedindustry.register.*;
 import net.createmod.catnip.lang.FontHelper;
 import net.neoforged.bus.api.EventPriority;
@@ -71,5 +72,6 @@ public class CreateExpandedIndustry {
 
     public void registerCapabilities(RegisterCapabilitiesEvent event) {
         PressurisedFluidTankBlockEntity.registerCapabilities(event);
+        MultiblockInventoryBE.registerCapabilities(event);
     }
 }

@@ -2,8 +2,13 @@ package io.github.ayohee.expandedindustry.util;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Function;
 
 public class NBTHelperEI {
     //FIXME are we sure this isn't already implemented somewhere else?

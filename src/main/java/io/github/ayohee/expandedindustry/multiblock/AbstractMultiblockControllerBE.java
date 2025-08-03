@@ -28,7 +28,8 @@ public abstract class AbstractMultiblockControllerBE extends BlockEntity impleme
     List<BlockPos> _componentPositions = null;
     boolean initialised = false;
 
-    Map<BlockPos, IMultiblockComponentBE> components = new HashMap<>();
+    protected Map<BlockPos, IMultiblockComponentBE> components = new HashMap<>();
+    protected Map<BlockPos, MultiblockInventoryBE> inventories = new HashMap<>();
 
     boolean chunkUnloaded = false;
     boolean startedDestroy = false;
@@ -42,6 +43,7 @@ public abstract class AbstractMultiblockControllerBE extends BlockEntity impleme
         if (!initialised) {
             if (!level.isClientSide) {
                 level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_ALL);
+                findComponents();
             }
             initialised = true;
         }
@@ -199,5 +201,9 @@ public abstract class AbstractMultiblockControllerBE extends BlockEntity impleme
     @Override
     public boolean containedFluidTooltip(List<Component> tooltip, boolean isPlayerSneaking, IFluidHandler handler) {
         return IHaveGoggleInformation.super.containedFluidTooltip(tooltip, isPlayerSneaking, handler);
+    }
+
+    public void addInventory(MultiblockInventoryBE multiblockInventoryBE) {
+        inventories.put(multiblockInventoryBE.getBlockPos(), multiblockInventoryBE);
     }
 }

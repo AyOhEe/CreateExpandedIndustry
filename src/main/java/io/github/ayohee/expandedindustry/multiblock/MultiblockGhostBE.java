@@ -30,6 +30,7 @@ public class MultiblockGhostBE extends BlockEntity implements IMultiblockCompone
         if (!initialised) {
             if (!level.isClientSide) {
                 level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_ALL);
+                findController();
             }
             initialised = true;
         }
