@@ -2,6 +2,7 @@ package io.github.ayohee.expandedindustry.content.blockentities;
 
 import com.simibubi.create.api.equipment.goggles.IHaveGoggleInformation;
 import com.tterrag.registrate.builders.BlockEntityBuilder;
+import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import net.createmod.catnip.lang.LangBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -13,6 +14,7 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -77,6 +79,25 @@ public class HardenedStoneBlockEntity extends BlockEntity implements IHaveGoggle
         return localMinRichness + Math.abs((int)((x + y + z + seed) % (rangeSize + 1)));
     }
 
+    public HardenedStoneBlockEntity findLowest() {
+        BlockPos below = getBlockPos().below();
+        if (level.getBlockEntity(below) instanceof HardenedStoneBlockEntity hsbe) {
+            return hsbe.findLowest();
+        }
+
+        return this;
+    }
+
+    public ItemStack drillFrom() {
+        remainingResources -= 1;
+        level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
+
+        if (remainingResources == 0) {
+            level.setBlock(getBlockPos(), Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL);
+        }
+
+        return profile.stack;
+    }
 
     @Override
     public void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {

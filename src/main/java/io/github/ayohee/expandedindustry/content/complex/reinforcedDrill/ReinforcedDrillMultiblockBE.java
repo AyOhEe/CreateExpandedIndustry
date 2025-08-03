@@ -2,6 +2,7 @@ package io.github.ayohee.expandedindustry.content.complex.reinforcedDrill;
 
 import io.github.ayohee.expandedindustry.content.blockentities.HardenedStoneBlockEntity;
 import io.github.ayohee.expandedindustry.multiblock.*;
+import io.github.ayohee.expandedindustry.register.EIBlockEntityTypes;
 import io.github.ayohee.expandedindustry.register.EIBlocks;
 import io.github.ayohee.expandedindustry.register.EIItems;
 import io.github.ayohee.expandedindustry.util.NBTHelperEI;
@@ -15,12 +16,14 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.BiConsumer;
 
 public class ReinforcedDrillMultiblockBE extends AbstractMultiblockControllerBE {
@@ -43,7 +46,7 @@ public class ReinforcedDrillMultiblockBE extends AbstractMultiblockControllerBE 
     public void tick() {
         super.tick();
 
-        if (isPowered() && canTickMining()) {
+        if (isPowered() && canTickMining() && hasViableHardenedStone()) {
             tickMining();
         }
 
@@ -75,18 +78,46 @@ public class ReinforcedDrillMultiblockBE extends AbstractMultiblockControllerBE 
 
     protected void tickMining() {
         if (progress >= DRILL_TICKS) {
-            //TODO mine from actual hardened stone blocks
-            //HardenedStoneBlockEntity hsbe = findRandomHardenedStone();
+            HardenedStoneBlockEntity hsbe = findRandomDeepHardenedStone();
 
-            inventoryQueue.add(new ItemStack(EIBlocks.ERYTHRITE_BLOCK, 10));
-            inventoryQueue.add(new ItemStack(EIItems.CRUSHED_RAW_COBALT.get(), 10));
-
-            progress -= DRILL_TICKS;
+            if (hsbe != null) {
+                inventoryQueue.add(hsbe.drillFrom());
+                progress -= DRILL_TICKS;
+            }
         } else {
             progress += 1;
         }
+
         level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
         setChanged();
+    }
+
+    private List<HardenedStoneBlockEntity> findAllTopLayerHardenedStone() {
+        List<HardenedStoneBlockEntity> hsbes = new LinkedList<>();
+        BlockPos floorPosition = getBlockPos().below(2);
+
+        for (int xOffset = -2; xOffset < 3; xOffset++) {
+            for (int zOffset = -2; zOffset < 3; zOffset++) {
+                if (level.getBlockEntity(floorPosition.east(xOffset).south(zOffset)) instanceof HardenedStoneBlockEntity hsbe) {
+                    hsbes.add(hsbe);
+                }
+            }
+        }
+
+        return hsbes;
+    }
+
+    private HardenedStoneBlockEntity findRandomDeepHardenedStone() {
+        List<HardenedStoneBlockEntity> hsbes = findAllTopLayerHardenedStone();
+        if (hsbes.isEmpty()) {
+            return null;
+        }
+
+        return hsbes.get(level.random.nextInt(hsbes.size())).findLowest();
+    }
+
+    private boolean hasViableHardenedStone() {
+        return !findAllTopLayerHardenedStone().isEmpty();
     }
 
     protected void tryInsertInventory() {
@@ -96,7 +127,6 @@ public class ReinforcedDrillMultiblockBE extends AbstractMultiblockControllerBE 
 
         MultiblockInventoryBE invBe = inventories.values().iterator().next();
         ItemStack additionalContents = inventoryQueue.getFirst();
-        ItemStack currentContents = invBe.contents();
 
         if (invBe.insert(additionalContents) == ItemStack.EMPTY) {
             inventoryQueue.removeFirst();
@@ -131,7 +161,9 @@ public class ReinforcedDrillMultiblockBE extends AbstractMultiblockControllerBE 
         List<Component> tooltip = new ArrayList<>();
         tooltip.add(Component.literal("    Mining progress: " + percentage(progress, DRILL_TICKS) + "%"));
 
-        if (!isPowered()) {
+        if (!hasViableHardenedStone()) {
+            tooltip.add(Component.literal("        (No mineable stone - mining stopped)").withStyle(ChatFormatting.DARK_GRAY));
+        } else if (!isPowered()) {
             tooltip.add(Component.literal("        (Underpowered - mining stopped)").withStyle(ChatFormatting.DARK_GRAY));
         } else if (!canTickMining()) {
             tooltip.add(Component.literal("        (Full - mining stopped)").withStyle(ChatFormatting.DARK_GRAY));
