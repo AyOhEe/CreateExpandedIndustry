@@ -24,7 +24,7 @@ import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import java.util.*;
 import java.util.function.BiConsumer;
 
-public abstract class AbstractMultiblockControllerBE extends BlockEntity implements ITickingBlockEntity, IHaveGoggleInformation, IHaveHoveringInformation {
+public abstract class AbstractMultiblockControllerBE extends BlockEntity implements ITickingBlockEntity, IMultiblockTooltips {
     List<BlockPos> _componentPositions = null;
     boolean initialised = false;
 
@@ -149,6 +149,12 @@ public abstract class AbstractMultiblockControllerBE extends BlockEntity impleme
                 ));
             }
         }
+        if (multiblockGoggleTooltipPriority(isPlayerSneaking) != -1) {
+            componentTooltips.add(Pair.of(
+                    multiblockGoggleTooltipPriority(isPlayerSneaking),
+                    multiblockGoggleTooltip(isPlayerSneaking)
+            ));
+        }
 
         // The compiler gets confused unless I explicitly type this.
         Comparator<Pair<Integer, ?>> comparator = Comparator.comparingInt(Pair::getFirst);
@@ -182,6 +188,12 @@ public abstract class AbstractMultiblockControllerBE extends BlockEntity impleme
                 ));
             }
         }
+        if (multiblockTooltipPriority(isPlayerSneaking) != -1) {
+            componentTooltips.add(Pair.of(
+                    multiblockTooltipPriority(isPlayerSneaking),
+                    multiblockTooltip(isPlayerSneaking)
+            ));
+        }
 
         // The compiler gets confused unless I explicitly type this.
         Comparator<Pair<Integer, ?>> comparator = Comparator.comparingInt(Pair::getFirst);
@@ -200,7 +212,7 @@ public abstract class AbstractMultiblockControllerBE extends BlockEntity impleme
 
     @Override
     public boolean containedFluidTooltip(List<Component> tooltip, boolean isPlayerSneaking, IFluidHandler handler) {
-        return IHaveGoggleInformation.super.containedFluidTooltip(tooltip, isPlayerSneaking, handler);
+        return IMultiblockTooltips.super.containedFluidTooltip(tooltip, isPlayerSneaking, handler);
     }
 
     public void addInventory(MultiblockInventoryBE multiblockInventoryBE) {

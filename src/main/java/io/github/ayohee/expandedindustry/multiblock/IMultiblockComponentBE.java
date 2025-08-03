@@ -10,27 +10,21 @@ import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import javax.annotation.Nonnull;
 import java.util.List;
 
-public interface IMultiblockComponentBE extends IHaveHoveringInformation, IHaveGoggleInformation, ITickingBlockEntity {
+public interface IMultiblockComponentBE extends IMultiblockTooltips, ITickingBlockEntity {
     @Nonnull BlockEntity getInstance();
 
     void setController(AbstractMultiblockControllerBE mbc);
     void findController();
     AbstractMultiblockControllerBE getController();
 
-    // Returns how high up in the tooltip this entry should be. The order of entries with equal priority is undefined.
-    default int multiblockGoggleTooltipPriority(boolean isPlayerSneaking) { return -1; }
-    // Adds the tooltip to the multiblock
-    default List<Component> multiblockGoggleTooltip(boolean isPlayerSneaking) { return List.of(); }
+    default void onDestroy() {
+        findController();
+        if (getController() == null) {
+            return;
+        }
 
-    // Returns how high up in the tooltip this entry should be. The order of entries with equal priority is undefined.
-    default int multiblockTooltipPriority(boolean isPlayerSneaking) { return -1; }
-    // Adds the tooltip to the multiblock
-    default List<Component> multiblockTooltip(boolean isPlayerSneaking) { return List.of(); }
-
-    // Returns how high up in the tooltip this entry should be. The order of entries with equal priority is undefined.
-    default int multiblockContainedFluidTooltipPriority(boolean isPlayerSneaking) { return -1; }
-    // Adds the tooltip to the multiblock
-    default List<Component> multiblockContainedFluidTooltip(boolean isPlayerSneaking, IFluidHandler handler) { return List.of(); }
+        getController().onDestroy();
+    }
 
     @Override
     default boolean addToTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
@@ -58,14 +52,5 @@ public interface IMultiblockComponentBE extends IHaveHoveringInformation, IHaveG
             return false;
         }
         return getController().containedFluidTooltip(tooltip, isPlayerSneaking, handler);
-    }
-
-    default void onDestroy() {
-        findController();
-        if (getController() == null) {
-            return;
-        }
-
-        getController().onDestroy();
     }
 }
