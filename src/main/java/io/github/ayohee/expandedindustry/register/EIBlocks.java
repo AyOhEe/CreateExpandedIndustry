@@ -12,9 +12,11 @@ import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.providers.DataGenContext;
+import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.providers.RegistrateItemModelProvider;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.entry.BlockEntry;
+import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import io.github.ayohee.expandedindustry.CreateExpandedIndustry;
 
@@ -153,9 +155,154 @@ public class EIBlocks {
             .transform(getItemModel())
             .register();
 
+
     private static BlockBehaviour.Properties hardened_stones(BlockBehaviour.Properties properties) {
         return properties.explosionResistance(0).noLootTable();
     }
+
+
+    public static final BlockEntry<Block> BLACK_MICROPLASTIC_BLOCK = REGISTRATE
+            .block("black_microplastic_block", Block::new)
+            .initialProperties(() -> Blocks.SAND)
+            .properties(c -> c.mapColor(MapColor.TERRACOTTA_BLACK))
+            .blockstate(colouredVariant("microplastic"))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> GRAY_MICROPLASTIC_BLOCK = REGISTRATE
+            .block("gray_microplastic_block", Block::new)
+            .initialProperties(() -> Blocks.SAND)
+            .properties(c -> c.mapColor(MapColor.TERRACOTTA_GRAY))
+            .blockstate(colouredVariant("microplastic"))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> LIGHT_GRAY_MICROPLASTIC_BLOCK = REGISTRATE
+            .block("light_gray_microplastic_block", Block::new)
+            .initialProperties(() -> Blocks.SAND)
+            .properties(c -> c.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY))
+            .blockstate(colouredVariant("microplastic"))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> WHITE_MICROPLASTIC_BLOCK = REGISTRATE
+            .block("white_microplastic_block", Block::new)
+            .initialProperties(() -> Blocks.SAND)
+            .properties(c -> c.mapColor(MapColor.TERRACOTTA_WHITE))
+            .blockstate(colouredVariant("microplastic"))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> BROWN_MICROPLASTIC_BLOCK = REGISTRATE
+            .block("brown_microplastic_block", Block::new)
+            .initialProperties(() -> Blocks.SAND)
+            .properties(c -> c.mapColor(MapColor.TERRACOTTA_BROWN))
+            .blockstate(colouredVariant("microplastic"))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> RED_MICROPLASTIC_BLOCK = REGISTRATE
+            .block("red_microplastic_block", Block::new)
+            .initialProperties(() -> Blocks.SAND)
+            .properties(c -> c.mapColor(MapColor.TERRACOTTA_RED))
+            .blockstate(colouredVariant("microplastic"))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> ORANGE_MICROPLASTIC_BLOCK = REGISTRATE
+            .block("orange_microplastic_block", Block::new)
+            .initialProperties(() -> Blocks.SAND)
+            .properties(c -> c.mapColor(MapColor.TERRACOTTA_ORANGE))
+            .blockstate(colouredVariant("microplastic"))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> YELLOW_MICROPLASTIC_BLOCK = REGISTRATE
+            .block("yellow_microplastic_block", Block::new)
+            .initialProperties(() -> Blocks.SAND)
+            .properties(c -> c.mapColor(MapColor.TERRACOTTA_YELLOW))
+            .blockstate(colouredVariant("microplastic"))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> LIME_MICROPLASTIC_BLOCK = REGISTRATE
+            .block("lime_microplastic_block", Block::new)
+            .initialProperties(() -> Blocks.SAND)
+            .properties(c -> c.mapColor(MapColor.TERRACOTTA_LIGHT_GREEN))
+            .blockstate(colouredVariant("microplastic"))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> GREEN_MICROPLASTIC_BLOCK = REGISTRATE
+            .block("green_microplastic_block", Block::new)
+            .initialProperties(() -> Blocks.SAND)
+            .properties(c -> c.mapColor(MapColor.TERRACOTTA_GREEN))
+            .blockstate(colouredVariant("microplastic"))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> CYAN_MICROPLASTIC_BLOCK = REGISTRATE
+            .block("cyan_microplastic_block", Block::new)
+            .initialProperties(() -> Blocks.SAND)
+            .properties(c -> c.mapColor(MapColor.TERRACOTTA_CYAN))
+            .blockstate(colouredVariant("microplastic"))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> LIGHT_BLUE_MICROPLASTIC_BLOCK = REGISTRATE
+            .block("light_blue_microplastic_block", Block::new)
+            .initialProperties(() -> Blocks.SAND)
+            .properties(c -> c.mapColor(MapColor.TERRACOTTA_LIGHT_BLUE))
+            .blockstate(colouredVariant("microplastic"))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> BLUE_MICROPLASTIC_BLOCK = REGISTRATE
+            .block("blue_microplastic_block", Block::new)
+            .initialProperties(() -> Blocks.SAND)
+            .properties(c -> c.mapColor(MapColor.TERRACOTTA_BLUE))
+            .blockstate(colouredVariant("microplastic"))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> PURPLE_MICROPLASTIC_BLOCK = REGISTRATE
+            .block("purple_microplastic_block", Block::new)
+            .initialProperties(() -> Blocks.SAND)
+            .properties(c -> c.mapColor(MapColor.TERRACOTTA_PURPLE))
+            .blockstate(colouredVariant("microplastic"))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> MAGENTA_MICROPLASTIC_BLOCK = REGISTRATE
+            .block("magenta_microplastic_block", Block::new)
+            .initialProperties(() -> Blocks.SAND)
+            .properties(c -> c.mapColor(MapColor.TERRACOTTA_MAGENTA))
+            .blockstate(colouredVariant("microplastic"))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> PINK_MICROPLASTIC_BLOCK = REGISTRATE
+            .block("pink_microplastic_block", Block::new)
+            .initialProperties(() -> Blocks.SAND)
+            .properties(c -> c.mapColor(MapColor.TERRACOTTA_PINK))
+            .blockstate(colouredVariant("microplastic"))
+            .simpleItem()
+            .register();
+
+    private static NonNullBiConsumer<DataGenContext<Block, Block>, RegistrateBlockstateProvider> colouredVariant(String microplastic) {
+        return (ctx, prov) -> {
+            ResourceLocation textureLoc = ResourceLocation.fromNamespaceAndPath(MODID, "block/" + microplastic + "/" + ctx.getName());
+            ResourceLocation cubeAll = ResourceLocation.parse("block/cube_all");
+            prov.simpleBlock(ctx.get(), prov.models().singleTexture(ctx.getName(), cubeAll, "all", textureLoc));
+        };
+    }
+
+    private static NonNullBiConsumer<DataGenContext<Block, Block>, RegistrateBlockstateProvider> subdirectory(String folder) {
+        return (ctx, prov) -> {
+            prov.simpleBlock(ctx.get(), prov.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(MODID, "block/" + folder + "/" + ctx.getName())));
+        };
+    }
+
 
 
     public static final BlockEntry<Block> COBALT_BLOCK = REGISTRATE.block("cobalt_block", Block::new)

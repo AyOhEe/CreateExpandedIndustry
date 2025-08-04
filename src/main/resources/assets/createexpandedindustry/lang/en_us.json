@@ -77,5 +77,23 @@
 
   "block.createexpandedindustry.hot_bitumen": "Hot Bitumen",
   "fluid.createexpandedindustry.hot_bitumen": "Hot Bitumen",
-  "item.createexpandedindustry.hot_bitumen_bucket": "Hot Bitumen Bucket"
+  "item.createexpandedindustry.hot_bitumen_bucket": "Hot Bitumen Bucket",
+
+
+  "block.createexpandedindustry.white_microplastic_block": "White Block of Microplastics",
+  "block.createexpandedindustry.orange_microplastic_block": "Orange Block of Microplastics",
+  "block.createexpandedindustry.magenta_microplastic_block": "Magenta Block of Microplastics",
+  "block.createexpandedindustry.light_blue_microplastic_block": "Light Blue Block of Microplastics",
+  "block.createexpandedindustry.yellow_microplastic_block": "Yellow Block of Microplastics",
+  "block.createexpandedindustry.lime_microplastic_block": "Lime Block of Microplastics",
+  "block.createexpandedindustry.pink_microplastic_block": "Pink Block of Microplastics",
+  "block.createexpandedindustry.gray_microplastic_block": "Gray Block of Microplastics",
+  "block.createexpandedindustry.light_gray_microplastic_block": "Light Gray Block of Microplastics",
+  "block.createexpandedindustry.cyan_microplastic_block": "Cyan Block of Microplastics",
+  "block.createexpandedindustry.purple_microplastic_block": "Purple Block of Microplastics",
+  "block.createexpandedindustry.blue_microplastic_block": "Blue Block of Microplastics",
+  "block.createexpandedindustry.brown_microplastic_block": "Brown Block of Microplastics",
+  "block.createexpandedindustry.green_microplastic_block": "Green Block of Microplastics",
+  "block.createexpandedindustry.red_microplastic_block": "Red Block of Microplastics",
+  "block.createexpandedindustry.black_microplastic_block": "Black Block of Microplastics"
 }

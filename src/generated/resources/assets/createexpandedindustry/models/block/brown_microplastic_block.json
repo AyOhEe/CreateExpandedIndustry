@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "createexpandedindustry:block/microplastic/brown_microplastic_block"
+  }
+}
