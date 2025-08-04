@@ -93,7 +93,7 @@ public class HardenedStoneBlockEntity extends BlockEntity implements IHaveGoggle
         level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
 
         if (remainingResources == 0) {
-            level.setBlock(getBlockPos(), Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL);
+            level.destroyBlock(getBlockPos(), false);
         }
 
         return profile.stack;

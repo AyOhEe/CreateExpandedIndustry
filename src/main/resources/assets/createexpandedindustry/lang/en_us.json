@@ -47,5 +47,10 @@
   "block.minecraft.banner.loss.brown": "Brown Loss",
   "block.minecraft.banner.loss.green": "Green Loss",
   "block.minecraft.banner.loss.red": "Red Loss",
-  "block.minecraft.banner.loss.black": "Black Loss"
+  "block.minecraft.banner.loss.black": "Black Loss",
+
+
+  "block.createexpandedindustry.crude_oil": "Crude Oil",
+  "fluid.createexpandedindustry.crude_oil": "Crude Oil",
+  "item.createexpandedindustry.crude_oil_bucket": "Crude Oil Bucket"
 }

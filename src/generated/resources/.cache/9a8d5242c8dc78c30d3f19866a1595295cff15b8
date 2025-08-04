@@ -1,6 +1,7 @@
-// 1.21.1	2025-08-02T23:17:06.9026152	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+// 1.21.1	2025-08-04T13:37:03.1432268	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
 7be6b1e90e9c69056bd2b00fffd59cb8171149e4 assets/createexpandedindustry/blockstates/cobalt_block.json
 ec4d3cf2a77e2abe16d52351f68cd31c4fb0b8eb assets/createexpandedindustry/blockstates/cobalt_casing.json
+2904a93256f98990fb68311a122122aed1099a2e assets/createexpandedindustry/blockstates/crude_oil.json
 314f7a1a88b244c0bf4c1538fbcd6bbe15d1f8b5 assets/createexpandedindustry/blockstates/drill_beam.json
 21c3eaae1c770d375a6c69154f9be02d7d7704e3 assets/createexpandedindustry/blockstates/drill_bit.json
 7eedf370cf3bc328d49a314fd27151e054b00cb1 assets/createexpandedindustry/blockstates/drill_motor.json
@@ -15,10 +16,11 @@ c9654be839713b44ba84e48060c947d9c9215d9c assets/createexpandedindustry/blockstat
 02a612636818866cce09e0e7f71be6aea5cc7be1 assets/createexpandedindustry/blockstates/multiblock_kinetic_io.json
 012acb7f86cebceef4a52a1a148799db09014ae8 assets/createexpandedindustry/blockstates/pressurised_fluid_tank.json
 62eae62d6b585866d8fc1b74c811181e98531aed assets/createexpandedindustry/blockstates/reinforced_drill_multiblock.json
-7cf764395fbeef13401685ca27f24f379f07437d assets/createexpandedindustry/lang/en_ud.json
-1b844f53fd0bae9c873bcb51d07b102fde148b9d assets/createexpandedindustry/lang/en_us.json
+31a498d8cb98f5a4a7f0ef1c7660fc51ddeae07a assets/createexpandedindustry/lang/en_ud.json
+6117eb90b8f4a968dff2a6d51b80b795c2a40ca1 assets/createexpandedindustry/lang/en_us.json
 2ec757b22fd63719df3839669377dfe286e76182 assets/createexpandedindustry/models/block/cobalt_block.json
 88b838ab42f0560223b74dcf3493ff01631b99b4 assets/createexpandedindustry/models/block/cobalt_casing.json
+fd557f4e480cc54d54895292fb36435bd4c1c854 assets/createexpandedindustry/models/block/crude_oil.json
 39481377be66332e44eef8bd0b733f289905abd0 assets/createexpandedindustry/models/block/drill_beam.json
 a994c05d5fe673aef1d6d7f9ccd90e099848c9f1 assets/createexpandedindustry/models/block/drill_bit.json
 e4e5748c23fe8f1a8d7baa1b8cd94b4d6d3e2c09 assets/createexpandedindustry/models/block/drill_motor.json
@@ -37,6 +39,7 @@ b5cf8e5bdce6e4435d7f89ffc7321333401dd409 assets/createexpandedindustry/models/it
 0e98abe7f3dc055af417810a462b572dc1344686 assets/createexpandedindustry/models/item/cobalt_ingot.json
 e88fe7a45ca6fd7190ef3b57e656f437251a557a assets/createexpandedindustry/models/item/cobalt_nugget.json
 e34fcb324bde6095490a3bda3cba8d609f218dce assets/createexpandedindustry/models/item/cobalt_sheet.json
+5fbeed568249420e5b0dde441956961b1b868a62 assets/createexpandedindustry/models/item/crude_oil_bucket.json
 f0bab6cd97253549976a5d5de253cd3301a0c949 assets/createexpandedindustry/models/item/crushed_raw_cobalt.json
 e26e70e2491fe5b14a414d97a9e3feb86618f645 assets/createexpandedindustry/models/item/drill_beam.json
 9e8064c65a1bc00291de5cea0753e5c273f5c95d assets/createexpandedindustry/models/item/drill_bit.json
@@ -61,6 +64,8 @@ ab109c2f6f2b0e6bc06334844212582636041448 data/createexpandedindustry/loot_table/
 a7b6113f0409329409c34bd15486eb85d5f7234f data/create/tags/block/casing.json
 a7b6113f0409329409c34bd15486eb85d5f7234f data/create/tags/item/casing.json
 537142d9938fe713f24073f943ed1385bd57280e data/create/tags/item/crushed_raw_materials.json
+e91ccf79653f3ba412bf95750fe08aa9e691f67b data/c/tags/fluid/crude_oil.json
+dbbf071be2c6cda446f2bd24639d255eb73f9a01 data/c/tags/item/buckets/oil.json
 9fe5e40afa02974006b724dc12490b3ccca115b3 data/c/tags/item/ingots/cobalt.json
 480481497bd9ed3e121a303bb836d9473ef1c5cd data/c/tags/item/nuggets/cobalt.json
 127ce942d645df602718ce96ae21f1bb288a3721 data/c/tags/item/plates.json
