@@ -25,7 +25,7 @@ public class EIFluids {
 
 
     public static final FluidEntry<BaseFlowingFluid.Flowing> CRUDE_OIL = REGISTRATE
-            .standardFluid("crude_oil", SolidRenderedPlaceableFluidType.create(0x202020, () -> 1f / 2f))
+            .standardFluid("crude_oil", SolidRenderedPlaceableFluidType.create(0x202020, () -> 1f / 16f))
             .lang("crude_oil")
             .tag(AllTags.commonFluidTag("crude_oil"))
             .properties(b -> b.viscosity(1500)
@@ -42,6 +42,132 @@ public class EIFluids {
             .tag(AllTags.commonItemTag("buckets/oil"))
             .build()
             .register();
+
+    public static final FluidEntry<BaseFlowingFluid.Flowing> LIQUID_PETROLEUM_GAS = REGISTRATE
+            .standardFluid("liquid_petroleum_gas", SolidRenderedPlaceableFluidType.create(0xA0A0A0, () -> 1f / 2f))
+            .lang("liquid_petroleum_gas")
+            .tag(AllTags.commonFluidTag("liquid_petroleum_gas"))
+            .properties(b -> b.viscosity(1500)
+                    .density(1400))
+            .fluidProperties(p -> p.levelDecreasePerBlock(2)
+                    .tickRate(25)
+                    .slopeFindDistance(3)
+                    .explosionResistance(100f))
+            .source(BaseFlowingFluid.Source::new)
+            .noBlock()
+            .noBucket()
+            .register();
+
+    public static final FluidEntry<BaseFlowingFluid.Flowing> NAPHTHA = REGISTRATE
+            .standardFluid("naphtha", SolidRenderedPlaceableFluidType.create(0xFF6F00, () -> 1f / 2f))
+            .lang("naphtha")
+            .tag(AllTags.commonFluidTag("naphtha"))
+            .properties(b -> b.viscosity(1500)
+                    .density(1400))
+            .fluidProperties(p -> p.levelDecreasePerBlock(2)
+                    .tickRate(25)
+                    .slopeFindDistance(3)
+                    .explosionResistance(100f))
+            .source(BaseFlowingFluid.Source::new)
+            .block()
+            .properties(p -> p.mapColor(MapColor.COLOR_BROWN))
+            .build()
+            .bucket()
+            .tag(AllTags.commonItemTag("buckets/naphtha"))
+            .build()
+            .register();
+
+    public static final FluidEntry<BaseFlowingFluid.Flowing> KEROSENE = REGISTRATE
+            .standardFluid("kerosene", SolidRenderedPlaceableFluidType.create(0x808080, () -> 1f / 2f))
+            .lang("kerosene")
+            .tag(AllTags.commonFluidTag("kerosene"))
+            .properties(b -> b.viscosity(1500)
+                    .density(1400))
+            .fluidProperties(p -> p.levelDecreasePerBlock(2)
+                    .tickRate(25)
+                    .slopeFindDistance(3)
+                    .explosionResistance(100f))
+            .source(BaseFlowingFluid.Source::new)
+            .block()
+            .properties(p -> p.mapColor(MapColor.COLOR_GRAY))
+            .build()
+            .bucket()
+            .tag(AllTags.commonItemTag("buckets/kerosene"))
+            .build()
+            .register();
+
+    public static final FluidEntry<BaseFlowingFluid.Flowing> ETHYLENE = REGISTRATE
+            .standardFluid("ethylene", SolidRenderedPlaceableFluidType.create(0xD0D0D0, () -> 1f / 2f))
+            .lang("ethylene")
+            .tag(AllTags.commonFluidTag("ethylene"))
+            .properties(b -> b.viscosity(1500)
+                    .density(1400))
+            .fluidProperties(p -> p.levelDecreasePerBlock(2)
+                    .tickRate(25)
+                    .slopeFindDistance(3)
+                    .explosionResistance(100f))
+            .source(BaseFlowingFluid.Source::new)
+            .noBlock()
+            .noBucket()
+            .register();
+
+    public static final FluidEntry<BaseFlowingFluid.Flowing> RAW_LUBRICATING_OIL = REGISTRATE
+            .standardFluid("raw_lubricating_oil", SolidRenderedPlaceableFluidType.create(0xF2F542, () -> 1f / 2f))
+            .lang("raw_lubricating_oil")
+            .tag(AllTags.commonFluidTag("raw_lubricating_oil"))
+            .properties(b -> b.viscosity(1500)
+                    .density(1400))
+            .fluidProperties(p -> p.levelDecreasePerBlock(2)
+                    .tickRate(25)
+                    .slopeFindDistance(3)
+                    .explosionResistance(100f))
+            .source(BaseFlowingFluid.Source::new)
+            .block()
+            .properties(p -> p.mapColor(MapColor.COLOR_YELLOW))
+            .build()
+            .bucket()
+            .tag(AllTags.commonItemTag("buckets/raw_lubricating_oil"))
+            .build()
+            .register();
+
+    public static final FluidEntry<BaseFlowingFluid.Flowing> LUBRICANT = REGISTRATE
+            .standardFluid("lubricant", SolidRenderedPlaceableFluidType.create(0x1AB000, () -> 1f / 2f))
+            .lang("lubricant")
+            .tag(AllTags.commonFluidTag("lubricant"))
+            .properties(b -> b.viscosity(1500)
+                    .density(1400))
+            .fluidProperties(p -> p.levelDecreasePerBlock(2)
+                    .tickRate(25)
+                    .slopeFindDistance(3)
+                    .explosionResistance(100f))
+            .source(BaseFlowingFluid.Source::new)
+            .block()
+            .properties(p -> p.mapColor(MapColor.COLOR_GREEN))
+            .build()
+            .bucket()
+            .tag(AllTags.commonItemTag("buckets/lubricant"))
+            .build()
+            .register();
+
+    public static final FluidEntry<BaseFlowingFluid.Flowing> HOT_BITUMEN = REGISTRATE
+            .standardFluid("hot_bitumen", SolidRenderedPlaceableFluidType.create(0x000000, () -> 1f / 2f))
+            .lang("hot_bitumen")
+            .tag(AllTags.commonFluidTag("hot_bitumen"))
+            .properties(b -> b.viscosity(1500)
+                    .density(1400))
+            .fluidProperties(p -> p.levelDecreasePerBlock(2)
+                    .tickRate(25)
+                    .slopeFindDistance(3)
+                    .explosionResistance(100f))
+            .source(BaseFlowingFluid.Source::new)
+            .block()
+            .properties(p -> p.mapColor(MapColor.COLOR_BLACK))
+            .build()
+            .bucket()
+            .tag(AllTags.commonItemTag("buckets/hot_bitumen"))
+            .build()
+            .register();
+
 
     public static void register() { }
 

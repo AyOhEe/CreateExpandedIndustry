@@ -49,8 +49,33 @@
   "block.minecraft.banner.loss.red": "Red Loss",
   "block.minecraft.banner.loss.black": "Black Loss",
 
-
   "block.createexpandedindustry.crude_oil": "Crude Oil",
   "fluid.createexpandedindustry.crude_oil": "Crude Oil",
-  "item.createexpandedindustry.crude_oil_bucket": "Crude Oil Bucket"
+  "item.createexpandedindustry.crude_oil_bucket": "Crude Oil Bucket",
+
+  "fluid.createexpandedindustry.liquid_petroleum_gas": "Liquid Petroleum Gas",
+
+  "block.createexpandedindustry.naphtha": "Naphtha",
+  "fluid.createexpandedindustry.naphtha": "Naphtha",
+  "item.createexpandedindustry.naphtha_bucket": "Naphtha Bucket",
+
+  "block.createexpandedindustry.kerosene": "Kerosene",
+  "fluid.createexpandedindustry.kerosene": "Kerosene",
+  "item.createexpandedindustry.kerosene_bucket": "Kerosene Bucket",
+
+  "block.createexpandedindustry.ethylene": "Ethylene",
+  "fluid.createexpandedindustry.ethylene": "Ethylene",
+  "item.createexpandedindustry.ethylene_bucket": "Ethylene Bucket",
+
+  "block.createexpandedindustry.raw_lubricating_oil": "Raw Lubricating Oil",
+  "fluid.createexpandedindustry.raw_lubricating_oil": "Raw Lubricating Oil",
+  "item.createexpandedindustry.raw_lubricating_oil_bucket": "Raw Lubricating Oil Bucket",
+
+  "block.createexpandedindustry.lubricant": "Lubricant",
+  "fluid.createexpandedindustry.lubricant": "Lubricant",
+  "item.createexpandedindustry.lubricant_bucket": "Lubricant Bucket",
+
+  "block.createexpandedindustry.hot_bitumen": "Hot Bitumen",
+  "fluid.createexpandedindustry.hot_bitumen": "Hot Bitumen",
+  "item.createexpandedindustry.hot_bitumen_bucket": "Hot Bitumen Bucket"
 }

@@ -7,6 +7,62 @@
     {
       "type": "single",
       "resource": "createexpandedindustry:fluid/crude_oil_flow"
+    },
+    {
+      "type": "single",
+      "resource": "createexpandedindustry:fluid/liquid_petroleum_gas_still"
+    },
+    {
+      "type": "single",
+      "resource": "createexpandedindustry:fluid/liquid_petroleum_gas_flow"
+    },
+    {
+      "type": "single",
+      "resource": "createexpandedindustry:fluid/naphtha_still"
+    },
+    {
+      "type": "single",
+      "resource": "createexpandedindustry:fluid/naphtha_flow"
+    },
+    {
+      "type": "single",
+      "resource": "createexpandedindustry:fluid/kerosene_still"
+    },
+    {
+      "type": "single",
+      "resource": "createexpandedindustry:fluid/kerosene_flow"
+    },
+    {
+      "type": "single",
+      "resource": "createexpandedindustry:fluid/ethylene_still"
+    },
+    {
+      "type": "single",
+      "resource": "createexpandedindustry:fluid/ethylene_flow"
+    },
+    {
+      "type": "single",
+      "resource": "createexpandedindustry:fluid/raw_lubricating_oil_still"
+    },
+    {
+      "type": "single",
+      "resource": "createexpandedindustry:fluid/raw_lubricating_oil_flow"
+    },
+    {
+      "type": "single",
+      "resource": "createexpandedindustry:fluid/lubricant_still"
+    },
+    {
+      "type": "single",
+      "resource": "createexpandedindustry:fluid/lubricant_flow"
+    },
+    {
+      "type": "single",
+      "resource": "createexpandedindustry:fluid/hot_bitumen_still"
+    },
+    {
+      "type": "single",
+      "resource": "createexpandedindustry:fluid/hot_bitumen_flow"
     }
   ]
 }
