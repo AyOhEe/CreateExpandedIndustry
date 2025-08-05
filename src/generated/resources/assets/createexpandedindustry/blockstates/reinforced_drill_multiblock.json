@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
-      "model": "createexpandedindustry:block/reinforced_drill_multiblock"
+    "facing=east": {
+      "model": "createexpandedindustry:block/reinforced_drill/drill",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "createexpandedindustry:block/reinforced_drill/drill"
+    },
+    "facing=south": {
+      "model": "createexpandedindustry:block/reinforced_drill/drill",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "createexpandedindustry:block/reinforced_drill/drill",
+      "y": 270
     }
   }
 }

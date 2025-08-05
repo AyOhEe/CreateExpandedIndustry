@@ -3,6 +3,8 @@ package io.github.ayohee.expandedindustry.content.complex.reinforcedDrill;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
+import com.tterrag.registrate.providers.DataGenContext;
+import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import io.github.ayohee.expandedindustry.multiblock.AbstractMultiblockController;
 import io.github.ayohee.expandedindustry.multiblock.AbstractMultiblockControllerBE;
 import io.github.ayohee.expandedindustry.multiblock.IMultiblockComponentBE;
@@ -14,6 +16,7 @@ import net.createmod.catnip.data.Pair;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.LevelAccessor;
@@ -24,10 +27,12 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 
 import java.util.List;
 import java.util.Map;
 
+import static io.github.ayohee.expandedindustry.CreateExpandedIndustry.MODID;
 import static io.github.ayohee.expandedindustry.multiblock.MultiblockGhostBlock.MULTIBLOCK_GHOST;
 import static io.github.ayohee.expandedindustry.multiblock.MultiblockInventoryBlock.MULTIBLOCK_INVENTORY;
 import static io.github.ayohee.expandedindustry.multiblock.MultiblockKineticIOBlock.*;
@@ -210,5 +215,16 @@ public class ReinforcedDrillMultiblock extends AbstractMultiblockController<Rein
     public static void deconstructMBS(LevelAccessor level, BlockPos corePos) {
         AbstractMultiblockControllerBE be = (AbstractMultiblockControllerBE) level.getBlockEntity(corePos);
         MULTIBLOCK_DECONSTRUCTOR.place(level, corePos, be.getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING));
+    }
+
+    public static void generateBlockstate(DataGenContext<Block, ReinforcedDrillMultiblock> ctx, RegistrateBlockstateProvider prov) {
+        ResourceLocation modelFile = ResourceLocation.fromNamespaceAndPath(MODID, "block/reinforced_drill/drill");
+        prov.getVariantBuilder(ctx.get())
+                .forAllStates(state -> {
+                    return ConfiguredModel.builder()
+                            .modelFile(prov.models().getExistingFile(modelFile))
+                            .rotationY(((int)state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot() + 180) % 360)
+                            .build();
+                });
     }
 }

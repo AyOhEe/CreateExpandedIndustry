@@ -57,6 +57,7 @@ public class EIBlocks {
 
     public static final BlockEntry<ReinforcedDrillMultiblock> REINFORCED_DRILL_MULTIBLOCK = REGISTRATE
             .block("reinforced_drill_multiblock", ReinforcedDrillMultiblock::new)
+            .blockstate(ReinforcedDrillMultiblock::generateBlockstate)
             .initialProperties(() -> Blocks.GLASS)
             .properties(EIBlocks::multiblock_component)
             .properties(c -> c
@@ -67,6 +68,7 @@ public class EIBlocks {
 
     public static final BlockEntry<MultiblockGhostBlock> MULTIBLOCK_GHOST = REGISTRATE
             .block("multiblock_ghost", MultiblockGhostBlock::new)
+            .blockstate(ghostBlock())
             .initialProperties(() -> Blocks.GLASS)
             .properties(EIBlocks::multiblock_component)
             .properties(c -> c
@@ -76,6 +78,7 @@ public class EIBlocks {
 
     public static final BlockEntry<MultiblockInventoryBlock> MULTIBLOCK_INVENTORY = REGISTRATE
             .block("multiblock_inventory", MultiblockInventoryBlock::new)
+            .blockstate(ghostBlock())
             .initialProperties(() -> Blocks.GLASS)
             .properties(EIBlocks::multiblock_component)
             .properties(c -> c
@@ -85,6 +88,7 @@ public class EIBlocks {
 
     public static final BlockEntry<MultiblockKineticIOBlock> MULTIBLOCK_KINETIC_IO = REGISTRATE
             .block("multiblock_kinetic_io", MultiblockKineticIOBlock::new)
+            .blockstate(ghostBlock())
             .initialProperties(() -> Blocks.GLASS)
             .properties(EIBlocks::multiblock_component)
             .properties(c -> c
@@ -304,6 +308,13 @@ public class EIBlocks {
             ResourceLocation textureLoc = ResourceLocation.fromNamespaceAndPath(MODID, path + ctx.getName());
             ResourceLocation cubeAll = ResourceLocation.parse("block/cube_all");
             prov.simpleBlock(ctx.get(), prov.models().singleTexture(ctx.getName(), cubeAll, "all", textureLoc));
+        };
+    }
+
+    private static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> ghostBlock() {
+        return (ctx, prov) -> {
+            ResourceLocation air = ResourceLocation.parse("block/air");
+            prov.simpleBlock(ctx.get(), prov.models().withExistingParent(ctx.getName(), air));
         };
     }
 
