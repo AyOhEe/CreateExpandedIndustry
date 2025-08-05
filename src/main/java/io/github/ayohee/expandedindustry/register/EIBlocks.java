@@ -289,6 +289,7 @@ public class EIBlocks {
             .simpleItem()
             .register();
 
+    //TODO better blockstate generators, and broader application of them. we simply don't need a lot of these model files.
     private static NonNullBiConsumer<DataGenContext<Block, Block>, RegistrateBlockstateProvider> colouredVariant(String microplastic) {
         return (ctx, prov) -> {
             ResourceLocation textureLoc = ResourceLocation.fromNamespaceAndPath(MODID, "block/" + microplastic + "/" + ctx.getName());
