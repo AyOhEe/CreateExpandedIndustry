@@ -1,5 +1,6 @@
 {
   "itemGroup.createexpandedindustry": "Create: Expanded Industry",
+  "itemGroup.createexpandedindustry_decoratives": "C:EI Decoratives",
 
   "createexpandedindustry.configuration.title": "Create: Expanded Industry Configs",
   "createexpandedindustry.configuration.section.createexpandedindustry.common.toml": "Create: Expanded Industry Configs",

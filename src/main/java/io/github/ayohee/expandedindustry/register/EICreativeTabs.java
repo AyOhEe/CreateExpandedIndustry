@@ -7,6 +7,7 @@ import com.tterrag.registrate.util.entry.RegistryEntry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LiquidBlock;
@@ -31,6 +32,27 @@ public class EICreativeTabs {
                 }
                 for (RegistryEntry<Item, Item> entry : REGISTRATE.getAll(Registries.ITEM)) {
                     if (!CreateRegistrate.isInCreativeTab(entry, EICreativeTabs.MAIN_TAB))
+                        continue;
+                    output.accept(entry.get(), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
+                }
+            })
+            .build());
+
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> DECORATIVES_TAB = EIRegistries.CREATIVE_MODE_TABS.register("decoratives_tab", () -> CreativeModeTab.builder()
+            .title(Component.translatable("itemGroup.createexpandedindustry_decoratives"))
+            .withTabsBefore(EICreativeTabs.MAIN_TAB.getKey())
+            .icon(() -> EIBlocks.DYED_MICROPLASTIC_BLOCKS.get(DyeColor.LIGHT_BLUE).asStack())
+            .displayItems((parameters, output) -> {
+                for (RegistryEntry<Block, Block> entry : REGISTRATE.getAll(Registries.BLOCK)) {
+                    if (!CreateRegistrate.isInCreativeTab(entry, EICreativeTabs.DECORATIVES_TAB))
+                        continue;
+                    if (entry.get() instanceof LiquidBlock)
+                        continue;
+
+                    output.accept(entry.get(), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
+                }
+                for (RegistryEntry<Item, Item> entry : REGISTRATE.getAll(Registries.ITEM)) {
+                    if (!CreateRegistrate.isInCreativeTab(entry, EICreativeTabs.DECORATIVES_TAB))
                         continue;
                     output.accept(entry.get(), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
                 }

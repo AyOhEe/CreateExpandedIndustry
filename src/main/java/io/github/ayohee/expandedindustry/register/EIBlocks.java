@@ -112,7 +112,7 @@ public class EIBlocks {
     public static final BlockEntry<HardenedStoneBlock> HARDENED_ERYTHRITE_BLOCK = REGISTRATE
             .block("hardened_erythrite", (p) -> new HardenedStoneBlock(p, EIBlockEntityTypes.HARDENED_ERYTHRITE))
             .initialProperties(() -> Blocks.BEDROCK)
-            .properties(EIBlocks::hardened_stones)
+            .properties(Helpers::hardened_stones)
             .properties(c -> c.mapColor(MapColor.COLOR_MAGENTA))
             .blockstate(Helpers.subdirCubeAllTexture())
             .simpleItem()
@@ -121,7 +121,7 @@ public class EIBlocks {
     public static final BlockEntry<HardenedStoneBlock> HARDENED_OCHRUM_BLOCK = REGISTRATE
             .block("hardened_ochrum", (p) -> new HardenedStoneBlock(p, EIBlockEntityTypes.HARDENED_OCHRUM))
             .initialProperties(() -> Blocks.BEDROCK)
-            .properties(EIBlocks::hardened_stones)
+            .properties(Helpers::hardened_stones)
             .properties(c -> c.mapColor(MapColor.GOLD))
             .blockstate(Helpers.subdirCubeAllTexture())
             .simpleItem()
@@ -130,7 +130,7 @@ public class EIBlocks {
     public static final BlockEntry<HardenedStoneBlock> HARDENED_VERIDIUM_BLOCK = REGISTRATE
             .block("hardened_veridium", (p) -> new HardenedStoneBlock(p, EIBlockEntityTypes.HARDENED_VERIDIUM))
             .initialProperties(() -> Blocks.BEDROCK)
-            .properties(EIBlocks::hardened_stones)
+            .properties(Helpers::hardened_stones)
             .properties(c -> c.mapColor(MapColor.COLOR_GREEN))
             .blockstate(Helpers.subdirCubeAllTexture())
             .simpleItem()
@@ -139,7 +139,7 @@ public class EIBlocks {
     public static final BlockEntry<HardenedStoneBlock> HARDENED_ASURINE_BLOCK = REGISTRATE
             .block("hardened_asurine", (p) -> new HardenedStoneBlock(p, EIBlockEntityTypes.HARDENED_ASURINE))
             .initialProperties(() -> Blocks.BEDROCK)
-            .properties(EIBlocks::hardened_stones)
+            .properties(Helpers::hardened_stones)
             .properties(c -> c.mapColor(MapColor.COLOR_BLUE))
             .blockstate(Helpers.subdirCubeAllTexture())
             .simpleItem()
@@ -148,49 +148,11 @@ public class EIBlocks {
     public static final BlockEntry<HardenedStoneBlock> HARDENED_CRIMSITE_BLOCK = REGISTRATE
             .block("hardened_crimsite", (p) -> new HardenedStoneBlock(p, EIBlockEntityTypes.HARDENED_CRIMSITE))
             .initialProperties(() -> Blocks.BEDROCK)
-            .properties(EIBlocks::hardened_stones)
+            .properties(Helpers::hardened_stones)
             .properties(c -> c.mapColor(MapColor.COLOR_RED))
             .blockstate(Helpers.subdirCubeAllTexture())
             .simpleItem()
             .register();
-
-
-    private static BlockBehaviour.Properties hardened_stones(BlockBehaviour.Properties properties) {
-        return properties.explosionResistance(0).noLootTable();
-    }
-
-    public static final BlockEntry<Block> MICROPLASTIC_BLOCK = REGISTRATE
-            .block("microplastic_block", Block::new)
-            .initialProperties(() -> Blocks.SAND)
-            .properties(c -> c.mapColor(MapColor.COLOR_LIGHT_GRAY))
-            .blockstate(Helpers.subdirCubeAllTexture("microplastic"))
-            .item()
-            .tag(EITags.MICROPLASTIC_BLOCK)
-            .build()
-            .register();
-
-    public static final Map<DyeColor, BlockEntry<Block>> DYED_MICROPLASTIC_BLOCKS = Helpers.createColouredVariants((DyeColor v) -> {
-        return REGISTRATE
-                .block(v.toString() + "_microplastic_block", Block::new)
-                .initialProperties(() -> Blocks.SAND)
-                .properties(c -> c.mapColor(v.getMapColor()))
-                .blockstate(Helpers.subdirCubeAllTexture("microplastic"))
-                .item()
-                .tag(v.getDyedTag())
-                .tag(EITags.MICROPLASTIC_BLOCK)
-                .build()
-                .recipe((ctx, prov) -> {
-                    ShapedRecipeBuilder.shaped(RecipeCategory.MISC, EIBlocks.DYED_MICROPLASTIC_BLOCKS.get(v).asStack(8))
-                            .pattern("PPP")
-                            .pattern("PDP")
-                            .pattern("PPP")
-                            .define('P', EITags.MICROPLASTIC_BLOCK)
-                            .define('D', v.getTag())
-                            .unlockedBy("has_microplastic", RegistrateRecipeProvider.has(EIBlocks.MICROPLASTIC_BLOCK))
-                            .save(prov, v.toString() + "_dyed_microplastic_block");
-                })
-                .register();
-    });
 
 
     public static final BlockEntry<Block> COBALT_BLOCK = REGISTRATE.block("cobalt_block", Block::new)
@@ -291,7 +253,52 @@ public class EIBlocks {
         }
     }
 
+
+
+    static {
+        REGISTRATE.setCreativeTab(EICreativeTabs.DECORATIVES_TAB);
+    }
+
+    public static final BlockEntry<Block> MICROPLASTIC_BLOCK = REGISTRATE
+            .block("microplastic_block", Block::new)
+            .initialProperties(() -> Blocks.SAND)
+            .properties(c -> c.mapColor(MapColor.COLOR_LIGHT_GRAY))
+            .blockstate(Helpers.subdirCubeAllTexture("microplastic"))
+            .item()
+            .tag(EITags.MICROPLASTIC_BLOCK)
+            .build()
+            .register();
+
+    public static final Map<DyeColor, BlockEntry<Block>> DYED_MICROPLASTIC_BLOCKS = Helpers.createColouredVariants((DyeColor v) -> {
+        return REGISTRATE
+                .block(v.toString() + "_microplastic_block", Block::new)
+                .initialProperties(() -> Blocks.SAND)
+                .properties(c -> c.mapColor(v.getMapColor()))
+                .blockstate(Helpers.subdirCubeAllTexture("microplastic"))
+                .item()
+                .tag(v.getDyedTag())
+                .tag(EITags.MICROPLASTIC_BLOCK)
+                .build()
+                .recipe((ctx, prov) -> {
+                    ShapedRecipeBuilder.shaped(RecipeCategory.MISC, EIBlocks.DYED_MICROPLASTIC_BLOCKS.get(v).asStack(8))
+                            .pattern("PPP")
+                            .pattern("PDP")
+                            .pattern("PPP")
+                            .define('P', EITags.MICROPLASTIC_BLOCK)
+                            .define('D', v.getTag())
+                            .unlockedBy("has_microplastic", RegistrateRecipeProvider.has(EIBlocks.MICROPLASTIC_BLOCK))
+                            .save(prov, v.toString() + "_dyed_microplastic_block");
+                })
+                .register();
+    });
+
+
+
     public static class Helpers {
+        public static BlockBehaviour.Properties hardened_stones(BlockBehaviour.Properties properties) {
+            return properties.explosionResistance(0).noLootTable();
+        }
+
         public static BlockBehaviour.Properties multiblockComponent(BlockBehaviour.Properties properties) {
             // Can't be mined by hand, but will break from an explosion. Drops nothing.
             return properties.strength(-1, 0).noLootTable();
