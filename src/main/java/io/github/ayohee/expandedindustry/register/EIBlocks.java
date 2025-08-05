@@ -2,6 +2,7 @@ package io.github.ayohee.expandedindustry.register;
 
 import com.simibubi.create.AllDisplaySources;
 import com.simibubi.create.AllMountedStorageTypes;
+import com.simibubi.create.AllTags;
 import com.simibubi.create.content.decoration.encasing.CasingBlock;
 import com.simibubi.create.foundation.block.connected.AllCTTypes;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
@@ -10,15 +11,11 @@ import com.simibubi.create.foundation.block.connected.CTType;
 import com.simibubi.create.foundation.data.BuilderTransformers;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
-import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
-import com.tterrag.registrate.providers.RegistrateItemModelProvider;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
-import com.tterrag.registrate.util.nullness.NonNullFunction;
-import io.github.ayohee.expandedindustry.CreateExpandedIndustry;
 
 import io.github.ayohee.expandedindustry.content.blocks.HardenedStoneBlock;
 import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.*;
@@ -32,16 +29,17 @@ import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
-import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Function;
 
 import static com.simibubi.create.api.behaviour.display.DisplaySource.displaySource;
 import static com.simibubi.create.api.behaviour.movement.MovementBehaviour.movementBehaviour;
@@ -59,7 +57,7 @@ public class EIBlocks {
             .block("reinforced_drill_multiblock", ReinforcedDrillMultiblock::new)
             .blockstate(ReinforcedDrillMultiblock::generateBlockstate)
             .initialProperties(() -> Blocks.GLASS)
-            .properties(EIBlocks::multiblock_component)
+            .properties(Helpers::multiblockComponent)
             .properties(c -> c
                     .mapColor(MapColor.COLOR_ORANGE)
                     .sound(SoundType.METAL))
@@ -68,9 +66,9 @@ public class EIBlocks {
 
     public static final BlockEntry<MultiblockGhostBlock> MULTIBLOCK_GHOST = REGISTRATE
             .block("multiblock_ghost", MultiblockGhostBlock::new)
-            .blockstate(ghostBlock())
+            .blockstate(Helpers.ghostBlock())
             .initialProperties(() -> Blocks.GLASS)
-            .properties(EIBlocks::multiblock_component)
+            .properties(Helpers::multiblockComponent)
             .properties(c -> c
                     .mapColor(MapColor.COLOR_ORANGE)
                     .sound(SoundType.METAL))
@@ -78,9 +76,9 @@ public class EIBlocks {
 
     public static final BlockEntry<MultiblockInventoryBlock> MULTIBLOCK_INVENTORY = REGISTRATE
             .block("multiblock_inventory", MultiblockInventoryBlock::new)
-            .blockstate(ghostBlock())
+            .blockstate(Helpers.ghostBlock())
             .initialProperties(() -> Blocks.GLASS)
-            .properties(EIBlocks::multiblock_component)
+            .properties(Helpers::multiblockComponent)
             .properties(c -> c
                 .mapColor(MapColor.COLOR_ORANGE)
                 .sound(SoundType.METAL))
@@ -88,18 +86,13 @@ public class EIBlocks {
 
     public static final BlockEntry<MultiblockKineticIOBlock> MULTIBLOCK_KINETIC_IO = REGISTRATE
             .block("multiblock_kinetic_io", MultiblockKineticIOBlock::new)
-            .blockstate(ghostBlock())
+            .blockstate(Helpers.ghostBlock())
             .initialProperties(() -> Blocks.GLASS)
-            .properties(EIBlocks::multiblock_component)
+            .properties(Helpers::multiblockComponent)
             .properties(c -> c
                     .mapColor(MapColor.COLOR_ORANGE)
                     .sound(SoundType.METAL))
             .register();
-
-    private static BlockBehaviour.Properties multiblock_component(BlockBehaviour.Properties properties) {
-        // Can't be mined by hand, but will break from an explosion. Drops nothing.
-        return properties.strength(-1, 0).noLootTable();
-    }
 
 
     /*-----THESE BLOCKS WILL BE SEEN IN THE CREATIVE TAB-----*/
@@ -112,7 +105,7 @@ public class EIBlocks {
             .initialProperties(SharedProperties::stone)
             .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_STONE_TOOL)
             .properties(c -> c.mapColor(DyeColor.MAGENTA))
-            .blockstate(subdirCubeAllTexture())
+            .blockstate(Helpers.subdirCubeAllTexture())
             .simpleItem()
             .register();
 
@@ -121,7 +114,7 @@ public class EIBlocks {
             .initialProperties(() -> Blocks.BEDROCK)
             .properties(EIBlocks::hardened_stones)
             .properties(c -> c.mapColor(MapColor.COLOR_MAGENTA))
-            .blockstate(subdirCubeAllTexture())
+            .blockstate(Helpers.subdirCubeAllTexture())
             .simpleItem()
             .register();
 
@@ -130,7 +123,7 @@ public class EIBlocks {
             .initialProperties(() -> Blocks.BEDROCK)
             .properties(EIBlocks::hardened_stones)
             .properties(c -> c.mapColor(MapColor.GOLD))
-            .blockstate(subdirCubeAllTexture())
+            .blockstate(Helpers.subdirCubeAllTexture())
             .simpleItem()
             .register();
 
@@ -139,7 +132,7 @@ public class EIBlocks {
             .initialProperties(() -> Blocks.BEDROCK)
             .properties(EIBlocks::hardened_stones)
             .properties(c -> c.mapColor(MapColor.COLOR_GREEN))
-            .blockstate(subdirCubeAllTexture())
+            .blockstate(Helpers.subdirCubeAllTexture())
             .simpleItem()
             .register();
 
@@ -148,7 +141,7 @@ public class EIBlocks {
             .initialProperties(() -> Blocks.BEDROCK)
             .properties(EIBlocks::hardened_stones)
             .properties(c -> c.mapColor(MapColor.COLOR_BLUE))
-            .blockstate(subdirCubeAllTexture())
+            .blockstate(Helpers.subdirCubeAllTexture())
             .simpleItem()
             .register();
 
@@ -157,7 +150,7 @@ public class EIBlocks {
             .initialProperties(() -> Blocks.BEDROCK)
             .properties(EIBlocks::hardened_stones)
             .properties(c -> c.mapColor(MapColor.COLOR_RED))
-            .blockstate(subdirCubeAllTexture())
+            .blockstate(Helpers.subdirCubeAllTexture())
             .simpleItem()
             .register();
 
@@ -166,164 +159,45 @@ public class EIBlocks {
         return properties.explosionResistance(0).noLootTable();
     }
 
-
-    public static final BlockEntry<Block> BLACK_MICROPLASTIC_BLOCK = REGISTRATE
-            .block("black_microplastic_block", Block::new)
+    public static final BlockEntry<Block> MICROPLASTIC_BLOCK = REGISTRATE
+            .block("microplastic_block", Block::new)
             .initialProperties(() -> Blocks.SAND)
-            .properties(c -> c.mapColor(MapColor.TERRACOTTA_BLACK))
-            .blockstate(subdirCubeAllTexture("microplastic"))
-            .simpleItem()
+            .properties(c -> c.mapColor(MapColor.COLOR_LIGHT_GRAY))
+            .blockstate(Helpers.subdirCubeAllTexture("microplastic"))
+            .item()
+            .tag(EITags.MICROPLASTIC_BLOCK)
+            .build()
             .register();
 
-    public static final BlockEntry<Block> GRAY_MICROPLASTIC_BLOCK = REGISTRATE
-            .block("gray_microplastic_block", Block::new)
-            .initialProperties(() -> Blocks.SAND)
-            .properties(c -> c.mapColor(MapColor.TERRACOTTA_GRAY))
-            .blockstate(subdirCubeAllTexture("microplastic"))
-            .simpleItem()
-            .register();
-
-    public static final BlockEntry<Block> LIGHT_GRAY_MICROPLASTIC_BLOCK = REGISTRATE
-            .block("light_gray_microplastic_block", Block::new)
-            .initialProperties(() -> Blocks.SAND)
-            .properties(c -> c.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY))
-            .blockstate(subdirCubeAllTexture("microplastic"))
-            .simpleItem()
-            .register();
-
-    public static final BlockEntry<Block> WHITE_MICROPLASTIC_BLOCK = REGISTRATE
-            .block("white_microplastic_block", Block::new)
-            .initialProperties(() -> Blocks.SAND)
-            .properties(c -> c.mapColor(MapColor.TERRACOTTA_WHITE))
-            .blockstate(subdirCubeAllTexture("microplastic"))
-            .simpleItem()
-            .register();
-
-    public static final BlockEntry<Block> BROWN_MICROPLASTIC_BLOCK = REGISTRATE
-            .block("brown_microplastic_block", Block::new)
-            .initialProperties(() -> Blocks.SAND)
-            .properties(c -> c.mapColor(MapColor.TERRACOTTA_BROWN))
-            .blockstate(subdirCubeAllTexture("microplastic"))
-            .simpleItem()
-            .register();
-
-    public static final BlockEntry<Block> RED_MICROPLASTIC_BLOCK = REGISTRATE
-            .block("red_microplastic_block", Block::new)
-            .initialProperties(() -> Blocks.SAND)
-            .properties(c -> c.mapColor(MapColor.TERRACOTTA_RED))
-            .blockstate(subdirCubeAllTexture("microplastic"))
-            .simpleItem()
-            .register();
-
-    public static final BlockEntry<Block> ORANGE_MICROPLASTIC_BLOCK = REGISTRATE
-            .block("orange_microplastic_block", Block::new)
-            .initialProperties(() -> Blocks.SAND)
-            .properties(c -> c.mapColor(MapColor.TERRACOTTA_ORANGE))
-            .blockstate(subdirCubeAllTexture("microplastic"))
-            .simpleItem()
-            .register();
-
-    public static final BlockEntry<Block> YELLOW_MICROPLASTIC_BLOCK = REGISTRATE
-            .block("yellow_microplastic_block", Block::new)
-            .initialProperties(() -> Blocks.SAND)
-            .properties(c -> c.mapColor(MapColor.TERRACOTTA_YELLOW))
-            .blockstate(subdirCubeAllTexture("microplastic"))
-            .simpleItem()
-            .register();
-
-    public static final BlockEntry<Block> LIME_MICROPLASTIC_BLOCK = REGISTRATE
-            .block("lime_microplastic_block", Block::new)
-            .initialProperties(() -> Blocks.SAND)
-            .properties(c -> c.mapColor(MapColor.TERRACOTTA_LIGHT_GREEN))
-            .blockstate(subdirCubeAllTexture("microplastic"))
-            .simpleItem()
-            .register();
-
-    public static final BlockEntry<Block> GREEN_MICROPLASTIC_BLOCK = REGISTRATE
-            .block("green_microplastic_block", Block::new)
-            .initialProperties(() -> Blocks.SAND)
-            .properties(c -> c.mapColor(MapColor.TERRACOTTA_GREEN))
-            .blockstate(subdirCubeAllTexture("microplastic"))
-            .simpleItem()
-            .register();
-
-    public static final BlockEntry<Block> CYAN_MICROPLASTIC_BLOCK = REGISTRATE
-            .block("cyan_microplastic_block", Block::new)
-            .initialProperties(() -> Blocks.SAND)
-            .properties(c -> c.mapColor(MapColor.TERRACOTTA_CYAN))
-            .blockstate(subdirCubeAllTexture("microplastic"))
-            .simpleItem()
-            .register();
-
-    public static final BlockEntry<Block> LIGHT_BLUE_MICROPLASTIC_BLOCK = REGISTRATE
-            .block("light_blue_microplastic_block", Block::new)
-            .initialProperties(() -> Blocks.SAND)
-            .properties(c -> c.mapColor(MapColor.TERRACOTTA_LIGHT_BLUE))
-            .blockstate(subdirCubeAllTexture("microplastic"))
-            .simpleItem()
-            .register();
-
-    public static final BlockEntry<Block> BLUE_MICROPLASTIC_BLOCK = REGISTRATE
-            .block("blue_microplastic_block", Block::new)
-            .initialProperties(() -> Blocks.SAND)
-            .properties(c -> c.mapColor(MapColor.TERRACOTTA_BLUE))
-            .blockstate(subdirCubeAllTexture("microplastic"))
-            .simpleItem()
-            .register();
-
-    public static final BlockEntry<Block> PURPLE_MICROPLASTIC_BLOCK = REGISTRATE
-            .block("purple_microplastic_block", Block::new)
-            .initialProperties(() -> Blocks.SAND)
-            .properties(c -> c.mapColor(MapColor.TERRACOTTA_PURPLE))
-            .blockstate(subdirCubeAllTexture("microplastic"))
-            .simpleItem()
-            .register();
-
-    public static final BlockEntry<Block> MAGENTA_MICROPLASTIC_BLOCK = REGISTRATE
-            .block("magenta_microplastic_block", Block::new)
-            .initialProperties(() -> Blocks.SAND)
-            .properties(c -> c.mapColor(MapColor.TERRACOTTA_MAGENTA))
-            .blockstate(subdirCubeAllTexture("microplastic"))
-            .simpleItem()
-            .register();
-
-    public static final BlockEntry<Block> PINK_MICROPLASTIC_BLOCK = REGISTRATE
-            .block("pink_microplastic_block", Block::new)
-            .initialProperties(() -> Blocks.SAND)
-            .properties(c -> c.mapColor(MapColor.TERRACOTTA_PINK))
-            .blockstate(subdirCubeAllTexture("microplastic"))
-            .simpleItem()
-            .register();
-
-    //TODO better blockstate generators, and broader application of them. we simply don't need a lot of these model files.
-    private static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> subdirCubeAllTexture(String... paths) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("block/");
-        for (String dir : paths) {
-            sb.append(dir).append('/');
-        }
-        final String path = sb.toString();
-
-        return (ctx, prov) -> {
-            ResourceLocation textureLoc = ResourceLocation.fromNamespaceAndPath(MODID, path + ctx.getName());
-            ResourceLocation cubeAll = ResourceLocation.parse("block/cube_all");
-            prov.simpleBlock(ctx.get(), prov.models().singleTexture(ctx.getName(), cubeAll, "all", textureLoc));
-        };
-    }
-
-    private static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> ghostBlock() {
-        return (ctx, prov) -> {
-            ResourceLocation air = ResourceLocation.parse("block/air");
-            prov.simpleBlock(ctx.get(), prov.models().withExistingParent(ctx.getName(), air));
-        };
-    }
+    public static final Map<DyeColor, BlockEntry<Block>> DYED_MICROPLASTIC_BLOCKS = Helpers.createColouredVariants((DyeColor v) -> {
+        return REGISTRATE
+                .block(v.toString() + "_microplastic_block", Block::new)
+                .initialProperties(() -> Blocks.SAND)
+                .properties(c -> c.mapColor(v.getMapColor()))
+                .blockstate(Helpers.subdirCubeAllTexture("microplastic"))
+                .item()
+                .tag(v.getDyedTag())
+                .tag(EITags.MICROPLASTIC_BLOCK)
+                .build()
+                .recipe((ctx, prov) -> {
+                    ShapedRecipeBuilder.shaped(RecipeCategory.MISC, EIBlocks.DYED_MICROPLASTIC_BLOCKS.get(v).asStack(8))
+                            .pattern("PPP")
+                            .pattern("PDP")
+                            .pattern("PPP")
+                            .define('P', EITags.MICROPLASTIC_BLOCK)
+                            .define('D', v.getTag())
+                            .unlockedBy("has_microplastic", RegistrateRecipeProvider.has(EIBlocks.MICROPLASTIC_BLOCK))
+                            .save(prov, v.toString() + "_dyed_microplastic_block");
+                })
+                .register();
+    });
 
 
     public static final BlockEntry<Block> COBALT_BLOCK = REGISTRATE.block("cobalt_block", Block::new)
             .initialProperties(SharedProperties::netheriteMetal)
             .properties(c -> c.mapColor(MapColor.COLOR_BLUE).destroyTime(20))
             .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_IRON_TOOL)
-            .blockstate(subdirCubeAllTexture())
+            .blockstate(Helpers.subdirCubeAllTexture())
             .simpleItem()
             .recipe((c, p) -> {
                 ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, EIItems.COBALT_INGOT, 9)
@@ -365,7 +239,7 @@ public class EIBlocks {
     public static final BlockEntry<CasingBlock> COBALT_CASING = REGISTRATE.block("cobalt_casing", CasingBlock::new)
             .transform(BuilderTransformers.casing(() -> EISpriteShifts.COBALT_CASING))
             .properties(p -> p.mapColor(MapColor.COLOR_LIGHT_BLUE).sound(SoundType.TUFF_BRICKS))
-            .blockstate(subdirCubeAllTexture())
+            .blockstate(Helpers.subdirCubeAllTexture())
             .simpleItem()
             .register();
 
@@ -398,22 +272,6 @@ public class EIBlocks {
             .register();
 
 
-
-    public static <I extends BlockItem, P> NonNullFunction<ItemBuilder<I, P>, P> getItemModel() {
-        return b -> b.model(EIBlocks::locateItemModel).build();
-    }
-
-    public static <I extends BlockItem> ItemModelBuilder locateItemModel(
-            DataGenContext<Item, I> ctx,
-            RegistrateItemModelProvider prov
-            ) {
-        String blockName = prov.name(ctx.getEntry()::getBlock);
-        return prov.withExistingParent(
-                blockName,
-                ResourceLocation.fromNamespaceAndPath(CreateExpandedIndustry.MODID, "item/" + blockName)
-        );
-    }
-
     public static class EISpriteShifts {
         public static final CTSpriteShiftEntry COBALT_CASING = getCT(AllCTTypes.OMNIDIRECTIONAL, "cobalt_casing");
 
@@ -430,6 +288,45 @@ public class EIBlocks {
         public static CTSpriteShiftEntry getCT(CTType type, String blockTextureName, String connectedTextureName) {
             return CTSpriteShifter.getCT(type, ResourceLocation.fromNamespaceAndPath(MODID, "block/" + blockTextureName),
                     ResourceLocation.fromNamespaceAndPath(MODID, "block/" + connectedTextureName + "_connected"));
+        }
+    }
+
+    public static class Helpers {
+        public static BlockBehaviour.Properties multiblockComponent(BlockBehaviour.Properties properties) {
+            // Can't be mined by hand, but will break from an explosion. Drops nothing.
+            return properties.strength(-1, 0).noLootTable();
+        }
+
+        public static <T extends Block> Map<DyeColor, BlockEntry<T>> createColouredVariants(Function<DyeColor, BlockEntry<T>> factory) {
+            HashMap<DyeColor, BlockEntry<T>> map = new HashMap<>();
+
+            for (DyeColor v : DyeColor.values()) {
+                map.put(v, factory.apply(v));
+            }
+
+            return map;
+        }
+
+        public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> subdirCubeAllTexture(String... paths) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("block/");
+            for (String dir : paths) {
+                sb.append(dir).append('/');
+            }
+            final String path = sb.toString();
+
+            return (ctx, prov) -> {
+                ResourceLocation textureLoc = ResourceLocation.fromNamespaceAndPath(MODID, path + ctx.getName());
+                ResourceLocation cubeAll = ResourceLocation.parse("block/cube_all");
+                prov.simpleBlock(ctx.get(), prov.models().singleTexture(ctx.getName(), cubeAll, "all", textureLoc));
+            };
+        }
+
+        public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> ghostBlock() {
+            return (ctx, prov) -> {
+                ResourceLocation air = ResourceLocation.parse("block/air");
+                prov.simpleBlock(ctx.get(), prov.models().withExistingParent(ctx.getName(), air));
+            };
         }
     }
 
