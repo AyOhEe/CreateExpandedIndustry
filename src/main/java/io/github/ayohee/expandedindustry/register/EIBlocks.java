@@ -266,6 +266,7 @@ public class EIBlocks {
 
 
 
+    /*----- THESE BLOCKS WILL BE SEEN IN THE DECORATIVES TAB -----*/
     static {
         REGISTRATE.setCreativeTab(EICreativeTabs.DECORATIVES_TAB);
     }
@@ -299,6 +300,39 @@ public class EIBlocks {
                             .define('D', v.getTag())
                             .unlockedBy("has_microplastic", RegistrateRecipeProvider.has(EIBlocks.MICROPLASTIC_BLOCK))
                             .save(prov, v.toString() + "_dyed_microplastic_block");
+                })
+                .register();
+    });
+
+    public static final BlockEntry<Block> ASPHALT_BLOCK = REGISTRATE
+            .block("asphalt_block", Block::new)
+            .initialProperties(() -> Blocks.STONE_BRICKS)
+            .properties(c -> c.mapColor(MapColor.COLOR_GRAY).speedFactor(1.2f))
+            .blockstate(Helpers.subdirCubeAllTexture("asphalt"))
+            .item()
+            .tag(EITags.ASPHALT_BLOCK)
+            .build()
+            .register();
+
+    public static final Map<DyeColor, BlockEntry<Block>> DYED_ASPHALT_BLOCKS = Helpers.createColouredVariants((DyeColor v) -> {
+        return REGISTRATE
+                .block(v.toString() + "_asphalt_block", Block::new)
+                .initialProperties(() -> Blocks.STONE_BRICKS)
+                .properties(c -> c.mapColor(v.getMapColor()).speedFactor(1.2f))
+                .blockstate(Helpers.subdirCubeAllTexture("asphalt"))
+                .item()
+                .tag(v.getDyedTag())
+                .tag(EITags.ASPHALT_BLOCK)
+                .build()
+                .recipe((ctx, prov) -> {
+                    ShapedRecipeBuilder.shaped(RecipeCategory.MISC, EIBlocks.DYED_ASPHALT_BLOCKS.get(v).asStack(8))
+                            .pattern("PPP")
+                            .pattern("PDP")
+                            .pattern("PPP")
+                            .define('P', EITags.ASPHALT_BLOCK)
+                            .define('D', v.getTag())
+                            .unlockedBy("has_asphalt", RegistrateRecipeProvider.has(EIBlocks.ASPHALT_BLOCK))
+                            .save(prov, v.toString() + "_dyed_asphalt_block");
                 })
                 .register();
     });

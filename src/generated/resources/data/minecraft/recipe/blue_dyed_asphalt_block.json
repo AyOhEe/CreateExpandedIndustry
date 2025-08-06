@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "tag": "c:dyes/blue"
+    },
+    "P": {
+      "tag": "createexpandedindustry:asphalt_block"
+    }
+  },
+  "pattern": [
+    "PPP",
+    "PDP",
+    "PPP"
+  ],
+  "result": {
+    "count": 8,
+    "id": "createexpandedindustry:blue_asphalt_block"
+  }
+}

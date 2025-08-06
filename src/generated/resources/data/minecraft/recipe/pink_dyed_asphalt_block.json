@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "tag": "c:dyes/pink"
+    },
+    "P": {
+      "tag": "createexpandedindustry:asphalt_block"
+    }
+  },
+  "pattern": [
+    "PPP",
+    "PDP",
+    "PPP"
+  ],
+  "result": {
+    "count": 8,
+    "id": "createexpandedindustry:pink_asphalt_block"
+  }
+}

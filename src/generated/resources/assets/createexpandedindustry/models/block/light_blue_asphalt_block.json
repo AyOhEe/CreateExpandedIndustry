@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "createexpandedindustry:block/asphalt/light_blue_asphalt_block"
+  }
+}
