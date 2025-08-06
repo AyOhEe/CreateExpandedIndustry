@@ -20,6 +20,7 @@ import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import io.github.ayohee.expandedindustry.content.blocks.HardenedStoneBlock;
 import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.*;
 import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.*;
+import io.github.ayohee.expandedindustry.multiblock.MultiblockFluidIOBlock;
 import io.github.ayohee.expandedindustry.multiblock.MultiblockGhostBlock;
 import io.github.ayohee.expandedindustry.multiblock.MultiblockInventoryBlock;
 import io.github.ayohee.expandedindustry.multiblock.MultiblockKineticIOBlock;
@@ -86,6 +87,16 @@ public class EIBlocks {
 
     public static final BlockEntry<MultiblockKineticIOBlock> MULTIBLOCK_KINETIC_IO = REGISTRATE
             .block("multiblock_kinetic_io", MultiblockKineticIOBlock::new)
+            .blockstate(Helpers.ghostBlock())
+            .initialProperties(() -> Blocks.GLASS)
+            .properties(Helpers::multiblockComponent)
+            .properties(c -> c
+                    .mapColor(MapColor.COLOR_ORANGE)
+                    .sound(SoundType.METAL))
+            .register();
+
+    public static final BlockEntry<MultiblockFluidIOBlock> MULTIBLOCK_FLUID_IO = REGISTRATE
+            .block("multiblock_fluid_io", MultiblockFluidIOBlock::new)
             .blockstate(Helpers.ghostBlock())
             .initialProperties(() -> Blocks.GLASS)
             .properties(Helpers::multiblockComponent)

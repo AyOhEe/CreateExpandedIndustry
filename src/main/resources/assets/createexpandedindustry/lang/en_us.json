@@ -22,6 +22,7 @@
   "block.createexpandedindustry.multiblock_kinetic_io": "Shaft port",
   "block.createexpandedindustry.multiblock_ghost": "Multiblock",
   "block.createexpandedindustry.multiblock_inventory": "Multiblock Inventory",
+  "block.createexpandedindustry.multiblock_fluid_io": "Multiblock Fluid Port",
 
   "item.createexpandedindustry.crushed_raw_cobalt": "Crushed Raw Cobalt",
   "item.createexpandedindustry.cobalt_ingot": "Cobalt Ingot",

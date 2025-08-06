@@ -7,12 +7,10 @@ import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import io.github.ayohee.expandedindustry.multiblock.AbstractMultiblockController;
 import io.github.ayohee.expandedindustry.multiblock.AbstractMultiblockControllerBE;
-import io.github.ayohee.expandedindustry.multiblock.IMultiblockComponentBE;
 import io.github.ayohee.expandedindustry.multiblock.placement.*;
 import io.github.ayohee.expandedindustry.register.EIBlockEntityTypes;
 import io.github.ayohee.expandedindustry.register.EIBlocks;
 import io.github.ayohee.expandedindustry.util.ConstSupplier;
-import net.createmod.catnip.data.Pair;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
@@ -21,8 +19,6 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -33,6 +29,7 @@ import java.util.List;
 import java.util.Map;
 
 import static io.github.ayohee.expandedindustry.CreateExpandedIndustry.MODID;
+import static io.github.ayohee.expandedindustry.multiblock.MultiblockFluidIOBlock.*;
 import static io.github.ayohee.expandedindustry.multiblock.MultiblockGhostBlock.MULTIBLOCK_GHOST;
 import static io.github.ayohee.expandedindustry.multiblock.MultiblockInventoryBlock.MULTIBLOCK_INVENTORY;
 import static io.github.ayohee.expandedindustry.multiblock.MultiblockKineticIOBlock.*;
@@ -113,8 +110,6 @@ public class ReinforcedDrillMultiblock extends AbstractMultiblockController<Rein
                 .define('M', blockMatches(EIBlocks.DRILL_MOTOR::get))
                 .define('T', blockMatches(AllBlocks.RAILWAY_CASING::get))
                 .define('C', blockMatches(AllBlocks.BRASS_CASING::get))
-                .define('P', blockStateMatches(NS_COPPER_ENCASED_PIPE))
-                .define('S', blockStateMatches(EW_BRASS_ENCASED_SHAFT))
                 .setOrigin(new Vec3i(1, 1, 1))
             ).reDefine('P',
                 Map.of(
@@ -140,13 +135,10 @@ public class ReinforcedDrillMultiblock extends AbstractMultiblockController<Rein
                     "GGG",
                     "GGG"))
                 .addLayer(List.of(
-                    "GGG",
+                    "GPG",
                     "LCR",
                     "GIG"))
                 .define('G', MULTIBLOCK_GHOST)
-                .define('L', KIO_EAST)
-                .define('R', KIO_WEST)
-                .define('C', DRILL_CONTROLLER_NORTH)
                 .define('I', MULTIBLOCK_INVENTORY)
                 .setOrigin(new Vec3i(1, 1, 1))
                 .kineticStats(256, 64)
@@ -171,6 +163,13 @@ public class ReinforcedDrillMultiblock extends AbstractMultiblockController<Rein
                     Direction.SOUTH, DRILL_CONTROLLER_SOUTH,
                     Direction.WEST, DRILL_CONTROLLER_WEST
                 )
+            ).reDefine('P',
+                Map.of(
+                    Direction.NORTH, FIO_NORTH,
+                    Direction.EAST, FIO_EAST,
+                    Direction.SOUTH, FIO_SOUTH,
+                    Direction.WEST, FIO_WEST
+                )
             );
 
     public static HorizontalGeneralBuilder<GeneralBuilder> MULTIBLOCK_DECONSTRUCTOR =
@@ -189,8 +188,6 @@ public class ReinforcedDrillMultiblock extends AbstractMultiblockController<Rein
                 .define('M', EIBlocks.DRILL_MOTOR::getDefaultState)
                 .define('T', AllBlocks.RAILWAY_CASING::getDefaultState)
                 .define('C', AllBlocks.BRASS_CASING::getDefaultState)
-                .define('P', NS_COPPER_ENCASED_PIPE)
-                .define('S', EW_BRASS_ENCASED_SHAFT)
                 .setOrigin(new Vec3i(1, 1, 1))
             ).reDefine('P',
                 Map.of(
