@@ -28,8 +28,9 @@ import java.util.function.BiConsumer;
 
 public class ReinforcedDrillMultiblockBE extends AbstractMultiblockControllerBE {
     public static final int DRILL_TICKS = 100;
+    public static final float RPM_SPEED_MULTIPLIER = 0.5f;
 
-    protected int progress = 0;
+    protected float progress = 0;
     protected List<ItemStack> inventoryQueue = new LinkedList<>();
 
     public ReinforcedDrillMultiblockBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
@@ -83,11 +84,20 @@ public class ReinforcedDrillMultiblockBE extends AbstractMultiblockControllerBE 
                 progress -= DRILL_TICKS;
             }
         } else {
-            progress += 1;
+            progress += 1f * speedFactor();
         }
 
         level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
         setChanged();
+    }
+
+    protected float speedFactor() {
+        MultiblockKineticIOBE kioBe = getFirstPoweredShaft();
+        if (kioBe == null || !kioBe.isPowered()) {
+            return 0;
+        }
+
+        return 1 + (RPM_SPEED_MULTIPLIER * ((kioBe.getRotationSpeed() - 64) / (256 - 64)));
     }
 
     private List<HardenedStoneBlockEntity> findAllTopLayerHardenedStone() {
@@ -134,7 +144,7 @@ public class ReinforcedDrillMultiblockBE extends AbstractMultiblockControllerBE 
 
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        tag.putInt("mining_progress", progress);
+        tag.putFloat("mining_progress", progress);
         tag.put("inventory_queue", NBTHelper.writeCompoundList(inventoryQueue, (s) -> (CompoundTag) s.save(registries)));
 
         super.saveAdditional(tag, registries);
@@ -142,7 +152,7 @@ public class ReinforcedDrillMultiblockBE extends AbstractMultiblockControllerBE 
 
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        progress = tag.getInt("mining_progress");
+        progress = tag.getFloat("mining_progress");
         inventoryQueue = NBTHelper.readCompoundList(tag.getList("inventory_queue", Tag.TAG_COMPOUND), (t) -> ItemStack.parse(registries, (Tag) t).orElseThrow());
 
         super.loadAdditional(tag, registries);
@@ -158,6 +168,7 @@ public class ReinforcedDrillMultiblockBE extends AbstractMultiblockControllerBE 
     public List<Component> multiblockGoggleTooltip(boolean isPlayerSneaking) {
         List<Component> tooltip = new ArrayList<>();
         tooltip.add(Component.literal("    Mining progress: " + percentage(progress, DRILL_TICKS) + "%"));
+        tooltip.add(Component.literal("        (Mining speed - " + decimalPlaces(speedFactor(), 2) + ")"));
 
         if (!hasViableHardenedStone()) {
             tooltip.add(Component.literal("        (No mineable stone - mining stopped)").withStyle(ChatFormatting.DARK_GRAY));
@@ -171,5 +182,9 @@ public class ReinforcedDrillMultiblockBE extends AbstractMultiblockControllerBE 
 
     public static int percentage(float a, float b) {
         return 10 * Math.round(10 * (a / b));
+    }
+
+    public static double decimalPlaces(double v, int p) {
+        return (Math.round(v * Math.pow(10, p))) / Math.pow(10, p);
     }
 }
