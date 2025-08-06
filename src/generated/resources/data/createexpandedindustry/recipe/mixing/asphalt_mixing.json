@@ -1,0 +1,27 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "minecraft:sand"
+    },
+    {
+      "item": "minecraft:sand"
+    },
+    {
+      "item": "minecraft:gravel"
+    },
+    {
+      "item": "minecraft:gravel"
+    },
+    {
+      "type": "fluid_stack",
+      "amount": 250,
+      "fluid": "createexpandedindustry:hot_bitumen"
+    }
+  ],
+  "results": [
+    {
+      "id": "createexpandedindustry:asphalt_block"
+    }
+  ]
+}
