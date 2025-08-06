@@ -28,7 +28,6 @@ import java.util.function.BiConsumer;
 
 public class ReinforcedDrillMultiblockBE extends AbstractMultiblockControllerBE {
     public static final int DRILL_TICKS = 100;
-    public static final int DRILL_DIAMETER = 5;
 
     protected int progress = 0;
     protected List<ItemStack> inventoryQueue = new LinkedList<>();
@@ -54,10 +53,9 @@ public class ReinforcedDrillMultiblockBE extends AbstractMultiblockControllerBE 
     }
 
     protected boolean isPowered() {
-        for (IMultiblockComponentBE be : components.values()) {
-            if (be instanceof MultiblockKineticIOBE kioBe && !kioBe.isPowered()) {
-                return false;
-            }
+        MultiblockKineticIOBE kioBe = getFirstPoweredShaft();
+        if (kioBe != null && !kioBe.isPowered()) {
+            return false;
         }
 
         return true;
@@ -68,7 +66,7 @@ public class ReinforcedDrillMultiblockBE extends AbstractMultiblockControllerBE 
             return true;
         }
 
-        if (!inventories.values().iterator().hasNext()) {
+        if (inventories.isEmpty()) {
             return false;
         }
         MultiblockInventoryBE invBe = inventories.values().iterator().next();
@@ -121,7 +119,7 @@ public class ReinforcedDrillMultiblockBE extends AbstractMultiblockControllerBE 
     }
 
     protected void tryInsertInventory() {
-        if (inventoryQueue.isEmpty() || !inventories.values().iterator().hasNext()) {
+        if (inventoryQueue.isEmpty() || inventories.isEmpty()) {
             return;
         }
 

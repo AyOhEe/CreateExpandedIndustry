@@ -263,6 +263,7 @@ public class MultiblockKineticIOBE extends KineticBlockEntity implements IMultib
     public void setController(AbstractMultiblockControllerBE mbc) {
         controller = mbc;
         controllerPos = mbc.getBlockPos();
+        controller.addShaft(this);
     }
 
     @Override

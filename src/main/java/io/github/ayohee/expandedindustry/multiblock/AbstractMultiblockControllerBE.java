@@ -30,6 +30,8 @@ public abstract class AbstractMultiblockControllerBE extends BlockEntity impleme
 
     protected Map<BlockPos, IMultiblockComponentBE> components = new HashMap<>();
     protected Map<BlockPos, MultiblockInventoryBE> inventories = new HashMap<>();
+    protected Map<BlockPos, MultiblockFluidIOBE> tanks = new HashMap<>();
+    protected Map<BlockPos, MultiblockKineticIOBE> shafts = new HashMap<>();
 
     boolean chunkUnloaded = false;
     boolean startedDestroy = false;
@@ -217,5 +219,28 @@ public abstract class AbstractMultiblockControllerBE extends BlockEntity impleme
 
     public void addInventory(MultiblockInventoryBE multiblockInventoryBE) {
         inventories.put(multiblockInventoryBE.getBlockPos(), multiblockInventoryBE);
+    }
+
+    public void addTank(MultiblockFluidIOBE multiblockFluidIOBE) {
+        tanks.put(multiblockFluidIOBE.getBlockPos(), multiblockFluidIOBE);
+    }
+
+    public void addShaft(MultiblockKineticIOBE multiblockKineticIOBE) {
+        shafts.put(multiblockKineticIOBE.getBlockPos(), multiblockKineticIOBE);
+    }
+
+    protected MultiblockKineticIOBE getFirstPoweredShaft() {
+        if (shafts.isEmpty()) {
+            return null;
+        }
+
+        for (MultiblockKineticIOBE be : shafts.values()) {
+            if (be.getConfiguredStressImpact() == 0) {
+                continue;
+            }
+            return be;
+        }
+
+        return null;
     }
 }
