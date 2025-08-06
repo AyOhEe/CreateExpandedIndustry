@@ -39,7 +39,7 @@ public class MultiblockFluidIOBE extends BlockEntity implements IMultiblockCompo
                 Capabilities.FluidHandler.BLOCK,
                 EIBlockEntityTypes.MULTIBLOCK_FLUID_IO.get(),
                 (be, context) -> {
-                    if (context == be.getBlockState().getValue(BlockStateProperties.FACING)) {
+                    if (context == null || context == be.getBlockState().getValue(BlockStateProperties.FACING)) {
                         return be.inv;
                     }
                     return null;
