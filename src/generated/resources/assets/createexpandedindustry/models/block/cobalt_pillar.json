@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "createexpandedindustry:block/palettes/stone_types/cap/cobalt_cap",
+    "side": "createexpandedindustry:block/palettes/stone_types/pillar/cobalt_pillar"
+  }
+}

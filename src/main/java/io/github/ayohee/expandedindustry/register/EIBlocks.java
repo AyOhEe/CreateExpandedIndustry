@@ -4,16 +4,16 @@ import com.simibubi.create.AllDisplaySources;
 import com.simibubi.create.AllMountedStorageTypes;
 import com.simibubi.create.AllTags;
 import com.simibubi.create.content.decoration.encasing.CasingBlock;
-import com.simibubi.create.foundation.block.connected.AllCTTypes;
-import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
-import com.simibubi.create.foundation.block.connected.CTSpriteShifter;
-import com.simibubi.create.foundation.block.connected.CTType;
+import com.simibubi.create.content.decoration.palettes.ConnectedPillarBlock;
+import com.simibubi.create.content.decoration.palettes.PaletteBlockPattern;
+import com.simibubi.create.foundation.block.connected.*;
 import com.simibubi.create.foundation.data.BuilderTransformers;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
+import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 
@@ -47,6 +47,7 @@ import static com.simibubi.create.api.behaviour.movement.MovementBehaviour.movem
 import static com.simibubi.create.api.contraption.storage.fluid.MountedFluidStorageType.mountedFluidStorage;
 import static io.github.ayohee.expandedindustry.CreateExpandedIndustry.MODID;
 import static io.github.ayohee.expandedindustry.CreateExpandedIndustry.REGISTRATE;
+import static io.github.ayohee.expandedindustry.register.EIBlocks.EISpriteShifts.paletteCT;
 
 public class EIBlocks {
     /*-----THESE BLOCKS WILL NOT BE SEEN IN THE CREATIVE TAB-----*/
@@ -262,6 +263,12 @@ public class EIBlocks {
             return CTSpriteShifter.getCT(type, ResourceLocation.fromNamespaceAndPath(MODID, "block/" + blockTextureName),
                     ResourceLocation.fromNamespaceAndPath(MODID, "block/" + connectedTextureName + "_connected"));
         }
+
+        public static CTSpriteShiftEntry paletteCT(String variant, String texture, PaletteBlockPattern.CTs ct) {
+            ResourceLocation resLoc = ResourceLocation.fromNamespaceAndPath(MODID, "block/palettes/stone_types/" + texture + "/" + variant + "_" + texture);
+            return CTSpriteShifter.getCT(ct.type, resLoc,
+                    ResourceLocation.fromNamespaceAndPath(resLoc.getNamespace(), resLoc.getPath() + "_connected"));
+        }
     }
 
 
@@ -271,9 +278,32 @@ public class EIBlocks {
         REGISTRATE.setCreativeTab(EICreativeTabs.DECORATIVES_TAB);
     }
 
+
+    public static final BlockEntry<ConnectedPillarBlock> COBALT_PILLAR = REGISTRATE
+            .block("cobalt_pillar", ConnectedPillarBlock::new)
+            .initialProperties(() -> Blocks.STONE_BRICKS)
+            .tag(BlockTags.NEEDS_STONE_TOOL)
+            .blockstate((ctx, prov) -> {
+                ResourceLocation side = ResourceLocation.fromNamespaceAndPath(MODID, "block/palettes/stone_types/pillar/cobalt_pillar");
+                ResourceLocation end = ResourceLocation.fromNamespaceAndPath(MODID, "block/palettes/stone_types/cap/cobalt_cap");
+                prov.simpleBlock(ctx.get(), prov.models()
+                        .cubeColumn("cobalt_pillar", side, end));
+            })
+            .onRegister(CreateRegistrate.connectedTextures(
+                    () -> new RotatedPillarCTBehaviour(
+                            paletteCT("cobalt", "pillar", PaletteBlockPattern.CTs.PILLAR),
+                            paletteCT("cobalt", "cap", PaletteBlockPattern.CTs.CAP)
+                    )))
+            .simpleItem()
+            .recipe((ctx, prov) -> {
+                prov.stonecutting(DataIngredient.items(EIItems.COBALT_INGOT.get()), RecipeCategory.DECORATIONS, ctx::get, 2);
+            })
+            .register();
+
     public static final BlockEntry<Block> MICROPLASTIC_BLOCK = REGISTRATE
             .block("microplastic_block", Block::new)
             .initialProperties(() -> Blocks.SAND)
+            .tag(BlockTags.MINEABLE_WITH_SHOVEL)
             .properties(c -> c.mapColor(MapColor.COLOR_LIGHT_GRAY))
             .blockstate(Helpers.subdirCubeAllTexture("microplastic"))
             .item()
@@ -285,6 +315,7 @@ public class EIBlocks {
         return REGISTRATE
                 .block(v.toString() + "_microplastic_block", Block::new)
                 .initialProperties(() -> Blocks.SAND)
+                .tag(BlockTags.MINEABLE_WITH_SHOVEL)
                 .properties(c -> c.mapColor(v.getMapColor()))
                 .blockstate(Helpers.subdirCubeAllTexture("microplastic"))
                 .item()
@@ -307,6 +338,7 @@ public class EIBlocks {
     public static final BlockEntry<Block> ASPHALT_BLOCK = REGISTRATE
             .block("asphalt_block", Block::new)
             .initialProperties(() -> Blocks.STONE_BRICKS)
+            .tag(BlockTags.NEEDS_STONE_TOOL, BlockTags.MINEABLE_WITH_PICKAXE)
             .properties(c -> c.mapColor(MapColor.COLOR_GRAY).speedFactor(1.2f))
             .blockstate(Helpers.subdirCubeAllTexture("asphalt"))
             .item()
@@ -318,6 +350,7 @@ public class EIBlocks {
         return REGISTRATE
                 .block(v.toString() + "_asphalt_block", Block::new)
                 .initialProperties(() -> Blocks.STONE_BRICKS)
+                .tag(BlockTags.NEEDS_STONE_TOOL, BlockTags.MINEABLE_WITH_PICKAXE)
                 .properties(c -> c.mapColor(v.getMapColor()).speedFactor(1.2f))
                 .blockstate(Helpers.subdirCubeAllTexture("asphalt"))
                 .item()
