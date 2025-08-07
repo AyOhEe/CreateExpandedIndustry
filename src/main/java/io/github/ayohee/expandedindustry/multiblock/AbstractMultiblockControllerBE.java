@@ -19,10 +19,12 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 
 import java.util.*;
 import java.util.function.BiConsumer;
+import java.util.function.Predicate;
 
 public abstract class AbstractMultiblockControllerBE extends BlockEntity implements ITickingBlockEntity, IMultiblockTooltips {
     List<BlockPos> _componentPositions = null;
@@ -221,8 +223,10 @@ public abstract class AbstractMultiblockControllerBE extends BlockEntity impleme
         inventories.put(multiblockInventoryBE.getBlockPos(), multiblockInventoryBE);
     }
 
-    public void addTank(MultiblockFluidIOBE multiblockFluidIOBE) {
+    public Predicate<FluidStack> addTank(MultiblockFluidIOBE multiblockFluidIOBE) {
         tanks.put(multiblockFluidIOBE.getBlockPos(), multiblockFluidIOBE);
+
+        return e -> true;
     }
 
     public void addShaft(MultiblockKineticIOBE multiblockKineticIOBE) {

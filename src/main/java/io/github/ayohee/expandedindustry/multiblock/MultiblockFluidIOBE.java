@@ -15,9 +15,12 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.function.Predicate;
 
 public class MultiblockFluidIOBE extends BlockEntity implements IMultiblockComponentBE {
     FluidTank inv;
@@ -28,9 +31,11 @@ public class MultiblockFluidIOBE extends BlockEntity implements IMultiblockCompo
 
     boolean chunkUnloaded = false;
 
+
     public MultiblockFluidIOBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
-        inv = new FluidTank(1000);
+        inv = new FluidTank(1000, e -> false);  // Default to not accepting fluids. We'll get our validator
+                                                // from the controller.
     }
 
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
@@ -127,7 +132,7 @@ public class MultiblockFluidIOBE extends BlockEntity implements IMultiblockCompo
     public void setController(AbstractMultiblockControllerBE mbc) {
         controller = mbc;
         controllerPos = mbc.getBlockPos();
-        controller.addTank(this);
+        inv.setValidator(controller.addTank(this));
     }
 
     @Override

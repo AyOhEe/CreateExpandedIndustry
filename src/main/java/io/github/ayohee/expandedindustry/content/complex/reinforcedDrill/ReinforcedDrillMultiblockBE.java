@@ -4,6 +4,7 @@ import io.github.ayohee.expandedindustry.content.blockentities.HardenedStoneBloc
 import io.github.ayohee.expandedindustry.multiblock.*;
 import io.github.ayohee.expandedindustry.register.EIBlockEntityTypes;
 import io.github.ayohee.expandedindustry.register.EIBlocks;
+import io.github.ayohee.expandedindustry.register.EIFluids;
 import io.github.ayohee.expandedindustry.register.EIItems;
 import io.github.ayohee.expandedindustry.util.NBTHelperEI;
 import net.createmod.catnip.nbt.NBTHelper;
@@ -19,12 +20,15 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluids;
+import net.neoforged.neoforge.fluids.FluidStack;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.BiConsumer;
+import java.util.function.Predicate;
 
 public class ReinforcedDrillMultiblockBE extends AbstractMultiblockControllerBE {
     public static final int DRILL_TICKS = 100;
@@ -156,6 +160,12 @@ public class ReinforcedDrillMultiblockBE extends AbstractMultiblockControllerBE 
         inventoryQueue = NBTHelper.readCompoundList(tag.getList("inventory_queue", Tag.TAG_COMPOUND), (t) -> ItemStack.parse(registries, (Tag) t).orElseThrow());
 
         super.loadAdditional(tag, registries);
+    }
+
+    public Predicate<FluidStack> addTank(MultiblockFluidIOBE multiblockFluidIOBE) {
+        super.addTank(multiblockFluidIOBE);
+
+        return e -> (e.is(EIFluids.LUBRICANT.getType()) || e.is(Fluids.WATER.getFluidType()));
     }
 
 
