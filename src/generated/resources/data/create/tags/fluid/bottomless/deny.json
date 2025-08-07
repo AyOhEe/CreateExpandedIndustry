@@ -1,0 +1,20 @@
+{
+  "values": [
+    "createexpandedindustry:flowing_crude_oil",
+    "createexpandedindustry:crude_oil",
+    "createexpandedindustry:flowing_naphtha",
+    "createexpandedindustry:naphtha",
+    "createexpandedindustry:flowing_liquid_petroleum_gas",
+    "createexpandedindustry:liquid_petroleum_gas",
+    "createexpandedindustry:flowing_kerosene",
+    "createexpandedindustry:kerosene",
+    "createexpandedindustry:flowing_ethylene",
+    "createexpandedindustry:ethylene",
+    "createexpandedindustry:flowing_raw_lubricating_oil",
+    "createexpandedindustry:raw_lubricating_oil",
+    "createexpandedindustry:flowing_lubricant",
+    "createexpandedindustry:lubricant",
+    "createexpandedindustry:flowing_hot_bitumen",
+    "createexpandedindustry:hot_bitumen"
+  ]
+}

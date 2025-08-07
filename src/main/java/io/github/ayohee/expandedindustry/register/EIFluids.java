@@ -2,6 +2,7 @@ package io.github.ayohee.expandedindustry.register;
 
 import com.simibubi.create.AllFluids;
 import com.simibubi.create.AllTags;
+import com.simibubi.create.content.fluids.VirtualFluid;
 import com.tterrag.registrate.builders.FluidBuilder;
 import com.tterrag.registrate.util.entry.FluidEntry;
 import net.createmod.catnip.theme.Color;
@@ -26,8 +27,7 @@ public class EIFluids {
 
     public static final FluidEntry<BaseFlowingFluid.Flowing> CRUDE_OIL = REGISTRATE
             .standardFluid("crude_oil", SolidRenderedPlaceableFluidType.create(0x202020, () -> 1f / 16f))
-            .lang("crude_oil")
-            .tag(AllTags.commonFluidTag("crude_oil"))
+            .tag(AllTags.commonFluidTag("crude_oil"), AllTags.AllFluidTags.BOTTOMLESS_DENY.tag)
             .properties(b -> b.viscosity(1500)
                     .density(1400))
             .fluidProperties(p -> p.levelDecreasePerBlock(2)
@@ -43,25 +43,11 @@ public class EIFluids {
             .build()
             .register();
 
-    public static final FluidEntry<BaseFlowingFluid.Flowing> LIQUID_PETROLEUM_GAS = REGISTRATE
-            .standardFluid("liquid_petroleum_gas", SolidRenderedPlaceableFluidType.create(0xA0A0A0, () -> 1f / 2f))
-            .lang("liquid_petroleum_gas")
-            .tag(AllTags.commonFluidTag("liquid_petroleum_gas"))
-            .properties(b -> b.viscosity(1500)
-                    .density(1400))
-            .fluidProperties(p -> p.levelDecreasePerBlock(2)
-                    .tickRate(25)
-                    .slopeFindDistance(3)
-                    .explosionResistance(100f))
-            .source(BaseFlowingFluid.Source::new)
-            .noBlock()
-            .noBucket()
-            .register();
+
 
     public static final FluidEntry<BaseFlowingFluid.Flowing> NAPHTHA = REGISTRATE
             .standardFluid("naphtha", SolidRenderedPlaceableFluidType.create(0xFF6F00, () -> 1f / 2f))
-            .lang("naphtha")
-            .tag(AllTags.commonFluidTag("naphtha"))
+            .tag(AllTags.commonFluidTag("naphtha"), AllTags.AllFluidTags.BOTTOMLESS_DENY.tag)
             .properties(b -> b.viscosity(1500)
                     .density(1400))
             .fluidProperties(p -> p.levelDecreasePerBlock(2)
@@ -77,10 +63,13 @@ public class EIFluids {
             .build()
             .register();
 
+    public static final FluidEntry<VirtualFluid> LIQUID_PETROLEUM_GAS = REGISTRATE.virtualFluid("liquid_petroleum_gas")
+            .tag(AllTags.commonFluidTag("liquid_petroleum_gas"), AllTags.AllFluidTags.BOTTOMLESS_DENY.tag)
+            .register();
+
     public static final FluidEntry<BaseFlowingFluid.Flowing> KEROSENE = REGISTRATE
             .standardFluid("kerosene", SolidRenderedPlaceableFluidType.create(0x808080, () -> 1f / 2f))
-            .lang("kerosene")
-            .tag(AllTags.commonFluidTag("kerosene"))
+            .tag(AllTags.commonFluidTag("kerosene"), AllTags.AllFluidTags.BOTTOMLESS_DENY.tag)
             .properties(b -> b.viscosity(1500)
                     .density(1400))
             .fluidProperties(p -> p.levelDecreasePerBlock(2)
@@ -96,25 +85,13 @@ public class EIFluids {
             .build()
             .register();
 
-    public static final FluidEntry<BaseFlowingFluid.Flowing> ETHYLENE = REGISTRATE
-            .standardFluid("ethylene", SolidRenderedPlaceableFluidType.create(0xD0D0D0, () -> 1f / 2f))
-            .lang("ethylene")
-            .tag(AllTags.commonFluidTag("ethylene"))
-            .properties(b -> b.viscosity(1500)
-                    .density(1400))
-            .fluidProperties(p -> p.levelDecreasePerBlock(2)
-                    .tickRate(25)
-                    .slopeFindDistance(3)
-                    .explosionResistance(100f))
-            .source(BaseFlowingFluid.Source::new)
-            .noBlock()
-            .noBucket()
+    public static final FluidEntry<VirtualFluid> ETHYLENE = REGISTRATE.virtualFluid("ethylene")
+            .tag(AllTags.commonFluidTag("ethylene"), AllTags.AllFluidTags.BOTTOMLESS_DENY.tag)
             .register();
 
     public static final FluidEntry<BaseFlowingFluid.Flowing> RAW_LUBRICATING_OIL = REGISTRATE
             .standardFluid("raw_lubricating_oil", SolidRenderedPlaceableFluidType.create(0xF2F542, () -> 1f / 2f))
-            .lang("raw_lubricating_oil")
-            .tag(AllTags.commonFluidTag("raw_lubricating_oil"))
+            .tag(AllTags.commonFluidTag("raw_lubricating_oil"), AllTags.AllFluidTags.BOTTOMLESS_DENY.tag)
             .properties(b -> b.viscosity(1500)
                     .density(1400))
             .fluidProperties(p -> p.levelDecreasePerBlock(2)
@@ -132,8 +109,7 @@ public class EIFluids {
 
     public static final FluidEntry<BaseFlowingFluid.Flowing> LUBRICANT = REGISTRATE
             .standardFluid("lubricant", SolidRenderedPlaceableFluidType.create(0x1AB000, () -> 1f / 2f))
-            .lang("lubricant")
-            .tag(AllTags.commonFluidTag("lubricant"))
+            .tag(AllTags.commonFluidTag("lubricant"), AllTags.AllFluidTags.BOTTOMLESS_DENY.tag)
             .properties(b -> b.viscosity(1500)
                     .density(1400))
             .fluidProperties(p -> p.levelDecreasePerBlock(2)
@@ -151,8 +127,7 @@ public class EIFluids {
 
     public static final FluidEntry<BaseFlowingFluid.Flowing> HOT_BITUMEN = REGISTRATE
             .standardFluid("hot_bitumen", SolidRenderedPlaceableFluidType.create(0x000000, () -> 1f / 2f))
-            .lang("hot_bitumen")
-            .tag(AllTags.commonFluidTag("hot_bitumen"))
+            .tag(AllTags.commonFluidTag("hot_bitumen"), AllTags.AllFluidTags.BOTTOMLESS_DENY.tag)
             .properties(b -> b.viscosity(1500)
                     .density(1400))
             .fluidProperties(p -> p.levelDecreasePerBlock(2)
