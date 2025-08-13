@@ -1,7 +1,5 @@
 package io.github.ayohee.expandedindustry.multiblock;
 
-import com.simibubi.create.api.equipment.goggles.IHaveGoggleInformation;
-import com.simibubi.create.api.equipment.goggles.IHaveHoveringInformation;
 import io.github.ayohee.expandedindustry.util.ITickingBlockEntity;
 import io.github.ayohee.expandedindustry.util.NBTHelperEI;
 import net.createmod.catnip.data.Pair;
@@ -32,7 +30,8 @@ public abstract class AbstractMultiblockControllerBE extends BlockEntity impleme
 
     protected Map<BlockPos, IMultiblockComponentBE> components = new HashMap<>();
     protected Map<BlockPos, MultiblockInventoryBE> inventories = new HashMap<>();
-    protected Map<BlockPos, MultiblockFluidIOBE> tanks = new HashMap<>();
+    protected Map<BlockPos, MultiblockFluidTankBE> fluidTanks = new HashMap<>();
+    protected Map<BlockPos, MultiblockFluidInputBE> fluidInputs = new HashMap<>();
     protected Map<BlockPos, MultiblockKineticIOBE> shafts = new HashMap<>();
 
     boolean chunkUnloaded = false;
@@ -223,10 +222,16 @@ public abstract class AbstractMultiblockControllerBE extends BlockEntity impleme
         inventories.put(multiblockInventoryBE.getBlockPos(), multiblockInventoryBE);
     }
 
-    public Predicate<FluidStack> addTank(MultiblockFluidIOBE multiblockFluidIOBE) {
-        tanks.put(multiblockFluidIOBE.getBlockPos(), multiblockFluidIOBE);
+    public Predicate<FluidStack> addTank(MultiblockFluidTankBE multiblockFluidTankBE) {
+        fluidTanks.put(multiblockFluidTankBE.getBlockPos(), multiblockFluidTankBE);
 
         return e -> true;
+    }
+
+    public Pair<Integer, Predicate<FluidStack>> addFluidInput(MultiblockFluidInputBE multiblockFluidInputBE) {
+        fluidInputs.put(multiblockFluidInputBE.getBlockPos(), multiblockFluidInputBE);
+
+        return Pair.of(0, e -> true);
     }
 
     public void addShaft(MultiblockKineticIOBE multiblockKineticIOBE) {
@@ -246,5 +251,21 @@ public abstract class AbstractMultiblockControllerBE extends BlockEntity impleme
         }
 
         return null;
+    }
+
+    protected MultiblockFluidInputBE getFirstFluidInput() {
+        if (fluidInputs.isEmpty()) {
+            return null;
+        }
+
+        return fluidInputs.values().iterator().next();
+    }
+
+    protected MultiblockFluidTankBE getFirstFluidTank() {
+        if (fluidTanks.isEmpty()) {
+            return null;
+        }
+
+        return fluidTanks.values().iterator().next();
     }
 }

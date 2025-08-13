@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "createexpandedindustry:block/multiblock_fluid_input"
+    }
+  }
+}

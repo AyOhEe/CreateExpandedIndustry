@@ -29,12 +29,13 @@ import java.util.List;
 import java.util.Map;
 
 import static io.github.ayohee.expandedindustry.CreateExpandedIndustry.MODID;
-import static io.github.ayohee.expandedindustry.multiblock.MultiblockFluidIOBlock.*;
+import static io.github.ayohee.expandedindustry.multiblock.MultiblockFluidInputBlock.*;
 import static io.github.ayohee.expandedindustry.multiblock.MultiblockGhostBlock.MULTIBLOCK_GHOST;
 import static io.github.ayohee.expandedindustry.multiblock.MultiblockInventoryBlock.MULTIBLOCK_INVENTORY;
 import static io.github.ayohee.expandedindustry.multiblock.MultiblockKineticIOBlock.*;
 import static io.github.ayohee.expandedindustry.multiblock.placement.PlacementTest.blockMatches;
 import static io.github.ayohee.expandedindustry.multiblock.placement.PlacementTest.blockStateMatches;
+
 
 public class ReinforcedDrillMultiblock extends AbstractMultiblockController<ReinforcedDrillMultiblockBE> implements IWrenchable {
     public static final ConstSupplier<BlockState> NS_BRASS_ENCASED_SHAFT = new ConstSupplier<>(() -> AllBlocks.BRASS_ENCASED_SHAFT.getDefaultState()
@@ -165,10 +166,10 @@ public class ReinforcedDrillMultiblock extends AbstractMultiblockController<Rein
                 )
             ).reDefine('P',
                 Map.of(
-                    Direction.NORTH, FIO_NORTH,
-                    Direction.EAST, FIO_EAST,
-                    Direction.SOUTH, FIO_SOUTH,
-                    Direction.WEST, FIO_WEST
+                    Direction.NORTH, FIN_NORTH,
+                    Direction.EAST, FIN_EAST,
+                    Direction.SOUTH, FIN_SOUTH,
+                    Direction.WEST, FIN_WEST
                 )
             );
 

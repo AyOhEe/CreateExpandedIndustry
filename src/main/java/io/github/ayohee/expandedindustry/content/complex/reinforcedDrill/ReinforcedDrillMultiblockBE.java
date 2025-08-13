@@ -2,11 +2,8 @@ package io.github.ayohee.expandedindustry.content.complex.reinforcedDrill;
 
 import io.github.ayohee.expandedindustry.content.blockentities.HardenedStoneBlockEntity;
 import io.github.ayohee.expandedindustry.multiblock.*;
-import io.github.ayohee.expandedindustry.register.EIBlockEntityTypes;
-import io.github.ayohee.expandedindustry.register.EIBlocks;
 import io.github.ayohee.expandedindustry.register.EIFluids;
-import io.github.ayohee.expandedindustry.register.EIItems;
-import io.github.ayohee.expandedindustry.util.NBTHelperEI;
+import net.createmod.catnip.data.Pair;
 import net.createmod.catnip.nbt.NBTHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -14,25 +11,28 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.FluidType;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 import java.util.function.BiConsumer;
 import java.util.function.Predicate;
 
 public class ReinforcedDrillMultiblockBE extends AbstractMultiblockControllerBE {
     public static final int DRILL_TICKS = 100;
     public static final float RPM_SPEED_MULTIPLIER = 0.5f;
+    public static final float WATER_MULT_INCREASE = 0.5f;
+    public static final float LUBRICANT_MULT_INCREASE = 1.0f;
+    public static final int LUBRICANT_INPUT_THRESHOLD = 4;
 
     protected float progress = 0;
     protected List<ItemStack> inventoryQueue = new LinkedList<>();
@@ -101,7 +101,20 @@ public class ReinforcedDrillMultiblockBE extends AbstractMultiblockControllerBE 
             return 0;
         }
 
-        return 1 + (RPM_SPEED_MULTIPLIER * ((kioBe.getRotationSpeed() - 64) / (256 - 64)));
+        return 1 + ((RPM_SPEED_MULTIPLIER + coolantMultIncrease()) * ((kioBe.getRotationSpeed() - 64) / (256 - 64)));
+    }
+
+    private float coolantMultIncrease() {
+        MultiblockFluidInputBE fiBE = getFirstFluidInput();
+        if (fiBE == null || !fiBE.isSatisfied()) {
+            return 0.0f;
+        } else if (fiBE.getFluidType() == Fluids.WATER.getFluidType()) {
+            return WATER_MULT_INCREASE;
+        } else if (fiBE.getFluidType() == EIFluids.LUBRICANT.getType()) {
+            return LUBRICANT_MULT_INCREASE;
+        }
+
+        return 0.0f;
     }
 
     private List<HardenedStoneBlockEntity> findAllTopLayerHardenedStone() {
@@ -162,10 +175,11 @@ public class ReinforcedDrillMultiblockBE extends AbstractMultiblockControllerBE 
         super.loadAdditional(tag, registries);
     }
 
-    public Predicate<FluidStack> addTank(MultiblockFluidIOBE multiblockFluidIOBE) {
-        super.addTank(multiblockFluidIOBE);
+    @Override
+    public Pair<Integer, Predicate<FluidStack>> addFluidInput(MultiblockFluidInputBE multiblockFluidInputBE) {
+        super.addFluidInput(multiblockFluidInputBE);
 
-        return e -> (e.is(EIFluids.LUBRICANT.getType()) || e.is(Fluids.WATER.getFluidType()));
+        return Pair.of(LUBRICANT_INPUT_THRESHOLD, e -> (e.is(EIFluids.LUBRICANT.getType()) || e.is(Fluids.WATER.getFluidType())));
     }
 
 
@@ -187,7 +201,39 @@ public class ReinforcedDrillMultiblockBE extends AbstractMultiblockControllerBE 
         } else if (!canTickMining()) {
             tooltip.add(Component.literal("        (Full - mining stopped)").withStyle(ChatFormatting.DARK_GRAY));
         }
+
+        tooltip.add(Component.empty());
+        tooltip.add(Component.literal("    Current lubricant: ").append(coolantTypeTooltip()));
+        tooltip.add(coolantThresholdTooltip().withStyle(ChatFormatting.DARK_GRAY));
+
         return tooltip;
+    }
+
+    private MutableComponent coolantThresholdTooltip() {
+        MultiblockFluidInputBE fiBE = getFirstFluidInput();
+        if (fiBE == null) {
+            return Component.literal("        (0mb/t / 0mb/t)");
+        }
+
+        int threshold = fiBE.getThreshold();
+        int average = fiBE.getAverageFluidInput();
+
+        return Component.literal("        (" + average + "mb/t / " + threshold + "mb/t)");
+    }
+
+    private MutableComponent coolantTypeTooltip() {
+        MultiblockFluidInputBE fiBE = getFirstFluidInput();
+        if (fiBE == null || fiBE.getAverageFluidInput() == 0) {
+            return Component.literal("No lubricant ( +0.0x maximum)");
+        } else if (!fiBE.isSatisfied()) {
+            return Component.literal("Insufficient lubricant");
+        } else if (fiBE.getFluidType() == Fluids.WATER.getFluidType()) {
+            return Component.literal("Water (+" + coolantMultIncrease() + "x maximum)").withStyle(ChatFormatting.AQUA);
+        } else if (fiBE.getFluidType() == EIFluids.LUBRICANT.getType()) {
+            return Component.literal("Lubricant (+" + coolantMultIncrease() + "x maximum)").withStyle(ChatFormatting.GREEN);
+        }
+
+        return Component.empty();
     }
 
     public static int percentage(float a, float b) {

@@ -13,22 +13,22 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
-public class MultiblockFluidIOBlock extends AbstractMultiblockComponent<MultiblockFluidIOBE> {
-    public static final ConstSupplier<BlockState> FIO_NORTH = new ConstSupplier<>(() -> EIBlocks.MULTIBLOCK_FLUID_IO.getDefaultState()
+public class MultiblockFluidInputBlock extends AbstractMultiblockComponent<MultiblockFluidInputBE> {
+    public static final ConstSupplier<BlockState> FIN_NORTH = new ConstSupplier<>(() -> EIBlocks.MULTIBLOCK_FLUID_INPUT.getDefaultState()
             .setValue(BlockStateProperties.FACING, Direction.NORTH));
-    public static final ConstSupplier<BlockState> FIO_EAST = new ConstSupplier<>(() -> EIBlocks.MULTIBLOCK_FLUID_IO.getDefaultState()
+    public static final ConstSupplier<BlockState> FIN_EAST = new ConstSupplier<>(() -> EIBlocks.MULTIBLOCK_FLUID_INPUT.getDefaultState()
             .setValue(BlockStateProperties.FACING, Direction.EAST));
-    public static final ConstSupplier<BlockState> FIO_SOUTH = new ConstSupplier<>(() -> EIBlocks.MULTIBLOCK_FLUID_IO.getDefaultState()
+    public static final ConstSupplier<BlockState> FIN_SOUTH = new ConstSupplier<>(() -> EIBlocks.MULTIBLOCK_FLUID_INPUT.getDefaultState()
             .setValue(BlockStateProperties.FACING, Direction.SOUTH));
-    public static final ConstSupplier<BlockState> FIO_WEST = new ConstSupplier<>(() -> EIBlocks.MULTIBLOCK_FLUID_IO.getDefaultState()
+    public static final ConstSupplier<BlockState> FIN_WEST = new ConstSupplier<>(() -> EIBlocks.MULTIBLOCK_FLUID_INPUT.getDefaultState()
             .setValue(BlockStateProperties.FACING, Direction.WEST));
-    public static final ConstSupplier<BlockState> FIO_UP = new ConstSupplier<>(() -> EIBlocks.MULTIBLOCK_FLUID_IO.getDefaultState()
+    public static final ConstSupplier<BlockState> FIN_UP = new ConstSupplier<>(() -> EIBlocks.MULTIBLOCK_FLUID_INPUT.getDefaultState()
             .setValue(BlockStateProperties.FACING, Direction.UP));
-    public static final ConstSupplier<BlockState> FIO_DOWN = new ConstSupplier<>(() -> EIBlocks.MULTIBLOCK_FLUID_IO.getDefaultState()
+    public static final ConstSupplier<BlockState> FIN_DOWN = new ConstSupplier<>(() -> EIBlocks.MULTIBLOCK_FLUID_INPUT.getDefaultState()
             .setValue(BlockStateProperties.FACING, Direction.DOWN));
 
 
-    public MultiblockFluidIOBlock(Properties properties) {
+    public MultiblockFluidInputBlock(Properties properties) {
         super(properties);
         registerDefaultState(defaultBlockState()
                 .setValue(BlockStateProperties.FACING, Direction.NORTH));
@@ -56,12 +56,12 @@ public class MultiblockFluidIOBlock extends AbstractMultiblockComponent<Multiblo
     }
 
     @Override
-    public Class<MultiblockFluidIOBE> getBlockEntityClass() {
-        return MultiblockFluidIOBE.class;
+    public Class<MultiblockFluidInputBE> getBlockEntityClass() {
+        return MultiblockFluidInputBE.class;
     }
 
     @Override
-    public BlockEntityType<? extends MultiblockFluidIOBE> getBlockEntityType() {
-        return EIBlockEntityTypes.MULTIBLOCK_FLUID_IO.get();
+    public BlockEntityType<? extends MultiblockFluidInputBE> getBlockEntityType() {
+        return EIBlockEntityTypes.MULTIBLOCK_FLUID_INPUT.get();
     }
 }

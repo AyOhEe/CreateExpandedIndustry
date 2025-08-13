@@ -107,9 +107,14 @@ public class EIBlockEntityTypes {
             .validBlocks(EIBlocks.MULTIBLOCK_INVENTORY)
             .register();
 
-    public static final BlockEntityEntry<MultiblockFluidIOBE> MULTIBLOCK_FLUID_IO = REGISTRATE
-            .blockEntity("multiblock_fluid_io", MultiblockFluidIOBE::new)
+    public static final BlockEntityEntry<MultiblockFluidTankBE> MULTIBLOCK_FLUID_IO = REGISTRATE
+            .blockEntity("multiblock_fluid_io", MultiblockFluidTankBE::new)
             .validBlocks(EIBlocks.MULTIBLOCK_FLUID_IO)
+            .register();
+
+    public static final BlockEntityEntry<MultiblockFluidInputBE> MULTIBLOCK_FLUID_INPUT = REGISTRATE
+            .blockEntity("multiblock_fluid_input", MultiblockFluidInputBE::new)
+            .validBlocks(EIBlocks.MULTIBLOCK_FLUID_INPUT)
             .register();
 
     public static final BlockEntityEntry<ReinforcedDrillMultiblockBE> REINFORCED_DRILL_MULTIBLOCK = REGISTRATE

@@ -2,7 +2,6 @@ package io.github.ayohee.expandedindustry.register;
 
 import com.simibubi.create.AllDisplaySources;
 import com.simibubi.create.AllMountedStorageTypes;
-import com.simibubi.create.AllTags;
 import com.simibubi.create.content.decoration.encasing.CasingBlock;
 import com.simibubi.create.content.decoration.palettes.ConnectedPillarBlock;
 import com.simibubi.create.content.decoration.palettes.PaletteBlockPattern;
@@ -20,10 +19,7 @@ import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import io.github.ayohee.expandedindustry.content.blocks.HardenedStoneBlock;
 import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.*;
 import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.*;
-import io.github.ayohee.expandedindustry.multiblock.MultiblockFluidIOBlock;
-import io.github.ayohee.expandedindustry.multiblock.MultiblockGhostBlock;
-import io.github.ayohee.expandedindustry.multiblock.MultiblockInventoryBlock;
-import io.github.ayohee.expandedindustry.multiblock.MultiblockKineticIOBlock;
+import io.github.ayohee.expandedindustry.multiblock.*;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
@@ -96,8 +92,18 @@ public class EIBlocks {
                     .sound(SoundType.METAL))
             .register();
 
-    public static final BlockEntry<MultiblockFluidIOBlock> MULTIBLOCK_FLUID_IO = REGISTRATE
-            .block("multiblock_fluid_io", MultiblockFluidIOBlock::new)
+    public static final BlockEntry<MultiblockFluidTankBlock> MULTIBLOCK_FLUID_IO = REGISTRATE
+            .block("multiblock_fluid_io", MultiblockFluidTankBlock::new)
+            .blockstate(Helpers.ghostBlock())
+            .initialProperties(() -> Blocks.GLASS)
+            .properties(Helpers::multiblockComponent)
+            .properties(c -> c
+                    .mapColor(MapColor.COLOR_ORANGE)
+                    .sound(SoundType.METAL))
+            .register();
+
+    public static final BlockEntry<MultiblockFluidInputBlock> MULTIBLOCK_FLUID_INPUT = REGISTRATE
+            .block("multiblock_fluid_input", MultiblockFluidInputBlock::new)
             .blockstate(Helpers.ghostBlock())
             .initialProperties(() -> Blocks.GLASS)
             .properties(Helpers::multiblockComponent)
