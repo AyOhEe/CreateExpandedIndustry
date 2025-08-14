@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "createexpandedindustry:item/spicy_blaze_cake"
+  }
+}

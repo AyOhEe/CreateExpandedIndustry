@@ -126,6 +126,11 @@ public class EIItems {
             .properties((p) -> p.stacksTo(1).rarity(Rarity.UNCOMMON))
             .register();
 
+    public static final ItemEntry<CombustibleItem> SPICY_BLAZE_CAKE = REGISTRATE.item("spicy_blaze_cake", CombustibleItem::new)
+            .tag(AllItemTags.BLAZE_BURNER_FUEL_SPECIAL.tag, AllItemTags.UPRIGHT_ON_BELT.tag)
+            .onRegister(i -> i.setBurnTime(25600))
+            .register();
+
 
     public static final ItemEntry<Item> MUSIC_DISC_ARIA_MATH = REGISTRATE.item("music_disc_aria_math", Item::new)
             .properties(p -> p
