@@ -15,6 +15,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.neoforged.neoforge.common.Tags;
 
 import static io.github.ayohee.expandedindustry.CreateExpandedIndustry.MODID;
 import static io.github.ayohee.expandedindustry.CreateExpandedIndustry.REGISTRATE;
@@ -90,6 +91,7 @@ public class EIItems {
                     .rarity(Rarity.RARE)
                     .jukeboxPlayable(ResourceKey.create(Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(MODID, "aria_math")))
             )
+            .tag(Tags.Items.MUSIC_DISCS)
             .defaultModel()
             .register();
 
@@ -99,6 +101,7 @@ public class EIItems {
                     .rarity(Rarity.RARE)
                     .jukeboxPlayable(ResourceKey.create(Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(MODID, "valse")))
             )
+            .tag(Tags.Items.MUSIC_DISCS)
             .defaultModel()
             .register();
 
@@ -108,6 +111,7 @@ public class EIItems {
                     .rarity(Rarity.RARE)
                     .jukeboxPlayable(ResourceKey.create(Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(MODID, "claire_de_lune")))
             )
+            .tag(Tags.Items.MUSIC_DISCS)
             .defaultModel()
             .register();
 

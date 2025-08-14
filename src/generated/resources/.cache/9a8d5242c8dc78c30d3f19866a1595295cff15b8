@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-14T03:29:38.5959245	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+// 1.21.1	2025-08-14T03:35:08.5542273	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
 6e03a436dd8254b20cbeb067a439f0585650f911 assets/createexpandedindustry/blockstates/asphalt_block.json
 bd0755cb64e51af387437e3c12f564f48dc7ecf5 assets/createexpandedindustry/blockstates/black_asphalt_block.json
 1837b596fe87b31b82626363b6674e3402c56a5c assets/createexpandedindustry/blockstates/black_microplastic_block.json
@@ -262,6 +262,7 @@ bc9d9a8a2a4afa14ed490526dcb2cdfdec4be93c data/c/tags/item/dyed/magenta.json
 1e7439a10c7e09d5455473e8ada0d07a4a4d3e8b data/c/tags/item/dyed/white.json
 08e5f244294e276b8e40126025157b90c71c14ed data/c/tags/item/dyed/yellow.json
 9fe5e40afa02974006b724dc12490b3ccca115b3 data/c/tags/item/ingots/cobalt.json
+10700d9a567196da091ae9bb60a2efe75318f89c data/c/tags/item/music_discs.json
 480481497bd9ed3e121a303bb836d9473ef1c5cd data/c/tags/item/nuggets/cobalt.json
 127ce942d645df602718ce96ae21f1bb288a3721 data/c/tags/item/plates.json
 127ce942d645df602718ce96ae21f1bb288a3721 data/c/tags/item/plates/cobalt.json
