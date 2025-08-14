@@ -87,6 +87,10 @@ public class EIItems {
             .defaultModel()
             .register();
 
+    public static final ItemEntry<Item> POLYETHYLENE_BEADS = REGISTRATE.item("polyethylene_beads", Item::new)
+            .defaultModel()
+            .register();
+
     public static final ItemEntry<BannerPatternItem> LOSS_PATTERN = REGISTRATE.item(
                 "loss_pattern",
                 (p) -> new BannerPatternItem(TagKey.create(Registries.BANNER_PATTERN, ResourceLocation.fromNamespaceAndPath(MODID, "pattern_item/loss_pattern")), p)

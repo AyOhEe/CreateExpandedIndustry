@@ -1,0 +1,20 @@
+{
+  "type": "create:mixing",
+  "heat_requirement": "heated",
+  "ingredients": [
+    {
+      "item": "create:crushed_raw_iron"
+    },
+    {
+      "type": "fluid_stack",
+      "amount": 400,
+      "fluid": "createexpandedindustry:ethylene"
+    }
+  ],
+  "results": [
+    {
+      "count": 4,
+      "id": "createexpandedindustry:polyethylene_beads"
+    }
+  ]
+}
