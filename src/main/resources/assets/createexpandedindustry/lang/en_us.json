@@ -71,6 +71,7 @@
   "block.createexpandedindustry.kerosene": "Kerosene",
   "fluid.createexpandedindustry.kerosene": "Kerosene",
   "item.createexpandedindustry.kerosene_bucket": "Kerosene Bucket",
+  "item.createexpandedindustry.solid_fuel": "Solid Fuel",
 
   "block.createexpandedindustry.ethylene": "Ethylene",
   "fluid.createexpandedindustry.ethylene": "Ethylene",

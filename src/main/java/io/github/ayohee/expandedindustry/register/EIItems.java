@@ -1,6 +1,7 @@
 package io.github.ayohee.expandedindustry.register;
 
 import com.simibubi.create.AllTags.AllItemTags;
+import com.simibubi.create.foundation.item.CombustibleItem;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.core.registries.Registries;
@@ -75,6 +76,11 @@ public class EIItems {
             .register();
 
     public static final ItemEntry<Item> MAGNETISED_COBALT = REGISTRATE.item("magnetised_cobalt", Item::new)
+            .register();
+
+    public static final ItemEntry<CombustibleItem> SOLID_FUEL = REGISTRATE.item("solid_fuel", CombustibleItem::new)
+            .onRegister(i -> i.setBurnTime(3200))
+            .defaultModel()
             .register();
 
     public static final ItemEntry<BannerPatternItem> LOSS_PATTERN = REGISTRATE.item(
