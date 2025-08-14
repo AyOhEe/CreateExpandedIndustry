@@ -95,6 +95,10 @@ public class EIItems {
             .defaultModel()
             .register();
 
+    public static final ItemEntry<Item> POLYETHYLENE_ROD = REGISTRATE.item("polyethylene_rod", Item::new)
+            .defaultModel()
+            .register();
+
     public static final ItemEntry<Item> MICROPLASTICS = REGISTRATE.item("microplastics", Item::new)
             .recipe((c, p) -> {
                 ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, EIBlocks.MICROPLASTIC_BLOCK, 1)

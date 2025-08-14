@@ -1,0 +1,14 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "createexpandedindustry:polyethylene_sheet"
+    }
+  ],
+  "results": [
+    {
+      "count": 4,
+      "id": "createexpandedindustry:polyethylene_rod"
+    }
+  ]
+}

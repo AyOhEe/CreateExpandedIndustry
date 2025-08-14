@@ -10,14 +10,20 @@ import java.util.concurrent.CompletableFuture;
 
 import static io.github.ayohee.expandedindustry.CreateExpandedIndustry.MODID;
 
-public class EISawingRecipeGen extends CuttingRecipeGen {
+public class EICuttingRecipeGen extends CuttingRecipeGen {
     public final GeneratedRecipe BLANK_PUNCHCARD = create(
             "blank_punchcard",
             b -> b.require(AllItems.CARDBOARD)
                     .output(EIItems.BLANK_PUNCHCARD, 2)
     );
 
-    public EISawingRecipeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+    public final GeneratedRecipe POLYETHYLENE_ROD = create(
+            "polyethylene_rod",
+            b -> b.require(EIItems.POLYETHYLENE_SHEET)
+                    .output(EIItems.POLYETHYLENE_ROD, 4)
+    );
+
+    public EICuttingRecipeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, MODID);
     }
 }
