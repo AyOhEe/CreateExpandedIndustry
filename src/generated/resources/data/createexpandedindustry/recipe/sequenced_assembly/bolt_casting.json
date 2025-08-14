@@ -1,0 +1,68 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "createexpandedindustry:bolt_cast"
+  },
+  "loops": 1,
+  "results": [
+    {
+      "chance": 100.0,
+      "id": "createexpandedindustry:heated_filled_bolt_cast"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createexpandedindustry:incomplete_bolt"
+        },
+        {
+          "item": "minecraft:iron_ingot"
+        }
+      ],
+      "results": [
+        {
+          "id": "createexpandedindustry:incomplete_bolt"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createexpandedindustry:incomplete_bolt"
+        },
+        {
+          "item": "createexpandedindustry:bolt_cast"
+        }
+      ],
+      "results": [
+        {
+          "id": "createexpandedindustry:incomplete_bolt"
+        }
+      ]
+    },
+    {
+      "type": "create:filling",
+      "ingredients": [
+        {
+          "item": "createexpandedindustry:incomplete_bolt"
+        },
+        {
+          "type": "fluid_stack",
+          "amount": 500,
+          "fluid": "minecraft:lava"
+        }
+      ],
+      "results": [
+        {
+          "id": "createexpandedindustry:incomplete_bolt"
+        }
+      ]
+    }
+  ],
+  "transitional_item": {
+    "id": "createexpandedindustry:incomplete_bolt"
+  }
+}

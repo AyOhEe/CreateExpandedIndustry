@@ -1,6 +1,7 @@
 package io.github.ayohee.expandedindustry.register;
 
 import com.simibubi.create.AllTags.AllItemTags;
+import com.simibubi.create.content.processing.sequenced.SequencedAssemblyItem;
 import com.simibubi.create.foundation.item.CombustibleItem;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.entry.ItemEntry;
@@ -99,6 +100,15 @@ public class EIItems {
             .defaultModel()
             .register();
 
+    public static final ItemEntry<Item> BOLT_CAST = REGISTRATE.item("bolt_cast", Item::new)
+            .defaultModel()
+            .register();
+
+
+    public static final ItemEntry<Item> BOLT = REGISTRATE.item("bolt", Item::new)
+            .defaultModel()
+            .register();
+
     public static final ItemEntry<Item> MICROPLASTICS = REGISTRATE.item("microplastics", Item::new)
             .recipe((c, p) -> {
                 ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, EIBlocks.MICROPLASTIC_BLOCK, 1)
@@ -147,6 +157,21 @@ public class EIItems {
             .defaultModel()
             .register();
 
+
+
+    static {
+        REGISTRATE.setCreativeTab(null);
+    }
+
+
+
+    public static final ItemEntry<SequencedAssemblyItem> INCOMPLETE_BOLT = REGISTRATE.item("incomplete_bolt", SequencedAssemblyItem::new)
+            .defaultModel()
+            .register();
+
+    public static final ItemEntry<Item> HEATED_FILLED_BOLT_CAST = REGISTRATE.item("heated_filled_bolt_cast", Item::new)
+            .defaultModel()
+            .register();
 
     public static void register() { }
 }

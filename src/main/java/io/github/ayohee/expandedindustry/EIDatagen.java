@@ -2,6 +2,7 @@ package io.github.ayohee.expandedindustry;
 
 import io.github.ayohee.expandedindustry.datagen.EIRecipeProvider;
 import io.github.ayohee.expandedindustry.datagen.recipes.EIMechanicalCraftingRecipeGen;
+import io.github.ayohee.expandedindustry.datagen.recipes.EISequencedAssemblyRecipeGen;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -28,6 +29,7 @@ public class EIDatagen {
 
 
         generator.addProvider(event.includeServer(), new EIMechanicalCraftingRecipeGen(output, lookupProvider));
+        generator.addProvider(event.includeServer(), new EISequencedAssemblyRecipeGen(output, lookupProvider));
 
 
         System.out.println("Gathering data for Create: Expanded Industry");

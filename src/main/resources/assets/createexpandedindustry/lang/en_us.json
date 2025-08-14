@@ -39,6 +39,12 @@
   "item.createexpandedindustry.microplastics": "Microplastics",
 
 
+  "item.createexpandedindustry.bolt": "Bolt",
+  "item.createexpandedindustry.incomplete_bolt": "Incomplete Bolt",
+  "item.createexpandedindustry.heated_filled_bolt_cast": "Heated Filled Bolt Cast",
+  "item.createexpandedindustry.bolt_cast": "Bolt Cast",
+
+
   "item.createexpandedindustry.music_disc_aria_math": "Music Disc",
   "item.createexpandedindustry.music_disc_valse": "Music Disc",
   "item.createexpandedindustry.music_disc_claire_de_lune": "Music Disc",

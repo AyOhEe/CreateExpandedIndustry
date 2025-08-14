@@ -1,0 +1,17 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "item": "createexpandedindustry:heated_filled_bolt_cast"
+    }
+  ],
+  "results": [
+    {
+      "count": 2,
+      "id": "createexpandedindustry:bolt_cast"
+    },
+    {
+      "id": "createexpandedindustry:bolt"
+    }
+  ]
+}
