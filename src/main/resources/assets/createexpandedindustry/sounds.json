@@ -1,7 +1,25 @@
 {
   "aria_math": {
     "sounds": [
-      { "name": "music/game/creative/aria_math", "stream": true
+      {
+        "name": "music/game/creative/aria_math",
+        "stream": true
+      }
+    ]
+  },
+  "valse": {
+    "sounds": [
+      {
+        "name": "createexpandedindustry:disc/valse",
+        "stream": true
+      }
+    ]
+  },
+  "claire_de_lune": {
+    "sounds": [
+      {
+        "name": "createexpandedindustry:disc/claire_de_lune",
+        "stream": true
       }
     ]
   }

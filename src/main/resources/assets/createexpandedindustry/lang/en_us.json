@@ -33,6 +33,11 @@
   "item.createexpandedindustry.unpolished_magnetised_cobalt": "Unpolished Magnetised Cobalt",
   "item.createexpandedindustry.magnetised_cobalt": "Magnetised Cobalt",
 
+
+  "item.createexpandedindustry.music_disc_aria_math": "Music Disc",
+  "item.createexpandedindustry.music_disc_valse": "Music Disc",
+  "item.createexpandedindustry.music_disc_claire_de_lune": "Music Disc",
+
   "item.createexpandedindustry.loss_pattern": "Banner Pattern",
   "item.createexpandedindustry.loss_pattern.desc": "Loss",
 

@@ -85,9 +85,29 @@ public class EIItems {
 
 
     public static final ItemEntry<Item> MUSIC_DISC_ARIA_MATH = REGISTRATE.item("music_disc_aria_math", Item::new)
-            .properties(p ->
-                    p.stacksTo(1)
-                    .jukeboxPlayable(ResourceKey.create(Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(MODID, "aria_math"))))
+            .properties(p -> p
+                    .stacksTo(1)
+                    .rarity(Rarity.RARE)
+                    .jukeboxPlayable(ResourceKey.create(Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(MODID, "aria_math")))
+            )
+            .defaultModel()
+            .register();
+
+    public static final ItemEntry<Item> MUSIC_DISC_VALSE = REGISTRATE.item("music_disc_valse", Item::new)
+            .properties(p -> p
+                    .stacksTo(1)
+                    .rarity(Rarity.RARE)
+                    .jukeboxPlayable(ResourceKey.create(Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(MODID, "valse")))
+            )
+            .defaultModel()
+            .register();
+
+    public static final ItemEntry<Item> MUSIC_DISC_CLAIRE_DE_LUNE = REGISTRATE.item("music_disc_claire_de_lune", Item::new)
+            .properties(p -> p
+                    .stacksTo(1)
+                    .rarity(Rarity.RARE)
+                    .jukeboxPlayable(ResourceKey.create(Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(MODID, "claire_de_lune")))
+            )
             .defaultModel()
             .register();
 

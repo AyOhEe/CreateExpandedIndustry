@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "createexpandedindustry:item/music_disc_claire_de_lune"
+  }
+}
