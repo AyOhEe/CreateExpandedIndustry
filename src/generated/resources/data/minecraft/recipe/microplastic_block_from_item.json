@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "createexpandedindustry:microplastics"
+    },
+    {
+      "item": "createexpandedindustry:microplastics"
+    },
+    {
+      "item": "createexpandedindustry:microplastics"
+    },
+    {
+      "item": "createexpandedindustry:microplastics"
+    },
+    {
+      "item": "createexpandedindustry:microplastics"
+    },
+    {
+      "item": "createexpandedindustry:microplastics"
+    },
+    {
+      "item": "createexpandedindustry:microplastics"
+    },
+    {
+      "item": "createexpandedindustry:microplastics"
+    },
+    {
+      "item": "createexpandedindustry:microplastics"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "createexpandedindustry:microplastic_block"
+  }
+}

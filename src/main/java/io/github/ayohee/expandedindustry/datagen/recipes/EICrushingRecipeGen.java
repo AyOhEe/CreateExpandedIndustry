@@ -18,6 +18,13 @@ public class EICrushingRecipeGen extends CrushingRecipeGen {
                     .output(0.1f, EIItems.COBALT_NUGGET)
     );
 
+    public final GeneratedRecipe MICROPLASTICS = create(
+            "microplastics",
+            b -> b.require(EIItems.POLYETHYLENE_BEADS)
+                    .output(EIItems.MICROPLASTICS, 2)
+                    .output(EIItems.MICROPLASTICS)
+    );
+
     public EICrushingRecipeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, MODID);
     }

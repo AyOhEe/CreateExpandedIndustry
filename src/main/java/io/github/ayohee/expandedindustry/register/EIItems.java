@@ -91,6 +91,16 @@ public class EIItems {
             .defaultModel()
             .register();
 
+    public static final ItemEntry<Item> MICROPLASTICS = REGISTRATE.item("microplastics", Item::new)
+            .recipe((c, p) -> {
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, EIBlocks.MICROPLASTIC_BLOCK, 1)
+                        .requires(c.get(), 9)
+                        .unlockedBy("has_microplastics", RegistrateRecipeProvider.has(c.get()))
+                        .save(p, "microplastic_block_from_item");
+            })
+            .defaultModel()
+            .register();
+
     public static final ItemEntry<BannerPatternItem> LOSS_PATTERN = REGISTRATE.item(
                 "loss_pattern",
                 (p) -> new BannerPatternItem(TagKey.create(Registries.BANNER_PATTERN, ResourceLocation.fromNamespaceAndPath(MODID, "pattern_item/loss_pattern")), p)

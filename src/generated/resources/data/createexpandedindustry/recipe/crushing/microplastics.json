@@ -1,0 +1,17 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "createexpandedindustry:polyethylene_beads"
+    }
+  ],
+  "results": [
+    {
+      "count": 2,
+      "id": "createexpandedindustry:microplastics"
+    },
+    {
+      "id": "createexpandedindustry:microplastics"
+    }
+  ]
+}

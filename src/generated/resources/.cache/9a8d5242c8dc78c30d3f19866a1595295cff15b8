@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-14T21:44:41.942518	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+// 1.21.1	2025-08-14T21:52:45.7223158	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
 6e03a436dd8254b20cbeb067a439f0585650f911 assets/createexpandedindustry/blockstates/asphalt_block.json
 bd0755cb64e51af387437e3c12f564f48dc7ecf5 assets/createexpandedindustry/blockstates/black_asphalt_block.json
 1837b596fe87b31b82626363b6674e3402c56a5c assets/createexpandedindustry/blockstates/black_microplastic_block.json
@@ -58,8 +58,8 @@ d414c7378e8049e5ce021c7fe33f0099e5c21408 assets/createexpandedindustry/blockstat
 56d7f19d5f95d61206be94cfc9f7c34b779566aa assets/createexpandedindustry/blockstates/white_microplastic_block.json
 d65eb6457ab3b24d0bde349da1e1767715cd475b assets/createexpandedindustry/blockstates/yellow_asphalt_block.json
 295b25b63d77cd473898af863d66be9169ce0309 assets/createexpandedindustry/blockstates/yellow_microplastic_block.json
-6dc80777b1eeb15021e85453824c705f8d504f8d assets/createexpandedindustry/lang/en_ud.json
-ef1b432e35ae0acd7fbd28bc19b6bbc108738183 assets/createexpandedindustry/lang/en_us.json
+058f5e5f93c04a1d1581acdf0d8604bc3caf7335 assets/createexpandedindustry/lang/en_ud.json
+7101b3ac30dfb5117159daab69ffb8cbbe5c53b6 assets/createexpandedindustry/lang/en_us.json
 6a363fd424376d2eb56f1683a285f09c5b3bed45 assets/createexpandedindustry/models/block/asphalt_block.json
 a7cfd112b26f050b9c31ce0753721d08fa7a3fec assets/createexpandedindustry/models/block/black_asphalt_block.json
 f10525c15f28c8500559a5fd2bfaca7a8447b39f assets/createexpandedindustry/models/block/black_microplastic_block.json
@@ -162,6 +162,7 @@ b69031470d0b8b2f35c8a2019b10700c8c392453 assets/createexpandedindustry/models/it
 f70228b1ee7cb7fcbb1657b92da96ccdc4b70a24 assets/createexpandedindustry/models/item/magenta_asphalt_block.json
 58f4b95e4d218193f333d98283bd5f6444242336 assets/createexpandedindustry/models/item/magenta_microplastic_block.json
 cfc34f1e46e9b53a56ca884a16df038c40cff608 assets/createexpandedindustry/models/item/magnetised_cobalt.json
+a8987c4593bd7d8195e861684834bf09ea9f4c88 assets/createexpandedindustry/models/item/microplastics.json
 110720619542b4f085aa1e86e901760685c20bf2 assets/createexpandedindustry/models/item/microplastic_block.json
 6d4a9efdd882604fba0cb10287d3864740614f0e assets/createexpandedindustry/models/item/music_disc_aria_math.json
 bf3b521b058202064271d584ed62b0a9245d8c3c assets/createexpandedindustry/models/item/music_disc_claire_de_lune.json
@@ -294,6 +295,7 @@ d0f99acafddf801f7ac6fbcecf0805c9aa66ddec data/minecraft/advancement/recipes/misc
 c59d335d5d87047112983462adc3ef8944ddd952 data/minecraft/advancement/recipes/misc/lime_dyed_microplastic_block.json
 809e239a3ff898ca630bad338bf5b84e531a140a data/minecraft/advancement/recipes/misc/magenta_dyed_asphalt_block.json
 8330dc9ed08687510a2a471565f0525d6182f73c data/minecraft/advancement/recipes/misc/magenta_dyed_microplastic_block.json
+43562e366456df9f81da797f6c9f2b7d37dd92b4 data/minecraft/advancement/recipes/misc/microplastic_block_from_item.json
 31a4f2ec1eb7a70645b8ef750ee9838da3d93e1d data/minecraft/advancement/recipes/misc/orange_dyed_asphalt_block.json
 cc23423e45be780ba2b26ac181e7a9f92df15f3f data/minecraft/advancement/recipes/misc/orange_dyed_microplastic_block.json
 c1c682e770a64385655b3a220c810b8234f58c9b data/minecraft/advancement/recipes/misc/pink_dyed_asphalt_block.json
@@ -333,6 +335,7 @@ d2f530bbee5713383c6245d6f047fdbf2992c5f8 data/minecraft/recipe/light_blue_dyed_m
 0f8d8d013e2ad90becb3375be68782943472fbe7 data/minecraft/recipe/lime_dyed_microplastic_block.json
 2200b178fad0c0c102efc1af8733f110fc1a9795 data/minecraft/recipe/magenta_dyed_asphalt_block.json
 494e99930d0d4779fcd308e8eaae0b7bf9ee4df7 data/minecraft/recipe/magenta_dyed_microplastic_block.json
+54baaaca442a384ca3afe291abfd144546a67812 data/minecraft/recipe/microplastic_block_from_item.json
 ad14118f8a4d708cb4ef44c466656efd1d217e40 data/minecraft/recipe/orange_dyed_asphalt_block.json
 847602dc9ebd129a868027e9da5e4810029fdd50 data/minecraft/recipe/orange_dyed_microplastic_block.json
 218479f564cf75dff6241893a05a9e04ff013e51 data/minecraft/recipe/pink_dyed_asphalt_block.json

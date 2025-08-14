@@ -1,6 +1,7 @@
-// 1.21.1	2025-08-14T21:47:37.106158	Create: Expanded Industry's Processing Recipes
+// 1.21.1	2025-08-14T21:52:45.7195497	Create: Expanded Industry's Processing Recipes
 669e4684a3a1ca081f32426884100d8eedd0c9ec data/createexpandedindustry/recipe/compacting/solid_fuel.json
 3700818c336ff14eb33b3e6dcd49affd1cdc466d data/createexpandedindustry/recipe/crushing/erythrite_crushing.json
+ad4e9f8e2343b02a64b7980abadaaeac7911e48d data/createexpandedindustry/recipe/crushing/microplastics.json
 aeabbe04477ed0abd18627737a225f10454a386a data/createexpandedindustry/recipe/cutting/blank_punchcard.json
 3dbc9f3ee23ea13adbbb2a8c09488e0133b22ee7 data/createexpandedindustry/recipe/item_application/cobalt_casing_from_tuff_bricks.json
 ad0778994c24deee1073c6359a7c245bee372e1b data/createexpandedindustry/recipe/mixing/asphalt_mixing.json
