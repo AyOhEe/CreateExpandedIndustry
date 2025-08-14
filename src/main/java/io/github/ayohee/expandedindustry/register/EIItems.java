@@ -7,6 +7,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BannerPatternItem;
@@ -81,6 +82,15 @@ public class EIItems {
             )
             .properties((p) -> p.stacksTo(1).rarity(Rarity.UNCOMMON))
             .register();
+
+
+    public static final ItemEntry<Item> MUSIC_DISC_ARIA_MATH = REGISTRATE.item("music_disc_aria_math", Item::new)
+            .properties(p ->
+                    p.stacksTo(1)
+                    .jukeboxPlayable(ResourceKey.create(Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(MODID, "aria_math"))))
+            .defaultModel()
+            .register();
+
 
     public static void register() { }
 }

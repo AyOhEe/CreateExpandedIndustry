@@ -57,6 +57,7 @@ public class CreateExpandedIndustry {
         EIConfig.register(modContainer);
         EICreativeTabs.register();
         EIRegistries.register(modEventBus);
+        EISoundEvents.register();
 
 
     }
