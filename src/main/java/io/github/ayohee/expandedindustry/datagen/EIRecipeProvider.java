@@ -28,6 +28,7 @@ public class EIRecipeProvider extends RecipeProvider {
         GENERATORS.add(new EIItemApplicationRecipeGen(output, registries));
         GENERATORS.add(new EIMixingRecipeGen(output, registries));
         GENERATORS.add(new EICompactingRecipeGen(output, registries));
+        GENERATORS.add(new EISawingRecipeGen(output, registries));
 
         gen.addProvider(true, new DataProvider() {
             @Override

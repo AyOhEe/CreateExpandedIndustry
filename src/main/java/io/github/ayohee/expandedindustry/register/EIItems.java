@@ -83,6 +83,10 @@ public class EIItems {
             .defaultModel()
             .register();
 
+    public static final ItemEntry<Item> BLANK_PUNCHCARD = REGISTRATE.item("blank_punchcard", Item::new)
+            .defaultModel()
+            .register();
+
     public static final ItemEntry<BannerPatternItem> LOSS_PATTERN = REGISTRATE.item(
                 "loss_pattern",
                 (p) -> new BannerPatternItem(TagKey.create(Registries.BANNER_PATTERN, ResourceLocation.fromNamespaceAndPath(MODID, "pattern_item/loss_pattern")), p)
