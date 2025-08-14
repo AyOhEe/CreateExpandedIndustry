@@ -21,6 +21,7 @@ import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.*;
 import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.*;
 import io.github.ayohee.expandedindustry.multiblock.*;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.core.Direction;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
@@ -32,7 +33,9 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.MapColor;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -292,8 +295,24 @@ public class EIBlocks {
             .blockstate((ctx, prov) -> {
                 ResourceLocation side = ResourceLocation.fromNamespaceAndPath(MODID, "block/palettes/stone_types/pillar/cobalt_pillar");
                 ResourceLocation end = ResourceLocation.fromNamespaceAndPath(MODID, "block/palettes/stone_types/cap/cobalt_cap");
-                prov.simpleBlock(ctx.get(), prov.models()
-                        .cubeColumn("cobalt_pillar", side, end));
+                prov.getVariantBuilder(ctx.getEntry())
+                        .forAllStatesExcept(state -> {
+                                    Direction.Axis axis = state.getValue(BlockStateProperties.AXIS);
+                                    if (axis == Direction.Axis.Y)
+                                        return ConfiguredModel.builder()
+                                                .modelFile(prov.models()
+                                                        .cubeColumn("cobalt_pillar", side, end))
+                                                .uvLock(false)
+                                                .build();
+                                    return ConfiguredModel.builder()
+                                            .modelFile(prov.models()
+                                                    .cubeColumnHorizontal("cobalt_pillar_horizontal", side, end))
+                                            .uvLock(false)
+                                            .rotationX(90)
+                                            .rotationY(axis == Direction.Axis.X ? 90 : 0)
+                                            .build();
+                                }, BlockStateProperties.WATERLOGGED, ConnectedPillarBlock.NORTH, ConnectedPillarBlock.SOUTH,
+                                ConnectedPillarBlock.EAST, ConnectedPillarBlock.WEST);
             })
             .onRegister(CreateRegistrate.connectedTextures(
                     () -> new RotatedPillarCTBehaviour(

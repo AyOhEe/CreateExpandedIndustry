@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-14T03:03:32.5867615	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+// 1.21.1	2025-08-14T03:29:38.5959245	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
 6e03a436dd8254b20cbeb067a439f0585650f911 assets/createexpandedindustry/blockstates/asphalt_block.json
 bd0755cb64e51af387437e3c12f564f48dc7ecf5 assets/createexpandedindustry/blockstates/black_asphalt_block.json
 1837b596fe87b31b82626363b6674e3402c56a5c assets/createexpandedindustry/blockstates/black_microplastic_block.json
@@ -8,7 +8,7 @@ e5c362501e06872d5eef0ab63485609a6daca9ab assets/createexpandedindustry/blockstat
 8b1878ecfa4141d327cec806347a7f1a01a854ed assets/createexpandedindustry/blockstates/brown_microplastic_block.json
 7be6b1e90e9c69056bd2b00fffd59cb8171149e4 assets/createexpandedindustry/blockstates/cobalt_block.json
 ec4d3cf2a77e2abe16d52351f68cd31c4fb0b8eb assets/createexpandedindustry/blockstates/cobalt_casing.json
-bf067b7693bd2e3b88fc0bdae723ba35a05f542f assets/createexpandedindustry/blockstates/cobalt_pillar.json
+e07dc882dca4975eded3c68074957ea569f983cf assets/createexpandedindustry/blockstates/cobalt_pillar.json
 2904a93256f98990fb68311a122122aed1099a2e assets/createexpandedindustry/blockstates/crude_oil.json
 0b3ce58387443d77bfbab68af6c1b742909ee1b0 assets/createexpandedindustry/blockstates/cyan_asphalt_block.json
 4c2ffa8fee3f589ccb4d3941be1adb622997e40d assets/createexpandedindustry/blockstates/cyan_microplastic_block.json
@@ -70,6 +70,7 @@ f10525c15f28c8500559a5fd2bfaca7a8447b39f assets/createexpandedindustry/models/bl
 2ec757b22fd63719df3839669377dfe286e76182 assets/createexpandedindustry/models/block/cobalt_block.json
 88b838ab42f0560223b74dcf3493ff01631b99b4 assets/createexpandedindustry/models/block/cobalt_casing.json
 d2023840ac6ecc72d9d693a7647255340ed52ef8 assets/createexpandedindustry/models/block/cobalt_pillar.json
+fa2dce485146a3337befd0d21cdc0524b8b894d2 assets/createexpandedindustry/models/block/cobalt_pillar_horizontal.json
 fd557f4e480cc54d54895292fb36435bd4c1c854 assets/createexpandedindustry/models/block/crude_oil.json
 133724b4a017689d5d494f2d2935c40e245315bb assets/createexpandedindustry/models/block/cyan_asphalt_block.json
 96df48ba8faeb9fa43f983b480eb44df77d79133 assets/createexpandedindustry/models/block/cyan_microplastic_block.json
