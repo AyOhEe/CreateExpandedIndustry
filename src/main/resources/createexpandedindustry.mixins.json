@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.ayohee.expandedindustry.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "refmap": "CreateExpandedIndustry.refmap.json",
+  "mixins": [
+    "blocks.loopingjukebox.JukeboxSongPlayerAccessor"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

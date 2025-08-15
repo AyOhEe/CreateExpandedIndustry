@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_top",
+  "textures": {
+    "side": "createexpandedindustry:block/looping_jukebox/looping_jukebox_side",
+    "top": "createexpandedindustry:block/looping_jukebox/looping_jukebox_top"
+  }
+}

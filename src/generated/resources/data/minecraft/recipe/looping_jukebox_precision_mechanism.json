@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "j": {
+      "item": "minecraft:jukebox"
+    },
+    "p": {
+      "item": "create:precision_mechanism"
+    }
+  },
+  "pattern": [
+    "p",
+    "j"
+  ],
+  "result": {
+    "count": 1,
+    "id": "createexpandedindustry:looping_jukebox"
+  }
+}

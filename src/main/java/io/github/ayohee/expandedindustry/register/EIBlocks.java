@@ -1,6 +1,7 @@
 package io.github.ayohee.expandedindustry.register;
 
 import com.simibubi.create.AllDisplaySources;
+import com.simibubi.create.AllItems;
 import com.simibubi.create.AllMountedStorageTypes;
 import com.simibubi.create.content.decoration.encasing.CasingBlock;
 import com.simibubi.create.content.decoration.palettes.ConnectedPillarBlock;
@@ -17,6 +18,7 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 
 import io.github.ayohee.expandedindustry.content.blocks.HardenedStoneBlock;
+import io.github.ayohee.expandedindustry.content.blocks.LoopingJukeboxBlock;
 import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.*;
 import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.*;
 import io.github.ayohee.expandedindustry.multiblock.*;
@@ -251,6 +253,27 @@ public class EIBlocks {
                     .noOcclusion()
                     .sound(SoundType.NETHERITE_BLOCK))
             .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_IRON_TOOL)
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<LoopingJukeboxBlock> LOOPING_JUKEBOX = REGISTRATE
+            .block("looping_jukebox", LoopingJukeboxBlock::new)
+            .initialProperties(() -> Blocks.JUKEBOX)
+            .blockstate((ctx, prov) -> prov.getVariantBuilder(ctx.get()).forAllStates((state) -> {
+                    return ConfiguredModel.builder().modelFile(
+                            prov.models().withExistingParent("looping_jukebox", ResourceLocation.withDefaultNamespace("cube_top"))
+                            .texture("top", ResourceLocation.fromNamespaceAndPath(MODID, "block/looping_jukebox/looping_jukebox_top"))
+                            .texture("side", ResourceLocation.fromNamespaceAndPath(MODID, "block/looping_jukebox/looping_jukebox_side"))
+                    ).build();
+            }))
+            .recipe((ctx, prov) -> ShapedRecipeBuilder.shaped(RecipeCategory.MISC, EIBlocks.LOOPING_JUKEBOX)
+                    .pattern("p")
+                    .pattern("j")
+                    .define('p', AllItems.PRECISION_MECHANISM)
+                    .define('j', Blocks.JUKEBOX.asItem())
+                    .unlockedBy("has_precision_mechanism", RegistrateRecipeProvider.has(AllItems.PRECISION_MECHANISM))
+                    .save(prov, "looping_jukebox_precision_mechanism")
+            )
             .simpleItem()
             .register();
 

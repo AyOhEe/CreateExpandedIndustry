@@ -4,6 +4,7 @@ import com.simibubi.create.content.decoration.palettes.AllPaletteStoneTypes;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import io.github.ayohee.expandedindustry.content.blockentities.HardenedStoneBlockEntity;
 import io.github.ayohee.expandedindustry.content.blockentities.HardenedStoneBlockEntity.RichnessProfile;
+import io.github.ayohee.expandedindustry.content.blockentities.LoopingJukeboxBlockEntity;
 import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.PressurisedFluidTankBlockEntity;
 import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.ReinforcedDrillMultiblockBE;
 import io.github.ayohee.expandedindustry.multiblock.*;
@@ -86,6 +87,12 @@ public class EIBlockEntityTypes {
     public static final BlockEntityEntry<HardenedStoneBlockEntity> HARDENED_VERIDIUM = REGISTRATE
             .blockEntity("hardened_veridium", HardenedStoneBlockEntity.createNew(HARDENED_VERIDIUM_PROFILE))
             .validBlocks(EIBlocks.HARDENED_VERIDIUM_BLOCK)
+            .register();
+
+
+    public static final BlockEntityEntry<LoopingJukeboxBlockEntity> LOOPING_JUKEBOX = REGISTRATE
+            .blockEntity("looping_jukebox", LoopingJukeboxBlockEntity::new)
+            .validBlocks(EIBlocks.LOOPING_JUKEBOX)
             .register();
 
 
