@@ -104,6 +104,9 @@ public class EIItems {
             .defaultModel()
             .register();
 
+    public static final ItemEntry<Item> HEATED_FILLED_BOLT_CAST = REGISTRATE.item("heated_filled_bolt_cast", Item::new)
+            .defaultModel()
+            .register();
 
     public static final ItemEntry<Item> BOLT = REGISTRATE.item("bolt", Item::new)
             .defaultModel()
@@ -174,9 +177,7 @@ public class EIItems {
             .defaultModel()
             .register();
 
-    public static final ItemEntry<Item> HEATED_FILLED_BOLT_CAST = REGISTRATE.item("heated_filled_bolt_cast", Item::new)
-            .defaultModel()
-            .register();
+
 
     public static void register() { }
 }
