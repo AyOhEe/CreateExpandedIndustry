@@ -124,59 +124,6 @@ public class EIBlocks {
     }
 
 
-    public static final BlockEntry<Block> ERYTHRITE_BLOCK = REGISTRATE.block("erythrite", Block::new)
-            .initialProperties(SharedProperties::stone)
-            .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_STONE_TOOL)
-            .properties(c -> c.mapColor(DyeColor.MAGENTA))
-            .blockstate(Helpers.subdirCubeAllTexture())
-            .simpleItem()
-            .register();
-
-    public static final BlockEntry<HardenedStoneBlock> HARDENED_ERYTHRITE_BLOCK = REGISTRATE
-            .block("hardened_erythrite", (p) -> new HardenedStoneBlock(p, EIBlockEntityTypes.HARDENED_ERYTHRITE))
-            .initialProperties(() -> Blocks.BEDROCK)
-            .properties(Helpers::hardened_stones)
-            .properties(c -> c.mapColor(MapColor.COLOR_MAGENTA))
-            .blockstate(Helpers.subdirCubeAllTexture())
-            .simpleItem()
-            .register();
-
-    public static final BlockEntry<HardenedStoneBlock> HARDENED_OCHRUM_BLOCK = REGISTRATE
-            .block("hardened_ochrum", (p) -> new HardenedStoneBlock(p, EIBlockEntityTypes.HARDENED_OCHRUM))
-            .initialProperties(() -> Blocks.BEDROCK)
-            .properties(Helpers::hardened_stones)
-            .properties(c -> c.mapColor(MapColor.GOLD))
-            .blockstate(Helpers.subdirCubeAllTexture())
-            .simpleItem()
-            .register();
-
-    public static final BlockEntry<HardenedStoneBlock> HARDENED_VERIDIUM_BLOCK = REGISTRATE
-            .block("hardened_veridium", (p) -> new HardenedStoneBlock(p, EIBlockEntityTypes.HARDENED_VERIDIUM))
-            .initialProperties(() -> Blocks.BEDROCK)
-            .properties(Helpers::hardened_stones)
-            .properties(c -> c.mapColor(MapColor.COLOR_GREEN))
-            .blockstate(Helpers.subdirCubeAllTexture())
-            .simpleItem()
-            .register();
-
-    public static final BlockEntry<HardenedStoneBlock> HARDENED_ASURINE_BLOCK = REGISTRATE
-            .block("hardened_asurine", (p) -> new HardenedStoneBlock(p, EIBlockEntityTypes.HARDENED_ASURINE))
-            .initialProperties(() -> Blocks.BEDROCK)
-            .properties(Helpers::hardened_stones)
-            .properties(c -> c.mapColor(MapColor.COLOR_BLUE))
-            .blockstate(Helpers.subdirCubeAllTexture())
-            .simpleItem()
-            .register();
-
-    public static final BlockEntry<HardenedStoneBlock> HARDENED_CRIMSITE_BLOCK = REGISTRATE
-            .block("hardened_crimsite", (p) -> new HardenedStoneBlock(p, EIBlockEntityTypes.HARDENED_CRIMSITE))
-            .initialProperties(() -> Blocks.BEDROCK)
-            .properties(Helpers::hardened_stones)
-            .properties(c -> c.mapColor(MapColor.COLOR_RED))
-            .blockstate(Helpers.subdirCubeAllTexture())
-            .simpleItem()
-            .register();
-
 
     public static final BlockEntry<Block> COBALT_BLOCK = REGISTRATE.block("cobalt_block", Block::new)
             .initialProperties(SharedProperties::netheriteMetal)
@@ -309,6 +256,62 @@ public class EIBlocks {
     static {
         REGISTRATE.setCreativeTab(EICreativeTabs.DECORATIVES_TAB);
     }
+
+
+
+    public static final BlockEntry<Block> ERYTHRITE_BLOCK = REGISTRATE.block("erythrite", Block::new)
+            .initialProperties(SharedProperties::stone)
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_STONE_TOOL)
+            .properties(c -> c.mapColor(DyeColor.MAGENTA))
+            .blockstate(Helpers.subdirCubeAllTexture())
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<HardenedStoneBlock> HARDENED_ERYTHRITE_BLOCK = REGISTRATE
+            .block("hardened_erythrite", (p) -> new HardenedStoneBlock(p, EIBlockEntityTypes.HARDENED_ERYTHRITE))
+            .initialProperties(() -> Blocks.BEDROCK)
+            .properties(Helpers::hardened_stones)
+            .properties(c -> c.mapColor(MapColor.COLOR_MAGENTA))
+            .blockstate(Helpers.subdirCubeAllTexture())
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<HardenedStoneBlock> HARDENED_OCHRUM_BLOCK = REGISTRATE
+            .block("hardened_ochrum", (p) -> new HardenedStoneBlock(p, EIBlockEntityTypes.HARDENED_OCHRUM))
+            .initialProperties(() -> Blocks.BEDROCK)
+            .properties(Helpers::hardened_stones)
+            .properties(c -> c.mapColor(MapColor.GOLD))
+            .blockstate(Helpers.subdirCubeAllTexture())
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<HardenedStoneBlock> HARDENED_VERIDIUM_BLOCK = REGISTRATE
+            .block("hardened_veridium", (p) -> new HardenedStoneBlock(p, EIBlockEntityTypes.HARDENED_VERIDIUM))
+            .initialProperties(() -> Blocks.BEDROCK)
+            .properties(Helpers::hardened_stones)
+            .properties(c -> c.mapColor(MapColor.COLOR_GREEN))
+            .blockstate(Helpers.subdirCubeAllTexture())
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<HardenedStoneBlock> HARDENED_ASURINE_BLOCK = REGISTRATE
+            .block("hardened_asurine", (p) -> new HardenedStoneBlock(p, EIBlockEntityTypes.HARDENED_ASURINE))
+            .initialProperties(() -> Blocks.BEDROCK)
+            .properties(Helpers::hardened_stones)
+            .properties(c -> c.mapColor(MapColor.COLOR_BLUE))
+            .blockstate(Helpers.subdirCubeAllTexture())
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<HardenedStoneBlock> HARDENED_CRIMSITE_BLOCK = REGISTRATE
+            .block("hardened_crimsite", (p) -> new HardenedStoneBlock(p, EIBlockEntityTypes.HARDENED_CRIMSITE))
+            .initialProperties(() -> Blocks.BEDROCK)
+            .properties(Helpers::hardened_stones)
+            .properties(c -> c.mapColor(MapColor.COLOR_RED))
+            .blockstate(Helpers.subdirCubeAllTexture())
+            .simpleItem()
+            .register();
+
 
 
     public static final BlockEntry<ConnectedPillarBlock> COBALT_PILLAR = REGISTRATE

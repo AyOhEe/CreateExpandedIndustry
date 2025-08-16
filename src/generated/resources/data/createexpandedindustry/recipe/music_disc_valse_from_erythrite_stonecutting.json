@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "createexpandedindustry:erythrite"
+  },
+  "result": {
+    "count": 1,
+    "id": "createexpandedindustry:music_disc_valse"
+  }
+}

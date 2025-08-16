@@ -1,0 +1,25 @@
+{
+  "type": "create:mechanical_crafting",
+  "accept_mirrored": true,
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "createexpandedindustry:bolt"
+    },
+    "C": {
+      "item": "createexpandedindustry:cobalt_sheet"
+    },
+    "I": {
+      "item": "create:iron_sheet"
+    }
+  },
+  "pattern": [
+    "BBBBB",
+    "ICCCI",
+    "BBBBB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "createexpandedindustry:reinforced_plating"
+  }
+}

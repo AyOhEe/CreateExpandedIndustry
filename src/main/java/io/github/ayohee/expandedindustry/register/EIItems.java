@@ -4,6 +4,7 @@ import com.simibubi.create.AllTags.AllItemTags;
 import com.simibubi.create.content.processing.sequenced.SequencedAssemblyItem;
 import com.simibubi.create.foundation.item.CombustibleItem;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
+import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -112,6 +113,10 @@ public class EIItems {
             .defaultModel()
             .register();
 
+    public static final ItemEntry<Item> REINFORCED_PLATING = REGISTRATE.item("reinforced_plating", Item::new)
+            .defaultModel()
+            .register();
+
     public static final ItemEntry<Item> MICROPLASTICS = REGISTRATE.item("microplastics", Item::new)
             .recipe((c, p) -> {
                 ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, EIBlocks.MICROPLASTIC_BLOCK, 1)
@@ -127,6 +132,12 @@ public class EIItems {
                 (p) -> new BannerPatternItem(TagKey.create(Registries.BANNER_PATTERN, ResourceLocation.fromNamespaceAndPath(MODID, "pattern_item/loss_pattern")), p)
             )
             .properties((p) -> p.stacksTo(1).rarity(Rarity.UNCOMMON))
+            .recipe((ctx, prov) -> ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ctx.get())
+                    .requires(Items.PAPER)
+                    .requires(EIItems.MICROPLASTICS)
+                    .unlockedBy("has_microplastics", RegistrateRecipeProvider.has(ctx.get()))
+                    .save(prov, "loss_pattern_from_microplastics")
+            )
             .register();
 
     public static final ItemEntry<CombustibleItem> SPICY_BLAZE_CAKE = REGISTRATE.item("spicy_blaze_cake", CombustibleItem::new)
@@ -142,6 +153,7 @@ public class EIItems {
                     .jukeboxPlayable(ResourceKey.create(Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(MODID, "aria_math")))
             )
             .tag(Tags.Items.MUSIC_DISCS)
+            .recipe((ctx, prov) -> prov.stonecutting(DataIngredient.items(Items.AMETHYST_SHARD), RecipeCategory.MISC, ctx::get))
             .defaultModel()
             .register();
 
@@ -152,6 +164,7 @@ public class EIItems {
                     .jukeboxPlayable(ResourceKey.create(Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(MODID, "valse")))
             )
             .tag(Tags.Items.MUSIC_DISCS)
+            .recipe((ctx, prov) -> prov.stonecutting(DataIngredient.items(EIBlocks.ERYTHRITE_BLOCK.get()), RecipeCategory.MISC, ctx::get))
             .defaultModel()
             .register();
 
@@ -162,6 +175,7 @@ public class EIItems {
                     .jukeboxPlayable(ResourceKey.create(Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(MODID, "claire_de_lune")))
             )
             .tag(Tags.Items.MUSIC_DISCS)
+            .recipe((ctx, prov) -> prov.stonecutting(DataIngredient.items(Items.PRISMARINE_CRYSTALS), RecipeCategory.MISC, ctx::get))
             .defaultModel()
             .register();
 

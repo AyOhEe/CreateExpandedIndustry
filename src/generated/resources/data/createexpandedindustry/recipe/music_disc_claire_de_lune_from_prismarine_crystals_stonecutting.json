@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:prismarine_crystals"
+  },
+  "result": {
+    "count": 1,
+    "id": "createexpandedindustry:music_disc_claire_de_lune"
+  }
+}

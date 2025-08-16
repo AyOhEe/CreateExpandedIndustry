@@ -4,6 +4,7 @@ import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.api.data.recipe.MechanicalCraftingRecipeGen;
 import io.github.ayohee.expandedindustry.register.EIBlocks;
+import io.github.ayohee.expandedindustry.register.EIItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Items;
@@ -45,6 +46,15 @@ public class EIMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen {
             .patternLine("DIBID")
             .patternLine(" DID ")
             .patternLine("  D  "));
+
+    public final GeneratedRecipe REINFORCED_PLATING = create(EIItems.REINFORCED_PLATING::asItem).recipe(b -> b
+            .key('B', Ingredient.of(EIItems.BOLT))
+            .key('I', Ingredient.of(AllItems.IRON_SHEET))
+            .key('C', Ingredient.of(EIItems.COBALT_SHEET))
+            .patternLine("BBBBB")
+            .patternLine("ICCCI")
+            .patternLine("BBBBB")
+    );
 
     public EIMechanicalCraftingRecipeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, MODID);
