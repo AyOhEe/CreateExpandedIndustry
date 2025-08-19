@@ -29,6 +29,14 @@ public class EICompactingRecipeGen extends CompactingRecipeGen {
                     .output(EIItems.POLYETHYLENE_SHEET)
     );
 
+    public final GeneratedRecipe RUBBER = create(
+            "rubber",
+            b -> b.require(EIFluids.NAPHTHA.get(), 500)
+                    .require(Items.GUNPOWDER)
+                    .requiresHeat(HeatCondition.HEATED)
+                    .output(EIItems.RUBBER)
+    );
+
     public EICompactingRecipeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, MODID);
     }

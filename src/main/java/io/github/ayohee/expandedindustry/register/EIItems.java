@@ -128,6 +128,14 @@ public class EIItems {
             .defaultModel()
             .register();
 
+    public static final ItemEntry<Item> RUBBER = REGISTRATE.item("rubber", Item::new)
+            .defaultModel()
+            .register();
+
+    public static final ItemEntry<Item> RUBBER_SHEET = REGISTRATE.item("rubber_sheet", Item::new)
+            .defaultModel()
+            .register();
+
     public static final ItemEntry<BannerPatternItem> LOSS_PATTERN = REGISTRATE.item(
                 "loss_pattern",
                 (p) -> new BannerPatternItem(TagKey.create(Registries.BANNER_PATTERN, ResourceLocation.fromNamespaceAndPath(MODID, "pattern_item/loss_pattern")), p)

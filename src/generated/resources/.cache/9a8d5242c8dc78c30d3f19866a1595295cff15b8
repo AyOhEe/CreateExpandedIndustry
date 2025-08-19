@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-19T16:56:05.5191631	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+// 1.21.1	2025-08-19T20:10:32.2611007	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
 6e03a436dd8254b20cbeb067a439f0585650f911 assets/createexpandedindustry/blockstates/asphalt_block.json
 bd0755cb64e51af387437e3c12f564f48dc7ecf5 assets/createexpandedindustry/blockstates/black_asphalt_block.json
 1837b596fe87b31b82626363b6674e3402c56a5c assets/createexpandedindustry/blockstates/black_microplastic_block.json
@@ -59,8 +59,8 @@ d414c7378e8049e5ce021c7fe33f0099e5c21408 assets/createexpandedindustry/blockstat
 56d7f19d5f95d61206be94cfc9f7c34b779566aa assets/createexpandedindustry/blockstates/white_microplastic_block.json
 d65eb6457ab3b24d0bde349da1e1767715cd475b assets/createexpandedindustry/blockstates/yellow_asphalt_block.json
 295b25b63d77cd473898af863d66be9169ce0309 assets/createexpandedindustry/blockstates/yellow_microplastic_block.json
-16deff6ea7103d0c3020588c921ee90297a91449 assets/createexpandedindustry/lang/en_ud.json
-dcaa98770cce954ef651442899f7f936f1ab5c6f assets/createexpandedindustry/lang/en_us.json
+f77ec2ffbd4c31f6320ebd5385c3437711e6fbd7 assets/createexpandedindustry/lang/en_ud.json
+408c582c58b0e491db327e9da56cbf6cb63f1e53 assets/createexpandedindustry/lang/en_us.json
 6a363fd424376d2eb56f1683a285f09c5b3bed45 assets/createexpandedindustry/models/block/asphalt_block.json
 a7cfd112b26f050b9c31ce0753721d08fa7a3fec assets/createexpandedindustry/models/block/black_asphalt_block.json
 f10525c15f28c8500559a5fd2bfaca7a8447b39f assets/createexpandedindustry/models/block/black_microplastic_block.json
@@ -190,6 +190,8 @@ a6c0e3239e98223e464fe51501b7a81aa1e6a22e assets/createexpandedindustry/models/it
 f66a0d9cac65008247740f628280ab38937d8fc2 assets/createexpandedindustry/models/item/red_asphalt_block.json
 ccf7cc55d12f929a558281c6c4fbafc63ab338df assets/createexpandedindustry/models/item/red_microplastic_block.json
 91b2401418632def8824de5284d0d82555043b02 assets/createexpandedindustry/models/item/reinforced_plating.json
+2d9e0422666b96b752435be6a3d64080125753d8 assets/createexpandedindustry/models/item/rubber.json
+c986a5f119bd7d6f0036061b6df0dab6e8478feb assets/createexpandedindustry/models/item/rubber_sheet.json
 71935936e1692cf87e4b0734920ea85da8b64168 assets/createexpandedindustry/models/item/solid_fuel.json
 2045a834e7cb36f04b20076d632c6c0408beb2d2 assets/createexpandedindustry/models/item/spicy_blaze_cake.json
 76eaeab9de584b93f764a26a91c5b528c7daf8f8 assets/createexpandedindustry/models/item/unpolished_magnetised_cobalt.json
@@ -376,7 +378,7 @@ f910f33d42ac978ed6d3474bb8295ceb9b77f6fb data/minecraft/recipe/unpolished_magnet
 6faec4ba4d7e1cde7e46041e79070f8491a2642f data/minecraft/recipe/yellow_dyed_asphalt_block.json
 5510cbfb4e12de6022539ac710d45f124b5b1935 data/minecraft/recipe/yellow_dyed_microplastic_block.json
 a7b6113f0409329409c34bd15486eb85d5f7234f data/minecraft/tags/block/mineable/axe.json
-1a85d6e824253a0d9c5357a51be0ec0a744a6759 data/minecraft/tags/block/mineable/pickaxe.json
+3311468dc2b59b950fa6f7c92d49daced6d9cee0 data/minecraft/tags/block/mineable/pickaxe.json
 7ee9bcfbb90dce60eba16296e73c2ad6f478ec3d data/minecraft/tags/block/mineable/shovel.json
 d120d0afb1add08cf99e588b15a01c07ecf5577c data/minecraft/tags/block/needs_iron_tool.json
 2023202c800655cef7e675848530b888c9bc5ddd data/minecraft/tags/block/needs_stone_tool.json

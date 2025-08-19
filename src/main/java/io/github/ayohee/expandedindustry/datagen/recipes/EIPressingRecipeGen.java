@@ -29,6 +29,12 @@ public class EIPressingRecipeGen extends PressingRecipeGen {
                     .output(EIItems.BOLT)
     );
 
+    public final GeneratedRecipe RUBBER_SHEET = create(
+            "rubber_sheet",
+            b -> b.require(EIItems.RUBBER)
+                    .output(EIItems.RUBBER_SHEET)
+    );
+
     public EIPressingRecipeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, CreateExpandedIndustry.MODID);
     }

@@ -1,0 +1,13 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "item": "createexpandedindustry:rubber"
+    }
+  ],
+  "results": [
+    {
+      "id": "createexpandedindustry:rubber_sheet"
+    }
+  ]
+}

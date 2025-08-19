@@ -1,5 +1,6 @@
-// 1.21.1	2025-08-14T23:28:45.394889	Create: Expanded Industry's Processing Recipes
+// 1.21.1	2025-08-19T20:10:32.2575792	Create: Expanded Industry's Processing Recipes
 7f4f4d1153a84c8f81fc55fd5845971e31c8d67b data/createexpandedindustry/recipe/compacting/polyethylene_sheet.json
+3707e89340f32d47984d43256d25a7c6e849ca22 data/createexpandedindustry/recipe/compacting/rubber.json
 669e4684a3a1ca081f32426884100d8eedd0c9ec data/createexpandedindustry/recipe/compacting/solid_fuel.json
 3700818c336ff14eb33b3e6dcd49affd1cdc466d data/createexpandedindustry/recipe/crushing/erythrite_crushing.json
 ad4e9f8e2343b02a64b7980abadaaeac7911e48d data/createexpandedindustry/recipe/crushing/microplastics.json
@@ -12,4 +13,5 @@ ad0778994c24deee1073c6359a7c245bee372e1b data/createexpandedindustry/recipe/mixi
 322536a9faf57d5c1332e6d26ad85836f2ca1527 data/createexpandedindustry/recipe/pressing/bolt_cast.json
 4e97aa25457248f30b9f7ecee70ec9916fda2c34 data/createexpandedindustry/recipe/pressing/bolt_pressing.json
 b20efdc258ce25b3871603655efbdd8a8e0767d7 data/createexpandedindustry/recipe/pressing/cobalt_pressing.json
+2335000d7276aaf850ac70077a15d29d4596b3d1 data/createexpandedindustry/recipe/pressing/rubber_sheet.json
 1e3ca81ea149fa95c6294f17f9c84c89cb7acce2 data/createexpandedindustry/recipe/sandpaper_polishing/magnetised_cobalt_sanding.json

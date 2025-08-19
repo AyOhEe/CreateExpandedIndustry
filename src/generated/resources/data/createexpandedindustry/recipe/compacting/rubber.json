@@ -1,0 +1,19 @@
+{
+  "type": "create:compacting",
+  "heat_requirement": "heated",
+  "ingredients": [
+    {
+      "item": "minecraft:gunpowder"
+    },
+    {
+      "type": "fluid_stack",
+      "amount": 500,
+      "fluid": "createexpandedindustry:naphtha"
+    }
+  ],
+  "results": [
+    {
+      "id": "createexpandedindustry:rubber"
+    }
+  ]
+}
