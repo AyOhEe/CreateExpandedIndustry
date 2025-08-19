@@ -26,7 +26,7 @@ public class EIFluids {
 
 
     public static final FluidEntry<BaseFlowingFluid.Flowing> CRUDE_OIL = REGISTRATE
-            .standardFluid("crude_oil", SolidRenderedPlaceableFluidType.create(0x202020, () -> 1f / 16f))
+            .standardFluid("crude_oil", SolidRenderedPlaceableFluidType.create(0x404040, () -> 1f / 16f))
             .tag(AllTags.commonFluidTag("crude_oil"), AllTags.AllFluidTags.BOTTOMLESS_DENY.tag)
             .properties(b -> b.viscosity(1500)
                     .density(1400))
@@ -126,7 +126,7 @@ public class EIFluids {
             .register();
 
     public static final FluidEntry<BaseFlowingFluid.Flowing> HOT_BITUMEN = REGISTRATE
-            .standardFluid("hot_bitumen", SolidRenderedPlaceableFluidType.create(0x000000, () -> 1f / 2f))
+            .standardFluid("hot_bitumen", SolidRenderedPlaceableFluidType.create(0x606060, () -> 1f / 2f))
             .tag(AllTags.commonFluidTag("hot_bitumen"), AllTags.AllFluidTags.BOTTOMLESS_DENY.tag)
             .properties(b -> b.viscosity(1500)
                     .density(1400))
@@ -151,12 +151,19 @@ public class EIFluids {
 
         private Vector3f fogColor;
         private Supplier<Float> fogDistance;
+        private int tint;
+
 
         public static FluidBuilder.FluidTypeFactory create(int fogColor, Supplier<Float> fogDistance) {
+            return create(fogColor, NO_TINT, fogDistance);
+        }
+
+        public static FluidBuilder.FluidTypeFactory create(int fogColor, int tint, Supplier<Float> fogDistance) {
             return (p, s, f) -> {
                 SolidRenderedPlaceableFluidType fluidType = new SolidRenderedPlaceableFluidType(p, s, f);
                 fluidType.fogColor = new Color(fogColor, false).asVectorF();
                 fluidType.fogDistance = fogDistance;
+                fluidType.tint = tint;
                 return fluidType;
             };
         }
@@ -168,7 +175,7 @@ public class EIFluids {
 
         @Override
         protected int getTintColor(FluidStack stack) {
-            return NO_TINT;
+            return tint;
         }
 
         /*
@@ -178,7 +185,7 @@ public class EIFluids {
          */
         @Override
         public int getTintColor(FluidState state, BlockAndTintGetter world, BlockPos pos) {
-            return 0x00ffffff;
+            return tint & 0x00ffffff;
         }
 
         @Override

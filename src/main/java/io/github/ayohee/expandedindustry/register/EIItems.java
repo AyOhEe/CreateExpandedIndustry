@@ -6,6 +6,7 @@ import com.simibubi.create.foundation.item.CombustibleItem;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import io.github.ayohee.expandedindustry.content.items.PressurisedCanisterItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
@@ -144,6 +145,12 @@ public class EIItems {
             .tag(AllItemTags.BLAZE_BURNER_FUEL_SPECIAL.tag, AllItemTags.UPRIGHT_ON_BELT.tag)
             .onRegister(i -> i.setBurnTime(25600))
             .register();
+
+    public static final ItemEntry<PressurisedCanisterItem> PRESSURISED_CANISTER = REGISTRATE.item("pressurised_canister", PressurisedCanisterItem::new)
+            .properties(p -> p.stacksTo(1))
+            .defaultModel()
+            .register();
+
 
 
     public static final ItemEntry<Item> MUSIC_DISC_ARIA_MATH = REGISTRATE.item("music_disc_aria_math", Item::new)

@@ -5,6 +5,7 @@ import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipModifier;
 import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.PressurisedFluidTankBlockEntity;
+import io.github.ayohee.expandedindustry.content.items.PressurisedCanisterItem;
 import io.github.ayohee.expandedindustry.multiblock.MultiblockFluidInputBE;
 import io.github.ayohee.expandedindustry.multiblock.MultiblockFluidTankBE;
 import io.github.ayohee.expandedindustry.multiblock.MultiblockInventoryBE;
@@ -58,8 +59,7 @@ public class CreateExpandedIndustry {
         EICreativeTabs.register();
         EIRegistries.register(modEventBus);
         EISoundEvents.register();
-
-
+        EIDataComponents.register();
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
@@ -79,5 +79,6 @@ public class CreateExpandedIndustry {
         MultiblockInventoryBE.registerCapabilities(event);
         MultiblockFluidTankBE.registerCapabilities(event);
         MultiblockFluidInputBE.registerCapabilities(event);
+        PressurisedCanisterItem.registerCapabilities(event);
     }
 }
