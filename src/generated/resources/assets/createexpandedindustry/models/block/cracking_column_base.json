@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "createexpandedindustry:block/cracking_column_base_bottom",
+    "side": "createexpandedindustry:block/cracking_column_base_side",
+    "top": "createexpandedindustry:block/cracking_column_base_top"
+  }
+}

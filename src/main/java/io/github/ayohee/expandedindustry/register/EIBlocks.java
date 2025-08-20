@@ -17,6 +17,7 @@ import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 
+import io.github.ayohee.expandedindustry.content.blocks.FractionatingColumnPortBlock;
 import io.github.ayohee.expandedindustry.content.blocks.HardenedStoneBlock;
 import io.github.ayohee.expandedindustry.content.blocks.LoopingJukeboxBlock;
 import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.*;
@@ -38,6 +39,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -129,7 +131,7 @@ public class EIBlocks {
             .initialProperties(SharedProperties::netheriteMetal)
             .properties(c -> c.mapColor(MapColor.COLOR_BLUE).destroyTime(20))
             .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_IRON_TOOL)
-            .blockstate(Helpers.subdirCubeAllTexture())
+            .blockstate(Helpers.subdirCubeAll())
             .simpleItem()
             .recipe((c, p) -> {
                 ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, EIItems.COBALT_INGOT, 9)
@@ -137,6 +139,38 @@ public class EIBlocks {
                         .unlockedBy("has_cobalt_block", RegistrateRecipeProvider.has(c.get()))
                         .save(p, "cobalt_ingots_from_block");
             })
+            .register();
+
+    public static final BlockEntry<Block> CRACKING_COLUMN_BASE = REGISTRATE.block("cracking_column_base", Block::new)
+            .initialProperties(SharedProperties::copperMetal)
+            .properties(c -> c.mapColor(MapColor.COLOR_BLUE).destroyTime(20))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_IRON_TOOL)
+            .blockstate(Helpers.subdirCubeBottomTop())
+            .simpleItem()
+            .recipe((c, p) -> {}) //TODO
+            .register();
+
+    public static final BlockEntry<Block> FLARE_STACK_VENT = REGISTRATE.block("flare_stack_vent", Block::new)
+            .initialProperties(SharedProperties::copperMetal)
+            .properties(c -> c.mapColor(MapColor.COLOR_BLUE).destroyTime(20))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_IRON_TOOL)
+            .blockstate(Helpers.subdirCubeTop())
+            .simpleItem()
+            .recipe((c, p) -> {}) //TODO
+            .register();
+
+    public static final BlockEntry<FractionatingColumnPortBlock> FRACTIONATING_COLUMN_PORT = REGISTRATE.block("fractionating_column_port", FractionatingColumnPortBlock::new)
+            .initialProperties(SharedProperties::copperMetal)
+            .properties(c -> c.mapColor(MapColor.COLOR_BLUE).destroyTime(20))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_IRON_TOOL)
+            .blockstate((ctx, prov) -> prov.getVariantBuilder(ctx.get()).forAllStates(state ->
+                    ConfiguredModel.builder()
+                            .modelFile(prov.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(MODID, "block/fractionating_column_port")))
+                            .rotationY((int)state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot())
+                            .build()
+            ))
+            .simpleItem()
+            .recipe((c, p) -> {}) //TODO
             .register();
 
     public static final BlockEntry<PressurisedFluidTankBlock> PRESSURISED_FLUID_TANK = REGISTRATE.block("pressurised_fluid_tank", PressurisedFluidTankBlock::new)
@@ -171,7 +205,7 @@ public class EIBlocks {
     public static final BlockEntry<CasingBlock> COBALT_CASING = REGISTRATE.block("cobalt_casing", CasingBlock::new)
             .transform(BuilderTransformers.casing(() -> EISpriteShifts.COBALT_CASING))
             .properties(p -> p.mapColor(MapColor.COLOR_LIGHT_BLUE).sound(SoundType.TUFF_BRICKS))
-            .blockstate(Helpers.subdirCubeAllTexture())
+            .blockstate(Helpers.subdirCubeAll())
             .simpleItem()
             .register();
 
@@ -263,7 +297,7 @@ public class EIBlocks {
             .initialProperties(SharedProperties::stone)
             .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_STONE_TOOL)
             .properties(c -> c.mapColor(DyeColor.MAGENTA))
-            .blockstate(Helpers.subdirCubeAllTexture())
+            .blockstate(Helpers.subdirCubeAll())
             .simpleItem()
             .register();
 
@@ -272,7 +306,7 @@ public class EIBlocks {
             .initialProperties(() -> Blocks.BEDROCK)
             .properties(Helpers::hardened_stones)
             .properties(c -> c.mapColor(MapColor.COLOR_MAGENTA))
-            .blockstate(Helpers.subdirCubeAllTexture())
+            .blockstate(Helpers.subdirCubeAll())
             .simpleItem()
             .register();
 
@@ -281,7 +315,7 @@ public class EIBlocks {
             .initialProperties(() -> Blocks.BEDROCK)
             .properties(Helpers::hardened_stones)
             .properties(c -> c.mapColor(MapColor.GOLD))
-            .blockstate(Helpers.subdirCubeAllTexture())
+            .blockstate(Helpers.subdirCubeAll())
             .simpleItem()
             .register();
 
@@ -290,7 +324,7 @@ public class EIBlocks {
             .initialProperties(() -> Blocks.BEDROCK)
             .properties(Helpers::hardened_stones)
             .properties(c -> c.mapColor(MapColor.COLOR_GREEN))
-            .blockstate(Helpers.subdirCubeAllTexture())
+            .blockstate(Helpers.subdirCubeAll())
             .simpleItem()
             .register();
 
@@ -299,7 +333,7 @@ public class EIBlocks {
             .initialProperties(() -> Blocks.BEDROCK)
             .properties(Helpers::hardened_stones)
             .properties(c -> c.mapColor(MapColor.COLOR_BLUE))
-            .blockstate(Helpers.subdirCubeAllTexture())
+            .blockstate(Helpers.subdirCubeAll())
             .simpleItem()
             .register();
 
@@ -308,7 +342,7 @@ public class EIBlocks {
             .initialProperties(() -> Blocks.BEDROCK)
             .properties(Helpers::hardened_stones)
             .properties(c -> c.mapColor(MapColor.COLOR_RED))
-            .blockstate(Helpers.subdirCubeAllTexture())
+            .blockstate(Helpers.subdirCubeAll())
             .simpleItem()
             .register();
 
@@ -356,7 +390,7 @@ public class EIBlocks {
             .initialProperties(() -> Blocks.SAND)
             .tag(BlockTags.MINEABLE_WITH_SHOVEL)
             .properties(c -> c.mapColor(MapColor.COLOR_LIGHT_GRAY))
-            .blockstate(Helpers.subdirCubeAllTexture("microplastic"))
+            .blockstate(Helpers.subdirCubeAll("microplastic"))
             .item()
             .tag(EITags.MICROPLASTIC_BLOCK)
             .build()
@@ -368,7 +402,7 @@ public class EIBlocks {
                 .initialProperties(() -> Blocks.SAND)
                 .tag(BlockTags.MINEABLE_WITH_SHOVEL)
                 .properties(c -> c.mapColor(v.getMapColor()))
-                .blockstate(Helpers.subdirCubeAllTexture("microplastic"))
+                .blockstate(Helpers.subdirCubeAll("microplastic"))
                 .item()
                 .tag(v.getDyedTag())
                 .tag(EITags.MICROPLASTIC_BLOCK)
@@ -391,7 +425,7 @@ public class EIBlocks {
             .initialProperties(() -> Blocks.STONE_BRICKS)
             .tag(BlockTags.NEEDS_STONE_TOOL, BlockTags.MINEABLE_WITH_PICKAXE)
             .properties(c -> c.mapColor(MapColor.COLOR_GRAY).speedFactor(1.2f))
-            .blockstate(Helpers.subdirCubeAllTexture("asphalt"))
+            .blockstate(Helpers.subdirCubeAll("asphalt"))
             .item()
             .tag(EITags.ASPHALT_BLOCK)
             .build()
@@ -403,7 +437,7 @@ public class EIBlocks {
                 .initialProperties(() -> Blocks.STONE_BRICKS)
                 .tag(BlockTags.NEEDS_STONE_TOOL, BlockTags.MINEABLE_WITH_PICKAXE)
                 .properties(c -> c.mapColor(v.getMapColor()).speedFactor(1.2f))
-                .blockstate(Helpers.subdirCubeAllTexture("asphalt"))
+                .blockstate(Helpers.subdirCubeAll("asphalt"))
                 .item()
                 .tag(v.getDyedTag())
                 .tag(EITags.ASPHALT_BLOCK)
@@ -443,18 +477,58 @@ public class EIBlocks {
             return map;
         }
 
-        public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> subdirCubeAllTexture(String... paths) {
+        @NotNull
+        private static String buildSubdirPath(String[] paths) {
             StringBuilder sb = new StringBuilder();
             sb.append("block/");
             for (String dir : paths) {
                 sb.append(dir).append('/');
             }
             final String path = sb.toString();
+            return path;
+        }
+
+        public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> subdirCubeAll(String... paths) {
+            final String path = buildSubdirPath(paths);
 
             return (ctx, prov) -> {
                 ResourceLocation textureLoc = ResourceLocation.fromNamespaceAndPath(MODID, path + ctx.getName());
-                ResourceLocation cubeAll = ResourceLocation.parse("block/cube_all");
+                ResourceLocation cubeAll = ResourceLocation.withDefaultNamespace("block/cube_all");
                 prov.simpleBlock(ctx.get(), prov.models().singleTexture(ctx.getName(), cubeAll, "all", textureLoc));
+            };
+        }
+
+
+
+        public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> subdirCubeBottomTop(String... paths) {
+            final String path = buildSubdirPath(paths);
+
+            return (ctx, prov) -> {
+                ResourceLocation sideTextureLoc = ResourceLocation.fromNamespaceAndPath(MODID, path + ctx.getName() + "_side");
+                ResourceLocation topTextureLoc = ResourceLocation.fromNamespaceAndPath(MODID, path + ctx.getName() + "_top");
+                ResourceLocation bottomTextureLoc = ResourceLocation.fromNamespaceAndPath(MODID, path + ctx.getName() + "_bottom");
+                ResourceLocation cubeAll = ResourceLocation.withDefaultNamespace("block/cube_bottom_top");
+
+                prov.simpleBlock(ctx.get(), prov.models().withExistingParent(ctx.getName(), cubeAll)
+                        .texture("top", topTextureLoc)
+                        .texture("bottom", bottomTextureLoc)
+                        .texture("side", sideTextureLoc)
+                );
+            };
+        }
+
+        public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> subdirCubeTop(String... paths) {
+            final String path = buildSubdirPath(paths);
+
+            return (ctx, prov) -> {
+                ResourceLocation sideTextureLoc = ResourceLocation.fromNamespaceAndPath(MODID, path + ctx.getName() + "_side");
+                ResourceLocation topTextureLoc = ResourceLocation.fromNamespaceAndPath(MODID, path + ctx.getName() + "_top");
+                ResourceLocation cubeAll = ResourceLocation.withDefaultNamespace("block/cube_top");
+
+                prov.simpleBlock(ctx.get(), prov.models().withExistingParent(ctx.getName(), cubeAll)
+                        .texture("top", topTextureLoc)
+                        .texture("side", sideTextureLoc)
+                );
             };
         }
 

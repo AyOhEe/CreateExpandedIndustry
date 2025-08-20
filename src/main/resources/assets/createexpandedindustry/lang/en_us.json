@@ -26,6 +26,9 @@
   "block.createexpandedindustry.multiblock_fluid_io": "Multiblock Fluid Tank",
   "block.createexpandedindustry.multiblock_fluid_input": "Multiblock Fluid Input",
   "block.createexpandedindustry.looping_jukebox": "Looping Jukebox",
+  "block.createexpandedindustry.cracking_column_base": "Cracking Column Base",
+  "block.createexpandedindustry.flare_stack_vent": "Flare Stack Vent",
+  "block.createexpandedindustry.fractionating_column_port": "Fractionating Column Port",
 
   "item.createexpandedindustry.crushed_raw_cobalt": "Crushed Raw Cobalt",
   "item.createexpandedindustry.cobalt_ingot": "Cobalt Ingot",

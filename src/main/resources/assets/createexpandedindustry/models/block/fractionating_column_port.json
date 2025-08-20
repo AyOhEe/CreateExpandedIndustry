@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "createexpandedindustry:block/fractionating_column_port_side",
+    "down": "createexpandedindustry:block/fractionating_column_port_bottom",
+    "up": "createexpandedindustry:block/fractionating_column_port_top",
+    "north": "createexpandedindustry:block/fractionating_column_port_front",
+    "east": "createexpandedindustry:block/fractionating_column_port_side",
+    "south": "createexpandedindustry:block/fractionating_column_port_side",
+    "west": "createexpandedindustry:block/fractionating_column_port_side"
+  }
+}

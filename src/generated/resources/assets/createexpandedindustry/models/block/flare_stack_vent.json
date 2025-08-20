@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_top",
+  "textures": {
+    "side": "createexpandedindustry:block/flare_stack_vent_side",
+    "top": "createexpandedindustry:block/flare_stack_vent_top"
+  }
+}
