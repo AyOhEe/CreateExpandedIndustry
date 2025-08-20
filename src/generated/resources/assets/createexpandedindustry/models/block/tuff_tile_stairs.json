@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "createexpandedindustry:block/tuff_tiles",
+    "side": "createexpandedindustry:block/tuff_tiles",
+    "top": "createexpandedindustry:block/tuff_tiles"
+  }
+}

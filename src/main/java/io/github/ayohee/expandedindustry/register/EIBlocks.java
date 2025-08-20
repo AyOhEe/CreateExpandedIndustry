@@ -17,6 +17,7 @@ import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 
+import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import io.github.ayohee.expandedindustry.content.blocks.FractionatingColumnPortBlock;
 import io.github.ayohee.expandedindustry.content.blocks.HardenedStoneBlock;
 import io.github.ayohee.expandedindustry.content.blocks.LoopingJukeboxBlock;
@@ -32,11 +33,10 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
@@ -53,6 +53,9 @@ import static io.github.ayohee.expandedindustry.CreateExpandedIndustry.MODID;
 import static io.github.ayohee.expandedindustry.CreateExpandedIndustry.REGISTRATE;
 import static io.github.ayohee.expandedindustry.register.EIBlocks.EISpriteShifts.paletteCT;
 
+
+
+//TODO go through all of this shit and apply .requiresCorrectToolForDrops() where appropriate
 public class EIBlocks {
     /*-----THESE BLOCKS WILL NOT BE SEEN IN THE CREATIVE TAB-----*/
     static {
@@ -386,6 +389,34 @@ public class EIBlocks {
             })
             .register();
 
+    public static final BlockEntry<Block> TUFF_TILES = REGISTRATE.block("tuff_tiles", Block::new)
+            .initialProperties(() -> Blocks.TUFF_BRICKS)
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .blockstate(Helpers.subdirCubeAll())
+            .recipe((ctx, prov) -> {
+                prov.stonecutting(DataIngredient.items(Blocks.TUFF), RecipeCategory.DECORATIONS, ctx::get, 1);
+            })
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<SlabBlock> TUFF_TILE_SLAB = REGISTRATE.block("tuff_tile_slab", SlabBlock::new)
+            .initialProperties(() -> Blocks.TUFF_SLAB)
+            .blockstate(Helpers.subdirSlab("tuff_tiles"))
+            .recipe((ctx, prov) -> {
+                prov.stonecutting(DataIngredient.items((NonNullSupplier<? extends Block>) EIBlocks.TUFF_TILES), RecipeCategory.DECORATIONS, ctx::get, 2);
+            })
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<StairBlock> TUFF_TILE_STAIRS = REGISTRATE.block("tuff_tile_stairs", (p) -> new StairBlock(EIBlocks.TUFF_TILES.getDefaultState(), p))
+            .initialProperties(() -> Blocks.TUFF_BRICK_STAIRS)
+            .blockstate(Helpers.subdirStairs("tuff_tiles"))
+            .recipe((ctx, prov) -> {
+                prov.stonecutting(DataIngredient.items((NonNullSupplier<? extends Block>) EIBlocks.TUFF_TILES), RecipeCategory.DECORATIONS, ctx::get, 1);
+            })
+            .simpleItem()
+            .register();
+
     public static final BlockEntry<Block> MICROPLASTIC_BLOCK = REGISTRATE
             .block("microplastic_block", Block::new)
             .initialProperties(() -> Blocks.SAND)
@@ -497,6 +528,27 @@ public class EIBlocks {
                 ResourceLocation cubeAll = ResourceLocation.withDefaultNamespace("block/cube_all");
 
                 prov.simpleBlock(ctx.get(), prov.models().singleTexture(ctx.getName(), cubeAll, "all", textureLoc));
+            };
+        }
+
+        public static <T extends SlabBlock> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> subdirSlab(String baseName) {
+            String path = "block/" + baseName;
+
+            return (ctx, prov) -> {
+                ResourceLocation textureLoc = ResourceLocation.fromNamespaceAndPath(MODID, path);
+                ResourceLocation fullBlock = ResourceLocation.fromNamespaceAndPath(MODID, baseName);
+
+                prov.slabBlock(ctx.get(), fullBlock,textureLoc);
+            };
+        }
+
+        public static <T extends StairBlock> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> subdirStairs(String baseName) {
+            String path = "block/" + baseName;
+
+            return (ctx, prov) -> {
+                ResourceLocation textureLoc = ResourceLocation.fromNamespaceAndPath(MODID, path);
+
+                prov.stairsBlock(ctx.get(), textureLoc);
             };
         }
 

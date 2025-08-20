@@ -2,7 +2,7 @@
   "type": "create:item_application",
   "ingredients": [
     {
-      "item": "minecraft:tuff_bricks"
+      "item": "createexpandedindustry:tuff_tiles"
     },
     {
       "item": "createexpandedindustry:cobalt_ingot"
