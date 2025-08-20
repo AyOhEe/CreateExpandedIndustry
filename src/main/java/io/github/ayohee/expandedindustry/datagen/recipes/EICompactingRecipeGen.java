@@ -7,6 +7,7 @@ import io.github.ayohee.expandedindustry.register.EIItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -35,6 +36,23 @@ public class EICompactingRecipeGen extends CompactingRecipeGen {
                     .require(Items.GUNPOWDER)
                     .requiresHeat(HeatCondition.HEATED)
                     .output(EIItems.RUBBER)
+    );
+
+    public final GeneratedRecipe TUFF = create(
+            "tuff_normal",
+            b -> b.require(Blocks.GRAVEL)
+                    .require(Blocks.GRAVEL)
+                    .requiresHeat(HeatCondition.HEATED)
+                    .require(EIFluids.CRUDE_OIL.get(), 200)
+                    .output(Blocks.TUFF, 1)
+    );
+
+    public final GeneratedRecipe TUFF_SUPERHEATED = create(
+            "tuff_superheated",
+            b -> b.require(Blocks.GRAVEL)
+                    .require(EIFluids.CRUDE_OIL.get(), 100)
+                    .requiresHeat(HeatCondition.SUPERHEATED)
+                    .output(Blocks.TUFF, 1)
     );
 
     public EICompactingRecipeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {

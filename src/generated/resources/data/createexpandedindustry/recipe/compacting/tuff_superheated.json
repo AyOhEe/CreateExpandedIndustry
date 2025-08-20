@@ -1,0 +1,19 @@
+{
+  "type": "create:compacting",
+  "heat_requirement": "superheated",
+  "ingredients": [
+    {
+      "item": "minecraft:gravel"
+    },
+    {
+      "type": "fluid_stack",
+      "amount": 100,
+      "fluid": "createexpandedindustry:crude_oil"
+    }
+  ],
+  "results": [
+    {
+      "id": "minecraft:tuff"
+    }
+  ]
+}

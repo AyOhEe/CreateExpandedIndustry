@@ -1,0 +1,22 @@
+{
+  "type": "create:compacting",
+  "heat_requirement": "heated",
+  "ingredients": [
+    {
+      "item": "minecraft:gravel"
+    },
+    {
+      "item": "minecraft:gravel"
+    },
+    {
+      "type": "fluid_stack",
+      "amount": 200,
+      "fluid": "createexpandedindustry:crude_oil"
+    }
+  ],
+  "results": [
+    {
+      "id": "minecraft:tuff"
+    }
+  ]
+}
