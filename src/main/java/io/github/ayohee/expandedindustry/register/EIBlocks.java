@@ -38,6 +38,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.MapColor;
+import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import org.jetbrains.annotations.NotNull;
 
@@ -390,7 +391,7 @@ public class EIBlocks {
             .initialProperties(() -> Blocks.SAND)
             .tag(BlockTags.MINEABLE_WITH_SHOVEL)
             .properties(c -> c.mapColor(MapColor.COLOR_LIGHT_GRAY))
-            .blockstate(Helpers.subdirCubeAll("microplastic"))
+            .blockstate(Helpers.subdirCubeAllRotated("microplastic"))
             .item()
             .tag(EITags.MICROPLASTIC_BLOCK)
             .build()
@@ -402,7 +403,7 @@ public class EIBlocks {
                 .initialProperties(() -> Blocks.SAND)
                 .tag(BlockTags.MINEABLE_WITH_SHOVEL)
                 .properties(c -> c.mapColor(v.getMapColor()))
-                .blockstate(Helpers.subdirCubeAll("microplastic"))
+                .blockstate(Helpers.subdirCubeAllRotated("microplastic"))
                 .item()
                 .tag(v.getDyedTag())
                 .tag(EITags.MICROPLASTIC_BLOCK)
@@ -494,10 +495,23 @@ public class EIBlocks {
             return (ctx, prov) -> {
                 ResourceLocation textureLoc = ResourceLocation.fromNamespaceAndPath(MODID, path + ctx.getName());
                 ResourceLocation cubeAll = ResourceLocation.withDefaultNamespace("block/cube_all");
+
                 prov.simpleBlock(ctx.get(), prov.models().singleTexture(ctx.getName(), cubeAll, "all", textureLoc));
             };
         }
 
+
+        public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> subdirCubeAllRotated(String... paths) {
+            final String path = buildSubdirPath(paths);
+
+            return (ctx, prov) -> {
+                ResourceLocation textureLoc = ResourceLocation.fromNamespaceAndPath(MODID, path + ctx.getName());
+                ResourceLocation cubeAll = ResourceLocation.withDefaultNamespace("block/cube_all");
+
+                BlockModelBuilder model = prov.models().singleTexture(ctx.getName(), cubeAll, "all", textureLoc);
+                prov.getVariantBuilder(ctx.get()).addModels(prov.getExistingVariantBuilder(ctx.get()).get().partialState(), ConfiguredModel.allRotations(model, false, 1));
+            };
+        }
 
 
         public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> subdirCubeBottomTop(String... paths) {

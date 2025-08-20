@@ -1,7 +1,78 @@
 {
   "variants": {
-    "": {
-      "model": "createexpandedindustry:block/yellow_microplastic_block"
-    }
+    "": [
+      {
+        "model": "createexpandedindustry:block/yellow_microplastic_block"
+      },
+      {
+        "model": "createexpandedindustry:block/yellow_microplastic_block",
+        "y": 90
+      },
+      {
+        "model": "createexpandedindustry:block/yellow_microplastic_block",
+        "y": 180
+      },
+      {
+        "model": "createexpandedindustry:block/yellow_microplastic_block",
+        "y": 270
+      },
+      {
+        "model": "createexpandedindustry:block/yellow_microplastic_block",
+        "x": 90
+      },
+      {
+        "model": "createexpandedindustry:block/yellow_microplastic_block",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "createexpandedindustry:block/yellow_microplastic_block",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "createexpandedindustry:block/yellow_microplastic_block",
+        "x": 90,
+        "y": 270
+      },
+      {
+        "model": "createexpandedindustry:block/yellow_microplastic_block",
+        "x": 180
+      },
+      {
+        "model": "createexpandedindustry:block/yellow_microplastic_block",
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "createexpandedindustry:block/yellow_microplastic_block",
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "createexpandedindustry:block/yellow_microplastic_block",
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "createexpandedindustry:block/yellow_microplastic_block",
+        "x": 270
+      },
+      {
+        "model": "createexpandedindustry:block/yellow_microplastic_block",
+        "x": 270,
+        "y": 90
+      },
+      {
+        "model": "createexpandedindustry:block/yellow_microplastic_block",
+        "x": 270,
+        "y": 180
+      },
+      {
+        "model": "createexpandedindustry:block/yellow_microplastic_block",
+        "x": 270,
+        "y": 270
+      }
+    ]
   }
 }

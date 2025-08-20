@@ -173,7 +173,7 @@ public class ReinforcedDrillMultiblock extends AbstractMultiblockController<Rein
                 )
             );
 
-    public static HorizontalGeneralBuilder<GeneralBuilder> MULTIBLOCK_DECONSTRUCTOR =
+    public static final HorizontalGeneralBuilder<GeneralBuilder> MULTIBLOCK_DECONSTRUCTOR =
         new HorizontalGeneralBuilder<>(
             new GeneralBuilder()
                 .addLayer(List.of(
