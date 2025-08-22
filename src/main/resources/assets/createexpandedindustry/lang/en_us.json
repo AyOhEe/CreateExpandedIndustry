@@ -52,6 +52,10 @@
   "item.createexpandedindustry.rubber_sheet": "Rubber Sheet",
 
 
+  "item.createexpandedindustry.kinetic_transistor": "Kinetic Transistor",
+  "item.createexpandedindustry.incomplete_kinetic_transistor": "Incomplete Kinetic Transistor",
+
+
   "item.createexpandedindustry.bolt": "Bolt",
   "item.createexpandedindustry.incomplete_bolt": "Incomplete Bolt",
   "item.createexpandedindustry.heated_filled_bolt_cast": "Heated Filled Bolt Cast",

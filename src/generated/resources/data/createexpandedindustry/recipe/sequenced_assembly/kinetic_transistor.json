@@ -1,0 +1,50 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "create:speedometer"
+  },
+  "loops": 1,
+  "results": [
+    {
+      "chance": 100.0,
+      "id": "createexpandedindustry:kinetic_transistor"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createexpandedindustry:incomplete_kinetic_transistor"
+        },
+        {
+          "item": "minecraft:comparator"
+        }
+      ],
+      "results": [
+        {
+          "id": "createexpandedindustry:incomplete_kinetic_transistor"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createexpandedindustry:incomplete_kinetic_transistor"
+        },
+        {
+          "item": "create:clutch"
+        }
+      ],
+      "results": [
+        {
+          "id": "createexpandedindustry:incomplete_kinetic_transistor"
+        }
+      ]
+    }
+  ],
+  "transitional_item": {
+    "id": "createexpandedindustry:incomplete_kinetic_transistor"
+  }
+}
