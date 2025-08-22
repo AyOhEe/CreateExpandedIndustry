@@ -35,6 +35,12 @@ public class EIPressingRecipeGen extends PressingRecipeGen {
                     .output(EIItems.RUBBER_SHEET)
     );
 
+    public final GeneratedRecipe MAGNETIC_PLATTER = create(
+            "magnetic_platter",
+            b -> b.require(EIItems.MAGNETISED_COBALT)
+                    .output(EIItems.MAGNETIC_PLATTER)
+    );
+
     public EIPressingRecipeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, CreateExpandedIndustry.MODID);
     }

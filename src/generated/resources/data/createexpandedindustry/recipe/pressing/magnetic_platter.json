@@ -1,0 +1,13 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "item": "createexpandedindustry:magnetised_cobalt"
+    }
+  ],
+  "results": [
+    {
+      "id": "createexpandedindustry:magnetic_platter"
+    }
+  ]
+}
