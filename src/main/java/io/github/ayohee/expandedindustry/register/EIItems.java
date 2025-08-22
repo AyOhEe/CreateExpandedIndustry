@@ -140,6 +140,10 @@ public class EIItems {
             .defaultModel()
             .register();
 
+    public static final ItemEntry<Item> PLASTIC_COMPOSITE = REGISTRATE.item("plastic_composite", Item::new)
+            .defaultModel()
+            .register();
+
     public static final ItemEntry<BannerPatternItem> LOSS_PATTERN = REGISTRATE.item(
                 "loss_pattern",
                 (p) -> new BannerPatternItem(TagKey.create(Registries.BANNER_PATTERN, ResourceLocation.fromNamespaceAndPath(MODID, "pattern_item/loss_pattern")), p)
@@ -211,6 +215,10 @@ public class EIItems {
             .register();
 
     public static final ItemEntry<SequencedAssemblyItem> INCOMPLETE_KINETIC_TRANSISTOR = REGISTRATE.item("incomplete_kinetic_transistor", SequencedAssemblyItem::new)
+            .defaultModel()
+            .register();
+
+    public static final ItemEntry<SequencedAssemblyItem> INCOMPLETE_PLASTIC_COMPOSITE = REGISTRATE.item("incomplete_plastic_composite", SequencedAssemblyItem::new)
             .defaultModel()
             .register();
 

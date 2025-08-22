@@ -4,6 +4,7 @@ import com.simibubi.create.AllBlocks;
 import com.simibubi.create.api.data.recipe.SequencedAssemblyRecipeGen;
 import com.simibubi.create.content.fluids.transfer.FillingRecipe;
 import com.simibubi.create.content.kinetics.deployer.DeployerApplicationRecipe;
+import com.simibubi.create.content.kinetics.press.PressingRecipe;
 import io.github.ayohee.expandedindustry.register.EIItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -33,6 +34,16 @@ public class EISequencedAssemblyRecipeGen extends SequencedAssemblyRecipeGen {
             .addStep(DeployerApplicationRecipe::new, r -> r.require(Blocks.COMPARATOR))
             .addStep(DeployerApplicationRecipe::new, r -> r.require(AllBlocks.CLUTCH))
             .loops(1)
+    );
+
+    public final GeneratedRecipe PLASTIC_COMPOSITE = create("plastic_composite", b -> b
+            .require(EIItems.POLYETHYLENE_SHEET)
+            .transitionTo(EIItems.INCOMPLETE_PLASTIC_COMPOSITE)
+            .addOutput(EIItems.PLASTIC_COMPOSITE, 100)
+            .addStep(DeployerApplicationRecipe::new, r -> r.require(EIItems.COBALT_SHEET))
+            .addStep(DeployerApplicationRecipe::new, r -> r.require(EIItems.POLYETHYLENE_SHEET))
+            .addStep(PressingRecipe::new, r -> r)
+            .loops(3)
     );
 
     public EISequencedAssemblyRecipeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {

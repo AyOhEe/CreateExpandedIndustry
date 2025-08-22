@@ -1,0 +1,63 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "createexpandedindustry:polyethylene_sheet"
+  },
+  "loops": 3,
+  "results": [
+    {
+      "chance": 100.0,
+      "id": "createexpandedindustry:plastic_composite"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createexpandedindustry:incomplete_plastic_composite"
+        },
+        {
+          "item": "createexpandedindustry:cobalt_sheet"
+        }
+      ],
+      "results": [
+        {
+          "id": "createexpandedindustry:incomplete_plastic_composite"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createexpandedindustry:incomplete_plastic_composite"
+        },
+        {
+          "item": "createexpandedindustry:polyethylene_sheet"
+        }
+      ],
+      "results": [
+        {
+          "id": "createexpandedindustry:incomplete_plastic_composite"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "createexpandedindustry:incomplete_plastic_composite"
+        }
+      ],
+      "results": [
+        {
+          "id": "createexpandedindustry:incomplete_plastic_composite"
+        }
+      ]
+    }
+  ],
+  "transitional_item": {
+    "id": "createexpandedindustry:incomplete_plastic_composite"
+  }
+}
