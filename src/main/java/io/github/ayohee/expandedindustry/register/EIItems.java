@@ -14,15 +14,13 @@ import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.BannerPatternItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.neoforge.common.Tags;
 
 import static io.github.ayohee.expandedindustry.CreateExpandedIndustry.MODID;
 import static io.github.ayohee.expandedindustry.CreateExpandedIndustry.REGISTRATE;
+import static io.github.ayohee.expandedindustry.register.EIArmorMaterials.COBALT_ARMOR_MATERIAL;
 
 public class EIItems {
     static {
@@ -171,6 +169,31 @@ public class EIItems {
             .defaultModel()
             .register();
 
+
+
+    public static final ItemEntry<ArmorItem> COBALT_HELMET = REGISTRATE.item("cobalt_helmet", (p) -> new ArmorItem(
+            COBALT_ARMOR_MATERIAL,
+            ArmorItem.Type.HELMET,
+            p
+    )).register();
+
+    public static final ItemEntry<ArmorItem> COBALT_CHESTPLATE = REGISTRATE.item("cobalt_chestplate", (p) -> new ArmorItem(
+            COBALT_ARMOR_MATERIAL,
+            ArmorItem.Type.CHESTPLATE,
+            p
+    )).register();
+
+    public static final ItemEntry<ArmorItem> COBALT_LEGGINGS = REGISTRATE.item("cobalt_leggings", (p) -> new ArmorItem(
+            COBALT_ARMOR_MATERIAL,
+            ArmorItem.Type.LEGGINGS,
+            p
+    )).register();
+
+    public static final ItemEntry<ArmorItem> COBALT_BOOTS = REGISTRATE.item("cobalt_boots", (p) -> new ArmorItem(
+            COBALT_ARMOR_MATERIAL,
+            ArmorItem.Type.BOOTS,
+            p
+    )).register();
 
 
     public static final ItemEntry<Item> MUSIC_DISC_ARIA_MATH = REGISTRATE.item("music_disc_aria_math", Item::new)

@@ -52,6 +52,10 @@
   "item.createexpandedindustry.rubber_sheet": "Rubber Sheet",
   "item.createexpandedindustry.magnetic_platter": "Magnetic Platter",
 
+  "item.createexpandedindustry.cobalt_boots": "Cobalt Boots",
+  "item.createexpandedindustry.cobalt_chestplate": "Cobalt Chestplate",
+  "item.createexpandedindustry.cobalt_helmet": "Cobalt Helmet",
+  "item.createexpandedindustry.cobalt_leggings": "Cobalt Leggings",
 
   "item.createexpandedindustry.kinetic_transistor": "Kinetic Transistor",
   "item.createexpandedindustry.incomplete_kinetic_transistor": "Incomplete Kinetic Transistor",
