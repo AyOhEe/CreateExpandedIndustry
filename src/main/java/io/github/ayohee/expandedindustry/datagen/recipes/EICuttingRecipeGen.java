@@ -23,6 +23,12 @@ public class EICuttingRecipeGen extends CuttingRecipeGen {
                     .output(EIItems.POLYETHYLENE_ROD, 4)
     );
 
+    public final GeneratedRecipe BRASS_NEEDLE = create(
+            "brass_needle",
+            b -> b.require(AllItems.BRASS_SHEET)
+                    .output(EIItems.BRASS_NEEDLE)
+    );
+
     public EICuttingRecipeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, MODID);
     }
