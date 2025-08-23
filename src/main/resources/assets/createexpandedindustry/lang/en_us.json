@@ -52,6 +52,7 @@
   "item.createexpandedindustry.rubber_sheet": "Rubber Sheet",
   "item.createexpandedindustry.magnetic_platter": "Magnetic Platter",
   "item.createexpandedindustry.brass_needle": "Brass Needle",
+  "item.createexpandedindustry.kinetic_logic_gate": "Kinetic Logic Gate",
 
   "item.createexpandedindustry.cobalt_boots": "Cobalt Boots",
   "item.createexpandedindustry.cobalt_chestplate": "Cobalt Chestplate",
@@ -60,6 +61,10 @@
 
   "item.createexpandedindustry.kinetic_transistor": "Kinetic Transistor",
   "item.createexpandedindustry.incomplete_kinetic_transistor": "Incomplete Kinetic Transistor",
+
+
+  "item.createexpandedindustry.magnetic_storage_drive": "Magnetic Storage Drive",
+  "item.createexpandedindustry.incomplete_magnetic_storage_drive": "Incomplete Magnetic Storage Drive",
 
   "item.createexpandedindustry.plastic_composite": "Plastic Composite",
   "item.createexpandedindustry.incomplete_plastic_composite": "Incomplete Plastic Composite",

@@ -150,6 +150,14 @@ public class EIItems {
             .defaultModel()
             .register();
 
+    public static final ItemEntry<Item> MAGNETIC_STORAGE_DRIVE = REGISTRATE.item("magnetic_storage_drive", Item::new)
+            .defaultModel()
+            .register();
+
+    public static final ItemEntry<Item> KINETIC_LOGIC_GATE = REGISTRATE.item("kinetic_logic_gate", Item::new)
+            .defaultModel()
+            .register();
+
     public static final ItemEntry<BannerPatternItem> LOSS_PATTERN = REGISTRATE.item(
                 "loss_pattern",
                 (p) -> new BannerPatternItem(TagKey.create(Registries.BANNER_PATTERN, ResourceLocation.fromNamespaceAndPath(MODID, "pattern_item/loss_pattern")), p)
@@ -250,6 +258,10 @@ public class EIItems {
             .register();
 
     public static final ItemEntry<SequencedAssemblyItem> INCOMPLETE_PLASTIC_COMPOSITE = REGISTRATE.item("incomplete_plastic_composite", SequencedAssemblyItem::new)
+            .defaultModel()
+            .register();
+
+    public static final ItemEntry<SequencedAssemblyItem> INCOMPLETE_MAGNETIC_STORAGE_DRIVE = REGISTRATE.item("incomplete_magnetic_storage_drive", SequencedAssemblyItem::new)
             .defaultModel()
             .register();
 

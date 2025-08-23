@@ -1,4 +1,5 @@
-// 1.21.1	2025-08-22T19:11:26.3773926	createexpandedindustry's sequenced assembly recipes
+// 1.21.1	2025-08-23T20:58:25.5803092	createexpandedindustry's sequenced assembly recipes
 404cf5fc5dddb022c069a44722d36fccca38f7ba data/createexpandedindustry/recipe/sequenced_assembly/bolt_casting.json
-c968f4812d6a09101ad676c760acfcd6a1949230 data/createexpandedindustry/recipe/sequenced_assembly/kinetic_transistor.json
-3e33abc57bb5d537c0f20caaa40f419db3621127 data/createexpandedindustry/recipe/sequenced_assembly/plastic_composite.json
+a935ad2f73af081df8720a045b500a084d823b8c data/createexpandedindustry/recipe/sequenced_assembly/kinetic_transistor.json
+0fbe721104eaa98e30caa60d97ed9af6eb3d77c1 data/createexpandedindustry/recipe/sequenced_assembly/magnetic_storage_drive.json
+928ebdf3257f326f76c4a226da539307af4701a8 data/createexpandedindustry/recipe/sequenced_assembly/plastic_composite.json

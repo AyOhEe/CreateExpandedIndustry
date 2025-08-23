@@ -1,7 +1,7 @@
 {
   "type": "create:sequenced_assembly",
   "ingredient": {
-    "item": "create:speedometer"
+    "item": "create:brass_sheet"
   },
   "loops": 1,
   "results": [
@@ -11,6 +11,22 @@
     }
   ],
   "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createexpandedindustry:incomplete_kinetic_transistor"
+        },
+        {
+          "item": "create:speedometer"
+        }
+      ],
+      "results": [
+        {
+          "id": "createexpandedindustry:incomplete_kinetic_transistor"
+        }
+      ]
+    },
     {
       "type": "create:deploying",
       "ingredients": [

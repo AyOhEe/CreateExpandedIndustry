@@ -1,0 +1,24 @@
+{
+  "type": "create:mechanical_crafting",
+  "accept_mirrored": true,
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "create:brass_sheet"
+    },
+    "T": {
+      "item": "createexpandedindustry:kinetic_transistor"
+    }
+  },
+  "pattern": [
+    "  T T  ",
+    "TTTBTTT",
+    " BTTTB ",
+    "TTTBTTT",
+    "  T T  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "createexpandedindustry:kinetic_logic_gate"
+  }
+}

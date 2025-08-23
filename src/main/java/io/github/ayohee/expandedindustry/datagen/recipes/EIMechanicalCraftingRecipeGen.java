@@ -56,6 +56,16 @@ public class EIMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen {
             .patternLine("BBBBB")
     );
 
+    public final GeneratedRecipe KINETIC_LOGIC_GATE = create(EIItems.KINETIC_LOGIC_GATE::asItem).recipe(b -> b
+            .key('T', Ingredient.of(EIItems.KINETIC_TRANSISTOR))
+            .key('B', Ingredient.of(AllItems.BRASS_SHEET))
+            .patternLine("  T T  ")
+            .patternLine("TTTBTTT")
+            .patternLine(" BTTTB ")
+            .patternLine("TTTBTTT")
+            .patternLine("  T T  ")
+    );
+
     public EIMechanicalCraftingRecipeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, MODID);
     }

@@ -1,0 +1,79 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "createexpandedindustry:plastic_composite"
+  },
+  "loops": 10,
+  "results": [
+    {
+      "chance": 100.0,
+      "id": "createexpandedindustry:magnetic_storage_drive"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createexpandedindustry:incomplete_magnetic_storage_drive"
+        },
+        {
+          "item": "create:shaft"
+        }
+      ],
+      "results": [
+        {
+          "id": "createexpandedindustry:incomplete_magnetic_storage_drive"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createexpandedindustry:incomplete_magnetic_storage_drive"
+        },
+        {
+          "item": "createexpandedindustry:magnetic_platter"
+        }
+      ],
+      "results": [
+        {
+          "id": "createexpandedindustry:incomplete_magnetic_storage_drive"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createexpandedindustry:incomplete_magnetic_storage_drive"
+        },
+        {
+          "item": "createexpandedindustry:brass_needle"
+        }
+      ],
+      "results": [
+        {
+          "id": "createexpandedindustry:incomplete_magnetic_storage_drive"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "createexpandedindustry:incomplete_magnetic_storage_drive"
+        }
+      ],
+      "results": [
+        {
+          "id": "createexpandedindustry:incomplete_magnetic_storage_drive"
+        }
+      ]
+    }
+  ],
+  "transitional_item": {
+    "id": "createexpandedindustry:incomplete_magnetic_storage_drive"
+  }
+}
