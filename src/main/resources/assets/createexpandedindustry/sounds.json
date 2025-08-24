@@ -2,7 +2,7 @@
   "aria_math": {
     "sounds": [
       {
-        "name": "music/game/creative/aria_math",
+        "name": "createexpandedindustry:disc/aria_math_mono",
         "stream": true
       }
     ]
