@@ -1,0 +1,82 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "createexpandedindustry:kinetic_logic_gate"
+  },
+  "loops": 8,
+  "results": [
+    {
+      "chance": 100.0,
+      "id": "createexpandedindustry:kinetic_circuit"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createexpandedindustry:incomplete_kinetic_circuit"
+        },
+        {
+          "item": "createexpandedindustry:kinetic_logic_gate"
+        }
+      ],
+      "results": [
+        {
+          "id": "createexpandedindustry:incomplete_kinetic_circuit"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createexpandedindustry:incomplete_kinetic_circuit"
+        },
+        {
+          "item": "createexpandedindustry:kinetic_logic_gate"
+        }
+      ],
+      "results": [
+        {
+          "id": "createexpandedindustry:incomplete_kinetic_circuit"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createexpandedindustry:incomplete_kinetic_circuit"
+        },
+        {
+          "item": "createexpandedindustry:kinetic_logic_gate"
+        }
+      ],
+      "results": [
+        {
+          "id": "createexpandedindustry:incomplete_kinetic_circuit"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createexpandedindustry:incomplete_kinetic_circuit"
+        },
+        {
+          "item": "create:golden_sheet"
+        }
+      ],
+      "results": [
+        {
+          "id": "createexpandedindustry:incomplete_kinetic_circuit"
+        }
+      ]
+    }
+  ],
+  "transitional_item": {
+    "id": "createexpandedindustry:incomplete_kinetic_circuit"
+  }
+}

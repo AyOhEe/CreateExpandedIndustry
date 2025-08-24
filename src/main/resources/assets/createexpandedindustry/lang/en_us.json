@@ -62,6 +62,11 @@
   "item.createexpandedindustry.kinetic_transistor": "Kinetic Transistor",
   "item.createexpandedindustry.incomplete_kinetic_transistor": "Incomplete Kinetic Transistor",
 
+  "item.createexpandedindustry.kinetic_memory_cell": "Kinetic Memory Cell",
+  "item.createexpandedindustry.incomplete_kinetic_memory_cell": "Incomplete Kinetic Memory Cell",
+
+  "item.createexpandedindustry.kinetic_circuit": "Kinetic Circuit",
+  "item.createexpandedindustry.incomplete_kinetic_circuit": "Incomplete Kinetic Circuit",
 
   "item.createexpandedindustry.magnetic_storage_drive": "Magnetic Storage Drive",
   "item.createexpandedindustry.incomplete_magnetic_storage_drive": "Incomplete Magnetic Storage Drive",

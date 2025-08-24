@@ -6,8 +6,16 @@
   "loops": 10,
   "results": [
     {
-      "chance": 100.0,
+      "chance": 10.0,
       "id": "createexpandedindustry:magnetic_storage_drive"
+    },
+    {
+      "chance": 20.0,
+      "id": "create:shaft"
+    },
+    {
+      "chance": 70.0,
+      "id": "createexpandedindustry:magnetic_platter"
     }
   ],
   "sequence": [

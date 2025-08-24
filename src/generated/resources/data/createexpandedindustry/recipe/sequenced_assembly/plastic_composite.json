@@ -6,8 +6,12 @@
   "loops": 3,
   "results": [
     {
-      "chance": 100.0,
+      "chance": 90.0,
       "id": "createexpandedindustry:plastic_composite"
+    },
+    {
+      "chance": 10.0,
+      "id": "createexpandedindustry:polyethylene_sheet"
     }
   ],
   "sequence": [

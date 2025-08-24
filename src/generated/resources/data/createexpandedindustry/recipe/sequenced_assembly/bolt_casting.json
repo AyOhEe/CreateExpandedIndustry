@@ -6,8 +6,12 @@
   "loops": 1,
   "results": [
     {
-      "chance": 100.0,
+      "chance": 90.0,
       "id": "createexpandedindustry:heated_filled_bolt_cast"
+    },
+    {
+      "chance": 10.0,
+      "id": "minecraft:iron_ingot"
     }
   ],
   "sequence": [
