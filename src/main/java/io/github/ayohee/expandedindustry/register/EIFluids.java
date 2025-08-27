@@ -6,6 +6,7 @@ import com.simibubi.create.content.fluids.VirtualFluid;
 import com.tterrag.registrate.builders.FluidBuilder;
 import com.tterrag.registrate.util.entry.FluidEntry;
 import net.createmod.catnip.theme.Color;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.BlockAndTintGetter;
@@ -26,12 +27,12 @@ public class EIFluids {
 
 
     public static final FluidEntry<BaseFlowingFluid.Flowing> CRUDE_OIL = REGISTRATE
-            .standardFluid("crude_oil", SolidRenderedPlaceableFluidType.create(0x404040, () -> 1f / 16f))
+            .standardFluid("crude_oil", SolidRenderedPlaceableFluidType.create(0x202020, () -> 1f / 16f))
             .tag(AllTags.commonFluidTag("crude_oil"), AllTags.AllFluidTags.BOTTOMLESS_DENY.tag)
-            .properties(b -> b.viscosity(1500)
+            .properties(b -> b.viscosity(2250)
                     .density(1400))
             .fluidProperties(p -> p.levelDecreasePerBlock(2)
-                    .tickRate(25)
+                    .tickRate(15)
                     .slopeFindDistance(3)
                     .explosionResistance(100f))
             .source(BaseFlowingFluid.Source::new)
@@ -46,14 +47,15 @@ public class EIFluids {
 
 
     public static final FluidEntry<BaseFlowingFluid.Flowing> NAPHTHA = REGISTRATE
-            .standardFluid("naphtha", SolidRenderedPlaceableFluidType.create(0xFF6F00, () -> 1f / 2f))
+            .standardFluid("naphtha", SolidRenderedPlaceableFluidType.create(0x5F3A30, () -> 1f / 8f))
             .tag(AllTags.commonFluidTag("naphtha"), AllTags.AllFluidTags.BOTTOMLESS_DENY.tag)
             .properties(b -> b.viscosity(1500)
-                    .density(1400))
+                    .density(1200))
             .fluidProperties(p -> p.levelDecreasePerBlock(2)
-                    .tickRate(25)
+                    .tickRate(8)
                     .slopeFindDistance(3)
                     .explosionResistance(100f))
+            .renderType(() -> RenderType::translucent)
             .source(BaseFlowingFluid.Source::new)
             .block()
             .properties(p -> p.mapColor(MapColor.COLOR_BROWN))
@@ -64,18 +66,20 @@ public class EIFluids {
             .register();
 
     public static final FluidEntry<VirtualFluid> LIQUID_PETROLEUM_GAS = REGISTRATE.virtualFluid("liquid_petroleum_gas")
+            .renderType(() -> RenderType::translucent)
             .tag(AllTags.commonFluidTag("liquid_petroleum_gas"), AllTags.AllFluidTags.BOTTOMLESS_DENY.tag)
             .register();
 
     public static final FluidEntry<BaseFlowingFluid.Flowing> KEROSENE = REGISTRATE
-            .standardFluid("kerosene", SolidRenderedPlaceableFluidType.create(0x808080, () -> 1f / 2f))
+            .standardFluid("kerosene", SolidRenderedPlaceableFluidType.create(0x707060, () -> 1f / 8f))
             .tag(AllTags.commonFluidTag("kerosene"), AllTags.AllFluidTags.BOTTOMLESS_DENY.tag)
             .properties(b -> b.viscosity(1500)
-                    .density(1400))
+                    .density(1200))
             .fluidProperties(p -> p.levelDecreasePerBlock(2)
-                    .tickRate(25)
+                    .tickRate(8)
                     .slopeFindDistance(3)
                     .explosionResistance(100f))
+            .renderType(() -> RenderType::translucent)
             .source(BaseFlowingFluid.Source::new)
             .block()
             .properties(p -> p.mapColor(MapColor.COLOR_GRAY))
@@ -86,16 +90,17 @@ public class EIFluids {
             .register();
 
     public static final FluidEntry<VirtualFluid> ETHYLENE = REGISTRATE.virtualFluid("ethylene")
+            .renderType(() -> RenderType::translucent)
             .tag(AllTags.commonFluidTag("ethylene"), AllTags.AllFluidTags.BOTTOMLESS_DENY.tag)
             .register();
 
     public static final FluidEntry<BaseFlowingFluid.Flowing> RAW_LUBRICATING_OIL = REGISTRATE
-            .standardFluid("raw_lubricating_oil", SolidRenderedPlaceableFluidType.create(0xF2F542, () -> 1f / 2f))
+            .standardFluid("raw_lubricating_oil", SolidRenderedPlaceableFluidType.create(0x522502, () -> 1f / 8f))
             .tag(AllTags.commonFluidTag("raw_lubricating_oil"), AllTags.AllFluidTags.BOTTOMLESS_DENY.tag)
             .properties(b -> b.viscosity(1500)
-                    .density(1400))
+                    .density(1200))
             .fluidProperties(p -> p.levelDecreasePerBlock(2)
-                    .tickRate(25)
+                    .tickRate(8)
                     .slopeFindDistance(3)
                     .explosionResistance(100f))
             .source(BaseFlowingFluid.Source::new)
@@ -108,14 +113,15 @@ public class EIFluids {
             .register();
 
     public static final FluidEntry<BaseFlowingFluid.Flowing> LUBRICANT = REGISTRATE
-            .standardFluid("lubricant", SolidRenderedPlaceableFluidType.create(0x1AB000, () -> 1f / 2f))
+            .standardFluid("lubricant", SolidRenderedPlaceableFluidType.create(0x1A6000, () -> 1f / 8f))
             .tag(AllTags.commonFluidTag("lubricant"), AllTags.AllFluidTags.BOTTOMLESS_DENY.tag)
-            .properties(b -> b.viscosity(1500)
-                    .density(1400))
+            .properties(b -> b.viscosity(1000)
+                    .density(1000))
             .fluidProperties(p -> p.levelDecreasePerBlock(2)
-                    .tickRate(25)
-                    .slopeFindDistance(3)
+                    .tickRate(5)
+                    .slopeFindDistance(2)
                     .explosionResistance(100f))
+            .renderType(() -> RenderType::translucent)
             .source(BaseFlowingFluid.Source::new)
             .block()
             .properties(p -> p.mapColor(MapColor.COLOR_GREEN))
@@ -126,12 +132,12 @@ public class EIFluids {
             .register();
 
     public static final FluidEntry<BaseFlowingFluid.Flowing> HOT_BITUMEN = REGISTRATE
-            .standardFluid("hot_bitumen", SolidRenderedPlaceableFluidType.create(0x606060, () -> 1f / 2f))
+            .standardFluid("hot_bitumen", SolidRenderedPlaceableFluidType.create(0x101010, () -> 1f / 16f))
             .tag(AllTags.commonFluidTag("hot_bitumen"), AllTags.AllFluidTags.BOTTOMLESS_DENY.tag)
-            .properties(b -> b.viscosity(1500)
-                    .density(1400))
-            .fluidProperties(p -> p.levelDecreasePerBlock(2)
-                    .tickRate(25)
+            .properties(b -> b.viscosity(3000)
+                    .density(2000))
+            .fluidProperties(p -> p.levelDecreasePerBlock(3)
+                    .tickRate(30)
                     .slopeFindDistance(3)
                     .explosionResistance(100f))
             .source(BaseFlowingFluid.Source::new)
@@ -185,7 +191,7 @@ public class EIFluids {
          */
         @Override
         public int getTintColor(FluidState state, BlockAndTintGetter world, BlockPos pos) {
-            return tint & 0x00ffffff;
+            return tint | 0xff000000;// & 0x00ffffff;
         }
 
         @Override
