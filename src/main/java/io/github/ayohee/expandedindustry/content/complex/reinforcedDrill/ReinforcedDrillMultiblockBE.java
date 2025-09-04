@@ -19,12 +19,10 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.fluids.FluidStack;
-import net.neoforged.neoforge.fluids.FluidType;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.function.BiConsumer;
 import java.util.function.Predicate;
 
 public class ReinforcedDrillMultiblockBE extends AbstractMultiblockControllerBE {
@@ -42,8 +40,8 @@ public class ReinforcedDrillMultiblockBE extends AbstractMultiblockControllerBE 
     }
 
     @Override
-    public BiConsumer<LevelAccessor, BlockPos> deconstructFunction() {
-        return ReinforcedDrillMultiblock::deconstructMBS;
+    public void deconstruct(LevelAccessor level, BlockPos pos) {
+        ReinforcedDrillMultiblock.deconstructMBS(level, pos);
     }
 
     @Override

@@ -5,6 +5,9 @@ import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import io.github.ayohee.expandedindustry.content.blockentities.HardenedStoneBlockEntity;
 import io.github.ayohee.expandedindustry.content.blockentities.HardenedStoneBlockEntity.RichnessProfile;
 import io.github.ayohee.expandedindustry.content.blockentities.LoopingJukeboxBlockEntity;
+import io.github.ayohee.expandedindustry.content.complex.crackingcolumn.CrackingColumnMultiblockBE;
+import io.github.ayohee.expandedindustry.content.complex.flarestack.FlareStackMultiblockBE;
+import io.github.ayohee.expandedindustry.content.complex.fractionatingcolumn.FractionatingColumnMultiblockBE;
 import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.PressurisedFluidTankBlockEntity;
 import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.ReinforcedDrillMultiblockBE;
 import io.github.ayohee.expandedindustry.multiblock.*;
@@ -127,6 +130,21 @@ public class EIBlockEntityTypes {
     public static final BlockEntityEntry<ReinforcedDrillMultiblockBE> REINFORCED_DRILL_MULTIBLOCK = REGISTRATE
             .blockEntity("reinforced_drill_multiblock", ReinforcedDrillMultiblockBE::new)
             .validBlocks(EIBlocks.REINFORCED_DRILL_MULTIBLOCK)
+            .register();
+
+    public static final BlockEntityEntry<FractionatingColumnMultiblockBE> FRACTIONATING_COLUMN_MULTIBLOCK = REGISTRATE
+            .blockEntity("fractionating_column_multiblock", FractionatingColumnMultiblockBE::new)
+            .validBlocks(EIBlocks.FRACTIONATING_COLUMN_MULTIBLOCK)
+            .register();
+
+    public static final BlockEntityEntry<FlareStackMultiblockBE> FLARE_STACK_MULTIBLOCK = REGISTRATE
+            .blockEntity("flare_stack_multiblock", FlareStackMultiblockBE::new)
+            .validBlocks(EIBlocks.FLARE_STACK_MULTIBLOCK)
+            .register();
+
+    public static final BlockEntityEntry<CrackingColumnMultiblockBE> CRACKING_COLUMN_MULTIBLOCK = REGISTRATE
+            .blockEntity("cracking_column_multiblock", CrackingColumnMultiblockBE::new)
+            .validBlocks(EIBlocks.CRACKING_COLUMN_MULTIBLOCK)
             .register();
 
     public static void register() { }

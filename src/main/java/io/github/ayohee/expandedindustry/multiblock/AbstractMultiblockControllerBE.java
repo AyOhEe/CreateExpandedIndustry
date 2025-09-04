@@ -132,11 +132,11 @@ public abstract class AbstractMultiblockControllerBE extends BlockEntity impleme
         }
         startedDestroy = true;
 
-        deconstructFunction().accept(level, getBlockPos());
+        deconstruct(level, getBlockPos());
     }
 
 
-    public abstract BiConsumer<LevelAccessor, BlockPos> deconstructFunction();
+    public abstract void deconstruct(LevelAccessor level, BlockPos pos);
 
 
     //FIXME bleh. Code duplication.

@@ -6,6 +6,12 @@
     "createexpandedindustry:fractionating_column_port",
     "createexpandedindustry:drill_beam",
     "createexpandedindustry:drill_motor",
+    "createexpandedindustry:drill_bit",
+    "createexpandedindustry:cracking_column_base",
+    "createexpandedindustry:flare_stack_vent",
+    "createexpandedindustry:fractionating_column_port",
+    "createexpandedindustry:drill_beam",
+    "createexpandedindustry:drill_motor",
     "createexpandedindustry:drill_bit"
   ]
 }

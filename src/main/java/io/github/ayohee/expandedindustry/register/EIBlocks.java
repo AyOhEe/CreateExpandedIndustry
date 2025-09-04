@@ -18,9 +18,14 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
-import io.github.ayohee.expandedindustry.content.blocks.FractionatingColumnPortBlock;
 import io.github.ayohee.expandedindustry.content.blocks.HardenedStoneBlock;
 import io.github.ayohee.expandedindustry.content.blocks.LoopingJukeboxBlock;
+import io.github.ayohee.expandedindustry.content.complex.crackingcolumn.CrackingColumnBaseBlock;
+import io.github.ayohee.expandedindustry.content.complex.crackingcolumn.CrackingColumnMultiblock;
+import io.github.ayohee.expandedindustry.content.complex.flarestack.FlareStackMultiblock;
+import io.github.ayohee.expandedindustry.content.complex.flarestack.FlareStackVentBlock;
+import io.github.ayohee.expandedindustry.content.complex.fractionatingcolumn.FractionatingColumnMultiblock;
+import io.github.ayohee.expandedindustry.content.complex.fractionatingcolumn.FractionatingColumnPortBlock;
 import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.*;
 import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.*;
 import io.github.ayohee.expandedindustry.multiblock.*;
@@ -36,7 +41,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
@@ -69,6 +73,39 @@ public class EIBlocks {
             .properties(Helpers::multiblockComponent)
             .properties(c -> c
                     .mapColor(MapColor.COLOR_ORANGE)
+                    .sound(SoundType.METAL))
+            .register();
+
+    public static final BlockEntry<FractionatingColumnMultiblock> FRACTIONATING_COLUMN_MULTIBLOCK = REGISTRATE
+            .block("fractionating_column_multiblock", FractionatingColumnMultiblock::new)
+            //.blockstate(FractionatingColumnMultiblock::generateBlockstate)
+            .blockstate(Helpers.ghostBlock())
+            .initialProperties(() -> Blocks.GLASS)
+            .properties(Helpers::multiblockComponent)
+            .properties(c -> c
+                    .mapColor(MapColor.COLOR_BLUE)
+                    .sound(SoundType.METAL))
+            .register();
+
+    public static final BlockEntry<FlareStackMultiblock> FLARE_STACK_MULTIBLOCK = REGISTRATE
+            .block("flare_stack_multiblock", FlareStackMultiblock::new)
+            //.blockstate(FlareStackMultiblock::generateBlockstate)
+            .blockstate(Helpers.ghostBlock())
+            .initialProperties(() -> Blocks.GLASS)
+            .properties(Helpers::multiblockComponent)
+            .properties(c -> c
+                    .mapColor(MapColor.COLOR_BLUE)
+                    .sound(SoundType.METAL))
+            .register();
+
+    public static final BlockEntry<CrackingColumnMultiblock> CRACKING_COLUMN_MULTIBLOCK = REGISTRATE
+            .block("cracking_column_multiblock", CrackingColumnMultiblock::new)
+            //.blockstate(CrackingColumnMultiblock::generateBlockstate)
+            .blockstate(Helpers.ghostBlock())
+            .initialProperties(() -> Blocks.GLASS)
+            .properties(Helpers::multiblockComponent)
+            .properties(c -> c
+                    .mapColor(MapColor.COLOR_BLUE)
                     .sound(SoundType.METAL))
             .register();
 
@@ -145,7 +182,7 @@ public class EIBlocks {
             })
             .register();
 
-    public static final BlockEntry<Block> CRACKING_COLUMN_BASE = REGISTRATE.block("cracking_column_base", Block::new)
+    public static final BlockEntry<CrackingColumnBaseBlock> CRACKING_COLUMN_BASE = REGISTRATE.block("cracking_column_base", CrackingColumnBaseBlock::new)
             .initialProperties(SharedProperties::copperMetal)
             .properties(c -> c.mapColor(MapColor.COLOR_BLUE).destroyTime(20))
             .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_IRON_TOOL)
@@ -154,7 +191,7 @@ public class EIBlocks {
             .recipe((c, p) -> {}) //TODO
             .register();
 
-    public static final BlockEntry<Block> FLARE_STACK_VENT = REGISTRATE.block("flare_stack_vent", Block::new)
+    public static final BlockEntry<FlareStackVentBlock> FLARE_STACK_VENT = REGISTRATE.block("flare_stack_vent", FlareStackVentBlock::new)
             .initialProperties(SharedProperties::copperMetal)
             .properties(c -> c.mapColor(MapColor.COLOR_BLUE).destroyTime(20))
             .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_IRON_TOOL)
