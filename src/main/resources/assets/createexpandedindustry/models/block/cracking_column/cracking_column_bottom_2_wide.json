@@ -1,0 +1,23 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "createexpandedindustry:block/cobalt_casing",
+		"particle": "createexpandedindustry:block/cobalt_casing"
+	},
+	"elements": [
+		{
+			"from": [-10, 0, -10],
+			"to": [10, 16, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [-13, 0, -9.1]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#0"}
+			}
+		}
+	]
+}

@@ -23,6 +23,7 @@
   "block.createexpandedindustry.fractionating_column_multiblock": "Fractionating Column",
   "block.createexpandedindustry.flare_stack_multiblock": "Flare Stack",
   "block.createexpandedindustry.cracking_column_multiblock": "Cracking Column",
+  "block.createexpandedindustry.cracking_column_model": "Cracking Column",
   "block.createexpandedindustry.multiblock_kinetic_io": "Shaft port",
   "block.createexpandedindustry.multiblock_ghost": "Multiblock",
   "block.createexpandedindustry.multiblock_inventory": "Multiblock Inventory",

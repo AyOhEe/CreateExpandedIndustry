@@ -21,6 +21,7 @@ import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import io.github.ayohee.expandedindustry.content.blocks.HardenedStoneBlock;
 import io.github.ayohee.expandedindustry.content.blocks.LoopingJukeboxBlock;
 import io.github.ayohee.expandedindustry.content.complex.crackingcolumn.CrackingColumnBaseBlock;
+import io.github.ayohee.expandedindustry.content.complex.crackingcolumn.CrackingColumnModelBlock;
 import io.github.ayohee.expandedindustry.content.complex.crackingcolumn.CrackingColumnMultiblock;
 import io.github.ayohee.expandedindustry.content.complex.flarestack.FlareStackMultiblock;
 import io.github.ayohee.expandedindustry.content.complex.flarestack.FlareStackVentBlock;
@@ -78,7 +79,6 @@ public class EIBlocks {
 
     public static final BlockEntry<FractionatingColumnMultiblock> FRACTIONATING_COLUMN_MULTIBLOCK = REGISTRATE
             .block("fractionating_column_multiblock", FractionatingColumnMultiblock::new)
-            //.blockstate(FractionatingColumnMultiblock::generateBlockstate)
             .blockstate(Helpers.ghostBlock())
             .initialProperties(() -> Blocks.GLASS)
             .properties(Helpers::multiblockComponent)
@@ -89,7 +89,6 @@ public class EIBlocks {
 
     public static final BlockEntry<FlareStackMultiblock> FLARE_STACK_MULTIBLOCK = REGISTRATE
             .block("flare_stack_multiblock", FlareStackMultiblock::new)
-            //.blockstate(FlareStackMultiblock::generateBlockstate)
             .blockstate(Helpers.ghostBlock())
             .initialProperties(() -> Blocks.GLASS)
             .properties(Helpers::multiblockComponent)
@@ -100,8 +99,17 @@ public class EIBlocks {
 
     public static final BlockEntry<CrackingColumnMultiblock> CRACKING_COLUMN_MULTIBLOCK = REGISTRATE
             .block("cracking_column_multiblock", CrackingColumnMultiblock::new)
-            //.blockstate(CrackingColumnMultiblock::generateBlockstate)
-            .blockstate(Helpers.ghostBlock())
+            .blockstate(CrackingColumnMultiblock::generateBlockstate)
+            .initialProperties(() -> Blocks.GLASS)
+            .properties(Helpers::multiblockComponent)
+            .properties(c -> c
+                    .mapColor(MapColor.COLOR_BLUE)
+                    .sound(SoundType.METAL))
+            .register();
+
+    public static final BlockEntry<CrackingColumnModelBlock> CRACKING_COLUMN_MODEL = REGISTRATE
+            .block("cracking_column_model", CrackingColumnModelBlock::new)
+            .blockstate(CrackingColumnModelBlock::generateBlockstate)
             .initialProperties(() -> Blocks.GLASS)
             .properties(Helpers::multiblockComponent)
             .properties(c -> c

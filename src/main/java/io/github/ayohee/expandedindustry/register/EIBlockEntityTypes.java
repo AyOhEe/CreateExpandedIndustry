@@ -147,5 +147,10 @@ public class EIBlockEntityTypes {
             .validBlocks(EIBlocks.CRACKING_COLUMN_MULTIBLOCK)
             .register();
 
+    public static final BlockEntityEntry<MultiblockModelBE> CRACKING_COLUMN_MODEL = REGISTRATE
+            .blockEntity("cracking_column_model", MultiblockModelBE::new)
+            .validBlocks(EIBlocks.CRACKING_COLUMN_MODEL)
+            .register();
+
     public static void register() { }
 }
