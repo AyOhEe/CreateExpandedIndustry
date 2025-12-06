@@ -122,7 +122,6 @@ public class CrackingColumnMultiblock extends AbstractMultiblockController<Crack
         }
     }
 
-    //FIXME just places air for now. temporary implementation
     public static void deconstructMBS(LevelAccessor level, BlockPos corePos) {
         int size = level.getBlockState(corePos).getValue(SIZE);
 
@@ -149,10 +148,18 @@ public class CrackingColumnMultiblock extends AbstractMultiblockController<Crack
         int yEnd = yTop + 1;
         int zEnd = zStart + size;
 
+        // Place column blocks
         for (int x = xStart; x < xEnd; x++) {
             for (int z = zStart; z < zEnd; z++) {
-                for (int y = yStart; y < yEnd; y++) {
-                    level.setBlock(new BlockPos(x, y, z), Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL);
+                level.setBlock(new BlockPos(x, yStart, z), EIBlocks.CRACKING_COLUMN_BASE.getDefaultState(), Block.UPDATE_ALL);
+            }
+        }
+
+        // Place tanks
+        for (int x = xStart; x < xEnd; x++) {
+            for (int z = zStart; z < zEnd; z++) {
+                for (int y = yStart + 1; y < yEnd; y++) {
+                    level.setBlock(new BlockPos(x, y, z), EIBlocks.PRESSURISED_FLUID_TANK.getDefaultState(), Block.UPDATE_ALL);
                 }
             }
         }
