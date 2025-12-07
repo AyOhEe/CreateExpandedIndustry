@@ -122,9 +122,7 @@ public class CrackingColumnMultiblock extends AbstractMultiblockController<Crack
         }
     }
 
-    public static void deconstructMBS(LevelAccessor level, BlockPos corePos) {
-        int size = level.getBlockState(corePos).getValue(SIZE);
-
+    public static void deconstructMBS(LevelAccessor level, BlockPos corePos, int size) {
         int x0 = corePos.getX();
         int yTop = corePos.getY();
         int z0 = corePos.getZ();
@@ -166,10 +164,6 @@ public class CrackingColumnMultiblock extends AbstractMultiblockController<Crack
     }
 
     private static int getColumnHeight(LevelAccessor level, BlockPos corePos) {
-        int x0 = corePos.getX();
-        int y0 = corePos.getY();
-        int z0 = corePos.getZ();
-
         int height = 0;
         BlockPos pos = corePos;
         while (isColumnBlock(level, pos)) {
