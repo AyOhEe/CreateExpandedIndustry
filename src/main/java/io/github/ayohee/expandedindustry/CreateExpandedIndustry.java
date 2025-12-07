@@ -48,8 +48,6 @@ public class CreateExpandedIndustry {
         REGISTRATE.registerEventListeners(modEventBus);
 
 
-        NeoForge.EVENT_BUS.register(this);
-
         EIBlockEntityTypes.register();
         EIBlocks.register();
         EIFluids.register();
@@ -64,14 +62,9 @@ public class CreateExpandedIndustry {
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
-        LOGGER.info("HELLO FROM COMMON SETUP");
-    }
-
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
-        // Do something when the server starts
-        LOGGER.info("HELLO from server starting");
+        event.enqueueWork(() -> {
+            EIContraptionMovementSettings.registerDefaults();
+        });
     }
 
 
