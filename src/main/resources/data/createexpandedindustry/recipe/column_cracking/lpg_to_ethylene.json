@@ -1,0 +1,16 @@
+{
+  "type": "createexpandedindustry:column_cracking",
+  "ingredients": [
+    {
+      "type": "fluid_stack",
+      "fluid": "createexpandedindustry:liquid_petroleum_gas",
+      "amount": 250
+    }
+  ],
+  "results": [
+    {
+      "id": "createexpandedindustry:ethylene",
+      "amount": 250
+    }
+  ]
+}

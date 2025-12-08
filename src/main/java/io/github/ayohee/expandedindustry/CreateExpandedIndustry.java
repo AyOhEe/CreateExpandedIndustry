@@ -59,6 +59,7 @@ public class CreateExpandedIndustry {
         EISoundEvents.register();
         EIDataComponents.register();
         EIArmorMaterials.register();
+        EIRecipeTypes.register(modEventBus);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
