@@ -9,6 +9,7 @@ import io.github.ayohee.expandedindustry.register.EIFluids;
 import io.github.ayohee.expandedindustry.register.EIItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 
 import java.util.concurrent.CompletableFuture;
@@ -30,6 +31,14 @@ public class EIMixingRecipeGen extends MixingRecipeGen {
                     .require(AllItems.CRUSHED_IRON)
                     .requiresHeat(HeatCondition.HEATED)
                     .output(EIItems.POLYETHYLENE_BEADS, 4)
+    );
+
+    public final GeneratedRecipe UNPOLISHED_MAGNETISED_COBALT = create(
+            "unpolished_magnetised_cobalt",
+            b -> b.require(EIItems.COBALT_INGOT)
+                    .require(Items.REDSTONE)
+                    .require(Items.GLOWSTONE)
+                    .output(EIItems.UNPOLISHED_MAGNETISED_COBALT)
     );
 
     public EIMixingRecipeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
