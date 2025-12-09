@@ -2,6 +2,7 @@ package io.github.ayohee.expandedindustry.content.complex.crackingcolumn;
 
 import io.github.ayohee.expandedindustry.multiblock.AbstractMultiblockControllerBE;
 import io.github.ayohee.expandedindustry.multiblock.IHaveFluidStorage;
+import io.github.ayohee.expandedindustry.register.EIRecipeTypes;
 import net.createmod.catnip.nbt.NBTHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -40,13 +41,20 @@ public class CrackingColumnMultiblockBE extends AbstractMultiblockControllerBE i
     }
 
     @Override
+    public void tick() {
+        super.tick();
+
+        //level.getRecipeManager().getRecipeFor(EIRecipeTypes.COLUMN_CRACKING.getType(), , level, );
+    }
+
+    @Override
     public List<Component> multiblockTooltip(boolean isPlayerSneaking) {
         ArrayList<Component> tooltip = new ArrayList<>();
 
         if (!fluids.isEmpty()) {
             tooltip.add(Component.literal("    Fluid contents: "));
             for (FluidTank tank : fluids) {
-                tooltip.add(Component.literal("    " + tank.getFluid()));
+                tooltip.add(Component.literal("     - " + tank.getFluid()));
             }
         } else {
             tooltip.add(Component.literal("    Fluid contents: Empty"));
