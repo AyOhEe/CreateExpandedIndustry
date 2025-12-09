@@ -8,6 +8,8 @@ import net.minecraft.world.item.crafting.RecipeInput;
 import net.minecraft.world.level.Level;
 
 public class ColumnCrackingRecipe extends StandardProcessingRecipe<RecipeInput> {
+    public static final int MAX_FLUIDS = 4;
+
     public ColumnCrackingRecipe(ProcessingRecipeParams params) {
         super(EIRecipeTypes.COLUMN_CRACKING, params);
     }
@@ -19,7 +21,7 @@ public class ColumnCrackingRecipe extends StandardProcessingRecipe<RecipeInput> 
 
     @Override
     protected int getMaxFluidInputCount() {
-        return 8;
+        return MAX_FLUIDS;
     }
 
     @Override
@@ -29,7 +31,7 @@ public class ColumnCrackingRecipe extends StandardProcessingRecipe<RecipeInput> 
 
     @Override
     protected int getMaxFluidOutputCount() {
-        return 8;
+        return MAX_FLUIDS;
     }
 
     @Override
