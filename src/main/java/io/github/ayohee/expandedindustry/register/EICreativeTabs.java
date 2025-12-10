@@ -1,16 +1,22 @@
 package io.github.ayohee.expandedindustry.register;
 
 import com.simibubi.create.AllCreativeModeTabs;
+import com.simibubi.create.content.fluids.VirtualFluid;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.tterrag.registrate.util.entry.FluidEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
+import io.github.ayohee.expandedindustry.content.items.PressurisedCanisterItem;
+import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LiquidBlock;
+import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.SimpleFluidContent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import static io.github.ayohee.expandedindustry.CreateExpandedIndustry.REGISTRATE;
@@ -35,8 +41,29 @@ public class EICreativeTabs {
                         continue;
                     output.accept(entry.get(), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
                 }
+
+                ItemStack[] filledCanisters = {
+                        generateFilledCanister(EIFluids.LIQUID_PETROLEUM_GAS),
+                        generateFilledCanister(EIFluids.ETHYLENE),
+                        generateFilledCanister(EIFluids.HYDROGEN_GAS)
+                };
+                for (ItemStack canister : filledCanisters) {
+                    output.accept(canister, CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
+                }
             })
             .build());
+
+    private static ItemStack generateFilledCanister(FluidEntry<VirtualFluid> fluidEntry) {
+        ItemStack item = EIItems.PRESSURISED_CANISTER.asStack();
+        FluidStack fluid = new FluidStack(fluidEntry.get(), PressurisedCanisterItem.CAPACITY);
+
+        item.applyComponents(DataComponentPatch.builder()
+                .set(EIDataComponents.FLUID_STACK.get(), SimpleFluidContent.copyOf(fluid))
+                .build()
+        );
+
+        return item;
+    }
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> DECORATIVES_TAB = EIRegistries.CREATIVE_MODE_TABS.register("decoratives_tab", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.createexpandedindustry_decoratives"))
