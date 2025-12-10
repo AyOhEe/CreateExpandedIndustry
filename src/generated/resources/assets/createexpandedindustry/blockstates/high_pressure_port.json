@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "createexpandedindustry:block/high_pressure_port",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "createexpandedindustry:block/high_pressure_port",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "createexpandedindustry:block/high_pressure_port",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "createexpandedindustry:block/high_pressure_port",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "createexpandedindustry:block/high_pressure_port"
+    },
+    "facing=west": {
+      "model": "createexpandedindustry:block/high_pressure_port",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

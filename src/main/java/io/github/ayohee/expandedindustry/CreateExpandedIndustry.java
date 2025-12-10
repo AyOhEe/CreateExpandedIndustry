@@ -44,7 +44,6 @@ public class CreateExpandedIndustry {
         modEventBus.addListener(EventPriority.HIGHEST, EIDatagen::gatherDataHighPriority);
         modEventBus.addListener(EventPriority.LOWEST, EIDatagen::gatherData);
 
-
         REGISTRATE.registerEventListeners(modEventBus);
 
 

@@ -6,6 +6,7 @@
     "createexpandedindustry:fractionating_column_port",
     "createexpandedindustry:drill_beam",
     "createexpandedindustry:drill_motor",
-    "createexpandedindustry:drill_bit"
+    "createexpandedindustry:drill_bit",
+    "createexpandedindustry:high_pressure_port"
   ]
 }

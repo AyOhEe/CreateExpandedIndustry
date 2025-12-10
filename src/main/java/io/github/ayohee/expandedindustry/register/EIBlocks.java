@@ -19,7 +19,9 @@ import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import io.github.ayohee.expandedindustry.content.blocks.HardenedStoneBlock;
+import io.github.ayohee.expandedindustry.content.blocks.HighPressurePortBlock;
 import io.github.ayohee.expandedindustry.content.blocks.LoopingJukeboxBlock;
+import io.github.ayohee.expandedindustry.content.blocks.WrenchableBlock;
 import io.github.ayohee.expandedindustry.content.complex.crackingcolumn.CrackingColumnBaseBlock;
 import io.github.ayohee.expandedindustry.content.complex.crackingcolumn.CrackingColumnModelBlock;
 import io.github.ayohee.expandedindustry.content.complex.crackingcolumn.CrackingColumnMultiblock;
@@ -282,6 +284,16 @@ public class EIBlocks {
             .properties(p -> p.mapColor(MapColor.COLOR_GRAY)
                     .noOcclusion()
                     .sound(SoundType.NETHERITE_BLOCK))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_IRON_TOOL)
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<HighPressurePortBlock> HIGH_PRESSURE_PORT = REGISTRATE
+            .block("high_pressure_port", HighPressurePortBlock::new)
+            .initialProperties(SharedProperties::copperMetal)
+            .blockstate(HighPressurePortBlock::generateBlockstate)
+            .properties(p -> p.mapColor(MapColor.COLOR_LIGHT_BLUE)
+                    .noOcclusion())
             .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_IRON_TOOL)
             .simpleItem()
             .register();
