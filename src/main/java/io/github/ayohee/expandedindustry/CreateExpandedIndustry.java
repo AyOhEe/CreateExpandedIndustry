@@ -4,6 +4,7 @@ import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipModifier;
+import io.github.ayohee.expandedindustry.content.blockentities.HighPressurePortBlockEntity;
 import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.PressurisedFluidTankBlockEntity;
 import io.github.ayohee.expandedindustry.content.items.PressurisedCanisterItem;
 import io.github.ayohee.expandedindustry.multiblock.MultiblockFluidInputBE;
@@ -74,5 +75,6 @@ public class CreateExpandedIndustry {
         MultiblockFluidTankBE.registerCapabilities(event);
         MultiblockFluidInputBE.registerCapabilities(event);
         PressurisedCanisterItem.registerCapabilities(event);
+        HighPressurePortBlockEntity.registerCapabilities(event);
     }
 }

@@ -4,6 +4,7 @@ import com.simibubi.create.content.decoration.palettes.AllPaletteStoneTypes;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import io.github.ayohee.expandedindustry.content.blockentities.HardenedStoneBlockEntity;
 import io.github.ayohee.expandedindustry.content.blockentities.HardenedStoneBlockEntity.RichnessProfile;
+import io.github.ayohee.expandedindustry.content.blockentities.HighPressurePortBlockEntity;
 import io.github.ayohee.expandedindustry.content.blockentities.LoopingJukeboxBlockEntity;
 import io.github.ayohee.expandedindustry.content.complex.crackingcolumn.CrackingColumnMultiblockBE;
 import io.github.ayohee.expandedindustry.content.complex.flarestack.FlareStackMultiblockBE;
@@ -150,6 +151,11 @@ public class EIBlockEntityTypes {
     public static final BlockEntityEntry<MultiblockModelBE> CRACKING_COLUMN_MODEL = REGISTRATE
             .blockEntity("cracking_column_model", MultiblockModelBE::new)
             .validBlocks(EIBlocks.CRACKING_COLUMN_MODEL)
+            .register();
+
+    public static final BlockEntityEntry<HighPressurePortBlockEntity> HIGH_PRESSURE_PORT = REGISTRATE
+            .blockEntity("high_pressure_port", HighPressurePortBlockEntity::new)
+            .validBlocks(EIBlocks.HIGH_PRESSURE_PORT)
             .register();
 
     public static void register() { }
