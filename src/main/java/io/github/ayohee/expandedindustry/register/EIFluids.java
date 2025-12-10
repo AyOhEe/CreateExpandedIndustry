@@ -70,6 +70,11 @@ public class EIFluids {
             .tag(AllTags.commonFluidTag("liquid_petroleum_gas"), AllTags.AllFluidTags.BOTTOMLESS_DENY.tag)
             .register();
 
+    public static final FluidEntry<VirtualFluid> HYDROGEN_GAS = REGISTRATE.virtualFluid("hydrogen_gas")
+            .renderType(() -> RenderType::translucent)
+            .tag(AllTags.commonFluidTag("hydrogen_gas"), AllTags.AllFluidTags.BOTTOMLESS_DENY.tag)
+            .register();
+
     public static final FluidEntry<BaseFlowingFluid.Flowing> KEROSENE = REGISTRATE
             .standardFluid("kerosene", SolidRenderedPlaceableFluidType.create(0x707060, () -> 1f / 8f))
             .tag(AllTags.commonFluidTag("kerosene"), AllTags.AllFluidTags.BOTTOMLESS_DENY.tag)
