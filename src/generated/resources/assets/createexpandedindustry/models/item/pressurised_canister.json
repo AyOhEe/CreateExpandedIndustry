@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "createexpandedindustry:item/pressurised_canister"
-  }
+  "parent": "createexpandedindustry:item/custom_renderer"
 }

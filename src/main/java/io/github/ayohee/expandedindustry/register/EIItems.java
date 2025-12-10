@@ -186,7 +186,10 @@ public class EIItems {
 
     public static final ItemEntry<PressurisedCanisterItem> PRESSURISED_CANISTER = REGISTRATE.item("pressurised_canister", PressurisedCanisterItem::new)
             .properties(p -> p.stacksTo(1))
-            .defaultModel()
+            .model((ctx, prov) -> {
+                ResourceLocation entity = ResourceLocation.fromNamespaceAndPath(MODID, "custom_renderer");
+                prov.withExistingParent(ctx.getName(), entity);
+            })
             .register();
 
 

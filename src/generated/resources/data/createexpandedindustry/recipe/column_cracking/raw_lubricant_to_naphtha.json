@@ -5,6 +5,11 @@
       "type": "fluid_stack",
       "amount": 250,
       "fluid": "createexpandedindustry:raw_lubricating_oil"
+    },
+    {
+      "type": "fluid_stack",
+      "amount": 250,
+      "fluid": "createexpandedindustry:hydrogen_gas"
     }
   ],
   "results": [

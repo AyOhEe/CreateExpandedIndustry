@@ -4,18 +4,18 @@
     {
       "type": "fluid_stack",
       "amount": 250,
-      "fluid": "createexpandedindustry:naphtha"
+      "fluid": "createexpandedindustry:liquid_petroleum_gas"
     },
     {
       "type": "fluid_stack",
       "amount": 250,
-      "fluid": "createexpandedindustry:hydrogen_gas"
+      "fluid": "minecraft:water"
     }
   ],
   "results": [
     {
       "amount": 250,
-      "id": "createexpandedindustry:liquid_petroleum_gas"
+      "id": "createexpandedindustry:hydrogen_gas"
     }
   ]
 }
