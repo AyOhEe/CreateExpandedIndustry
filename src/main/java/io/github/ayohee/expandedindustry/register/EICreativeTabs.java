@@ -48,7 +48,7 @@ public class EICreativeTabs {
                         generateFilledCanister(EIFluids.HYDROGEN_GAS)
                 };
                 for (ItemStack canister : filledCanisters) {
-                    output.accept(canister, CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
+                    output.accept(canister, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
                 }
             })
             .build());
