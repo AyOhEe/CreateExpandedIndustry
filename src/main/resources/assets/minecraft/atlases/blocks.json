@@ -18,6 +18,14 @@
     },
     {
       "type": "single",
+      "resource": "createexpandedindustry:fluid/hydrogen_gas_still"
+    },
+    {
+      "type": "single",
+      "resource": "createexpandedindustry:fluid/hydrogen_gas_flow"
+    },
+    {
+      "type": "single",
       "resource": "createexpandedindustry:fluid/naphtha_still"
     },
     {

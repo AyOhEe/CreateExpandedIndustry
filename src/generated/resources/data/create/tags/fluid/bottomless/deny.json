@@ -6,6 +6,8 @@
     "createexpandedindustry:naphtha",
     "createexpandedindustry:flowing_liquid_petroleum_gas",
     "createexpandedindustry:liquid_petroleum_gas",
+    "createexpandedindustry:flowing_hydrogen_gas",
+    "createexpandedindustry:hydrogen_gas",
     "createexpandedindustry:flowing_kerosene",
     "createexpandedindustry:kerosene",
     "createexpandedindustry:flowing_ethylene",

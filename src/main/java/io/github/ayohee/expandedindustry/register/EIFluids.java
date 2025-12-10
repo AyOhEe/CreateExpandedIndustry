@@ -25,6 +25,7 @@ public class EIFluids {
         REGISTRATE.setCreativeTab(EICreativeTabs.MAIN_TAB);
     }
 
+    //NOTE fluid textures must be registered in assets/minecraft/atlases/blocks.json
 
     public static final FluidEntry<BaseFlowingFluid.Flowing> CRUDE_OIL = REGISTRATE
             .standardFluid("crude_oil", SolidRenderedPlaceableFluidType.create(0x202020, () -> 1f / 16f))

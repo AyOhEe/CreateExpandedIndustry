@@ -1,4 +1,4 @@
-// 1.21.1	2025-12-10T02:47:32.2069135	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+// 1.21.1	2025-12-10T16:47:07.2116919	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
 6e03a436dd8254b20cbeb067a439f0585650f911 assets/createexpandedindustry/blockstates/asphalt_block.json
 bd0755cb64e51af387437e3c12f564f48dc7ecf5 assets/createexpandedindustry/blockstates/black_asphalt_block.json
 a65145a8688f0ebdf178ddfaf3d37dc634ef2e1e assets/createexpandedindustry/blockstates/black_microplastic_block.json
@@ -311,7 +311,7 @@ cca57c791e10d4d6f056e39c9e60e1b7b1bfaf92 data/createexpandedindustry/recipe/musi
 2d807a4d061658f0fddb5e5c46cbe44833d96a76 data/createexpandedindustry/tags/item/asphalt_block.json
 7ee9bcfbb90dce60eba16296e73c2ad6f478ec3d data/createexpandedindustry/tags/item/microplastic_block.json
 a7b6113f0409329409c34bd15486eb85d5f7234f data/create/tags/block/casing.json
-6160555369e22d07ca2bda33a24e4729100e7fc9 data/create/tags/fluid/bottomless/deny.json
+e48a4c8608ad96655f08351fba897db0d514c6dc data/create/tags/fluid/bottomless/deny.json
 4a9eefb875950747e3314fdca706e4e15bf49f3b data/create/tags/item/blaze_burner_fuel/special.json
 a7b6113f0409329409c34bd15486eb85d5f7234f data/create/tags/item/casing.json
 537142d9938fe713f24073f943ed1385bd57280e data/create/tags/item/crushed_raw_materials.json
@@ -319,6 +319,7 @@ a7b6113f0409329409c34bd15486eb85d5f7234f data/create/tags/item/casing.json
 e91ccf79653f3ba412bf95750fe08aa9e691f67b data/c/tags/fluid/crude_oil.json
 916ff33614bbee74530d40ffef9e92ed47d6a778 data/c/tags/fluid/ethylene.json
 5eaa3617eee13fcd061d5eb617d5a759ec93c2bc data/c/tags/fluid/hot_bitumen.json
+caecbe19cbfaeef10c369d53233b4a012007320e data/c/tags/fluid/hydrogen_gas.json
 2ce76669e19ea989a4109d8d1f43f707e377c7e4 data/c/tags/fluid/kerosene.json
 21e09c656ecbb9cad97491876e48ab7a1c8d76d6 data/c/tags/fluid/liquid_petroleum_gas.json
 2b5c8a57c58bd83a9f55db04b587b62b8e91096d data/c/tags/fluid/lubricant.json
