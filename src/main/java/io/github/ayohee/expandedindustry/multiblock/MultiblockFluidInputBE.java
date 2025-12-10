@@ -74,7 +74,9 @@ public class MultiblockFluidInputBE extends BlockEntity implements IMultiblockCo
         if (controller != null || !hasLevel() || controllerPos == null) {
             return;
         }
-        controller = (AbstractMultiblockControllerBE) level.getBlockEntity(controllerPos);
+
+        BlockEntity possibleController = level.getBlockEntity(controllerPos);
+        controller = (possibleController instanceof AbstractMultiblockControllerBE c) ? c : null;
     }
 
     @Override

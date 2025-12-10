@@ -104,7 +104,7 @@ public class PressurisedCanisterItem extends Item {
                                  ItemDisplayContext transformType,
                                  PoseStack ms,
                                  MultiBufferSource buffer,
-                                 int light, 
+                                 int light,
                                  int overlay) {
             ItemTransform tf = ITEM.get().getTransforms().getTransform(transformType);
             ms.translate(0.5f, 0.5f, 0.5f);
