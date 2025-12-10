@@ -1,5 +1,8 @@
-// 1.21.1	2025-12-10T16:32:34.6547538	Create: Expanded Industry's Processing Recipes
+// 1.21.1	2025-12-10T16:43:00.3046374	Create: Expanded Industry's Processing Recipes
+9874fe8deff6d1364f66457a848e964b254f7b2c data/createexpandedindustry/recipe/column_cracking/kerosene_to_raw_lubricant.json
 94a935464eed4f7ca3383580ee2c90b03ff091a2 data/createexpandedindustry/recipe/column_cracking/lpg_to_ethylene.json
+78e6ec82037cf833558fe06ee61d82f3835d5101 data/createexpandedindustry/recipe/column_cracking/naphtha_to_lpg.json
+2fffb37b7ba6b213cb534c137eeca388b9616a26 data/createexpandedindustry/recipe/column_cracking/raw_lubricant_to_naphtha.json
 7f4f4d1153a84c8f81fc55fd5845971e31c8d67b data/createexpandedindustry/recipe/compacting/polyethylene_sheet.json
 3707e89340f32d47984d43256d25a7c6e849ca22 data/createexpandedindustry/recipe/compacting/rubber.json
 669e4684a3a1ca081f32426884100d8eedd0c9ec data/createexpandedindustry/recipe/compacting/solid_fuel.json
