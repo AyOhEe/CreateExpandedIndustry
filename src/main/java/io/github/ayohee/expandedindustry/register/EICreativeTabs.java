@@ -53,9 +53,9 @@ public class EICreativeTabs {
             })
             .build());
 
-    private static ItemStack generateFilledCanister(FluidEntry<VirtualFluid> fluidEntry) {
+        private static ItemStack generateFilledCanister(FluidEntry<VirtualFluid> fluidEntry) {
         ItemStack item = EIItems.PRESSURISED_CANISTER.asStack();
-        FluidStack fluid = new FluidStack(fluidEntry.get(), PressurisedCanisterItem.CAPACITY);
+        FluidStack fluid = new FluidStack(fluidEntry.get().getSource(), PressurisedCanisterItem.CAPACITY);
 
         item.applyComponents(DataComponentPatch.builder()
                 .set(EIDataComponents.FLUID_STACK.get(), SimpleFluidContent.copyOf(fluid))
