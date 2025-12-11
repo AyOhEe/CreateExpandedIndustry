@@ -6,16 +6,25 @@ import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import io.github.ayohee.expandedindustry.content.blockentities.HighPressurePortBlockEntity;
 import io.github.ayohee.expandedindustry.register.EIBlockEntityTypes;
+import io.github.ayohee.expandedindustry.util.TickingBlockEntityTicker;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
@@ -58,5 +67,40 @@ public class HighPressurePortBlock extends WrenchableBlock implements IBE<HighPr
     @Override
     public BlockEntityType<? extends HighPressurePortBlockEntity> getBlockEntityType() {
         return EIBlockEntityTypes.HIGH_PRESSURE_PORT.get();
+    }
+
+    @Override
+    public <S extends BlockEntity> BlockEntityTicker<S> getTicker(Level level, BlockState blockState, BlockEntityType<S> blockEntityType) {
+        return new TickingBlockEntityTicker<>();
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        if (player.isHolding((is) -> !is.isEmpty())) {
+            return InteractionResult.PASS;
+        }
+
+        HighPressurePortBlockEntity be = (HighPressurePortBlockEntity) level.getBlockEntity(pos);
+        if (be == null) {
+            return InteractionResult.FAIL;
+        }
+
+        if (player.isShiftKeyDown()) {
+            be.cycleFilter();
+            Fluid filterFluid = be.getFilterFluid();
+            if (filterFluid != null) {
+                player.displayClientMessage(Component.literal("New filter: " + filterFluid.getFluidType().getDescription().getString()), true);
+            }
+        } else {
+            Fluid filterFluid = be.getFilterFluid();
+            if (filterFluid != null) {
+                player.displayClientMessage(Component.literal("Filter: " + filterFluid.getFluidType().getDescription().getString()), true);
+            } else {
+                player.displayClientMessage(Component.literal("Filter: None"), true);
+            }
+        }
+
+
+        return InteractionResult.SUCCESS;
     }
 }

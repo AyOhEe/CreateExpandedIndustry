@@ -13,6 +13,8 @@ import java.util.List;
 public interface IMultiblockComponentBE extends IMultiblockTooltips, ITickingBlockEntity {
     @Nonnull BlockEntity getInstance();
 
+    //TODO make controller positions relative
+    //TODO schematic tolerance/rejection
     void setController(AbstractMultiblockControllerBE mbc);
     void findController();
     AbstractMultiblockControllerBE getController();

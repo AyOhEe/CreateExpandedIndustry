@@ -10,6 +10,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.fluids.FluidStack;
@@ -54,7 +55,7 @@ public class CrackingColumnMultiblockBE extends AbstractMultiblockControllerBE i
         if (!fluids.isEmpty()) {
             tooltip.add(Component.literal("    Fluid contents: "));
             for (FluidTank tank : fluids) {
-                tooltip.add(Component.literal("     - " + tank.getFluid()));
+                tooltip.add(Component.literal("     - " + describeFluidstack(tank.getFluid())));
             }
         } else {
             tooltip.add(Component.literal("    Fluid contents: Empty"));
@@ -63,8 +64,15 @@ public class CrackingColumnMultiblockBE extends AbstractMultiblockControllerBE i
         return tooltip;
     }
 
+    private String describeFluidstack(FluidStack fluid) {
+        return fluid.getAmount() + " / " + INDIVIDUAL_CAPACITY + " :: " + fluid.getFluidType().getDescription().getString();
+    }
+
 
     public int insertFluid(FluidStack f) {
+        if (f.isEmpty()) {
+            return 0;
+        }
         FluidTank relevantTank = findTankWithFluid(f);
 
         // If we don't have room for another tank, and would have to create one, reject the insertion
@@ -78,17 +86,29 @@ public class CrackingColumnMultiblockBE extends AbstractMultiblockControllerBE i
             fluids.add(relevantTank);
         }
 
-        return relevantTank.fill(f, FluidAction.EXECUTE);
+        int result = relevantTank.fill(f, FluidAction.EXECUTE);
+
+        level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_ALL);
+        return result;
     }
 
     public FluidStack removeFluid(FluidStack f) {
+        if (f.isEmpty()) {
+            return FluidStack.EMPTY;
+        }
         FluidTank relevantTank = findTankWithFluid(f);
 
         if (relevantTank == null) {
             return FluidStack.EMPTY;
         }
 
-        return relevantTank.drain(f, FluidAction.EXECUTE);
+        FluidStack result = relevantTank.drain(f, FluidAction.EXECUTE);
+        if (relevantTank.isEmpty()) {
+            fluids.remove(relevantTank);
+        }
+
+        level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_ALL);
+        return result;
     }
 
     public List<FluidStack> getContents() {
