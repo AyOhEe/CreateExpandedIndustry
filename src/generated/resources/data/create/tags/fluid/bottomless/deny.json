@@ -17,6 +17,8 @@
     "createexpandedindustry:flowing_lubricant",
     "createexpandedindustry:lubricant",
     "createexpandedindustry:flowing_hot_bitumen",
-    "createexpandedindustry:hot_bitumen"
+    "createexpandedindustry:hot_bitumen",
+    "createexpandedindustry:flowing_mixed_hydrocarbons",
+    "createexpandedindustry:mixed_hydrocarbons"
   ]
 }

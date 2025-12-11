@@ -71,6 +71,14 @@
     {
       "type": "single",
       "resource": "createexpandedindustry:fluid/hot_bitumen_flow"
+    },
+    {
+      "type": "single",
+      "resource": "createexpandedindustry:fluid/mixed_hydrocarbons_still"
+    },
+    {
+      "type": "single",
+      "resource": "createexpandedindustry:fluid/mixed_hydrocarbons_flow"
     }
   ]
 }

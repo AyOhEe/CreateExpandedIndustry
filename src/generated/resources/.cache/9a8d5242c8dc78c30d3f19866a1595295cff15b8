@@ -1,4 +1,4 @@
-// 1.21.1	2025-12-10T20:07:06.0151665	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+// 1.21.1	2025-12-11T23:09:58.2970621	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
 6e03a436dd8254b20cbeb067a439f0585650f911 assets/createexpandedindustry/blockstates/asphalt_block.json
 bd0755cb64e51af387437e3c12f564f48dc7ecf5 assets/createexpandedindustry/blockstates/black_asphalt_block.json
 a65145a8688f0ebdf178ddfaf3d37dc634ef2e1e assets/createexpandedindustry/blockstates/black_microplastic_block.json
@@ -46,6 +46,7 @@ c716aee49a5423e54e11928d37cb04c717b56063 assets/createexpandedindustry/blockstat
 ac224600e280a4251ae23fe3ee324f0e883e5e02 assets/createexpandedindustry/blockstates/magenta_asphalt_block.json
 62ab39bf7bcc0535c3a7531b3b1bd8e9ee268bab assets/createexpandedindustry/blockstates/magenta_microplastic_block.json
 da55adddfb845ba5022f48a25a3f3d2d815ac6e4 assets/createexpandedindustry/blockstates/microplastic_block.json
+5ceed3de9e316efc59f1b30d34b7c9ad99fcc2a9 assets/createexpandedindustry/blockstates/mixed_hydrocarbons.json
 a2b9e2ecb74efc614408fcefb92d1469cf2e8efc assets/createexpandedindustry/blockstates/multiblock_fluid_input.json
 44d4379d27b5d82a081cfcd407000faa01aaf6c8 assets/createexpandedindustry/blockstates/multiblock_fluid_io.json
 70ce21bc13b57fbd08e4f06ce227550583759ef8 assets/createexpandedindustry/blockstates/multiblock_ghost.json
@@ -70,8 +71,8 @@ ca54aed1c9177863d3cfe5394cef241bf75fe166 assets/createexpandedindustry/blockstat
 ddf9c5613e438e93d450e86e9bf3f56e4e34202c assets/createexpandedindustry/blockstates/white_microplastic_block.json
 d65eb6457ab3b24d0bde349da1e1767715cd475b assets/createexpandedindustry/blockstates/yellow_asphalt_block.json
 41c795e54247e0b2e6363fabd7d2bb9f2d6ea7a0 assets/createexpandedindustry/blockstates/yellow_microplastic_block.json
-e8fe29e00fb622f28402b04442db0ce85cba8fe9 assets/createexpandedindustry/lang/en_ud.json
-2e493f2ca92562b9ab28e4a54002636d71ed57df assets/createexpandedindustry/lang/en_us.json
+6309dab656797755563fbc1a15e9de1445861bc3 assets/createexpandedindustry/lang/en_ud.json
+c7a64f7ca9495e392786c4788745e4706307c7c6 assets/createexpandedindustry/lang/en_us.json
 6a363fd424376d2eb56f1683a285f09c5b3bed45 assets/createexpandedindustry/models/block/asphalt_block.json
 a7cfd112b26f050b9c31ce0753721d08fa7a3fec assets/createexpandedindustry/models/block/black_asphalt_block.json
 f10525c15f28c8500559a5fd2bfaca7a8447b39f assets/createexpandedindustry/models/block/black_microplastic_block.json
@@ -116,6 +117,7 @@ cb8d6522b297f1c2b5c4926a50136207aa6841a6 assets/createexpandedindustry/models/bl
 03c4a010295c836453ff5d16959ccf552a2a4eab assets/createexpandedindustry/models/block/magenta_asphalt_block.json
 0c2a43d822fe9ccfe4b9eb955f7598cd43297b2b assets/createexpandedindustry/models/block/magenta_microplastic_block.json
 b593ad6d5f2c5ab1bb07c2ad50ea97a598e96a24 assets/createexpandedindustry/models/block/microplastic_block.json
+8280e27882322d0ad2b8ea31b87bdc05a7494929 assets/createexpandedindustry/models/block/mixed_hydrocarbons.json
 2d1ade82820569936fd3021a877283474ced09d0 assets/createexpandedindustry/models/block/multiblock_fluid_input.json
 2d1ade82820569936fd3021a877283474ced09d0 assets/createexpandedindustry/models/block/multiblock_fluid_io.json
 2d1ade82820569936fd3021a877283474ced09d0 assets/createexpandedindustry/models/block/multiblock_ghost.json
@@ -212,6 +214,7 @@ a9c92a19734f8b6fc1bd57ee56e9426d267f293d assets/createexpandedindustry/models/it
 cfc34f1e46e9b53a56ca884a16df038c40cff608 assets/createexpandedindustry/models/item/magnetised_cobalt.json
 a8987c4593bd7d8195e861684834bf09ea9f4c88 assets/createexpandedindustry/models/item/microplastics.json
 110720619542b4f085aa1e86e901760685c20bf2 assets/createexpandedindustry/models/item/microplastic_block.json
+a3865950cc32457c2e393beadc1de8408bb62336 assets/createexpandedindustry/models/item/mixed_hydrocarbons_bucket.json
 6d4a9efdd882604fba0cb10287d3864740614f0e assets/createexpandedindustry/models/item/music_disc_aria_math.json
 bf3b521b058202064271d584ed62b0a9245d8c3c assets/createexpandedindustry/models/item/music_disc_claire_de_lune.json
 fdeec614a6a8737aaa8e06e3eab8a0c83ec7bcf7 assets/createexpandedindustry/models/item/music_disc_valse.json
@@ -311,7 +314,7 @@ cca57c791e10d4d6f056e39c9e60e1b7b1bfaf92 data/createexpandedindustry/recipe/musi
 2d807a4d061658f0fddb5e5c46cbe44833d96a76 data/createexpandedindustry/tags/item/asphalt_block.json
 7ee9bcfbb90dce60eba16296e73c2ad6f478ec3d data/createexpandedindustry/tags/item/microplastic_block.json
 a7b6113f0409329409c34bd15486eb85d5f7234f data/create/tags/block/casing.json
-e48a4c8608ad96655f08351fba897db0d514c6dc data/create/tags/fluid/bottomless/deny.json
+d2d13f1d3c7b6ba4fbbdfc5ab2c599eb594cbb2a data/create/tags/fluid/bottomless/deny.json
 4a9eefb875950747e3314fdca706e4e15bf49f3b data/create/tags/item/blaze_burner_fuel/special.json
 a7b6113f0409329409c34bd15486eb85d5f7234f data/create/tags/item/casing.json
 537142d9938fe713f24073f943ed1385bd57280e data/create/tags/item/crushed_raw_materials.json
@@ -323,11 +326,13 @@ caecbe19cbfaeef10c369d53233b4a012007320e data/c/tags/fluid/hydrogen_gas.json
 2ce76669e19ea989a4109d8d1f43f707e377c7e4 data/c/tags/fluid/kerosene.json
 21e09c656ecbb9cad97491876e48ab7a1c8d76d6 data/c/tags/fluid/liquid_petroleum_gas.json
 2b5c8a57c58bd83a9f55db04b587b62b8e91096d data/c/tags/fluid/lubricant.json
+3739aa0e8ce0e14ecd7c9c46d4e09bb2ae455b9f data/c/tags/fluid/mixed_hydrocarbons.json
 1ee2430cded641cd8dd2691edd8ecb13a98a5993 data/c/tags/fluid/naphtha.json
 e09b563c020c5578e1a89bb65c39086f287aeff7 data/c/tags/fluid/raw_lubricating_oil.json
 6cab5364434ef27a05924fa7cac6ae39a1e3b3c4 data/c/tags/item/buckets/hot_bitumen.json
 387b44d3f12405d67e4cc302ff6c59c470d4c76f data/c/tags/item/buckets/kerosene.json
 a065e95e4d9ed147c6da435bdb0a0a4a8705653c data/c/tags/item/buckets/lubricant.json
+bff73db94d1519a1c54fc83f6bc7a2198bb33757 data/c/tags/item/buckets/mixed_hydrocarbons.json
 67558239027e249ae225f8663d0ce898eac30061 data/c/tags/item/buckets/naphtha.json
 dbbf071be2c6cda446f2bd24639d255eb73f9a01 data/c/tags/item/buckets/oil.json
 c435c5042a019c57fd142a9c1f3406625ae13b6b data/c/tags/item/buckets/raw_lubricating_oil.json

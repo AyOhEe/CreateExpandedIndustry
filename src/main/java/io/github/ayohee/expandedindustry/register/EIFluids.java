@@ -155,6 +155,24 @@ public class EIFluids {
             .build()
             .register();
 
+    public static final FluidEntry<BaseFlowingFluid.Flowing> MIXED_HYDROCARBONS = REGISTRATE
+            .standardFluid("mixed_hydrocarbons", SolidRenderedPlaceableFluidType.create(0x101010, () -> 1f / 16f))
+            .tag(AllTags.commonFluidTag("mixed_hydrocarbons"), AllTags.AllFluidTags.BOTTOMLESS_DENY.tag)
+            .properties(b -> b.viscosity(3000)
+                    .density(2000))
+            .fluidProperties(p -> p.levelDecreasePerBlock(3)
+                    .tickRate(30)
+                    .slopeFindDistance(3)
+                    .explosionResistance(100f))
+            .source(BaseFlowingFluid.Source::new)
+            .block()
+            .properties(p -> p.mapColor(MapColor.COLOR_BLACK))
+            .build()
+            .bucket()
+            .tag(AllTags.commonItemTag("buckets/mixed_hydrocarbons"))
+            .build()
+            .register();
+
 
     public static void register() { }
 

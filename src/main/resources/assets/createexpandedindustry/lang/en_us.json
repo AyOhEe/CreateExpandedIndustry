@@ -142,6 +142,10 @@
   "fluid.createexpandedindustry.hot_bitumen": "Hot Bitumen",
   "item.createexpandedindustry.hot_bitumen_bucket": "Hot Bitumen Bucket",
 
+  "block.createexpandedindustry.mixed_hydrocarbons": "Mixed Hydrocarbons",
+  "fluid.createexpandedindustry.mixed_hydrocarbons": "Mixed Hydrocarbons",
+  "item.createexpandedindustry.mixed_hydrocarbons_bucket": "Mixed Hydrocarbons Bucket",
+
 
   "block.createexpandedindustry.microplastic_block": "Block of Microplastics",
   "block.createexpandedindustry.white_microplastic_block": "White Block of Microplastics",
