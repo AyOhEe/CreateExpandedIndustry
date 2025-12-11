@@ -35,6 +35,11 @@ public class ColumnCrackingRecipe extends StandardProcessingRecipe<RecipeInput> 
     }
 
     @Override
+    protected boolean canRequireHeat() {
+        return true;
+    }
+
+    @Override
     public boolean matches(RecipeInput input, Level level) {
         return false;
     }

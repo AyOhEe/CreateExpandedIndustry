@@ -41,6 +41,14 @@ public class EIMixingRecipeGen extends MixingRecipeGen {
                     .output(EIItems.UNPOLISHED_MAGNETISED_COBALT)
     );
 
+    public final GeneratedRecipe LUBRICANT = create(
+            "lubricant",
+            b -> b.require(EIFluids.RAW_LUBRICATING_OIL.get(), 1000)
+                    .require(Items.GREEN_DYE)
+                    .output(EIFluids.LUBRICANT.get(), 1000)
+                    .requiresHeat(HeatCondition.HEATED)
+    );
+
     public EIMixingRecipeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, CreateExpandedIndustry.MODID);
     }

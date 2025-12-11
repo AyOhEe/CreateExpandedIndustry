@@ -5,18 +5,13 @@
     {
       "type": "fluid_stack",
       "amount": 250,
-      "fluid": "createexpandedindustry:kerosene"
-    },
-    {
-      "type": "fluid_stack",
-      "amount": 250,
-      "fluid": "createexpandedindustry:hydrogen_gas"
+      "fluid": "createexpandedindustry:hot_bitumen"
     }
   ],
   "results": [
     {
       "amount": 250,
-      "id": "createexpandedindustry:raw_lubricating_oil"
+      "id": "createexpandedindustry:mixed_hydrocarbons"
     }
   ]
 }

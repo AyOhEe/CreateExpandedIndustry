@@ -1,5 +1,6 @@
 {
   "type": "createexpandedindustry:column_cracking",
+  "heat_requirement": "heated",
   "ingredients": [
     {
       "type": "fluid_stack",
