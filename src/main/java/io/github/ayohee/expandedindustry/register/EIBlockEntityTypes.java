@@ -153,6 +153,11 @@ public class EIBlockEntityTypes {
             .validBlocks(EIBlocks.CRACKING_COLUMN_MODEL)
             .register();
 
+    public static final BlockEntityEntry<MultiblockModelBE> FRACTIONATING_COLUMN_MODEL = REGISTRATE
+            .blockEntity("fractionating_column_model", MultiblockModelBE::new)
+            .validBlocks(EIBlocks.FRACTIONATING_COLUMN_MODEL)
+            .register();
+
     public static final BlockEntityEntry<HighPressurePortBlockEntity> HIGH_PRESSURE_PORT = REGISTRATE
             .blockEntity("high_pressure_port", HighPressurePortBlockEntity::new)
             .validBlocks(EIBlocks.HIGH_PRESSURE_PORT)

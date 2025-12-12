@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "bottom=false,size=1": {
+      "model": "createexpandedindustry:block/fractionating_column/fractionating_column_middle_1_wide"
+    },
+    "bottom=false,size=2": {
+      "model": "createexpandedindustry:block/fractionating_column/fractionating_column_middle_2_wide"
+    },
+    "bottom=false,size=3": {
+      "model": "createexpandedindustry:block/fractionating_column/fractionating_column_middle_3_wide"
+    },
+    "bottom=true,size=1": {
+      "model": "createexpandedindustry:block/fractionating_column/fractionating_column_bottom_1_wide"
+    },
+    "bottom=true,size=2": {
+      "model": "createexpandedindustry:block/fractionating_column/fractionating_column_bottom_2_wide"
+    },
+    "bottom=true,size=3": {
+      "model": "createexpandedindustry:block/fractionating_column/fractionating_column_bottom_3_wide"
+    }
+  }
+}

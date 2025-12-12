@@ -21,6 +21,7 @@
   "block.createexpandedindustry.erythrite": "Erythrite",
   "block.createexpandedindustry.flare_stack_multiblock": "Flare Stack Multiblock",
   "block.createexpandedindustry.flare_stack_vent": "Flare Stack Vent",
+  "block.createexpandedindustry.fractionating_column_model": "Fractionating Column Model",
   "block.createexpandedindustry.fractionating_column_multiblock": "Fractionating Column Multiblock",
   "block.createexpandedindustry.fractionating_column_port": "Fractionating Column Port",
   "block.createexpandedindustry.gray_asphalt_block": "Gray Asphalt Block",
@@ -126,6 +127,5 @@
   "item.createexpandedindustry.rubber_sheet": "Rubber Sheet",
   "item.createexpandedindustry.solid_fuel": "Solid Fuel",
   "item.createexpandedindustry.spicy_blaze_cake": "Spicy Blaze Cake",
-  "item.createexpandedindustry.unpolished_magnetised_cobalt": "Unpolished Magnetised Cobalt",
-  "createexpandedindustry.recipe.column_cracking": "Column Cracking"
+  "item.createexpandedindustry.unpolished_magnetised_cobalt": "Unpolished Magnetised Cobalt"
 }

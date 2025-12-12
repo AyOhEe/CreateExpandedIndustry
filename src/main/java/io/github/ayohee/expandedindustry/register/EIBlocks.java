@@ -27,6 +27,7 @@ import io.github.ayohee.expandedindustry.content.complex.crackingcolumn.Cracking
 import io.github.ayohee.expandedindustry.content.complex.crackingcolumn.CrackingColumnMultiblock;
 import io.github.ayohee.expandedindustry.content.complex.flarestack.FlareStackMultiblock;
 import io.github.ayohee.expandedindustry.content.complex.flarestack.FlareStackVentBlock;
+import io.github.ayohee.expandedindustry.content.complex.fractionatingcolumn.FractionatingColumnModelBlock;
 import io.github.ayohee.expandedindustry.content.complex.fractionatingcolumn.FractionatingColumnMultiblock;
 import io.github.ayohee.expandedindustry.content.complex.fractionatingcolumn.FractionatingColumnPortBlock;
 import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.*;
@@ -82,6 +83,16 @@ public class EIBlocks {
     public static final BlockEntry<FractionatingColumnMultiblock> FRACTIONATING_COLUMN_MULTIBLOCK = REGISTRATE
             .block("fractionating_column_multiblock", FractionatingColumnMultiblock::new)
             .blockstate(FractionatingColumnMultiblock::generateBlockstate)
+            .initialProperties(() -> Blocks.GLASS)
+            .properties(Helpers::multiblockComponent)
+            .properties(c -> c
+                    .mapColor(MapColor.COLOR_BLUE)
+                    .sound(SoundType.METAL))
+            .register();
+
+    public static final BlockEntry<FractionatingColumnModelBlock> FRACTIONATING_COLUMN_MODEL = REGISTRATE
+            .block("fractionating_column_model", FractionatingColumnModelBlock::new)
+            .blockstate(FractionatingColumnModelBlock::generateBlockstate)
             .initialProperties(() -> Blocks.GLASS)
             .properties(Helpers::multiblockComponent)
             .properties(c -> c
