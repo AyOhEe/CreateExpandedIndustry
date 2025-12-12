@@ -1,5 +1,5 @@
 {
-  "type": "createexpandedindustry:column_cracking",
+  "type": "createexpandedindustry:fractionating_column",
   "heat_requirement": "heated",
   "ingredients": [
     {

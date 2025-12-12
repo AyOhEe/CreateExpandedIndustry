@@ -31,6 +31,7 @@ public class EIRecipeProvider extends RecipeProvider {
         GENERATORS.add(new EICuttingRecipeGen(output, registries));
         GENERATORS.add(new EIFillingRecipeGen(output, registries));
         GENERATORS.add(new EIColumnCrackingRecipeGen(output, registries));
+        GENERATORS.add(new EIFractionatingColumnRecipeGen(output, registries));
 
         gen.addProvider(true, new DataProvider() {
             @Override

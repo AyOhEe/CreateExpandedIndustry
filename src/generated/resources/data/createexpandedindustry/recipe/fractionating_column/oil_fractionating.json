@@ -1,0 +1,25 @@
+{
+  "type": "createexpandedindustry:fractionating_column",
+  "heat_requirement": "heated",
+  "ingredients": [
+    {
+      "type": "fluid_stack",
+      "amount": 250,
+      "fluid": "createexpandedindustry:crude_oil"
+    }
+  ],
+  "results": [
+    {
+      "amount": 70,
+      "id": "createexpandedindustry:hot_bitumen"
+    },
+    {
+      "amount": 80,
+      "id": "createexpandedindustry:mixed_hydrocarbons"
+    },
+    {
+      "amount": 100,
+      "id": "createexpandedindustry:liquid_petroleum_gas"
+    }
+  ]
+}

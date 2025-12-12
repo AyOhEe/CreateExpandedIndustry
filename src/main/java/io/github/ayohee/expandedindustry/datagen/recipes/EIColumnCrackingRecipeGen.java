@@ -22,15 +22,6 @@ public class EIColumnCrackingRecipeGen extends StandardProcessingRecipeGen<Colum
                     .requiresHeat(HeatCondition.HEATED)
     );
 
-    public final GeneratedRecipe MIXED_CRACKING = create(
-            "mixed_cracking",
-            b -> b.require(EIFluids.MIXED_HYDROCARBONS.get(), 250)
-                    .output(EIFluids.KEROSENE.get(), 100)
-                    .output(EIFluids.RAW_LUBRICATING_OIL.get(), 70)
-                    .output(EIFluids.NAPHTHA.get(), 80)
-                    .requiresHeat(HeatCondition.HEATED)
-    );
-
     public final GeneratedRecipe KEROSENE_TO_RAW_LUBRICANT = create(
             "kerosene_to_raw_lubricant",
             b -> b.require(EIFluids.KEROSENE.get(), 250)

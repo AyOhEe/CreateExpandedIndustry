@@ -42,8 +42,8 @@ public class EICompactingRecipeGen extends CompactingRecipeGen {
             "tuff_normal",
             b -> b.require(Blocks.GRAVEL)
                     .require(Blocks.GRAVEL)
-                    .requiresHeat(HeatCondition.HEATED)
                     .require(EIFluids.CRUDE_OIL.get(), 200)
+                    .requiresHeat(HeatCondition.HEATED)
                     .output(Blocks.TUFF, 1)
     );
 
