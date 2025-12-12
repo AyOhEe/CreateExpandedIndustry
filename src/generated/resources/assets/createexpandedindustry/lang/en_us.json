@@ -126,5 +126,6 @@
   "item.createexpandedindustry.rubber_sheet": "Rubber Sheet",
   "item.createexpandedindustry.solid_fuel": "Solid Fuel",
   "item.createexpandedindustry.spicy_blaze_cake": "Spicy Blaze Cake",
-  "item.createexpandedindustry.unpolished_magnetised_cobalt": "Unpolished Magnetised Cobalt"
+  "item.createexpandedindustry.unpolished_magnetised_cobalt": "Unpolished Magnetised Cobalt",
+  "createexpandedindustry.recipe.column_cracking": "Column Cracking"
 }

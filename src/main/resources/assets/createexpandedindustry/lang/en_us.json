@@ -181,5 +181,7 @@
   "block.createexpandedindustry.brown_asphalt_block": "Brown Asphalt",
   "block.createexpandedindustry.green_asphalt_block": "Green Asphalt",
   "block.createexpandedindustry.red_asphalt_block": "Red Asphalt",
-  "block.createexpandedindustry.black_asphalt_block": "Black Asphalt"
+  "block.createexpandedindustry.black_asphalt_block": "Black Asphalt",
+
+  "createexpandedindustry.recipe.column_cracking": "Column Cracking"
 }
