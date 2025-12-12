@@ -1,6 +1,7 @@
 package io.github.ayohee.expandedindustry.content.complex.crackingcolumn;
 
 import com.simibubi.create.content.processing.basin.BasinBlockEntity;
+import com.simibubi.create.content.processing.burner.BlazeBurnerBlock;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipeParams;
 import com.simibubi.create.foundation.fluid.FluidIngredient;
 import com.simibubi.create.foundation.recipe.RecipeFinder;
@@ -27,8 +28,10 @@ import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler.FluidAction;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
+import org.checkerframework.checker.units.qual.C;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -60,9 +63,22 @@ public class CrackingColumnMultiblockBE extends AbstractMultiblockControllerBE i
 
         // Each recipe is defined as the amount processed per tick
         findRecipe();
-        if (currentRecipe != null) {
+        if (currentRecipe != null && sufficientlyHeated()) {
             applyRecipe();
         }
+    }
+
+    private boolean sufficientlyHeated() {
+        // Are we sufficiently heated?
+        int nHeated = findUsableBurners(currentRecipe);
+        int requiredBurners = (size*size) / 2;
+
+        // Nope - stop here
+        if (nHeated < requiredBurners) {
+            return false;
+        }
+
+        return true;
     }
 
     private void findRecipe() {
@@ -235,6 +251,57 @@ public class CrackingColumnMultiblockBE extends AbstractMultiblockControllerBE i
         return true;
     }
 
+    private int findUsableBurners(ColumnCrackingRecipe recipe) {
+        if (recipe == null) {
+            return 0;
+        }
+
+        int nHeated = 0;
+        for (BlockPos burnerPos : burnersBelowColumn()) {
+            BlockState bs = level.getBlockState(burnerPos);
+            BlazeBurnerBlock.HeatLevel heat = BasinBlockEntity.getHeatLevelOf(bs);
+            if (recipe.getRequiredHeat().testBlazeBurner(heat)) {
+                nHeated += 1;
+            }
+        }
+
+        return nHeated;
+    }
+
+    private List<BlockPos> burnersBelowColumn() {
+        LinkedList<BlockPos> burners = new LinkedList<>();
+
+        BlockPos p = getBlockPos().below();
+        while (level.getBlockState(p).getBlock() instanceof CrackingColumnModelBlock) {
+            p = p.below();
+        }
+
+        switch (size) {
+            case 1 -> {
+                burners.add(p);
+            }
+            case 2 -> {
+                burners.add(p);
+                burners.add(p.north());
+                burners.add(p.west());
+                burners.add(p.north().west());
+            }
+            default -> {
+                burners.add(p);
+                burners.add(p.south());
+                burners.add(p.south().west());
+                burners.add(p.south().east());
+                burners.add(p.north());
+                burners.add(p.north().west());
+                burners.add(p.north().east());
+                burners.add(p.west());
+                burners.add(p.east());
+            }
+        }
+
+        return burners;
+    }
+
     private boolean matchStaticFilters(RecipeHolder<? extends Recipe<?>> holder) {
         Recipe<?> r = holder.value();
         return (r instanceof ColumnCrackingRecipe ccr)
@@ -244,6 +311,13 @@ public class CrackingColumnMultiblockBE extends AbstractMultiblockControllerBE i
     @Override
     public List<Component> multiblockTooltip(boolean isPlayerSneaking) {
         ArrayList<Component> tooltip = new ArrayList<>();
+
+        if (currentRecipe != null) {
+            tooltip.add(Component.literal("    Viable burners: " + findUsableBurners(currentRecipe)));
+        } else {
+            tooltip.add(Component.literal("    Viable burners: No recipe selected"));
+        }
+
         if (!fluids.isEmpty()) {
             tooltip.add(Component.literal("    Fluid contents: "));
             for (FluidTank tank : fluids) {
