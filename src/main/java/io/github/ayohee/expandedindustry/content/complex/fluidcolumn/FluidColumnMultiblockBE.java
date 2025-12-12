@@ -39,6 +39,7 @@ public abstract class FluidColumnMultiblockBE extends AbstractMultiblockControll
     protected FluidColumnRecipe currentRecipe;
 
     protected final int size;
+    protected int height = -1;
 
     protected FluidColumnMultiblockBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -47,6 +48,17 @@ public abstract class FluidColumnMultiblockBE extends AbstractMultiblockControll
 
     public abstract int getSize();
     public abstract Object getRecipeKey();
+
+
+    public void setHeight(int height) {
+        if (this.height == -1) {
+            this.height = height;
+        }
+    }
+
+    public int getHeight() {
+        return height;
+    }
 
     @Override
     public void tick() {
@@ -391,6 +403,7 @@ public abstract class FluidColumnMultiblockBE extends AbstractMultiblockControll
         tag.put("fluids", NBTHelper.writeCompoundList(
                 fluids, (t) -> t.writeToNBT(registries, new CompoundTag())
         ));
+        tag.putInt("height", height);
 
         super.saveAdditional(tag, registries);
     }
@@ -400,6 +413,7 @@ public abstract class FluidColumnMultiblockBE extends AbstractMultiblockControll
         fluids = new ArrayList<>(NBTHelper.readCompoundList(tag.getList("fluids", Tag.TAG_COMPOUND),
                 (t) -> new FluidTank(INDIVIDUAL_CAPACITY).readFromNBT(registries, t)
         ));
+        height = tag.getInt("height");
 
         super.loadAdditional(tag, registries);
     }

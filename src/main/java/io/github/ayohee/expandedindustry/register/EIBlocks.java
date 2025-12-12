@@ -243,8 +243,8 @@ public class EIBlocks {
             .tag(BlockTags.MINEABLE_WITH_PICKAXE)
             .blockstate(new PressurisedFluidTankGenerator()::generate)
             .onRegister(CreateRegistrate.blockModel(() -> PressurisedFluidTankModel::standard))
-            .transform(displaySource(AllDisplaySources.BOILER))
-            .transform(mountedFluidStorage(AllMountedStorageTypes.FLUID_TANK))
+            .transform(displaySource(AllDisplaySources.BOILER)) //TODO remove?
+            .transform(mountedFluidStorage(AllMountedStorageTypes.FLUID_TANK)) //TODO clone?
             .onRegister(movementBehaviour(new PressurisedFluidTankMovementBehavior()))
             .addLayer(() -> RenderType::cutoutMipped)
             .recipe((c, p) -> {

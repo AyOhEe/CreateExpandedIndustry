@@ -105,8 +105,7 @@ public class CrackingColumnMultiblock extends AbstractMultiblockController<Crack
         BlockPos controllerPos = new BlockPos(modelStart).above(dimensions.getY());
         level.setBlock(controllerPos, top, Block.UPDATE_ALL);
         CrackingColumnMultiblockBE controller = (CrackingColumnMultiblockBE) level.getBlockEntity(controllerPos);
-
-        //TODO fluid inputs
+        controller.setHeight(dimensions.getY() + 1);
 
         // Inform the controller of its new children
         for (int x = startingX; x < endX; x++) {
@@ -124,18 +123,12 @@ public class CrackingColumnMultiblock extends AbstractMultiblockController<Crack
         }
     }
 
-    public static void deconstructMBS(LevelAccessor level, BlockPos corePos, int size) {
+    public static void deconstructMBS(LevelAccessor level, BlockPos corePos, int size, CrackingColumnMultiblockBE columnBE) {
         int x0 = corePos.getX();
         int yTop = corePos.getY();
         int z0 = corePos.getZ();
 
-        Optional<CrackingColumnMultiblockBE> optionalColumn = level.getBlockEntity(corePos, EIBlockEntityTypes.CRACKING_COLUMN_MULTIBLOCK.get());
-        if (optionalColumn.isEmpty()) {
-            return;
-        }
-        CrackingColumnMultiblockBE columnBE = optionalColumn.get();
-
-        int height = getColumnHeight(level, columnBE, corePos);
+        int height = columnBE.getHeight();
 
         // For size = 2, the multiblock controller is in the highest and southeastern-most block of the structure,
         // so going one block northwest puts us at the lowest x and z.
@@ -154,19 +147,19 @@ public class CrackingColumnMultiblock extends AbstractMultiblockController<Crack
         int yEnd = yTop + 1;
         int zEnd = zStart + size;
 
+        // Place tanks
+        for (int x = xStart; x < xEnd; x++) {
+            for (int z = zStart; z < zEnd; z++) {
+                for (int y = yStart; y < yEnd; y++) {
+                    level.setBlock(new BlockPos(x, y, z), EIBlocks.PRESSURISED_FLUID_TANK.getDefaultState(), Block.UPDATE_ALL);
+                }
+            }
+        }
+
         // Place column blocks
         for (int x = xStart; x < xEnd; x++) {
             for (int z = zStart; z < zEnd; z++) {
                 level.setBlock(new BlockPos(x, yStart, z), EIBlocks.CRACKING_COLUMN_BASE.getDefaultState(), Block.UPDATE_ALL);
-            }
-        }
-
-        // Place tanks
-        for (int x = xStart; x < xEnd; x++) {
-            for (int z = zStart; z < zEnd; z++) {
-                for (int y = yStart + 1; y < yEnd; y++) {
-                    level.setBlock(new BlockPos(x, y, z), EIBlocks.PRESSURISED_FLUID_TANK.getDefaultState(), Block.UPDATE_ALL);
-                }
             }
         }
     }

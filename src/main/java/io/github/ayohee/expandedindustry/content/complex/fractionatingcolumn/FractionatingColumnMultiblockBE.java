@@ -18,7 +18,7 @@ public class FractionatingColumnMultiblockBE extends FluidColumnMultiblockBE imp
     }
     @Override
     public void deconstruct(LevelAccessor level, BlockPos pos) {
-        FractionatingColumnMultiblock.deconstructMBS(level, pos, size);
+        FractionatingColumnMultiblock.deconstructMBS(level, pos, size, this);
     }
 
     @Override

@@ -20,6 +20,7 @@ import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 
 import static io.github.ayohee.expandedindustry.CreateExpandedIndustry.MODID;
 
+
 public class FractionatingColumnMultiblock extends AbstractMultiblockController<FractionatingColumnMultiblockBE> implements IWrenchable {
     public static final IntegerProperty SIZE = IntegerProperty.create("size", 1, 3);
 
@@ -61,7 +62,7 @@ public class FractionatingColumnMultiblock extends AbstractMultiblockController<
 
     }
 
-    public static void deconstructMBS(LevelAccessor level, BlockPos corePos, int size) {
+    public static void deconstructMBS(LevelAccessor level, BlockPos corePos, int size, FractionatingColumnMultiblockBE columnBE) {
 
     }
 

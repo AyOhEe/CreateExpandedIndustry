@@ -19,7 +19,7 @@ public class CrackingColumnMultiblockBE extends FluidColumnMultiblockBE implemen
     }
     @Override
     public void deconstruct(LevelAccessor level, BlockPos pos) {
-        CrackingColumnMultiblock.deconstructMBS(level, pos, size);
+        CrackingColumnMultiblock.deconstructMBS(level, pos, size, this);
     }
 
     @Override
