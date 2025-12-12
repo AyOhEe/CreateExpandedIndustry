@@ -1,7 +1,13 @@
 {
   "variants": {
-    "": {
-      "model": "createexpandedindustry:block/fractionating_column_multiblock"
+    "size=1": {
+      "model": "createexpandedindustry:block/fractionating_column/fractionating_column_top_1_wide"
+    },
+    "size=2": {
+      "model": "createexpandedindustry:block/fractionating_column/fractionating_column_top_2_wide"
+    },
+    "size=3": {
+      "model": "createexpandedindustry:block/fractionating_column/fractionating_column_top_3_wide"
     }
   }
 }

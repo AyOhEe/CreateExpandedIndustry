@@ -1,5 +1,6 @@
 package io.github.ayohee.expandedindustry.content.complex.crackingcolumn;
 
+import io.github.ayohee.expandedindustry.content.complex.fluidcolumn.FluidColumnMultiblockBE;
 import io.github.ayohee.expandedindustry.content.recipe.ColumnCrackingRecipe;
 import io.github.ayohee.expandedindustry.multiblock.IHaveFluidStorage;
 import net.minecraft.core.BlockPos;

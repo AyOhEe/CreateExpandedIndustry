@@ -1,4 +1,4 @@
-package io.github.ayohee.expandedindustry.content.complex.crackingcolumn;
+package io.github.ayohee.expandedindustry.content.complex.fluidcolumn;
 
 import com.simibubi.create.content.processing.basin.BasinBlockEntity;
 import com.simibubi.create.content.processing.burner.BlazeBurnerBlock;

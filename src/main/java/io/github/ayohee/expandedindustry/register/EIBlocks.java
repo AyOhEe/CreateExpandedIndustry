@@ -81,7 +81,7 @@ public class EIBlocks {
 
     public static final BlockEntry<FractionatingColumnMultiblock> FRACTIONATING_COLUMN_MULTIBLOCK = REGISTRATE
             .block("fractionating_column_multiblock", FractionatingColumnMultiblock::new)
-            .blockstate(Helpers.ghostBlock())
+            .blockstate(FractionatingColumnMultiblock::generateBlockstate)
             .initialProperties(() -> Blocks.GLASS)
             .properties(Helpers::multiblockComponent)
             .properties(c -> c
