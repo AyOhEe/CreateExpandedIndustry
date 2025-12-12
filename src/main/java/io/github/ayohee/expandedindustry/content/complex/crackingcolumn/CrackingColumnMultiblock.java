@@ -174,6 +174,7 @@ public class CrackingColumnMultiblock extends AbstractMultiblockController<Crack
         return height;
     }
 
+    //FIXME this is definitely buggy
     private static boolean isColumnBlock(LevelAccessor level, BlockPos pos) {
         BlockEntity be = level.getBlockEntity(pos);
         return (be instanceof CrackingColumnMultiblockBE) || (be instanceof IMultiblockComponentBE);
