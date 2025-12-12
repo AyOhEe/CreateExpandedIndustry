@@ -164,26 +164,6 @@ public class CrackingColumnMultiblock extends AbstractMultiblockController<Crack
         }
     }
 
-    private static int getColumnHeight(LevelAccessor level, CrackingColumnMultiblockBE columnBE, BlockPos corePos) {
-        int height = 1;
-        BlockPos pos = corePos.below();
-        while (isColumnBlock(level, columnBE, pos)) {
-            height += 1;
-            pos = pos.below();
-        }
-
-        return height;
-    }
-
-    private static boolean isColumnBlock(LevelAccessor level, CrackingColumnMultiblockBE columnBE, BlockPos pos) {
-        BlockEntity be = level.getBlockEntity(pos);
-        if (!(be instanceof IMultiblockComponentBE mbc)) {
-            return false;
-        }
-
-        return mbc.getController() == columnBE;
-    }
-
     public static BlockState getTopBS(int size) {
         return switch(size) {
             case 1 -> SIZE_1.get();
