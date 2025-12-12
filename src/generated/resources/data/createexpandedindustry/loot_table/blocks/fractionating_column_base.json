@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "createexpandedindustry:fractionating_column_port"
+          "name": "createexpandedindustry:fractionating_column_base"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "createexpandedindustry:blocks/fractionating_column_port"
+  "random_sequence": "createexpandedindustry:blocks/fractionating_column_base"
 }

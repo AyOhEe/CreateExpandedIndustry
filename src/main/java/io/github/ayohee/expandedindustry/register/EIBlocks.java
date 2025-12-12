@@ -21,7 +21,6 @@ import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import io.github.ayohee.expandedindustry.content.blocks.HardenedStoneBlock;
 import io.github.ayohee.expandedindustry.content.blocks.HighPressurePortBlock;
 import io.github.ayohee.expandedindustry.content.blocks.LoopingJukeboxBlock;
-import io.github.ayohee.expandedindustry.content.blocks.WrenchableBlock;
 import io.github.ayohee.expandedindustry.content.complex.crackingcolumn.CrackingColumnBaseBlock;
 import io.github.ayohee.expandedindustry.content.complex.crackingcolumn.CrackingColumnModelBlock;
 import io.github.ayohee.expandedindustry.content.complex.crackingcolumn.CrackingColumnMultiblock;
@@ -29,7 +28,7 @@ import io.github.ayohee.expandedindustry.content.complex.flarestack.FlareStackMu
 import io.github.ayohee.expandedindustry.content.complex.flarestack.FlareStackVentBlock;
 import io.github.ayohee.expandedindustry.content.complex.fractionatingcolumn.FractionatingColumnModelBlock;
 import io.github.ayohee.expandedindustry.content.complex.fractionatingcolumn.FractionatingColumnMultiblock;
-import io.github.ayohee.expandedindustry.content.complex.fractionatingcolumn.FractionatingColumnPortBlock;
+import io.github.ayohee.expandedindustry.content.complex.fractionatingcolumn.FractionatingColumnBaseBlock;
 import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.*;
 import io.github.ayohee.expandedindustry.content.complex.reinforcedDrill.*;
 import io.github.ayohee.expandedindustry.multiblock.*;
@@ -221,16 +220,11 @@ public class EIBlocks {
             .recipe((c, p) -> {}) //TODO
             .register();
 
-    public static final BlockEntry<FractionatingColumnPortBlock> FRACTIONATING_COLUMN_PORT = REGISTRATE.block("fractionating_column_port", FractionatingColumnPortBlock::new)
+    public static final BlockEntry<FractionatingColumnBaseBlock> FRACTIONATING_COLUMN_BASE = REGISTRATE.block("fractionating_column_base", FractionatingColumnBaseBlock::new)
             .initialProperties(SharedProperties::copperMetal)
             .properties(c -> c.mapColor(MapColor.COLOR_BLUE).destroyTime(20))
             .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_IRON_TOOL)
-            .blockstate((ctx, prov) -> prov.getVariantBuilder(ctx.get()).forAllStates(state ->
-                    ConfiguredModel.builder()
-                            .modelFile(prov.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(MODID, "block/fractionating_column_port")))
-                            .rotationY((int)state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot())
-                            .build()
-            ))
+            .blockstate(Helpers.subdirCubeBottomTop())
             .simpleItem()
             .recipe((c, p) -> {}) //TODO
             .register();
