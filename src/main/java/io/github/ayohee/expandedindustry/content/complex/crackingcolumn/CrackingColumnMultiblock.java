@@ -25,6 +25,8 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 
 
+import java.util.Optional;
+
 import static io.github.ayohee.expandedindustry.CreateExpandedIndustry.MODID;
 
 public class CrackingColumnMultiblock extends AbstractMultiblockController<CrackingColumnMultiblockBE> implements IWrenchable {
@@ -127,7 +129,13 @@ public class CrackingColumnMultiblock extends AbstractMultiblockController<Crack
         int yTop = corePos.getY();
         int z0 = corePos.getZ();
 
-        int height = getColumnHeight(level, corePos);
+        Optional<CrackingColumnMultiblockBE> optionalColumn = level.getBlockEntity(corePos, EIBlockEntityTypes.CRACKING_COLUMN_MULTIBLOCK.get());
+        if (optionalColumn.isEmpty()) {
+            return;
+        }
+        CrackingColumnMultiblockBE columnBE = optionalColumn.get();
+
+        int height = getColumnHeight(level, columnBE, corePos);
 
         // For size = 2, the multiblock controller is in the highest and southeastern-most block of the structure,
         // so going one block northwest puts us at the lowest x and z.
@@ -163,10 +171,10 @@ public class CrackingColumnMultiblock extends AbstractMultiblockController<Crack
         }
     }
 
-    private static int getColumnHeight(LevelAccessor level, BlockPos corePos) {
-        int height = 0;
-        BlockPos pos = corePos;
-        while (isColumnBlock(level, pos)) {
+    private static int getColumnHeight(LevelAccessor level, CrackingColumnMultiblockBE columnBE, BlockPos corePos) {
+        int height = 1;
+        BlockPos pos = corePos.below();
+        while (isColumnBlock(level, columnBE, pos)) {
             height += 1;
             pos = pos.below();
         }
@@ -174,10 +182,13 @@ public class CrackingColumnMultiblock extends AbstractMultiblockController<Crack
         return height;
     }
 
-    //FIXME this is definitely buggy
-    private static boolean isColumnBlock(LevelAccessor level, BlockPos pos) {
+    private static boolean isColumnBlock(LevelAccessor level, CrackingColumnMultiblockBE columnBE, BlockPos pos) {
         BlockEntity be = level.getBlockEntity(pos);
-        return (be instanceof CrackingColumnMultiblockBE) || (be instanceof IMultiblockComponentBE);
+        if (!(be instanceof IMultiblockComponentBE mbc)) {
+            return false;
+        }
+
+        return mbc.getController() == columnBE;
     }
 
     public static BlockState getTopBS(int size) {
