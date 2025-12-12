@@ -183,5 +183,6 @@
   "block.createexpandedindustry.red_asphalt_block": "Red Asphalt",
   "block.createexpandedindustry.black_asphalt_block": "Black Asphalt",
 
-  "createexpandedindustry.recipe.column_cracking": "Column Cracking"
+  "createexpandedindustry.recipe.column_cracking": "Column Cracking",
+  "createexpandedindustry.recipe.column_fractionation": "Column Fractionation"
 }
