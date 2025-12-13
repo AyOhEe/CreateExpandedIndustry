@@ -22,7 +22,7 @@ public class EICrushingRecipeGen extends CrushingRecipeGen {
             "microplastics",
             b -> b.require(EIItems.POLYETHYLENE_BEADS)
                     .output(EIItems.MICROPLASTICS, 2)
-                    .output(EIItems.MICROPLASTICS)
+                    .output(0.5f, EIItems.MICROPLASTICS)
     );
 
     public EICrushingRecipeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
