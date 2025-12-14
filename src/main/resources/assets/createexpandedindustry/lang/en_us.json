@@ -184,5 +184,8 @@
   "block.createexpandedindustry.black_asphalt_block": "Black Asphalt",
 
   "createexpandedindustry.recipe.column_cracking": "Column Cracking",
-  "createexpandedindustry.recipe.column_fractionation": "Column Fractionation"
+  "createexpandedindustry.recipe.column_fractionation": "Column Fractionation",
+
+  "biome.createexpandedindustry.inland_oil_field": "Inland Oil Field",
+  "biome.createexpandedindustry.ocean_oil_field": "Ocean Oil Field"
 }
