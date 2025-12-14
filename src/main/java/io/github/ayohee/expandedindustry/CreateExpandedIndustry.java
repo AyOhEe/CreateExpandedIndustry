@@ -12,6 +12,8 @@ import io.github.ayohee.expandedindustry.multiblock.MultiblockFluidTankBE;
 import io.github.ayohee.expandedindustry.multiblock.MultiblockInventoryBE;
 import io.github.ayohee.expandedindustry.register.*;
 import net.createmod.catnip.lang.FontHelper;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.CreativeModeTab;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import org.slf4j.Logger;
@@ -35,7 +37,7 @@ public class CreateExpandedIndustry {
             .setTooltipModifierFactory(item ->
                     new ItemDescription.Modifier(item, FontHelper.Palette.STANDARD_CREATE)
                             .andThen(TooltipModifier.mapNull(KineticStats.create(item)))
-            );
+            ).defaultCreativeTab((ResourceKey<CreativeModeTab>) null);
     public static final Logger LOGGER = LogUtils.getLogger();
 
 
@@ -59,7 +61,7 @@ public class CreateExpandedIndustry {
         EISoundEvents.register();
         EIDataComponents.register();
         EIArmorMaterials.register();
-        EIRecipeTypes.register(modEventBus);
+        EIRecipeTypes.register();
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {

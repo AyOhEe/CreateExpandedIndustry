@@ -34,12 +34,12 @@ public class EICreativeTabs {
                     if (entry.get() instanceof LiquidBlock)
                         continue;
 
-                    output.accept(entry.get(), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
+                    output.accept(entry.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
                 }
                 for (RegistryEntry<Item, Item> entry : REGISTRATE.getAll(Registries.ITEM)) {
                     if (!CreateRegistrate.isInCreativeTab(entry, EICreativeTabs.MAIN_TAB))
                         continue;
-                    output.accept(entry.get(), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
+                    output.accept(entry.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
                 }
 
                 ItemStack[] filledCanisters = {
@@ -53,7 +53,7 @@ public class EICreativeTabs {
             })
             .build());
 
-        private static ItemStack generateFilledCanister(FluidEntry<VirtualFluid> fluidEntry) {
+    private static ItemStack generateFilledCanister(FluidEntry<VirtualFluid> fluidEntry) {
         ItemStack item = EIItems.PRESSURISED_CANISTER.asStack();
         FluidStack fluid = new FluidStack(fluidEntry.get().getSource(), PressurisedCanisterItem.CAPACITY);
 
