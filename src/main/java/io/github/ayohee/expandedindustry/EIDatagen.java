@@ -1,11 +1,14 @@
 package io.github.ayohee.expandedindustry;
 
+import io.github.ayohee.expandedindustry.datagen.EIGeneratedEntriesProvider;
 import io.github.ayohee.expandedindustry.datagen.EIRecipeProvider;
 import io.github.ayohee.expandedindustry.datagen.recipes.EIMechanicalCraftingRecipeGen;
 import io.github.ayohee.expandedindustry.datagen.recipes.EISequencedAssemblyRecipeGen;
+import io.github.ayohee.expandedindustry.register.EIBiomeTagsProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 import java.util.concurrent.CompletableFuture;
@@ -26,10 +29,16 @@ public class EIDatagen {
         DataGenerator generator = event.getGenerator();
         PackOutput output = generator.getPackOutput();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
+        ExistingFileHelper fileHelper = event.getExistingFileHelper();
+
+        EIGeneratedEntriesProvider generatedEntriesProvider = new EIGeneratedEntriesProvider(output, lookupProvider);
+        lookupProvider = generatedEntriesProvider.getRegistryProvider();
+        generator.addProvider(event.includeServer(), generatedEntriesProvider);
 
 
         generator.addProvider(event.includeServer(), new EIMechanicalCraftingRecipeGen(output, lookupProvider));
         generator.addProvider(event.includeServer(), new EISequencedAssemblyRecipeGen(output, lookupProvider));
+        generator.addProvider(event.includeServer(), new EIBiomeTagsProvider(output, lookupProvider, MODID, fileHelper));
 
 
         System.out.println("Gathering data for Create: Expanded Industry");
