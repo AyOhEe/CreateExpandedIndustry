@@ -185,6 +185,9 @@ public class EIItems {
             })
             .register();
 
+    public static final ItemEntry<Item> PARTY_POPPER = REGISTRATE.item("party_popper", Item::new)
+            .defaultModel()
+            .register();
 
 
     public static final ItemEntry<ArmorItem> COBALT_HELMET = REGISTRATE.item("cobalt_helmet", (p) -> new ArmorItem(

@@ -116,6 +116,7 @@
   "item.createexpandedindustry.music_disc_claire_de_lune": "Music Disc Claire De Lune",
   "item.createexpandedindustry.music_disc_valse": "Music Disc Valse",
   "item.createexpandedindustry.naphtha_bucket": "Naphtha Bucket",
+  "item.createexpandedindustry.party_popper": "Party Popper",
   "item.createexpandedindustry.plastic_composite": "Plastic Composite",
   "item.createexpandedindustry.polyethylene_beads": "Polyethylene Beads",
   "item.createexpandedindustry.polyethylene_rod": "Polyethylene Rod",
@@ -127,6 +128,5 @@
   "item.createexpandedindustry.rubber_sheet": "Rubber Sheet",
   "item.createexpandedindustry.solid_fuel": "Solid Fuel",
   "item.createexpandedindustry.spicy_blaze_cake": "Spicy Blaze Cake",
-  "item.createexpandedindustry.unpolished_magnetised_cobalt": "Unpolished Magnetised Cobalt",
-  "createexpandedindustry.recipe.column_fractionation": "Column Fractionation"
+  "item.createexpandedindustry.unpolished_magnetised_cobalt": "Unpolished Magnetised Cobalt"
 }

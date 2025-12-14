@@ -1,4 +1,4 @@
-// 1.21.1	2025-12-14T00:09:49.7815389	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+// 1.21.1	2025-12-14T17:07:36.7398561	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
 6e03a436dd8254b20cbeb067a439f0585650f911 assets/createexpandedindustry/blockstates/asphalt_block.json
 bd0755cb64e51af387437e3c12f564f48dc7ecf5 assets/createexpandedindustry/blockstates/black_asphalt_block.json
 a65145a8688f0ebdf178ddfaf3d37dc634ef2e1e assets/createexpandedindustry/blockstates/black_microplastic_block.json
@@ -72,8 +72,8 @@ ca54aed1c9177863d3cfe5394cef241bf75fe166 assets/createexpandedindustry/blockstat
 ddf9c5613e438e93d450e86e9bf3f56e4e34202c assets/createexpandedindustry/blockstates/white_microplastic_block.json
 d65eb6457ab3b24d0bde349da1e1767715cd475b assets/createexpandedindustry/blockstates/yellow_asphalt_block.json
 41c795e54247e0b2e6363fabd7d2bb9f2d6ea7a0 assets/createexpandedindustry/blockstates/yellow_microplastic_block.json
-b52555dbb079187b278a3dcc65bed1d7c96221e1 assets/createexpandedindustry/lang/en_ud.json
-766927b8c7ec32cc4947f61be5767cf5e148e71a assets/createexpandedindustry/lang/en_us.json
+737f7da744b51b20ce69fb020a0f6223adedb8e2 assets/createexpandedindustry/lang/en_ud.json
+b52729aaa8b65f67b2241892b31858921669f00f assets/createexpandedindustry/lang/en_us.json
 6a363fd424376d2eb56f1683a285f09c5b3bed45 assets/createexpandedindustry/models/block/asphalt_block.json
 a7cfd112b26f050b9c31ce0753721d08fa7a3fec assets/createexpandedindustry/models/block/black_asphalt_block.json
 f10525c15f28c8500559a5fd2bfaca7a8447b39f assets/createexpandedindustry/models/block/black_microplastic_block.json
@@ -222,6 +222,7 @@ fdeec614a6a8737aaa8e06e3eab8a0c83ec7bcf7 assets/createexpandedindustry/models/it
 547f3dbfe494415bc5f83a6a4f68ca7f0b0b33ce assets/createexpandedindustry/models/item/naphtha_bucket.json
 de1d336fee70b979b90a8b5886f4aac3f67146a7 assets/createexpandedindustry/models/item/orange_asphalt_block.json
 c56bbafe9a535ee1603f3967ac951e239f8a30ec assets/createexpandedindustry/models/item/orange_microplastic_block.json
+a1920c4fcae8dd531ac1e2170dd5a7dde9ec6956 assets/createexpandedindustry/models/item/party_popper.json
 770f1e1ff7ebfbb7df36047e15b626630517809c assets/createexpandedindustry/models/item/pink_asphalt_block.json
 4f9924ffde4b437c366f8071e7bda3d510f61eae assets/createexpandedindustry/models/item/pink_microplastic_block.json
 776281c8cb1fb383657a0fe848dc1c45d25e9918 assets/createexpandedindustry/models/item/plastic_composite.json
