@@ -9,6 +9,7 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import io.github.ayohee.expandedindustry.content.items.PressurisedCanisterItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceKey;
@@ -67,10 +68,12 @@ public class EIItems {
 
     public static final ItemEntry<Item> UNPOLISHED_MAGNETISED_COBALT = REGISTRATE.item("unpolished_magnetised_cobalt", Item::new)
             .recipe((c, p) -> {
-                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, c.get(), 1)
-                        .requires(EIItems.COBALT_INGOT, 1)
-                        .requires(Items.GLOWSTONE_DUST, 2)
-                        .requires(Items.REDSTONE, 2)
+                ShapedRecipeBuilder.shaped(RecipeCategory.MISC, c.get(), 1)
+                        .pattern("CGG")
+                        .pattern("RR ")
+                        .define('C', EIItems.COBALT_INGOT.get())
+                        .define('G', Items.GLOWSTONE_DUST)
+                        .define('R', Items.REDSTONE)
                         .unlockedBy("has_cobalt_ingot", RegistrateRecipeProvider.has(EIItems.COBALT_INGOT))
                         .save(p, "unpolished_magnetised_cobalt_shapeless");
             })
