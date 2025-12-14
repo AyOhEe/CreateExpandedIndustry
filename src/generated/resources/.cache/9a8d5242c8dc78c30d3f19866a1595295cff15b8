@@ -1,4 +1,4 @@
-// 1.21.1	2025-12-13T23:56:31.3161315	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+// 1.21.1	2025-12-14T00:09:49.7815389	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
 6e03a436dd8254b20cbeb067a439f0585650f911 assets/createexpandedindustry/blockstates/asphalt_block.json
 bd0755cb64e51af387437e3c12f564f48dc7ecf5 assets/createexpandedindustry/blockstates/black_asphalt_block.json
 a65145a8688f0ebdf178ddfaf3d37dc634ef2e1e assets/createexpandedindustry/blockstates/black_microplastic_block.json
@@ -395,7 +395,6 @@ d26fe4d878f01005abaef5a37e84c1e676046cf4 data/minecraft/advancement/recipes/misc
 ae62d0bddb9b6d4c0389027713303ff7686d1a86 data/minecraft/advancement/recipes/misc/purple_dyed_microplastic_block.json
 6347f080a58e2fa6f641eb6dae5d86af2e14630d data/minecraft/advancement/recipes/misc/red_dyed_asphalt_block.json
 7c2f59cf2cb1e79948c4557a8f84adce85a0f02e data/minecraft/advancement/recipes/misc/red_dyed_microplastic_block.json
-653aafdd0b24ed07ce0213a2813a2c29cdd1aff2 data/minecraft/advancement/recipes/misc/unpolished_magnetised_cobalt_shapeless.json
 9783d693153fe8a8f6708e1a3bf258e2a068f7a9 data/minecraft/advancement/recipes/misc/white_dyed_asphalt_block.json
 7901452f82fcfc627e3922bda2291bb8d45a894f data/minecraft/advancement/recipes/misc/white_dyed_microplastic_block.json
 e520298a3f2b87545182aae340cad16b8a1339e2 data/minecraft/advancement/recipes/misc/yellow_dyed_asphalt_block.json
@@ -437,7 +436,6 @@ d9cd75f8eb71aa34913cd05d5ea7e11f642c005c data/minecraft/recipe/pink_dyed_micropl
 2c43897803425fcc54d6b14fb349e72ba0958b21 data/minecraft/recipe/purple_dyed_microplastic_block.json
 82578cca00112804b24c5a6d2c1d7ceaa482b2eb data/minecraft/recipe/red_dyed_asphalt_block.json
 661bbc91fca7bcb06802999d7c1d29fcaea92cca data/minecraft/recipe/red_dyed_microplastic_block.json
-4ec18f822043fce98053cc18bdc31b656b3f089c data/minecraft/recipe/unpolished_magnetised_cobalt_shapeless.json
 5c9ccf6d351c8749df90dd8a88fc675c69d632ee data/minecraft/recipe/white_dyed_asphalt_block.json
 8b2be1db18726a32cfc220c873338f109dddb9e5 data/minecraft/recipe/white_dyed_microplastic_block.json
 6faec4ba4d7e1cde7e46041e79070f8491a2642f data/minecraft/recipe/yellow_dyed_asphalt_block.json

@@ -67,16 +67,6 @@ public class EIItems {
             .register();
 
     public static final ItemEntry<Item> UNPOLISHED_MAGNETISED_COBALT = REGISTRATE.item("unpolished_magnetised_cobalt", Item::new)
-            .recipe((c, p) -> {
-                ShapedRecipeBuilder.shaped(RecipeCategory.MISC, c.get(), 1)
-                        .pattern("CGG")
-                        .pattern("RR ")
-                        .define('C', EIItems.COBALT_INGOT.get())
-                        .define('G', Items.GLOWSTONE_DUST)
-                        .define('R', Items.REDSTONE)
-                        .unlockedBy("has_cobalt_ingot", RegistrateRecipeProvider.has(EIItems.COBALT_INGOT))
-                        .save(p, "unpolished_magnetised_cobalt_shapeless");
-            })
             .register();
 
     public static final ItemEntry<Item> MAGNETISED_COBALT = REGISTRATE.item("magnetised_cobalt", Item::new)

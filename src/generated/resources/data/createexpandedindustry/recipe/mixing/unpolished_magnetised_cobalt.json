@@ -2,7 +2,22 @@
   "type": "create:mixing",
   "ingredients": [
     {
-      "item": "createexpandedindustry:cobalt_ingot"
+      "item": "createexpandedindustry:cobalt_nugget"
+    },
+    {
+      "item": "createexpandedindustry:cobalt_nugget"
+    },
+    {
+      "item": "createexpandedindustry:cobalt_nugget"
+    },
+    {
+      "item": "createexpandedindustry:cobalt_nugget"
+    },
+    {
+      "item": "createexpandedindustry:cobalt_nugget"
+    },
+    {
+      "item": "createexpandedindustry:cobalt_nugget"
     },
     {
       "item": "minecraft:redstone"

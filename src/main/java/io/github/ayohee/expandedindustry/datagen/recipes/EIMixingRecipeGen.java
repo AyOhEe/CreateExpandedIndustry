@@ -35,7 +35,12 @@ public class EIMixingRecipeGen extends MixingRecipeGen {
 
     public final GeneratedRecipe UNPOLISHED_MAGNETISED_COBALT = create(
             "unpolished_magnetised_cobalt",
-            b -> b.require(EIItems.COBALT_INGOT)
+            b -> b.require(EIItems.COBALT_NUGGET)
+                    .require(EIItems.COBALT_NUGGET)
+                    .require(EIItems.COBALT_NUGGET)
+                    .require(EIItems.COBALT_NUGGET)
+                    .require(EIItems.COBALT_NUGGET)
+                    .require(EIItems.COBALT_NUGGET)
                     .require(Items.REDSTONE)
                     .require(Items.GLOWSTONE_DUST)
                     .output(EIItems.UNPOLISHED_MAGNETISED_COBALT)
