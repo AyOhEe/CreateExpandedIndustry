@@ -39,19 +39,13 @@ public enum EIRecipeTypes implements IRecipeTypeInfo, StringRepresentable {
         String name = name().toLowerCase();
         id = ResourceLocation.fromNamespaceAndPath(MODID, name);
         this.serializerSupplier = serializerSupplier;
-        serializerObject = EIRecipeTypes.Registers.SERIALIZER_REGISTER.register(name, serializerSupplier);
-        typeObject = EIRecipeTypes.Registers.TYPE_REGISTER.register(name, () -> RecipeType.simple(id));
+        serializerObject = EIRegistries.SERIALIZER_REGISTER.register(name, serializerSupplier);
+        typeObject = EIRegistries.TYPE_REGISTER.register(name, () -> RecipeType.simple(id));
         type = typeObject;
     }
 
     EIRecipeTypes(StandardProcessingRecipe.Factory<?> processingFactory) {
         this(() -> new StandardProcessingRecipe.Serializer<>(processingFactory));
-    }
-
-
-    public static void register(IEventBus modEventBus) {
-        Registers.SERIALIZER_REGISTER.register(modEventBus);
-        Registers.TYPE_REGISTER.register(modEventBus);
     }
 
 
@@ -78,8 +72,5 @@ public enum EIRecipeTypes implements IRecipeTypeInfo, StringRepresentable {
         return id.toString();
     }
 
-    private static class Registers {
-        private static final DeferredRegister<RecipeSerializer<?>> SERIALIZER_REGISTER = DeferredRegister.create(BuiltInRegistries.RECIPE_SERIALIZER, MODID);
-        private static final DeferredRegister<RecipeType<?>> TYPE_REGISTER = DeferredRegister.create(Registries.RECIPE_TYPE, MODID);
-    }
+    public static void register() {}
 }
