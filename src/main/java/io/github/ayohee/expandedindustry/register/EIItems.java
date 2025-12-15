@@ -6,6 +6,7 @@ import com.simibubi.create.foundation.item.CombustibleItem;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import io.github.ayohee.expandedindustry.content.items.PartyPopperItem;
 import io.github.ayohee.expandedindustry.content.items.PressurisedCanisterItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -185,7 +186,7 @@ public class EIItems {
             })
             .register();
 
-    public static final ItemEntry<Item> PARTY_POPPER = REGISTRATE.item("party_popper", Item::new)
+    public static final ItemEntry<PartyPopperItem> PARTY_POPPER = REGISTRATE.item("party_popper", PartyPopperItem::new)
             .defaultModel()
             .register();
 
