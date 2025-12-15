@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/CreateExpandedIndustry.main.iml" filepath="$PROJECT_DIR$/.idea/modules/CreateExpandedIndustry.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/CreateExpandedIndustry.test.iml" filepath="$PROJECT_DIR$/.idea/modules/CreateExpandedIndustry.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/io.github.ayohee.createexpandedindustry.CreateExpandedIndustry.main.iml" filepath="$PROJECT_DIR$/.idea/modules/io.github.ayohee.createexpandedindustry.CreateExpandedIndustry.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/io.github.ayohee.createexpandedindustry.CreateExpandedIndustry.test.iml" filepath="$PROJECT_DIR$/.idea/modules/io.github.ayohee.createexpandedindustry.CreateExpandedIndustry.test.iml" />
     </modules>
   </component>
 </project>

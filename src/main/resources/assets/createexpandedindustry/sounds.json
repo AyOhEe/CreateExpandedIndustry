@@ -22,5 +22,21 @@
         "stream": true
       }
     ]
+  },
+  "popper_pop": {
+    "sounds": [
+      {
+        "name": "createexpandedindustry:sfx/popper_pop",
+        "stream": true
+      }
+    ]
+  },
+  "popper_yippee": {
+    "sounds": [
+      {
+        "name": "createexpandedindustry:sfx/popper_yippee",
+        "stream": true
+      }
+    ]
   }
 }

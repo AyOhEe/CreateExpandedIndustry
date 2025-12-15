@@ -187,6 +187,7 @@ public class EIItems {
             .register();
 
     public static final ItemEntry<PartyPopperItem> PARTY_POPPER = REGISTRATE.item("party_popper", PartyPopperItem::new)
+            .properties(p -> p.stacksTo(16))
             .defaultModel()
             .register();
 
