@@ -76,12 +76,12 @@ public class EICreativeTabs {
                     if (entry.get() instanceof LiquidBlock)
                         continue;
 
-                    output.accept(entry.get(), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
+                    output.accept(entry.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
                 }
                 for (RegistryEntry<Item, Item> entry : REGISTRATE.getAll(Registries.ITEM)) {
                     if (!CreateRegistrate.isInCreativeTab(entry, EICreativeTabs.DECORATIVES_TAB))
                         continue;
-                    output.accept(entry.get(), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
+                    output.accept(entry.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
                 }
             })
             .build());
