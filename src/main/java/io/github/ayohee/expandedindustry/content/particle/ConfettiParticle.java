@@ -2,6 +2,7 @@ package io.github.ayohee.expandedindustry.content.particle;
 
 import io.github.ayohee.expandedindustry.content.items.PartyPopperItem;
 import io.github.ayohee.expandedindustry.register.EIItems;
+import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
 import net.minecraft.core.Direction;
@@ -19,6 +20,8 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.joml.AxisAngle4f;
+import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
 public class ConfettiParticle extends TextureSheetParticle {
@@ -37,12 +40,20 @@ public class ConfettiParticle extends TextureSheetParticle {
             new Vector3f(1.00f, 0.00f, 0.50f),
     };
 
+    Quaternionf orientation;
+
     protected ConfettiParticle(ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
         super(level, x, y, z, xSpeed, ySpeed, zSpeed);
         gravity = 0.5f;
         this.lifetime = (int)(75.0F / (this.random.nextFloat() * 2.0F + 0.5F)) + 1;
         setAlpha(1.0f);
         quadSize *= 0.5f;
+        orientation = new Quaternionf(
+                level.getRandom().nextDouble() * 2 - 1,
+                level.getRandom().nextDouble() * 2 - 1,
+                level.getRandom().nextDouble() * 2 - 1,
+                level.getRandom().nextDouble() * 2 - 1
+        ).normalize();
 
 
         double spreadFactor = (level.getRandom().nextDouble() * 2 - 1);
@@ -110,9 +121,19 @@ public class ConfettiParticle extends TextureSheetParticle {
         return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
     }
 
-    //TODO replace with custom camera mode
     public SingleQuadParticle.FacingCameraMode getFacingCameraMode() {
-        return FacingCameraMode.LOOKAT_XYZ;
+        // Use the random rotation we made at initialisation, but to make sure that the visible face is always
+        // looking at the camera, flip it when it's looking the other way
+        final Quaternionf FLIP = new Quaternionf().fromAxisAngleDeg(1, 0, 0, 180);
+        return (quaternion, camera, partialTick) -> {
+            Vector3f camForward = camera.getLookVector();
+            Vector3f quadForward = new Vector3f(0, 0, 1).rotate(orientation);
+            if (camForward.dot(quadForward) > 0) {
+                quaternion.set(orientation.mul(FLIP));
+            } else {
+                quaternion.set(orientation);
+            }
+        };
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -155,7 +176,6 @@ public class ConfettiParticle extends TextureSheetParticle {
             Vec3 center = bs.center();
             Direction facing = bs.state().getValue(BlockStateProperties.FACING);
             Vec3 direction = Vec3.atLowerCornerOf(bs.state().getValue(BlockStateProperties.FACING).getNormal());
-            double speed = facing.getAxis().isVertical() ? 2 : 1;
             PartyPopperItem.playPopperSound(bs.level(), center.x, center.y, center.z, true);
             PartyPopperItem.spawnParticles(bs.level(), center.x, center.y, center.z, direction, 1);
 
