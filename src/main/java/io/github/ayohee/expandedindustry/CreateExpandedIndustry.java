@@ -62,6 +62,7 @@ public class CreateExpandedIndustry {
         EIDataComponents.register();
         EIArmorMaterials.register();
         EIRecipeTypes.register();
+        EIParticleTypes.register();
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {

@@ -2,9 +2,11 @@ package io.github.ayohee.expandedindustry;
 
 import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.PressurisedFluidTankRenderer;
 import io.github.ayohee.expandedindustry.content.items.PressurisedCanisterItem;
+import io.github.ayohee.expandedindustry.content.particle.ConfettiParticle;
 import io.github.ayohee.expandedindustry.multiblock.MultiblockKineticIORenderer;
 import io.github.ayohee.expandedindustry.register.EIBlockEntityTypes;
 import io.github.ayohee.expandedindustry.register.EIItems;
+import io.github.ayohee.expandedindustry.register.EIParticleTypes;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -12,6 +14,7 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
@@ -34,5 +37,10 @@ public class CreateExpandedIndustryClient {
     @SubscribeEvent
     static void registerClientExtensions(RegisterClientExtensionsEvent event) {
         event.registerItem(new PressurisedCanisterItem.ItemExtensions(), EIItems.PRESSURISED_CANISTER);
+    }
+
+    @SubscribeEvent
+    static void registerParticleProvidersEvent(RegisterParticleProvidersEvent event) {
+        event.registerSpriteSet(EIParticleTypes.CONFETTI.get(), (spriteSet) -> new ConfettiParticle.Provider(spriteSet));
     }
 }
