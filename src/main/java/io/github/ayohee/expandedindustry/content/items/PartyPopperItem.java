@@ -61,7 +61,7 @@ public class PartyPopperItem extends Item {
                         player.getX(),
                         player.getY(),
                         player.getZ(),
-                        SoundEvents.FIREWORK_ROCKET_BLAST,//EISoundEvents.POPPER_POP,
+                        SoundEvents.FIREWORK_ROCKET_BLAST,
                         SoundSource.PLAYERS,
                         1.0f,
                         1.0f

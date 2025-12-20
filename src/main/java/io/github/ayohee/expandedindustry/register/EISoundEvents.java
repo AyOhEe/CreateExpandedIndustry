@@ -18,9 +18,6 @@ public class EISoundEvents {
             "claire_de_lune", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(MODID, "claire_de_lune"))
     );
 
-    public static final DeferredHolder<SoundEvent, SoundEvent> POPPER_POP = SOUNDS.register(
-            "popper_pop", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(MODID, "popper_pop"))
-    );
     public static final DeferredHolder<SoundEvent, SoundEvent> POPPER_YIPPEE = SOUNDS.register(
             "popper_yippee", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(MODID, "popper_yippee"))
     );
