@@ -1,5 +1,6 @@
 package io.github.ayohee.expandedindustry.register;
 
+import com.simibubi.create.AllItems;
 import com.simibubi.create.AllTags.AllItemTags;
 import com.simibubi.create.content.processing.sequenced.SequencedAssemblyItem;
 import com.simibubi.create.foundation.item.CombustibleItem;
@@ -188,6 +189,16 @@ public class EIItems {
 
     public static final ItemEntry<PartyPopperItem> PARTY_POPPER = REGISTRATE.item("party_popper", PartyPopperItem::new)
             .properties(p -> p.stacksTo(16))
+            .recipe((ctx, prov) -> ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.get())
+                    .pattern(" M ")
+                    .pattern("CGC")
+                    .pattern(" S ")
+                    .define('M', EIItems.MICROPLASTICS)
+                    .define('C', AllItems.CARDBOARD)
+                    .define('G', Items.GUNPOWDER)
+                    .define('S', Items.STRING)
+                    .unlockedBy("has_microplastics", RegistrateRecipeProvider.has(EIItems.MICROPLASTICS))
+                    .save(prov, "party_popper"))
             .defaultModel()
             .register();
 

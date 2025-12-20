@@ -1,4 +1,4 @@
-// 1.21.1	2025-12-19T16:02:32.7485364	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+// 1.21.1	2025-12-20T18:01:47.490784	Registrate Provider for createexpandedindustry [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
 a3df336314ca35b87effcc2bf6c606e2df2fae75 assets/createexpandedindustry/blockstates/asphalt_block.json
 9e400db0a2698b4ab2039e12d82b7c81082d83f6 assets/createexpandedindustry/blockstates/black_asphalt_block.json
 a65145a8688f0ebdf178ddfaf3d37dc634ef2e1e assets/createexpandedindustry/blockstates/black_microplastic_block.json
@@ -389,6 +389,7 @@ f4fb9bc9a4b0e622cb8f66863fa76d7e5002aa1d data/minecraft/advancement/recipes/misc
 43562e366456df9f81da797f6c9f2b7d37dd92b4 data/minecraft/advancement/recipes/misc/microplastic_block_from_item.json
 31a4f2ec1eb7a70645b8ef750ee9838da3d93e1d data/minecraft/advancement/recipes/misc/orange_dyed_asphalt_block.json
 cc23423e45be780ba2b26ac181e7a9f92df15f3f data/minecraft/advancement/recipes/misc/orange_dyed_microplastic_block.json
+9db62a669cd8f88efe315544160cdb74337e1e25 data/minecraft/advancement/recipes/misc/party_popper.json
 c1c682e770a64385655b3a220c810b8234f58c9b data/minecraft/advancement/recipes/misc/pink_dyed_asphalt_block.json
 6c8f8bc7f9689cf021831599740bc1ce45c4f626 data/minecraft/advancement/recipes/misc/pink_dyed_microplastic_block.json
 d26fe4d878f01005abaef5a37e84c1e676046cf4 data/minecraft/advancement/recipes/misc/pressurised_fluid_tank_vertical.json
@@ -430,6 +431,7 @@ c0367cca3421504335ca1390801faeebe67f7cce data/minecraft/recipe/loss_pattern_from
 54baaaca442a384ca3afe291abfd144546a67812 data/minecraft/recipe/microplastic_block_from_item.json
 ad14118f8a4d708cb4ef44c466656efd1d217e40 data/minecraft/recipe/orange_dyed_asphalt_block.json
 847602dc9ebd129a868027e9da5e4810029fdd50 data/minecraft/recipe/orange_dyed_microplastic_block.json
+6f394c2789e6f7bc0d1ca68797a4b7c7a7833015 data/minecraft/recipe/party_popper.json
 218479f564cf75dff6241893a05a9e04ff013e51 data/minecraft/recipe/pink_dyed_asphalt_block.json
 d9cd75f8eb71aa34913cd05d5ea7e11f642c005c data/minecraft/recipe/pink_dyed_microplastic_block.json
 41b44231f57490f35af7b217ce2fa5306c4a0795 data/minecraft/recipe/pressurised_fluid_tank_vertical.json
