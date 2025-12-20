@@ -1,13 +1,23 @@
 package io.github.ayohee.expandedindustry.content.particle;
 
+import io.github.ayohee.expandedindustry.content.items.PartyPopperItem;
+import io.github.ayohee.expandedindustry.register.EIItems;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
+import net.minecraft.core.Direction;
+import net.minecraft.core.Vec3i;
+import net.minecraft.core.dispenser.BlockSource;
+import net.minecraft.core.dispenser.DispenseItemBehavior;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.DispenserBlock;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3f;
 
@@ -39,9 +49,21 @@ public class ConfettiParticle extends TextureSheetParticle {
         Vec3 spreadDir = new Vec3(this.xd, 0, this.zd).normalize();
         spreadDir = spreadDir.yRot(Mth.HALF_PI);
         spreadDir = spreadDir.scale(spreadFactor * 0.3);
+        if (xSpeed == 0 && zSpeed == 0) {
+            spreadDir = Vec3.ZERO;
+            if (ySpeed < 0)  {
+                this.yd -= 0.1;
+                this.yd *= 2;
+                this.xd += level.getRandom().nextBoolean() ? 0.02 : -0.02;
+                this.zd += level.getRandom().nextBoolean() ? 0.02 : -0.02;
+            } else {
+                this.yd += 0.1;
+                this.yd *= 1.3;
+            }
+        }
 
         this.xd *= (level.getRandom().nextDouble() * 8) + 0.5;
-        this.yd *=  (level.getRandom().nextDouble() * 2.5) + 0.5;
+        this.yd *= (level.getRandom().nextDouble() * 2.5) + 0.5;
         this.zd *= (level.getRandom().nextDouble() * 8) + 0.5;
 
         this.xd += spreadDir.x;
@@ -116,5 +138,29 @@ public class ConfettiParticle extends TextureSheetParticle {
         int max = CONFETTI_COLOURS.length - 1;
         int index = random.nextIntBetweenInclusive(0, max);
         return CONFETTI_COLOURS[index];
+    }
+
+    public static void registerDispenseItemBehaviour() {
+        DispenserBlock.registerBehavior(EIItems.PARTY_POPPER, new DispenserBehaviour());
+    }
+
+    public static class DispenserBehaviour implements DispenseItemBehavior {
+        @Override
+        @NotNull
+        public ItemStack dispense(BlockSource bs, ItemStack item) {
+            if (!item.is(EIItems.PARTY_POPPER)) {
+                return item;
+            }
+
+            Vec3 center = bs.center();
+            Direction facing = bs.state().getValue(BlockStateProperties.FACING);
+            Vec3 direction = Vec3.atLowerCornerOf(bs.state().getValue(BlockStateProperties.FACING).getNormal());
+            double speed = facing.getAxis().isVertical() ? 2 : 1;
+            PartyPopperItem.playPopperSound(bs.level(), center.x, center.y, center.z, true);
+            PartyPopperItem.spawnParticles(bs.level(), center.x, center.y, center.z, direction, 1);
+
+            item.shrink(1);
+            return item;
+        }
     }
 }

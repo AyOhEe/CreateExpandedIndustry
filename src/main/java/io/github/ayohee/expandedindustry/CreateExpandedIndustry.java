@@ -7,6 +7,7 @@ import com.simibubi.create.foundation.item.TooltipModifier;
 import io.github.ayohee.expandedindustry.content.blockentities.HighPressurePortBlockEntity;
 import io.github.ayohee.expandedindustry.content.complex.pressurisedTank.PressurisedFluidTankBlockEntity;
 import io.github.ayohee.expandedindustry.content.items.PressurisedCanisterItem;
+import io.github.ayohee.expandedindustry.content.particle.ConfettiParticle;
 import io.github.ayohee.expandedindustry.multiblock.MultiblockFluidInputBE;
 import io.github.ayohee.expandedindustry.multiblock.MultiblockFluidTankBE;
 import io.github.ayohee.expandedindustry.multiblock.MultiblockInventoryBE;
@@ -63,11 +64,14 @@ public class CreateExpandedIndustry {
         EIArmorMaterials.register();
         EIRecipeTypes.register();
         EIParticleTypes.register();
+
+
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
             EIContraptionMovementSettings.registerDefaults();
+            ConfettiParticle.registerDispenseItemBehaviour();
         });
     }
 
